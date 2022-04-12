@@ -133,7 +133,7 @@ Clone o projeto
 Vá para a raiz do diretório
 
 ```bash
-  cd raro-academy-videos
+  cd raro-academy-react-grupo-6
 ```
 
 Instale as dependências
