@@ -1,13 +1,15 @@
 import { ThemeProvider } from "styled-components";
 
 import GlobalStyles from "./styles/global";
-import light from "./styles/themes/light";
+import { useTheme } from "./contexts/useTheme";
 
 import { Home } from "./pages/home";
 
 function App() {
+  const { theme } = useTheme();
+
   return (
-    <ThemeProvider theme={light}>
+    <ThemeProvider theme={ theme }>
       <GlobalStyles />
       <Home />
     </ThemeProvider>
