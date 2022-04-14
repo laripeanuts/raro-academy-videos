@@ -1,11 +1,17 @@
-import './App.css';
+import { ThemeProvider } from "styled-components";
+
+import GlobalStyles from "./styles/global";
+import light from "./styles/themes/light";
+
+import { Home } from "./pages/home";
 
 function App() {
   return (
-    <div className="App">
-      <img src="/assets/logo-semfundo.webp" alt="Raro Academy Video" />
-    </div>
+    <ThemeProvider theme={light}>
+      <GlobalStyles />
+      <Home />
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
