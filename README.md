@@ -44,6 +44,7 @@
 - [📔 **Documentação**](#-documentação)
 - [🌟 **Sobre o projeto**](#-sobre-o-projeto)
 - [🎯 **Objetivos principais**](#-objetivos-principais)
+- [💡 **Proposta**](#-proposta)
 - [💻 **Tecnologias**](#-tecnologias)
 - [🛠️ **Ferramentas**](#️-ferramentas)
 - [🤼‍♂️ **Desenvolvedores**](#️-desenvolvedores)
@@ -58,7 +59,7 @@ Projeto final do curso de React da Raro Academy. Melhorar o modelo de distribui�
 
 ## 🎯 **Objetivos principais**
 
-Desenvolver com React uma plataforma web conforme descrito detalhadamente no [enunciado oficial](enunciado.md). Usar API disponibilizada pela Raro Academy para acesso.
+Desenvolver com React uma plataforma web funcionaç conforme descrito detalhadamente no [enunciado oficial](enunciado.md), utilizando API disponibilizada pela Raro Academy para acesso.
 
 - [ ] HOME (pública)
   - [ ] Conteúdo público
@@ -76,7 +77,7 @@ Desenvolver com React uma plataforma web conforme descrito detalhadamente no [en
   - [ ] Visualização do vídeo
   - [ ] Lista com os próximos itens da playlist correspondente
   - [ ] Área de comentários com botão de *like* e *dislike*
-  - [ ] Comentários disponíveis somente para usuário cadastrados
+  - [ ] Ação de comentar somente para usuários cadastrados
   - [ ] Botão de favoritar
 
 
@@ -88,6 +89,11 @@ Desenvolver com React uma plataforma web conforme descrito detalhadamente no [en
 </p>
 
 > the app states -->
+## 💡 **Proposta**
+<!-- TODO -->
+
+  - ### Design
+    Utilizando a ferramenta [Figma](https://www.figma.com/), formamos o *style guide* e as telas do projeto baseado no [pacote de identidade visual](https://drive.google.com/drive/folders/1rDGwAET7yZ1oBXrYe5Ru-p0h_tU6w5Ds) que recebemos da Raro e em cima do estudo feito sobre a forma que a empresa se apresenta na internet. 🔗 [Projeto Figma](https://www.figma.com/file/rPQ9yleOpcl9V2SIyUlSQ3/Telas?node-id=3%3A2). 
 
 ## 💻 **Tecnologias**
 
@@ -100,6 +106,7 @@ Desenvolver com React uma plataforma web conforme descrito detalhadamente no [en
 ## 🛠️ **Ferramentas**
 
 [![IDE](https://img.shields.io/badge/Visual_studio_code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)](https://code.visualstudio.com/)
+[![FIGMA](https://img.shields.io/badge/Figma-F76E5F?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/)
 [![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://www.microsoft.com/pt-br/windows/get-windows-10)
 
 ## 🤼‍♂️ **Desenvolvedores**
