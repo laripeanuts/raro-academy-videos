@@ -1,4 +1,4 @@
-export const light = {
+const light = {
   title: "light",
 
   border: {
