@@ -1,6 +1,6 @@
 <div align="center">
 
-  <img src="public/assets/favicon.png" alt="logo" width="70" height="auto" />
+  <img src=".github/logo.png" alt="logo" width="70" height="auto" />
   <h1>Raro Academy Videos</h1>
   
   <p>
@@ -55,11 +55,11 @@
 
 ## 🌟 **Sobre o projeto**
 
-Projeto final do curso de React da Raro Academy. Melhorar o modelo de distribuição do conteúdo dos cursos, criando um portal de acesso aos materiais de vídeo, onde os alunos poderão ter acesso ao conteúdo direcionados a eles.
+Projeto final do curso de React da Raro Academy que visa Melhorar o modelo de distribuição do conteúdo dos cursos, criando um portal de acesso aos materiais de vídeo, onde os alunos poderão ter acesso ao conteúdo direcionados a eles.
 
 ## 🎯 **Objetivos principais**
 
-Desenvolver com React uma plataforma web funcionaç conforme descrito detalhadamente no [enunciado oficial](enunciado.md), utilizando API disponibilizada pela Raro Academy para acesso.
+Desenvolver com React uma plataforma web funcional conforme descrito detalhadamente no [enunciado oficial](./.github/raro_enunciado.md), utilizando API disponibilizada pela Raro Academy para acesso. As regras e critérios de avaliação se encontram [aqui](./.github/raro_regras.md).
 
 - [ ] HOME (pública)
   - [ ] Conteúdo público
@@ -93,7 +93,8 @@ Desenvolver com React uma plataforma web funcionaç conforme descrito detalhadam
 <!-- TODO -->
 
   - ### Design
-    Utilizando a ferramenta [Figma](https://www.figma.com/), formamos o *style guide* e as telas do projeto baseado no [pacote de identidade visual](https://drive.google.com/drive/folders/1rDGwAET7yZ1oBXrYe5Ru-p0h_tU6w5Ds) que recebemos da Raro e em cima do estudo feito sobre a forma que a empresa se apresenta na internet. 🔗 [Projeto Figma](https://www.figma.com/file/rPQ9yleOpcl9V2SIyUlSQ3/Telas?node-id=3%3A2). 
+
+    Juntamos o [pacote de identidade visual](https://drive.google.com/drive/folders/1rDGwAET7yZ1oBXrYe5Ru-p0h_tU6w5Ds) disponibilizado e um estudo feito sobre a forma que a empresa se apresenta na internet e formamos nosso *style guide* e as telas do projeto na plataforma do [Figma](https://www.figma.com/). 🔗 [Projeto](https://www.figma.com/file/rPQ9yleOpcl9V2SIyUlSQ3/Telas?node-id=3%3A2).
 
 ## 💻 **Tecnologias**
 
