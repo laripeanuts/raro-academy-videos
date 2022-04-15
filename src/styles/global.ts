@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import light from "./themes/light";
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -11,7 +10,6 @@ const GlobalStyles = createGlobalStyle`
   html {
     min-height: 100%;
     height:100%;
-    background: ${props => props.theme.colors.primary};
   }
   
   html, body, #root {
