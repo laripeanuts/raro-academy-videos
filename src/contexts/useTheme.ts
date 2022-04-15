@@ -1,9 +1,10 @@
 import create from "zustand";
 import light from "../styles/themes/light";
 import dark from "../styles/themes/dark";
+import { DefaultTheme } from "styled-components";
 
 type ThemeContextType = {
-  theme: any;
+  theme: DefaultTheme;
   setTheme: () => void;
 };
 

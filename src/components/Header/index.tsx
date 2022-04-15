@@ -1,4 +1,3 @@
-
 import { Switch } from "@mui/material";
 
 import { useTheme } from "../../contexts/useTheme";
@@ -16,7 +15,6 @@ export const Header = () => {
       <Switch
         checked={theme.title === "dark"}
         onChange={setTheme}
-        defaultChecked
         color="primary"
       />
     </Container>
