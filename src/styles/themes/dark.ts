@@ -46,6 +46,7 @@ const dark = {
     blue: {
       main: "#343090",
       dark: "#292772",
+      darker: "#1c1c44",
       medium: "#4E47C2",
       light: "#7A75D1",
       lighter: "#B5B3E6",
@@ -64,11 +65,14 @@ const dark = {
     },
     text: {
       primary: "#FFFFFF",
-      secondary: "rgba(255, 255, 255, 0.7)",
-      disabled: "rgba(255, 255, 255, 0.6))",
-      hint: "rgba(255, 255, 255, 0.5)",
+      secondary: "#BDBDBD",
+      disabled: "#909090)",
+      hint: "#424242",
     },
-    background: "#0D0D0D",
+    background: {
+      default: "#303030",
+      paper: "#424242",
+    },
     error: {
       main: "#f12c1f",
     },

@@ -48,6 +48,7 @@ declare module "styled-components" {
       blue: {
         main: string;
         dark: string;
+        darker: string;
         medium: string;
         light: string;
         lighter: string;
@@ -70,7 +71,10 @@ declare module "styled-components" {
         disabled: string;
         hint: string;
       };
-      background: string;
+      background: {
+        default: string;
+        paper: string;
+      };
       error: {
         main: string;
       };
