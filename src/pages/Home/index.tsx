@@ -5,7 +5,7 @@ export const Home = () => {
   return (
     <Container className="Home">
       <Header />
-      <img src="/assets/logo-semfundo.webp" alt="Raro Academy Video" />
+      <img src="/assets/favicon.svg" width="300" alt="Raro Academy Video" />
     </Container>
   );
 };
