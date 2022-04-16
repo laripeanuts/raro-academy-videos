@@ -31,12 +31,53 @@ const light = {
       huge: "3.2rem",
     },
   },
-  
+
   colors: {
-    primary: "#292772",
-    secondary: "#44C2FD",
-    white: "#F5f5f5",
+    primary: {
+      main: "#343090",
+      dark: "#292772",
+      light: "#4E47C2",
+    },
+    secondary: {
+      main: "#F5487F",
+      dark: "#AB3258",
+      light: "#F76C98",
+    },
+    blue: {
+      main: "#343090",
+      dark: "#292772",
+      medium: "#4E47C2",
+      light: "#7A75D1",
+      lighter: "#B5B3E6",
+    },
+    yellow: {
+      main: "#FAC736",
+      dark: "#AF8B25",
+      light: "#FBD25E",
+    },
     black: "#0D0D0D",
+    white: "#F5f5f5",
+    grayscale: {
+      light: "#D8D8D8",
+      medium: "#555555",
+      dark: "#404040",
+    },
+    text: {
+      primary: "rgba(0, 0, 0, 0.87)",
+      secondary: "rgba(0, 0, 0, 0.54)",
+      disabled: "rgba(0, 0, 0, 0.38)",
+      hint: "rgba(0, 0, 0, 0.38)",
+    },
+    background: "#F5F5F5",
+    error: {
+      main: "#f12c1f",
+    },
+    success: {
+      main: "#78fa36",
+    },
+    warning: {
+      main: "#FAC736",
+    },
   },
 };
 
