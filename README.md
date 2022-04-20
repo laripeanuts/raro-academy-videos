@@ -45,6 +45,7 @@
 - [🌟 **Sobre o projeto**](#-sobre-o-projeto)
 - [🎯 **Objetivos principais**](#-objetivos-principais)
 - [💡 **Proposta**](#-proposta)
+- [Design System](#design-system)
 - [💻 **Tecnologias**](#-tecnologias)
 - [🛠️ **Ferramentas**](#️-ferramentas)
 - [🤼‍♂️ **Desenvolvedores**](#️-desenvolvedores)
@@ -92,7 +93,22 @@ Desenvolver com React uma plataforma web funcional conforme descrito detalhadame
 
 <!-- TODO -->
 
-- ### Design
+## 𝌾 Design System
+
+Utilizamos alguns conceitos e ferramentas para padronizar várias etapas do nosso projeto.
+
+- #### **Design Patterns**
+
+  - Styled guide: padrão e regras [Airbnb](https://github.com/airbnb/javascript/tree/master/react) React.
+  - Aplicação das regras e padrões: [ESLint](https://eslint.org)
+  - Formatação automática com base nas regras: [Prettier](https://prettier.io/)
+
+- #### **Gitflow**
+
+  - Padrão de _commits_: [Convencional Commits](https://conventionalcommits.org/)
+  - Formataçao de commits: [Commitizen](https://commitizen-tools.github.io/commitizen/)
+
+- #### **Visual Design**
 
   Juntamos o [pacote de identidade visual](https://drive.google.com/drive/folders/1rDGwAET7yZ1oBXrYe5Ru-p0h_tU6w5Ds) disponibilizado e um estudo feito sobre a forma que a empresa se apresenta na internet e formamos nosso _style guide_ e as telas do projeto na plataforma do [Figma](https://www.figma.com/). 🔗 [Projeto](https://www.figma.com/file/rPQ9yleOpcl9V2SIyUlSQ3/Telas?node-id=3%3A2).
 
