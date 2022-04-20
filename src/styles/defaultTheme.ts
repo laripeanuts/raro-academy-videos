@@ -1,89 +1,36 @@
-import "styled-components";
+export const defaultTheme = {
+  title: "default",
 
-declare module "styled-components" {
-  export interface DefaultTheme {
-    title: string;
+  border: {
+    radius: {
+      other: "0.8rem",
+      default: "0.4rem",
+    },
+  },
 
-    border: {
-      radius: {
-        other: string;
-        default: string;
-      };
-    };
+  font: {
+    family: {
+      plusJakartaSans:
+        "'Plus Jakarta Sans', 'Open Sans', 'Helvetica', sans-serif",
+    },
+    weight: {
+      extralight: 200,
+      light: 300,
+      normal: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+      extrabold: 800,
+    },
+    sizes: {
+      xsmall: "1.4rem",
+      small: "1.6rem",
+      medium: "1.8rem",
+      xmedium: "2.0rem",
+      large: "2.4rem",
+      huge: "3.2rem",
+    },
+  },
+};
 
-    font: {
-      family: {
-        plusJakartaSans: string;
-      };
-      weight: {
-        extralight: number;
-        light: number;
-        normal: number;
-        medium: number;
-        semibold: number;
-        bold: number;
-        extrabold: number;
-      };
-      sizes: {
-        xsmall: string;
-        small: string;
-        medium: string;
-        xmedium: string;
-        large: string;
-        huge: string;
-      };
-    };
-
-    colors: {
-      primary: {
-        main: string;
-        dark: string;
-        light: string;
-      };
-      secondary: {
-        main: string;
-        dark: string;
-        light: string;
-      };
-      blue: {
-        main: string;
-        dark: string;
-        darker: string;
-        medium: string;
-        light: string;
-        lighter: string;
-      };
-      yellow: {
-        main: string;
-        dark: string;
-        light: string;
-      };
-      black: string;
-      white: string;
-      grayscale: {
-        light: string;
-        medium: string;
-        dark: string;
-      };
-      text: {
-        primary: string;
-        secondary: string;
-        disabled: string;
-        hint: string;
-      };
-      background: {
-        default: string;
-        paper: string;
-      };
-      error: {
-        main: string;
-      };
-      success: {
-        main: string;
-      };
-      warning: {
-        main: string;
-      };
-    };
-  }
-}
+// Implementar o restante
