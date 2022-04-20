@@ -1,7 +1,7 @@
 import { Container } from "./styles";
 
-export const VideoPage = () => (
+export const VideosPage = () => (
   <Container className="notfound">
-    <h1>Video Page</h1>
+    <h1>Videos Page</h1>
   </Container>
 );
