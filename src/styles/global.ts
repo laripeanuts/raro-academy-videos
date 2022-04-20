@@ -4,6 +4,7 @@ const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+    outline: 0;
     box-sizing: border-box;
     }
 
@@ -11,12 +12,17 @@ const GlobalStyles = createGlobalStyle`
     min-height: 100%;
     height:100%;
   }
-  
+
   html, body, #root {
     min-height: 100% !important;
     height: 100%;
     font-size: 100%;
     font-family: "Plus Jakarta Sans",  "Open Sans", "Roboto", "Helvetica", sans-serif;
+    -webkit-font-smoothing: antialiased;
+
+    button {
+      cursor: pointer;
+    }
 }
 `;
 
