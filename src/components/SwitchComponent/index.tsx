@@ -6,9 +6,6 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { SwitchProps } from "@mui/material/Switch";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
 
 export const SwitchComponent = () => {
   const { theme, setTheme } = useTheme();
@@ -42,7 +39,7 @@ export const SwitchComponent = () => {
       backgroundColor:
         theme.title === "dark"
           ? `${theme.colors.blue.darker}`
-          : `${theme.colors.grayscale.light}`,
+          : `${theme.colors.white}`,
       width: 32,
       height: 32,
       "&:before": {
@@ -77,7 +74,6 @@ export const SwitchComponent = () => {
             aria-label="Interruptor de tema claro ou escuro"
             checked={theme.title === "dark"}
             onChange={setTheme}
-            defaultChecked
           />
         }
         label="Modo"
