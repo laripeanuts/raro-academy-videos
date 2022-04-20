@@ -1,12 +1,11 @@
 import { Container } from "./styles";
 import { SwitchComponent } from "../SwitchComponent";
+import { Navigation } from "../Navigation";
 
-export const Header = () => {
-
-  return (
-    <Container>
-      <h1>Raro Academy Videos</h1>
-      <SwitchComponent />
-    </Container>
-  );
-};
+export const Header = () => (
+  <Container>
+    <h1>Raro Academy Videos</h1>
+    <SwitchComponent />
+    <Navigation />
+  </Container>
+);
