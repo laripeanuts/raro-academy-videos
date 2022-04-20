@@ -1,7 +1,7 @@
 import create from "zustand";
+import { DefaultTheme } from "styled-components";
 import light from "../styles/themes/light";
 import dark from "../styles/themes/dark";
-import { DefaultTheme } from "styled-components";
 
 type ThemeContextType = {
   theme: DefaultTheme;

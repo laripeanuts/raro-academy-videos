@@ -1,11 +1,10 @@
 import { Switch } from "@mui/material";
 
-import { useTheme } from "../../contexts/useTheme";
-
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { useTheme } from "../../contexts/useTheme";
 
 export const SwitchComponent = () => {
   const { theme, setTheme } = useTheme();
@@ -69,13 +68,13 @@ export const SwitchComponent = () => {
   return (
     <FormGroup>
       <FormControlLabel
-        control={
+        control={(
           <MaterialUISwitch
             aria-label="Interruptor de tema claro ou escuro"
             checked={theme.title === "dark"}
             onChange={setTheme}
           />
-        }
+        )}
         label="Modo"
         labelPlacement="start"
       />
