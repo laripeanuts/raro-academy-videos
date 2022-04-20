@@ -2,7 +2,7 @@
 
   <img src=".github/logo.png" alt="logo" width="70" height="auto" />
   <h1>Raro Academy Videos</h1>
-  
+
   <p>
     Plataforma com seus conteúdos Raro Academy
   </p>
@@ -50,7 +50,6 @@
 - [🤼‍♂️ **Desenvolvedores**](#️-desenvolvedores)
 - [🤖 **Executando o projeto localmente**](#-executando-o-projeto-localmente)
 
-
 <!-- About the Project -->
 
 ## 🌟 **Sobre o projeto**
@@ -76,10 +75,9 @@ Desenvolver com React uma plataforma web funcional conforme descrito detalhadame
 - [ ] VISUALIZAÇÃO DE CONTEÚDO
   - [ ] Visualização do vídeo
   - [ ] Lista com os próximos itens da playlist correspondente
-  - [ ] Área de comentários com botão de *like* e *dislike*
+  - [ ] Área de comentários com botão de _like_ e _dislike_
   - [ ] Ação de comentar somente para usuários cadastrados
   - [ ] Botão de favoritar
-
 
 <!--
 ## 🥳 App
@@ -89,12 +87,14 @@ Desenvolver com React uma plataforma web funcional conforme descrito detalhadame
 </p>
 
 > the app states -->
+
 ## 💡 **Proposta**
+
 <!-- TODO -->
 
-  - ### Design
+- ### Design
 
-    Juntamos o [pacote de identidade visual](https://drive.google.com/drive/folders/1rDGwAET7yZ1oBXrYe5Ru-p0h_tU6w5Ds) disponibilizado e um estudo feito sobre a forma que a empresa se apresenta na internet e formamos nosso *style guide* e as telas do projeto na plataforma do [Figma](https://www.figma.com/). 🔗 [Projeto](https://www.figma.com/file/rPQ9yleOpcl9V2SIyUlSQ3/Telas?node-id=3%3A2).
+  Juntamos o [pacote de identidade visual](https://drive.google.com/drive/folders/1rDGwAET7yZ1oBXrYe5Ru-p0h_tU6w5Ds) disponibilizado e um estudo feito sobre a forma que a empresa se apresenta na internet e formamos nosso _style guide_ e as telas do projeto na plataforma do [Figma](https://www.figma.com/). 🔗 [Projeto](https://www.figma.com/file/rPQ9yleOpcl9V2SIyUlSQ3/Telas?node-id=3%3A2).
 
 ## 💻 **Tecnologias**
 
@@ -154,6 +154,20 @@ Inicie o servidor local
 
 ```bash
   npm start
+```
+
+Analisar erros padrões com ESLint
+
+```bash
+npm run lint
+
+```
+
+Corrigir padrões com ESLint
+
+```bash
+npm run lint:fix
+
 ```
 
 <p align="center">Copyright ☕ 2022
