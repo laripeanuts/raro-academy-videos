@@ -19,10 +19,20 @@
     "sourceType": "module",
     "plugin": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "rules": {
-    "quotes": ["error", "double"],
-    "@typescript-eslint/quotes": ["error", "double"],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "@typescript-eslint/quotes": [
+      "error",
+      "double"
+    ],
     "react/react-in-jsx-scope": "off",
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": "off",
