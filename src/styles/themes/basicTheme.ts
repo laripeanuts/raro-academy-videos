@@ -1,6 +1,4 @@
-export const defaultTheme = {
-  title: "default",
-
+export const basic = {
   border: {
     radius: {
       other: "0.8rem",

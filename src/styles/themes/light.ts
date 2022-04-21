@@ -1,3 +1,5 @@
+import { basic } from "./basicTheme";
+
 const light = {
   title: "light",
 
@@ -52,6 +54,7 @@ const light = {
       main: "#FAC736",
     },
   },
+  basic,
 };
 
 export default light;
