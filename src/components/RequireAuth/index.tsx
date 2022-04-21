@@ -1,16 +1,11 @@
 import { FC, useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthProvider/useAuth";
 
 export const RequireAuth: FC = () => {
-  // implementar no estado global para substituir
-  const [isAuthenticated, setAuthenticated] = useState(true);
-  useEffect(() => {
-    setAuthenticated(localStorage.getItem("access_token") !== null);
-  }, []);
+  const auth = useAuth();
 
-  if (!isAuthenticated) {
-    return <Navigate to="/" />;
-  }
+  if (!auth.isAuthenticated) <Navigate to="/" />;
 
   return <Outlet />;
 };
