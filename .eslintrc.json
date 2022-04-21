@@ -55,6 +55,15 @@
         "ts": "never",
         "tsx": "never"
       }
+    ],
+    "react/jsx-no-constructed-context-values": [
+      "off"
+    ],
+    "jsx-no-constructed-context-values": [
+      "off"
+    ],
+    "no-template-curly-in-string": [
+      "off"
     ]
   },
   "settings": {

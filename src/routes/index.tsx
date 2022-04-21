@@ -15,10 +15,10 @@ const RoutesApp = () => (
 
     <Route path="/" element={<Layout />}>
       <Route index element={<Home />} />
-      <Route path="/videos" element={<VideosPage />} />
 
       <Route element={<RequireAuth />}>
         <Route path="/turmas/:turmaId/videos/:id" element={<VideoPage />} />
+        <Route path="/videos" element={<VideosPage />} />
       </Route>
     </Route>
 

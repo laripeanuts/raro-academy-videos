@@ -22,9 +22,12 @@ export function useFetch<T = unknown>(url: string) {
     };
 
     fetchData();
-  }, []);
+  }, [url]);
 
   return {
-    data, hasError, errorMessage, isLoading,
+    data,
+    hasError,
+    errorMessage,
+    isLoading,
   };
 }
