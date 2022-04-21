@@ -45,7 +45,7 @@ const dark = {
       paper: "#424242",
     },
     error: {
-      main: "#f12c1f",
+      main: "#ff1010",
     },
     success: {
       main: "#78fa36",

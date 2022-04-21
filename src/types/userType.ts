@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { DefaultTheme } from "styled-components";
 import { VoteType } from "./Types";
 
