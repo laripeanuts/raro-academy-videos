@@ -1,4 +1,4 @@
-import { ComentarioType, TagType } from "./Types";
+import { CommentType, TagType } from "./Types";
 
 export type VideoType = {
   id: string;
@@ -11,5 +11,5 @@ export type VideoType = {
   topico: string;
   tags: TagType[];
   videosFavoritos: string[];
-  comentarios: ComentarioType[];
+  comentarios: CommentType[];
 };
