@@ -30,7 +30,7 @@ export const Header = () => (
       <ContainerAvatar>
         <Avatar />
       </ContainerAvatar>
-      <KeyboardArrowDownIcon className="iconArrowDown" fontSize="small" />
+      <KeyboardArrowDownIcon className="iconArrowDown" />
       <ThemeSwitch />
     </ContainerUserMenu>
   </Container>

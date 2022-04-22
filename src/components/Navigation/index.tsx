@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthProvider/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Navigation = () => {
   const auth = useAuth();

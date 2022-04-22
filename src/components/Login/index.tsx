@@ -3,7 +3,7 @@ import {
 } from "react";
 import { Button, Input } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthProvider/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Login = () => {
   const auth = useAuth();
