@@ -1,19 +1,13 @@
 import { Outlet } from "react-router-dom";
 
-import { ThemeProvider } from "styled-components";
-import { useTheme } from "../../contexts/useTheme";
-
 import { Header } from "../../components/Header";
+import { ThemeProvider } from "../../contexts/ThemeProvider";
 
-export const Layout = () => {
-  const { theme } = useTheme();
-
-  return (
-    <ThemeProvider theme={theme}>
-      <Header />
-      <main>
-        <Outlet />
-      </main>
-    </ThemeProvider>
-  );
-};
+export const Layout = () => (
+  <ThemeProvider>
+    <Header />
+    <main>
+      <Outlet />
+    </main>
+  </ThemeProvider>
+);
