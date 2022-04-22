@@ -5,7 +5,7 @@ import { Navigation } from "../../components/Navigation";
 export const Home = () => {
   const { isAuthenticated, user } = useAuth();
 
-  const loginHome = (
+  const loggedHome = (
     <Container>
       <h1>
         Olá mundo,
@@ -16,8 +16,8 @@ export const Home = () => {
   return (
     <Container className="Home">
       <h2>Home</h2>
-      {isAuthenticated ? loginHome : null}
       <Navigation />
+      {isAuthenticated ? loggedHome : null}
     </Container>
   );
 };
