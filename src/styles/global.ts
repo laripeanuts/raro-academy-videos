@@ -6,7 +6,8 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box;
-    }
+    line-height: 1.5;
+  }
 
   html {
     min-height: 100%;
