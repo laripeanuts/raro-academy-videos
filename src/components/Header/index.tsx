@@ -11,7 +11,7 @@ import { Logo } from "../SVG/Logo";
 import { LogoCompact } from "../SVG/LogoCompact";
 import { Avatar } from "../SVG/Avatar";
 import { InputSearch } from "../InputSearch";
-import { SwitchComponent } from "../SwitchComponent";
+import { ThemeSwitch } from "../ThemeSwitch";
 
 export const Header = () => (
   <Container>
@@ -25,13 +25,13 @@ export const Header = () => (
         </button>
       </Link>
     </ContainerLogos>
-    {/* <SwitchComponent /> */}
     <ContainerUserMenu>
       <InputSearch />
       <ContainerAvatar>
         <Avatar />
       </ContainerAvatar>
       <KeyboardArrowDownIcon className="iconArrowDown" fontSize="small" />
+      <ThemeSwitch />
     </ContainerUserMenu>
   </Container>
 );
