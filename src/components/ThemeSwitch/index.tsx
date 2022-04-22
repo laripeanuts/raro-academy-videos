@@ -1,10 +1,10 @@
-import { useTheme } from "../../contexts/useTheme";
 import { StyledStwitch } from "./styles";
+import { useTheme } from "../../hooks/useTheme";
 
 export const ThemeSwitch = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
-  const handleChange = () => setTheme();
+  const handleChange = () => toggleTheme();
 
   return (
     <StyledStwitch
