@@ -8,7 +8,7 @@ export const Home = () => {
   const loggedHome = (
     <h1>
       Olá mundo,
-      {user.nome}
+      {user.name}
     </h1>
   );
 

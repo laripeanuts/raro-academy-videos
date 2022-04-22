@@ -4,9 +4,9 @@ import { VoteType } from "./Types";
 
 export type userType = {
   email: string;
-  senha: string;
+  password: string;
   access_token: string;
-  nome: string;
+  name: string;
   id: string;
   photo: string;
   admin?: boolean;
