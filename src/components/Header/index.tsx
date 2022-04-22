@@ -1,11 +1,16 @@
-import { Container } from "./styles";
+import { Container, ContainerLogo, ContainerLogos } from "./styles";
 import { SwitchComponent } from "../SwitchComponent";
-import { Navigation } from "../Navigation";
+import { Logo } from "../SVG/Logo";
+import { LogoCompact } from "../SVG/LogoCompact";
 
 export const Header = () => (
   <Container>
-    <h1>Raro Academy Videos</h1>
+    <ContainerLogos>
+      <ContainerLogo>
+        <Logo />
+      </ContainerLogo>
+      <LogoCompact />
+    </ContainerLogos>
     <SwitchComponent />
-    <Navigation />
   </Container>
 );
