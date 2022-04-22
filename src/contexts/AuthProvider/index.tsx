@@ -9,9 +9,9 @@ import { setLocalUserStorage } from "../../utils/setLocalUserStorage";
 
 const userNew: userType = {
   email: "",
-  password: "",
+  senha: "",
   access_token: "",
-  name: "",
+  nome: "",
   id: "",
   photo: "",
   theme: {} as DefaultTheme,
@@ -21,7 +21,7 @@ export const AuthContext = createContext<AuthType>({
   user: userNew,
   isAuthenticated: false,
   error: "",
-  authenticate: (email: string, password: string) => Promise.resolve(),
+  authenticate: (email: string, senha: string) => Promise.resolve(),
   logout: () => {},
 });
 
@@ -39,10 +39,10 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
     }
   }, []);
 
-  async function authenticate(email: string, password: string) {
+  async function authenticate(email: string, senha: string) {
     try {
       const url = "/auth/login";
-      const response = await apiClient.post(url, { email, password });
+      const response = await apiClient.post(url, { email, senha });
       const payload = response.data;
       if (payload.access_token) {
         setUser(payload);
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
       }
     } catch (err: any) {
       if (err.response.data.statusCode === 401) {
-        setError("Usuário ou password Inválidos");
+        setError("Usuário ou senha Inválidos");
       } else {
         setError("Erro ao autenticar usuário. Tente novamente mais tarde.");
       }
