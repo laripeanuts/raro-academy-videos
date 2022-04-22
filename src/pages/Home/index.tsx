@@ -13,11 +13,12 @@ export const Home = () => {
       </h1>
     </Container>
   );
+
   return (
     <Container className="Home">
       <h2>Home</h2>
       <Navigation />
-      {isAuthenticated ? loggedHome : null}
+      {isAuthenticated && loggedHome}
     </Container>
   );
 };
