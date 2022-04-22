@@ -1,6 +1,7 @@
+import { DefaultTheme } from "styled-components";
 import { basic } from "./basicTheme";
 
-const light = {
+const light: DefaultTheme = {
   title: "light",
 
   colors: {
