@@ -1,8 +1,7 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
-import { FormEvent, useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Input } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
@@ -59,11 +58,7 @@ export const Login = () => {
             {...register("email")}
             aria-invalid={errors.email ? "true" : "false"}
           />
-          <input
-            type="password"
-            placeholder="Senha"
-            {...register("senha")}
-          />
+          <input type="password" placeholder="Senha" {...register("senha")} />
           {/* erro formulárioo */}
           {errors.email && <span>{errors.email?.message}</span>}
           {errors.senha && <span>{errors.senha?.message}</span>}
