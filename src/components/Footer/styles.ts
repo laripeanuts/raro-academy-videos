@@ -15,6 +15,7 @@ export const FooterContainer = styled("footer")`
   img {
     height: 40px;
     width: 40px;
+    transition: filter 0.2s;
 
     &:hover{
       filter: opacity(0.5);

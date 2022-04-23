@@ -14,6 +14,7 @@ export const Container = styled("header")`
     fill: ${(props) => props.theme.palette.primary.contrastText};
     width: 100%;
     height: 100%;
+    transition: filter 0.2s;
   }
 
   button {
