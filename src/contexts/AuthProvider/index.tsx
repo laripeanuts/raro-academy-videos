@@ -11,7 +11,7 @@ const userNew: userType = {
   email: "",
   senha: "",
   access_token: "",
-  name: "",
+  nome: "",
   id: "",
   photo: "",
   theme: {} as DefaultTheme,
