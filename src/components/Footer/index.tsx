@@ -6,8 +6,8 @@ import instagram from "../../assets/social_midia/instagram.svg";
 
 export const Footer = () => (
   <FooterContainer>
-    <Link to="/"><img src={instagram} alt="Instagram" /></Link>
-    <Link to="/"><img src={twitter} alt="Twitter" /></Link>
-    <Link to="/"><img src={linkedin} alt="LinkedIn" /></Link>
+    <a href="https://www.instagram.com/raroacademy/" target="_bank" rel="noreferrer"><img src={instagram} alt="Instagram" /></a>
+    <a href="https://twitter.com/RaroAcademy" target="_bank" rel="noreferrer"><img src={twitter} alt="Twitter" /></a>
+    <a href="https://www.linkedin.com/showcase/raroacademy/" target="_bank" rel="noreferrer"><img src={linkedin} alt="LinkedIn" /></a>
   </FooterContainer>
 );

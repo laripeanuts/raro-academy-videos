@@ -49,7 +49,10 @@
     "no-template-curly-in-string": ["off"],
     "react/jsx-no-constructed-context-values": ["off"],
     "jsx-no-constructed-context-values": ["off"],
-    "react/jsx-props-no-spreading": ["off"]
+    "react/jsx-props-no-spreading": ["off"],
+    "linebreak-style": 0,
+    "global-require": 0,
+    "eslint linebreak-style": [0, "error", "windows"]
   },
   "settings": {
     "import/resolver": {
