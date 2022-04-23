@@ -1,6 +1,6 @@
 export type userRegisterType = {
-  nome: string;
+  name: string;
   email: string;
-  senha: string;
-  codigoAcesso: string;
+  password: string;
+  accessToken: string;
 };

@@ -1,9 +1,7 @@
-import {
-  FormEvent, useContext, useEffect, useState,
-} from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { Button, Input } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthProvider/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 export const Login = () => {
   const auth = useAuth();
@@ -40,7 +38,7 @@ export const Login = () => {
           />
           <Input
             type="password"
-            name="password"
+            name="senha"
             placeholder="********"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}

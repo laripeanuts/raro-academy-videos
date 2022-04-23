@@ -48,7 +48,8 @@
     ],
     "no-template-curly-in-string": ["off"],
     "react/jsx-no-constructed-context-values": ["off"],
-    "jsx-no-constructed-context-values": ["off"]
+    "jsx-no-constructed-context-values": ["off"],
+    "react/jsx-props-no-spreading": ["off"]
   },
   "settings": {
     "import/resolver": {
