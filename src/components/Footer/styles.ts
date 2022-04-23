@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import { styled } from "@mui/material";
 
-export const FooterContainer = styled.footer`
+export const FooterContainer = styled("footer")`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -12,9 +12,8 @@ export const FooterContainer = styled.footer`
   position: fixed;
   padding: 20px;
 
-  img{
+  img {
     height: 40px;
     width: 40px;
   }
-
 `;
