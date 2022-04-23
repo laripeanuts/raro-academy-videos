@@ -17,5 +17,8 @@
     "jsx": "react-jsx"
   },
   "include": ["src"],
-  "files": ["src/styles/themes/colorThemeType.ts", "src/styles/defaultThemeType.ts"]
+  "files": [
+    "src/styles/themes/colorThemeType.ts",
+    "src/styles/defaultThemeType.ts"
+  ]
 }
