@@ -1,7 +1,7 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Input } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
@@ -15,7 +15,7 @@ const formLoginSchema = yup
   .object({
     email: yup
       .string()
-      .email("Digite um e-mail válido")
+      .email("Digite um e-maiczl válido")
       .required("E-mail é obrigatório"),
     senha: yup
       .string()
