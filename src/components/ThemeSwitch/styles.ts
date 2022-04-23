@@ -1,6 +1,5 @@
 import Switch from "@mui/material/Switch";
-import styled from "styled-components";
-
+import { styled } from "@mui/material/styles";
 import SunIcon from "../../assets/sun.svg";
 import MoonIcon from "../../assets/moon.svg";
 
@@ -16,12 +15,12 @@ export const StyledStwitch = styled(Switch)(({ theme }) => ({
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundColor: "#fff",
-    boxShadow: "none",
+    boxShadow: theme.shadows[0],
     width: "18px",
     height: "18px",
   },
   "& .MuiSwitch-track": {
-    backgroundColor: theme.colors.secondary.main,
+    backgroundColor: theme.palette.primary.main,
     opacity: 1,
     borderRadius: "50px",
   },
@@ -33,7 +32,6 @@ export const StyledStwitch = styled(Switch)(({ theme }) => ({
       transform: "translateX(24px)",
 
       "& + .MuiSwitch-track": {
-        backgroundColor: theme.colors.secondary.main,
         opacity: 1,
       },
       "& .MuiSwitch-thumb": {

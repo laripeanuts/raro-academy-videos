@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { ThemeContext } from "styled-components";
+import { useTheme as getTheme } from "@mui/material/styles";
 import { ToggleThemeContext } from "../contexts/ThemeProvider";
 
 export const useTheme = () => {
-  const theme = useContext(ThemeContext);
+  const theme = getTheme();
   const toggleTheme = useContext(ToggleThemeContext);
 
   return { theme, toggleTheme };
