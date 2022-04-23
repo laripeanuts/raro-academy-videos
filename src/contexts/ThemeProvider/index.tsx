@@ -1,26 +1,22 @@
 import { createContext, useState } from "react";
-import {
-  DefaultTheme,
-  ThemeProvider as StyledThemeProvider,
-} from "styled-components";
-import dark from "../../styles/themes/dark";
-import light from "../../styles/themes/light";
+import { ThemeProvider as Provider } from "@mui/material/styles";
+import { dark, light } from "./themes";
 import { WithChildren } from "../../common/childrenType";
 
 export const ToggleThemeContext = createContext(() => {});
 
 export const ThemeProvider = ({ children }: WithChildren) => {
-  const [theme, setTheme] = useState<DefaultTheme>(dark);
+  const [theme, setTheme] = useState(dark);
 
   const toggleTheme = () => {
-    setTheme(theme.title === "dark" ? light : dark);
+    setTheme(theme.palette.mode === "dark" ? light : dark);
   };
 
   return (
-    <StyledThemeProvider theme={theme}>
+    <Provider theme={theme}>
       <ToggleThemeContext.Provider value={toggleTheme}>
         {children}
       </ToggleThemeContext.Provider>
-    </StyledThemeProvider>
+    </Provider>
   );
 };
