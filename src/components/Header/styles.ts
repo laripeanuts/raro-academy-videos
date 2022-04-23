@@ -23,6 +23,7 @@ export const Container = styled("header")`
     &:hover {
       svg {
         filter: drop-shadow(3px 3px 0px rgb(0 0 0 / 0.2));
+        filter: opacity(50%);
       }
     }
   }
@@ -50,6 +51,11 @@ export const ContainerUserMenu = styled("div")`
 
   .iconArrowDown {
     width: 24px;
+  }
+
+  .iconArrowDown:hover {
+    cursor: pointer;
+    filter: opacity(50%);
   }
 `;
 

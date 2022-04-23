@@ -13,25 +13,34 @@ import { Avatar } from "../SVG/Avatar";
 import { InputSearch } from "../InputSearch";
 import { ThemeSwitch } from "../ThemeSwitch";
 
-export const Header = () => (
-  <Container>
-    <ContainerLogos>
-      <ContainerLogo>
-        <Logo />
-      </ContainerLogo>
-      <Link to="/">
-        <button type="button">
-          <LogoCompact />
-        </button>
-      </Link>
-    </ContainerLogos>
-    <ContainerUserMenu>
-      <InputSearch />
-      <ContainerAvatar>
-        <Avatar />
-      </ContainerAvatar>
-      <KeyboardArrowDownIcon className="iconArrowDown" />
-      <ThemeSwitch />
-    </ContainerUserMenu>
-  </Container>
-);
+export const Header = () => {
+  const handleClickMenu = () => {
+    alert("Click");
+  };
+
+  return (
+    <Container>
+      <ContainerLogos>
+        <ContainerLogo>
+          <Logo />
+        </ContainerLogo>
+        <Link to="/">
+          <button type="button">
+            <LogoCompact />
+          </button>
+        </Link>
+      </ContainerLogos>
+      <ContainerUserMenu>
+        <InputSearch />
+        <ContainerAvatar>
+          <Avatar />
+        </ContainerAvatar>
+        <KeyboardArrowDownIcon
+          onClick={handleClickMenu}
+          className="iconArrowDown"
+        />
+        <ThemeSwitch />
+      </ContainerUserMenu>
+    </Container>
+  );
+};
