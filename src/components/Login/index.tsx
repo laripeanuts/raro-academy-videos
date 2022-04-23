@@ -1,59 +1,80 @@
-import {
-  FormEvent, useContext, useEffect, useState,
-} from "react";
-import { Button, Input } from "@mui/material";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
+type LoginFormType = {
+  email: string;
+  senha: string;
+};
+
+const formLoginSchema = yup
+  .object({
+    email: yup
+      .string()
+      .email("Digite um e-mail válido")
+      .required("E-mail é obrigatório"),
+    senha: yup
+      .string()
+      .required("Senha é obrigatória")
+      .min(8, "A senha precisa ter pelo menos 8 caracteres"),
+  })
+  .required();
+
 export const Login = () => {
-  const auth = useAuth();
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+  const { authenticate, error, isAuthenticated } = useAuth();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (event: FormEvent) => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<LoginFormType>({
+    resolver: yupResolver(formLoginSchema),
+  });
+
+  const onSubmit: SubmitHandler<LoginFormType> = async (data) => {
     setLoading(true);
-    event.preventDefault();
-    await auth.authenticate(email, senha);
-    if (auth.error) {
-      setEmail("");
-      setSenha("");
-    }
+    await authenticate(data.email, data.senha);
     setLoading(false);
   };
 
   useEffect(() => {
-    if (auth.isAuthenticated) navigate("/");
-  }, [auth.isAuthenticated, navigate]);
+    if (isAuthenticated) navigate("/");
+  }, [isAuthenticated, navigate]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <main style={{ display: "flex", flexDirection: "column" }}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <Input
-            type="text"
-            name="email"
-            placeholder="Login"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+          <input
+            type="email"
+            placeholder="Email"
+            {...register("email")}
+            aria-invalid={errors.email ? "true" : "false"}
           />
-          <Input
+          <input
             type="password"
-            name="password"
-            placeholder="********"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
+            placeholder="Senha"
+            {...register("senha")}
+            aria-invalid={errors.senha ? "true" : "false"}
           />
-          <div>
-            status:
-            {auth.error}
-          </div>
+
+          {/* erro formulárioo */}
+          {errors.email && <span>{errors.email?.message}</span>}
+          {errors.senha && <span>{errors.senha?.message}</span>}
+          {/* erro api */}
+          {error && <span>{error}</span>}
           <Button type="submit" disabled={loading}>
             {loading ? "Carregando..." : "Login"}
           </Button>
         </div>
       </form>
-    </div>
+    </main>
   );
 };
