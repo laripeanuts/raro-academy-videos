@@ -1,10 +1,11 @@
+import Typography from "@mui/material/Typography";
 import { Container } from "./styles";
 import { ThemeSwitch } from "../ThemeSwitch";
 import { Navigation } from "../Navigation";
 
 export const Header = () => (
   <Container>
-    <h1>Raro Academy Videos</h1>
+    <Typography variant="h1">Raro Academy Vídeos</Typography>
     <Navigation />
     <ThemeSwitch />
   </Container>

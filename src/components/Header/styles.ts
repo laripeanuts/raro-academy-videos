@@ -1,6 +1,5 @@
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
-export const Container = styled.header`
-  background: ${(props) => props.theme.colors.background.default};
-  color: ${(props) => props.theme.colors.text.primary};
+export const Container = styled("header")`
+  background: ${(props) => props.theme.palette.secondary.main};
 `;

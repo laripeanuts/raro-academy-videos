@@ -10,7 +10,7 @@ export const ThemeSwitch = () => {
     <StyledStwitch
       disableRipple
       inputProps={{ "aria-label": "Mudar tema" }}
-      checked={theme.title === "dark"}
+      checked={theme.palette.mode === "dark"}
       onChange={handleChange}
     />
   );
