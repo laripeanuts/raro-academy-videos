@@ -12,7 +12,7 @@ export const Layout = () => (
   <ThemeProvider>
     <Container>
       <Header />
-        <Outlet />
+      <Outlet />
       <Footer />
     </Container>
   </ThemeProvider>
