@@ -5,7 +5,6 @@ export const InputSearch = () => (
     id="input-search-styled"
     label="Buscar Vídeos..."
     type="search"
-    variant="filled"
     onChange={() => {}}
   />
 );
