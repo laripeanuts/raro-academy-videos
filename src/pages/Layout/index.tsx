@@ -1,21 +1,20 @@
 import { Outlet } from "react-router-dom";
-
-import { ThemeProvider } from "styled-components";
-import { useTheme } from "../../contexts/useTheme";
+import { Footer } from "../../components/Footer";
 
 import { Header } from "../../components/Header";
 import Link from "../../components/Link";
+import { ThemeProvider } from "../../contexts/ThemeProvider";
+import { Container } from "./styles";
 
-export const Layout = () => {
-  const { theme } = useTheme();
-
-  return (
-    <ThemeProvider theme={theme}>
+export const Layout = () => (
+  <ThemeProvider>
+    <Container>
       <Header />
       <main>
         <Outlet />
       </main>
       <Link text="link" href="https://www.google.com.br/" />
-    </ThemeProvider>
-  );
-};
+      <Footer />
+    </Container>
+  </ThemeProvider>
+);

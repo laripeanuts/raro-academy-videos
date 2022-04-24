@@ -1,4 +1,4 @@
-export type RecuperaSenhaType = {
+export type ResetPassword = {
   email: string;
   codigoAcesso: string;
 };

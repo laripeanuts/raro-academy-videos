@@ -1,9 +1,22 @@
 import { Container } from "./styles";
-import { Header } from "../../components/Header";
+import { useAuth } from "../../hooks/useAuth";
+import { Navigation } from "../../components/Navigation";
 
-export const Home = () => (
-  <Container className="Home">
-    <h2>Home</h2>
-    <img src="/assets/favicon.svg" width="300" alt="Raro Academy Video" />
-  </Container>
-);
+export const Home = () => {
+  const { isAuthenticated, user } = useAuth();
+
+  const loggedHome = (
+    <h1>
+      Olá mundo,
+      {user.nome}
+    </h1>
+  );
+
+  return (
+    <Container className="Home">
+      <h2>Home</h2>
+      <Navigation />
+      {isAuthenticated && loggedHome}
+    </Container>
+  );
+};
