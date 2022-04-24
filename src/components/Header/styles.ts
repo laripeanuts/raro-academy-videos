@@ -11,7 +11,10 @@ export const Container = styled("header")`
   color: ${(props) => props.theme.palette.primary.contrastText};
   position: relative;
   z-index: 10;
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   svg {
     fill: ${(props) => props.theme.palette.primary.contrastText};
     width: 100%;

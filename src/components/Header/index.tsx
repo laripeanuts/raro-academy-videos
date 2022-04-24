@@ -32,6 +32,7 @@ export const Header = () => {
       </ContainerLogos>
       <ContainerUserMenu>
         <InputSearch />
+        <Link to="/login">Login</Link>
         <ContainerAvatar>
           <Avatar />
         </ContainerAvatar>
