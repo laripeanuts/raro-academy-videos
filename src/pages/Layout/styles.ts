@@ -5,11 +5,6 @@ export const BodyContainer = styled("main")`
   min-width: 100%;
 `;
 
-export const MainContainer = styled("main")`
-  min-height: 100%;
-  min-width: 100%;
-`;
-
 export const Background = styled("div")`
   min-height: 100%;
   min-width: 100%;
