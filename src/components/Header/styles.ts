@@ -9,6 +9,8 @@ export const Container = styled("header")`
   max-height: 80px;
   background: ${(props) => props.theme.palette.secondary.main};
   color: ${(props) => props.theme.palette.primary.contrastText};
+  position: relative;
+  z-index: 10;
 
   svg {
     fill: ${(props) => props.theme.palette.primary.contrastText};

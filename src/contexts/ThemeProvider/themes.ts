@@ -17,7 +17,8 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
       contrastText: "#FFF",
     },
     background: {
-      default: mode === "dark" ? "#0D0D0D" : "#FFF",
+      default: mode === "dark" ? "#121212" : "#f2f2f2",
+      paper: mode === "dark" ? "#1c1c1c" : "#d9d9d9",
     },
   },
   shape: {

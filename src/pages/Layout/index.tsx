@@ -1,18 +1,24 @@
 import { Outlet } from "react-router-dom";
-import { Footer } from "../../components/Footer";
+import { useTheme } from "@mui/material/styles";
 
+import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { ThemeProvider } from "../../contexts/ThemeProvider";
-import { Container } from "./styles";
+import {
+  Background, MainContainer, BgLogo, BodyContainer,
+} from "./styles";
+import { Logo } from "../../components/SVG/Logo";
 
 export const Layout = () => (
-  <ThemeProvider>
-    <Container>
-      <Header />
-      <main>
+  <Background>
+    <Header />
+    <BodyContainer>
+      <BgLogo>
+        <Logo />
+      </BgLogo>
+      <MainContainer>
         <Outlet />
-      </main>
+      </MainContainer>
       <Footer />
-    </Container>
-  </ThemeProvider>
+    </BodyContainer>
+  </Background>
 );

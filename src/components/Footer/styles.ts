@@ -11,15 +11,15 @@ export const FooterContainer = styled("footer")`
   min-height: 80px;
   position: fixed;
   padding: 20px;
+  z-index: 10;
 
   img {
     height: 40px;
     width: 40px;
     transition: filter 0.2s;
 
-    &:hover{
+    &:hover {
       filter: opacity(0.5);
     }
   }
-
 `;
