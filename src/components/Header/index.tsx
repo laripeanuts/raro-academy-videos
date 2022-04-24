@@ -12,6 +12,7 @@ import { LogoCompact } from "../SVG/LogoCompact";
 import { Avatar } from "../SVG/Avatar";
 import { InputSearch } from "../InputSearch";
 import { ThemeSwitch } from "../ThemeSwitch";
+import { Navigation } from "../Navigation";
 
 export const Header = () => {
   const handleClickMenu = () => {
@@ -29,10 +30,10 @@ export const Header = () => {
             <LogoCompact />
           </button>
         </Link>
+        <Navigation />
       </ContainerLogos>
       <ContainerUserMenu>
         <InputSearch />
-        <Link to="/login">Login</Link>
         <ContainerAvatar>
           <Avatar />
         </ContainerAvatar>

@@ -1,6 +1,5 @@
 import { Container } from "./styles";
 import { useAuth } from "../../hooks/useAuth";
-import { Navigation } from "../../components/Navigation";
 
 export const Home = () => {
   const { isAuthenticated, user } = useAuth();
@@ -15,7 +14,6 @@ export const Home = () => {
   return (
     <Container className="Home">
       <h2>Home</h2>
-      <Navigation />
       {isAuthenticated && loggedHome}
     </Container>
   );

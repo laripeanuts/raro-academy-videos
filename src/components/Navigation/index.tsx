@@ -9,7 +9,6 @@ export const Navigation = () => {
   if (!auth.isAuthenticated) {
     return (
       <>
-        <Link to="/">HOME</Link>
         <Link to="/login">LOGIN</Link>
         <Link to="/register">NOVO USUÁRIO</Link>
       </>
