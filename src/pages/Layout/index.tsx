@@ -3,22 +3,18 @@ import { useTheme } from "@mui/material/styles";
 
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import {
-  Background, MainContainer, BgLogo, BodyContainer,
-} from "./styles";
+import { MainContainer, BgLogo, Background } from "./styles";
 import { Logo } from "../../components/SVG/Logo";
 
 export const Layout = () => (
   <Background>
+    <BgLogo>
+      <Logo />
+    </BgLogo>
     <Header />
-    <BodyContainer>
-      <BgLogo>
-        <Logo />
-      </BgLogo>
-      <MainContainer>
-        <Outlet />
-      </MainContainer>
-      <Footer />
-    </BodyContainer>
+    <MainContainer>
+      <Outlet />
+    </MainContainer>
+    <Footer />
   </Background>
 );

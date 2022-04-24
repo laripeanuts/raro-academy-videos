@@ -1,19 +1,10 @@
 import { styled } from "@mui/material";
 
-export const BodyContainer = styled("main")`
-  min-height: 100%;
-  min-width: 100%;
-`;
-
-export const MainContainer = styled("main")`
-  min-height: 100%;
-  min-width: 100%;
-`;
-
 export const Background = styled("div")`
+  background-color: ${(props) => props.theme.palette.background.default};
   min-height: 100%;
   min-width: 100%;
-  background-color: ${(props) => props.theme.palette.background.default};
+  z-index: 0;
 `;
 
 export const BgLogo = styled("div")`
@@ -27,4 +18,10 @@ export const BgLogo = styled("div")`
   z-index: 1;
   width: 75%;
   fill: ${(props) => props.theme.palette.background.paper};
+`;
+
+export const MainContainer = styled("main")`
+  min-height: 100%;
+  min-width: 100%;
+  padding: 90px 40px;
 `;
