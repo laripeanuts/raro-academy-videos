@@ -4,7 +4,11 @@ import { useTheme } from "../../hooks/useTheme";
 export const ThemeSwitch = () => {
   const { theme, toggleTheme } = useTheme();
 
-  const handleChange = () => toggleTheme();
+  const handleChange = () => {
+    toggleTheme();
+    const themeLocal = JSON.stringify(theme);
+    localStorage.setItem("theme", theme.palette.mode);
+  };
 
   return (
     <StyledStwitch

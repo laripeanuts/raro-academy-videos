@@ -6,6 +6,7 @@ import { userType } from "../../types/userType";
 import apiClient from "../../services/api-client";
 import { getLocalUserStorage } from "../../utils/getLocalUserStorage";
 import { setLocalUserStorage } from "../../utils/setLocalUserStorage";
+import { useTheme } from "../../hooks/useTheme";
 
 const userNew: userType = {
   email: "",
@@ -14,7 +15,6 @@ const userNew: userType = {
   nome: "",
   id: "",
   photo: "",
-  theme: {} as DefaultTheme,
 };
 
 export const AuthContext = createContext<AuthType>({
@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
   const [user, setUser] = useState<userType>(userNew);
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState("");
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const thereIsUser = getLocalUserStorage();

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { ThemeProvider as Provider } from "@mui/material/styles";
 import { dark, light } from "./themes";
 import { WithChildren } from "../../common/childrenType";
@@ -11,6 +11,13 @@ export const ThemeProvider = ({ children }: WithChildren) => {
   const toggleTheme = () => {
     setTheme(theme.palette.mode === "dark" ? light : dark);
   };
+
+  useEffect(() => {
+    const thereIsTheme = localStorage.getItem("theme");
+    if (thereIsTheme) {
+      if (theme.palette.mode === thereIsTheme) toggleTheme();
+    }
+  }, []);
 
   return (
     <Provider theme={theme}>
