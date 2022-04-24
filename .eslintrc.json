@@ -19,10 +19,20 @@
     "sourceType": "module",
     "plugin": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "rules": {
-    "quotes": ["error", "double"],
-    "@typescript-eslint/quotes": ["error", "double"],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "@typescript-eslint/quotes": [
+      "error",
+      "double"
+    ],
     "react/react-in-jsx-scope": "off",
     "import/prefer-default-export": "off",
     "react/jsx-filename-extension": "off",
@@ -46,13 +56,31 @@
         "tsx": "never"
       }
     ],
-    "no-template-curly-in-string": ["off"],
-    "react/jsx-no-constructed-context-values": ["off"],
-    "jsx-no-constructed-context-values": ["off"],
-    "react/jsx-props-no-spreading": ["off"],
+    "no-template-curly-in-string": [
+      "off"
+    ],
+    "react/jsx-no-constructed-context-values": [
+      "off"
+    ],
+    "jsx-no-constructed-context-values": [
+      "off"
+    ],
+    "react/jsx-props-no-spreading": [
+      "off"
+    ],
     "linebreak-style": 0,
     "global-require": 0,
-    "eslint linebreak-style": [0, "error", "windows"]
+    "eslint linebreak-style": [
+      0,
+      "error",
+      "windows"
+    ],
+    "react/require-default-props": [
+      "warn",
+      {
+        "forbidDefaultForRequired": true
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
