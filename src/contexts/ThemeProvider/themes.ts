@@ -64,6 +64,13 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
     },
   },
   components: {
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: mode === "dark" ? "#FFF" : "#404040",
+        }
+      }
+    },
     MuiButton: {
       styleOverrides: {
         text: {

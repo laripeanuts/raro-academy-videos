@@ -1,7 +1,10 @@
 import { Outlet } from "react-router-dom";
+import Button from "../../components/Button";
+import { StyledButton } from "../../components/Button/styles";
 import { Footer } from "../../components/Footer";
 
 import { Header } from "../../components/Header";
+import Link from "../../components/Link";
 import { ThemeProvider } from "../../contexts/ThemeProvider";
 import { Container } from "./styles";
 
@@ -9,7 +12,7 @@ export const Layout = () => (
   <ThemeProvider>
     <Container>
       <Header />
-      <Outlet />
+        <Outlet />
       <Footer />
     </Container>
   </ThemeProvider>
