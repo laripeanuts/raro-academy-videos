@@ -28,14 +28,13 @@ const formRegisterSchema = yup
     confirmarSenha: yup
       .string()
       .required("Confirmar senha é obrigatório")
-      .oneOf([yup.ref("confirmarSenha")], "As senhas não conferem"),
+      .oneOf([yup.ref("senha")], "As senhas não conferem"),
   })
   .required();
 
 export const Register = () => {
-  const { isAuthenticated } = useAuth();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -52,12 +51,12 @@ export const Register = () => {
       setLoading(true);
       const url = "/auth/cadastrar";
       const response = await apiClient.post(url, data);
-      setError("Usuário cadastrado com sucesso!");
+      setMessage("Usuário cadastrado com sucesso!");
     } catch (err: any) {
       if (err.response.data.statusCode === 400) {
-        setError("Usuário já cadastrado");
+        setMessage("Usuário já cadastrado");
       } else {
-        setError("Usuário não cadastrado. Tente novamente mais tarde.");
+        setMessage("Usuário não cadastrado. Tente novamente mais tarde.");
       }
     }
     resetField("nome");
@@ -66,10 +65,6 @@ export const Register = () => {
     resetField("confirmarSenha");
     setLoading(false);
   };
-
-  useEffect(() => {
-    if (isAuthenticated) navigate("/");
-  }, [isAuthenticated, navigate]);
 
   return (
     <main style={{ display: "flex", flexDirection: "column" }}>
@@ -95,7 +90,7 @@ export const Register = () => {
             <span>{errors.confirmarSenha?.message}</span>
           )}
           {/* erro api */}
-          {error && <span>{error}</span>}
+          {message && <span>{message}</span>}
           <Button type="submit" disabled={loading}>
             {loading ? "Carregando..." : "Login"}
           </Button>

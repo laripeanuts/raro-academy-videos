@@ -6,7 +6,7 @@ import { WithChildren } from "../../common/childrenType";
 export const ToggleThemeContext = createContext(() => {});
 
 export const ThemeProvider = ({ children }: WithChildren) => {
-  const [theme, setTheme] = useState(dark);
+  const [theme, setTheme] = useState(light);
 
   const toggleTheme = () => {
     setTheme(theme.palette.mode === "dark" ? light : dark);
