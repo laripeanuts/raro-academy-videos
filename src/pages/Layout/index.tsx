@@ -9,9 +9,7 @@ export const Layout = () => (
   <ThemeProvider>
     <Container>
       <Header />
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
       <Footer />
     </Container>
   </ThemeProvider>

@@ -20,9 +20,8 @@ const RoutesApp = () => (
         <Route path="/turmas/:turmaId/videos/:id" element={<VideoPage />} />
         <Route path="/videos" element={<VideosPage />} />
       </Route>
+      <Route path="*" element={<NotFoundPage />} />
     </Route>
-
-    <Route path="*" element={<NotFoundPage />} />
   </Routes>
 );
 
