@@ -2,8 +2,9 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
-import { Button, Input } from "@mui/material";
+import { Button } from "@mui/material";
 import apiClient from "../../services/api-client";
+import { FormInput } from "../FormInput";
 
 type LoginFormType = {
   codigo: string;
@@ -30,7 +31,7 @@ export const PassRecovery = () => {
   const [message, setMessage] = useState("");
 
   const {
-    register,
+    control,
     handleSubmit,
     resetField,
     formState: { errors },
@@ -42,7 +43,7 @@ export const PassRecovery = () => {
     try {
       setLoading(true);
       const url = "/auth/recuperar-senha";
-      const response = await apiClient.post(url, data);
+      const response = await apiClient.patch(url, data);
       setMessage("Nova senha cadastrado com sucesso!");
     } catch (err: any) {
       if (err.response.data.statusCode === 404) {
@@ -62,27 +63,28 @@ export const PassRecovery = () => {
     <main style={{ display: "flex", flexDirection: "column" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <input
+          <FormInput
             type="text"
+            name="codigo"
             placeholder="Código de recuperação"
-            {...register("codigo")}
+            control={control}
             aria-invalid={errors.codigo ? "true" : "false"}
           />
-          <input
+          <FormInput
             type="password"
+            name="novaSenha"
             placeholder="Senha"
-            {...register("novaSenha")}
+            control={control}
             aria-invalid={errors.novaSenha ? "true" : "false"}
           />
-          <input
+          <FormInput
             type="password"
+            name="confirmarSenha"
             placeholder="Confirmar senha"
-            {...register("confirmarSenha")}
+            control={control}
             aria-invalid={errors.confirmarSenha ? "true" : "false"}
           />
           {message && <span>{message}</span>}
-          {errors.codigo && <span>{errors.codigo?.message}</span>}
-          {errors.novaSenha && <span>{errors.novaSenha?.message}</span>}
           <Button type="submit" disabled={loading}>
             {loading ? "Carregando..." : "Definir nova senha"}
           </Button>

@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
 import { Button } from "@mui/material";
 import apiClient from "../../services/api-client";
+import { FormInput } from "../FormInput";
 
 type LoginFormType = {
   email: string;
@@ -23,7 +24,7 @@ export const PassForgotten = () => {
   const [message, setMessage] = useState("");
 
   const {
-    register,
+    control,
     resetField,
     handleSubmit,
     formState: { errors },
@@ -51,14 +52,14 @@ export const PassForgotten = () => {
     <main style={{ display: "flex", flexDirection: "column" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <input
+          <FormInput
             type="email"
             placeholder="Email"
-            {...register("email")}
+            name="email"
+            control={control}
             aria-invalid={errors.email ? "true" : "false"}
           />
           {message && <span>{message}</span>}
-          {errors.email && <span>{errors.email?.message}</span>}
           <Button type="submit" disabled={loading}>
             {loading ? "Carregando..." : "Solicitar código de recuperação"}
           </Button>
