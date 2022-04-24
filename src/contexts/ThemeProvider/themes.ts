@@ -79,9 +79,10 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
           color: "#FFF",
           fontWeight: "Bold",
           fontSize: "0.813rem",
-          textTransform: "capitalize",
+          textTransform: "initial",
           lineHeight: 1.5,
-
+          height: "40px",
+          padding: "0 30px",
           "&:hover": {
             backgroundColor: "#F5487F",
           },

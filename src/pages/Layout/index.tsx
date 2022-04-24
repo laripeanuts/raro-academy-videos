@@ -12,11 +12,7 @@ export const Layout = () => (
   <ThemeProvider>
     <Container>
       <Header />
-      <main>
         <Outlet />
-      </main>
-      <Link text="link" href="https://www.google.com.br/" />
-      <Button text="botão" />
       <Footer />
     </Container>
   </ThemeProvider>
