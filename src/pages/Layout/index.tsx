@@ -1,4 +1,6 @@
 import { Outlet } from "react-router-dom";
+import Button from "../../components/Button";
+import { StyledButton } from "../../components/Button/styles";
 import { Footer } from "../../components/Footer";
 
 import { Header } from "../../components/Header";
@@ -12,6 +14,7 @@ export const Layout = () => (
       <main>
         <Outlet />
       </main>
+      <Button text="botão" />
       <Footer />
     </Container>
   </ThemeProvider>

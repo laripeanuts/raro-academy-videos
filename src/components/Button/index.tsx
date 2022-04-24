@@ -1,16 +1,14 @@
-import { WithChildren } from "../../common/childrenType";
-
-import { Wrapper } from "./styles";
+import { StyledButton } from "./styles";
 
 export type ButtonProps = {
-  fullWidth?: boolean;
-  onClick?: () => void;
-} & Required<WithChildren>;
+  text: String;
+  disabled?: boolean;
+};
 
-const Button = ({ children, fullWidth, onClick }: ButtonProps) => (
-  <Wrapper fullWidth={fullWidth} onClick={onClick}>
-    {children}
-  </Wrapper>
+const Button = ({ text, disabled }: ButtonProps) => (
+  <StyledButton disabled={disabled ?? false}>
+    { text }
+  </StyledButton>
 );
 
 export default Button;

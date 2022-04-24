@@ -1,27 +1,17 @@
-import styled, { css } from "styled-components";
+import { Button, styled } from "@mui/material";
+import { rgba } from "polished";
 
-import { ButtonProps } from ".";
-
-export const Wrapper = styled.button<Omit<ButtonProps, "children">>`
-  cursor: pointer;
-  border: none;
-  padding: 0.8rem 1.6rem;
-  text-decoration: none;
-
-  ${({ fullWidth, theme }) => css`
-    color: ${(props) => props.theme.colors.white};
-    border-radius: ${(props) => props.theme.border.radius.default};
-    font-size: ${(props) => props.theme.font.sizes.xsmall};
-    font-weight: ${(props) => props.theme.font.weight.bold};
-    background-color: ${(props) => props.theme.colors.secondary.main};
-    line-height: 1.9rem;
-
-    ${fullWidth &&
-    css`
-      width: 100%;
-      padding: 1.6rem;
-      border-radius: ${(props) => props.theme.border.radius.other};
-      font-size: ${(props) => props.theme.font.sizes.medium};
-    `}
-  `}
-`;
+export const StyledButton = styled(Button)(({ theme }) => ({
+  color: theme.palette.primary.contrastText,
+  backgroundColor: theme.palette.primary.main,
+  padding: 16,
+  border: theme.shape.borderRadius,
+  ":hover": {
+    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.primary.contrastText,
+  },
+  ":disabled": {
+    backgroundColor: rgba(theme.palette.primary.main, 0.5),
+    color: theme.palette.primary.contrastText,
+  },
+}));
