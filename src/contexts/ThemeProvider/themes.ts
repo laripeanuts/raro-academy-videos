@@ -65,6 +65,13 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
     },
   },
   components: {
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: mode === "dark" ? "#FFF" : "#404040",
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         text: {
@@ -73,9 +80,10 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
           color: "#FFF",
           fontWeight: "Bold",
           fontSize: "0.813rem",
-          textTransform: "capitalize",
+          textTransform: "initial",
           lineHeight: 1.5,
-
+          height: "40px",
+          padding: "0 30px",
           "&:hover": {
             backgroundColor: "#F5487F",
           },
@@ -101,7 +109,11 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
     MuiInput: {
       styleOverrides: {
         root: {
+          borderRadius: "10px",
           borderBottom: "none",
+          width: "100%",
+          boxShadow:
+            "inset 3px 3px 10px rgba(0, 0, 0, 0.2), inset -1px -1px rgba(255, 255, 255, 0.3)",
           "&::before, &::after, &:hover:not(.Mui-disabled):before": {
             border: "none",
           },
@@ -109,9 +121,6 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
         input: {
           height: "40px",
           padding: "0 15px",
-          borderRadius: "10px",
-          boxShadow:
-            "inset 3px 3px 10px rgba(0, 0, 0, 0.2), inset -1px -1px rgba(255, 255, 255, 0.3)",
         },
       },
     },
