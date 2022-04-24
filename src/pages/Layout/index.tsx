@@ -1,4 +1,6 @@
 import { Outlet } from "react-router-dom";
+import Button from "../../components/Button";
+import { StyledButton } from "../../components/Button/styles";
 import { Footer } from "../../components/Footer";
 
 import { Header } from "../../components/Header";
@@ -14,6 +16,7 @@ export const Layout = () => (
         <Outlet />
       </main>
       <Link text="link" href="https://www.google.com.br/" />
+      <Button text="botão" />
       <Footer />
     </Container>
   </ThemeProvider>

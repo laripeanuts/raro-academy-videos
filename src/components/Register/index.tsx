@@ -1,10 +1,9 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
 import apiClient from "../../services/api-client";
 
 type LoginFormType = {
@@ -92,7 +91,7 @@ export const Register = () => {
           {/* erro api */}
           {message && <span>{message}</span>}
           <Button type="submit" disabled={loading}>
-            {loading ? "Carregando..." : "Login"}
+            {loading ? "Carregando..." : "Cadastrar"}
           </Button>
         </div>
       </form>

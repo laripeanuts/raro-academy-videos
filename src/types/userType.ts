@@ -11,5 +11,4 @@ export type userType = {
   photo: string;
   admin?: boolean;
   votes?: VoteType[];
-  theme: DefaultTheme;
 };
