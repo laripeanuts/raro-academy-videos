@@ -2,9 +2,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { Button, Input } from "@mui/material";
+import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { FormInput } from "../FormInput";
 
 type LoginFormType = {
   email: string;
@@ -15,7 +16,7 @@ const formLoginSchema = yup
   .object({
     email: yup
       .string()
-      .email("Digite um e-maiczl válido")
+      .email("Digite um e-mail válido")
       .required("E-mail é obrigatório"),
     senha: yup
       .string()
@@ -30,9 +31,8 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const {
-    register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors },
   } = useForm<LoginFormType>({
     resolver: yupResolver(formLoginSchema),
@@ -52,17 +52,21 @@ export const Login = () => {
     <main style={{ display: "flex", flexDirection: "column" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <input
+          <FormInput
             type="email"
+            name="email"
             placeholder="Email"
-            {...register("email")}
+            control={control}
             aria-invalid={errors.email ? "true" : "false"}
           />
-          <input type="password" placeholder="Senha" {...register("senha")} />
-          {/* erro formulárioo */}
-          {errors.email && <span>{errors.email?.message}</span>}
-          {errors.senha && <span>{errors.senha?.message}</span>}
-          {/* erro api */}
+          <FormInput
+            type="password"
+            name="senha"
+            placeholder="Senha"
+            control={control}
+            aria-invalid={errors.senha ? "true" : "false"}
+          />
+
           {error && <span>{error}</span>}
           <Button type="submit" disabled={loading}>
             {loading ? "Carregando..." : "Login"}
