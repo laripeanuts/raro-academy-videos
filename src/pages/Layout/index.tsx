@@ -3,7 +3,9 @@ import { useTheme } from "@mui/material/styles";
 
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { Background, MainContainer, BgLogo, BodyContainer } from "./styles";
+import {
+  Background, MainContainer, BgLogo, BodyContainer,
+} from "./styles";
 import { Logo } from "../../components/SVG/Logo";
 
 export const Layout = () => (

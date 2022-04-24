@@ -1,7 +1,5 @@
 import { styled } from "@mui/material";
 
-import logo from "../../assets/logos/logoB.svg";
-
 export const BodyContainer = styled("main")`
   min-height: 100%;
   min-width: 100%;
