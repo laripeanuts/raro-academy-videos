@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RequireAuth } from "../components/RequireAuth";
+import { FavoritesPage } from "../pages/Favorites";
 import { Home } from "../pages/Home";
 import { Layout } from "../pages/Layout";
 import { LoginPage } from "../pages/Login";
@@ -23,6 +24,8 @@ const RoutesApp = () => (
       <Route element={<RequireAuth />}>
         <Route path="/turmas/:turmaId/videos/:id" element={<VideoPage />} />
         <Route path="/videos" element={<VideosPage />} />
+        <Route path="/videos/favoritos" element={<FavoritesPage />} />
+        <Route path="/videos/:id" element={<VideoPage />} />
       </Route>
     </Route>
   </Routes>

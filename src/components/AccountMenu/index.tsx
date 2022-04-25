@@ -60,6 +60,9 @@ export const AccountMenu = () => {
             <MenuItem onClick={handleClose}>{`Olá, ${user.nome}`}</MenuItem>
           </Link>
           <Link to="/videos">
+            <MenuItem onClick={handleClose}>Todos os vídeos</MenuItem>
+          </Link>
+          <Link to="/videos/favoritos">
             <MenuItem onClick={handleClose}>Vídeos favoritos</MenuItem>
           </Link>
           <MenuItem onClick={logout}>Logout</MenuItem>
