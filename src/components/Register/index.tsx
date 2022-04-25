@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../services/api-client";
+import { FormInput } from "../FormInput";
 
 type LoginFormType = {
   nome: string;
@@ -34,10 +35,9 @@ const formRegisterSchema = yup
 export const Register = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
 
   const {
-    register,
+    control,
     handleSubmit,
     resetField,
     formState: { errors },
@@ -69,26 +69,34 @@ export const Register = () => {
     <main style={{ display: "flex", flexDirection: "column" }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <input
+          <FormInput
             type="text"
+            name="nome"
             placeholder="Nome Completo"
-            {...register("nome")}
+            control={control}
+            aria-invalid={errors.nome ? "true" : "false"}
           />
-          <input type="email" placeholder="E-mail" {...register("email")} />
-          <input type="password" placeholder="Senha" {...register("senha")} />
-          <input
+          <FormInput
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            control={control}
+            aria-invalid={errors.email ? "true" : "false"}
+          />
+          <FormInput
             type="password"
-            placeholder="Confirmar senha"
-            {...register("confirmarSenha")}
+            name="senha"
+            placeholder="Senha"
+            control={control}
+            aria-invalid={errors.senha ? "true" : "false"}
           />
-          {/* erro formulário */}
-          {errors.nome && <span>{errors.nome?.message}</span>}
-          {errors.email && <span>{errors.email?.message}</span>}
-          {errors.senha && <span>{errors.senha?.message}</span>}
-          {errors.confirmarSenha && (
-            <span>{errors.confirmarSenha?.message}</span>
-          )}
-          {/* erro api */}
+          <FormInput
+            type="password"
+            name="confirmarSenha"
+            placeholder="Confirmar senha"
+            control={control}
+            aria-invalid={errors.confirmarSenha ? "true" : "false"}
+          />
           {message && <span>{message}</span>}
           <Button type="submit" disabled={loading}>
             {loading ? "Carregando..." : "Cadastrar"}

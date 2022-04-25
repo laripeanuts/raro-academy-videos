@@ -14,7 +14,7 @@ const userNew: userType = {
   access_token: "",
   nome: "",
   id: "",
-  photo: "",
+  foto: "",
 };
 
 export const AuthContext = createContext<AuthType>({

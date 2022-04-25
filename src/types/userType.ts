@@ -8,7 +8,7 @@ export type userType = {
   access_token: string;
   nome: string;
   id: string;
-  photo: string;
+  foto: string;
   admin?: boolean;
   votes?: VoteType[];
 };

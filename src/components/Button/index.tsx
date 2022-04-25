@@ -1,14 +1,13 @@
+import { ReactNode } from "react";
 import { StyledButton } from "./styles";
 
 export type ButtonProps = {
-  text: String;
-  disabled?: boolean;
+  children: ReactNode;
+  disabled: boolean;
 };
 
-const Button = ({ text, disabled }: ButtonProps) => (
-  <StyledButton disabled={disabled ?? false}>
-    { text }
-  </StyledButton>
+const Button = ({ children, disabled }: ButtonProps) => (
+  <StyledButton disabled={disabled ?? false}>{children}</StyledButton>
 );
 
 export default Button;
