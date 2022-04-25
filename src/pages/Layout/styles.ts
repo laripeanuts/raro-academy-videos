@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
 
 export const Background = styled("div")`
-  height: 100vh;
+  height: 100%;
   min-width: 100%;
 `;
 
