@@ -1,12 +1,14 @@
 import { styled } from "@mui/material/styles";
 
 export const Container = styled("header")`
+  position: relative;
+  z-index: 5;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 15px 20px 10px 20px;
-  max-height: 80px;
+  /* max-height: 80px; */
   background: ${(props) => props.theme.palette.secondary.main};
   color: ${(props) => props.theme.palette.primary.contrastText};
   position: fixed;
@@ -38,7 +40,9 @@ export const Container = styled("header")`
     flex-direction: row;
     place-content: center;
     justify-content: end;
+    flex-wrap: wrap;
     gap: 20px;
+    place-content: center;
   }
 
   .menuUser {
@@ -46,6 +50,7 @@ export const Container = styled("header")`
     flex-direction: row;
     align-items: center;
     place-content: center;
+    flex-wrap: wrap;
     gap: 1.5em;
   }
 `;
@@ -53,11 +58,15 @@ export const Container = styled("header")`
 export const ContainerLogos = styled("div")`
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  place-content: center;
+  gap: 15px;
 `;
 
 export const ContainerLogo = styled("div")`
   max-width: 85px;
+  align-items: center;
+  place-content: center;
   stroke-width: 15px;
   stroke: ${(props) => props.theme.palette.primary.contrastText};
 `;
