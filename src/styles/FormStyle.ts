@@ -5,11 +5,20 @@ export const FormStyle = styled("footer")`
   top: 20px;
   display: flex;
   flex-direction: column;
-  min-width: 70%;
+  min-width: 600px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media only screen and (max-width: 650px) {
+    padding-top: 60px;
+    min-width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+  }
 
   button {
     width: 120px;
