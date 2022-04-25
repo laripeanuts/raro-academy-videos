@@ -23,6 +23,10 @@ export const Container = styled("header")`
     transition: filter 0.2s;
   }
 
+  .input {
+    margin-bottom: 10px;
+  }
+
   button {
     background: transparent;
     border: none;
