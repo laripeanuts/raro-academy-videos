@@ -1,5 +1,5 @@
-import styled from "styled-components";
+import { styled } from "@mui/material";
 
-export const Container = styled.div`
-
+export const Container = styled("div")`
+  color: ${(props) => props.theme.palette.text.primary};
 `;

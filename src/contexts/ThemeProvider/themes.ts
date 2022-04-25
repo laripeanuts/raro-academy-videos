@@ -1,23 +1,30 @@
 import { PaletteMode } from "@mui/material";
 import { createTheme, ThemeOptions } from "@mui/material/styles";
 
+const white: string = "#F2F2F2";
+const grey: string = "#404040";
+const black: string = "#1A1A1A";
+const pink: string = "#F5487F";
+const blue: string = "#343090";
+const red: string = "#FF1010";
+
 const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
   palette: {
     mode,
     primary: {
-      main: "#F5487F",
-      contrastText: "#FFFFFF",
+      main: pink,
+      contrastText: white,
     },
     secondary: {
-      main: "#343090",
-      contrastText: "#FFF",
+      main: blue,
+      contrastText: white,
     },
     error: {
-      main: "#FF1010",
-      contrastText: "#FFF",
+      main: red,
+      contrastText: white,
     },
     background: {
-      default: mode === "dark" ? "#121212" : "#f2f2f2",
+      default: mode === "dark" ? black : white,
       paper: mode === "dark" ? "#1c1c1c" : "#d9d9d9",
     },
   },
@@ -27,7 +34,7 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
   typography: {
     allVariants: {
       fontFamily: "'Plus Jakarta Sans', 'Open Sans', 'Helvetica', sans-serif",
-      color: "#FFF",
+      color: white,
     },
     h1: {
       fontSize: "3.5rem",
@@ -40,12 +47,12 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
     h3: {
       fontSize: "2.125rem",
       fontWeight: "SemiBold",
-      color: mode === "dark" ? "#FFF" : "#131313",
+      color: mode === "dark" ? white : black,
     },
     h4: {
       fontSize: "1.625rem",
       fontWeight: "SemiBold",
-      color: mode === "dark" ? "#FFF" : "#131313",
+      color: mode === "dark" ? white : black,
     },
     h5: {
       fontSize: "1.313rem",
@@ -56,19 +63,19 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
       fontWeight: "Bold",
     },
     body1: {
-      color: mode === "dark" ? "#FFF" : "#131313",
+      color: mode === "dark" ? white : black,
     },
     body2: {
       fontSize: "0.813rem",
       lineHeight: 1.5,
-      color: mode === "dark" ? "#FFF" : "#404040",
+      color: mode === "dark" ? white : grey,
     },
   },
   components: {
     MuiLink: {
       styleOverrides: {
         root: {
-          color: mode === "dark" ? "#FFF" : "#404040",
+          color: mode === "dark" ? white : grey,
         },
       },
     },
@@ -76,8 +83,8 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
       styleOverrides: {
         text: {
           boxShadow: "none",
-          backgroundColor: "#F5487F",
-          color: "#FFF",
+          backgroundColor: pink,
+          color: white,
           fontWeight: "Bold",
           fontSize: "0.813rem",
           textTransform: "initial",
@@ -85,7 +92,7 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
           height: "40px",
           padding: "0 30px",
           "&:hover": {
-            backgroundColor: "#F5487F",
+            backgroundColor: pink,
           },
         },
       },
@@ -96,10 +103,10 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
           "& fieldset": {
             borderRadius: 0,
             border: "none",
-            borderBottom: "1px solid #FFF",
+            borderBottom: `1px solid ${white}`,
           },
           "& .MuiInputBase-input, & .MuiInputLabel-root": {
-            color: "#FFF",
+            color: white,
             padding: "5px 15px",
             height: "40px",
           },
