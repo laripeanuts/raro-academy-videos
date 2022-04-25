@@ -15,6 +15,7 @@ export const Container = styled("header")`
   top: 0;
   left: 0;
   width: 100%;
+
   svg {
     fill: ${(props) => props.theme.palette.primary.contrastText};
     width: 100%;
@@ -33,6 +34,22 @@ export const Container = styled("header")`
       }
     }
   }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+    justify-content: end;
+    gap: 20px;
+  }
+
+  .menuUser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    place-content: center;
+    gap: 1.5em;
+  }
 `;
 
 export const ContainerLogos = styled("div")`
@@ -45,36 +62,4 @@ export const ContainerLogo = styled("div")`
   max-width: 85px;
   stroke-width: 15px;
   stroke: ${(props) => props.theme.palette.primary.contrastText};
-`;
-
-export const ContainerUserMenu = styled("div")`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  place-content: center;
-  max-height: 48px;
-  gap: 8px;
-
-  .iconArrowDown {
-    width: 24px;
-  }
-
-  .iconArrowDown:hover {
-    cursor: pointer;
-    filter: opacity(50%);
-  }
-`;
-
-export const ContainerAvatar = styled("div")`
-  background: red;
-  height: 48px;
-  min-width: 48px;
-  border-radius: 50%;
-  margin-left: 50px;
-  background: ${(props) => props.theme.palette.secondary.contrastText};
-
-  svg {
-    fill: ${(props) => props.theme.palette.secondary.main};
-    padding: 7px;
-  }
 `;

@@ -1,23 +1,15 @@
 import { Link } from "react-router-dom";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import {
-  Container,
-  ContainerAvatar,
-  ContainerLogo,
-  ContainerLogos,
-  ContainerUserMenu,
-} from "./styles";
+import { Container, ContainerLogo, ContainerLogos } from "./styles";
 import { Logo } from "../SVG/Logo";
 import { LogoCompact } from "../SVG/LogoCompact";
-import { Avatar } from "../SVG/Avatar";
 import { InputSearch } from "../InputSearch";
 import { ThemeSwitch } from "../ThemeSwitch";
-import { Navigation } from "../Navigation";
+import { useAuth } from "../../hooks/useAuth";
+import { AccountMenu } from "../AccountMenu";
+import Button from "../Button";
 
 export const Header = () => {
-  const handleClickMenu = () => {
-    alert("Click");
-  };
+  const { isAuthenticated } = useAuth();
 
   return (
     <Container>
@@ -30,19 +22,24 @@ export const Header = () => {
             <LogoCompact />
           </button>
         </Link>
-        <Navigation />
       </ContainerLogos>
-      <ContainerUserMenu>
+      <div className="menu">
         <InputSearch />
-        <ContainerAvatar>
-          <Avatar />
-        </ContainerAvatar>
-        <KeyboardArrowDownIcon
-          onClick={handleClickMenu}
-          className="iconArrowDown"
-        />
-        <ThemeSwitch />
-      </ContainerUserMenu>
+        {isAuthenticated ? (
+          <AccountMenu />
+        ) : (
+          <div className="menuUser">
+            <Link to="/login">
+              <Button disabled={false}>Login</Button>
+            </Link>
+            <Link to="/register">
+              <Button disabled={false}>Cadastro</Button>
+            </Link>
+
+            <ThemeSwitch />
+          </div>
+        )}
+      </div>
     </Container>
   );
 };
