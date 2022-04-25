@@ -7,9 +7,8 @@ export type VideoType = {
   descricao: string;
   createdAt: Date;
   duracao: string;
-  dataPublished: Date;
+  dataPublicacao: Date;
   topico: string;
   tags: TagType[];
-  videosFavoritos: string[];
-  comentarios: CommentType[];
+  turma?: string;
 };

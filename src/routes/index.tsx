@@ -14,11 +14,11 @@ import { VideosPage } from "../pages/Videos";
 const RoutesApp = () => (
   <Routes>
     <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/pass-forgotten" element={<PassForgottenPage />} />
       <Route path="/pass-recovery" element={<PassRecoveryPage />} />
+      <Route index element={<Home />} />
       <Route path="*" element={<NotFoundPage />} />
 
       <Route element={<RequireAuth />}>

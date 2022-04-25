@@ -6,14 +6,17 @@ import { Header } from "../../components/Header";
 
 import { MainContainer, Background } from "./styles";
 import { BGLogo } from "../../components/BGLogo";
+import { VideosProvider } from "../../contexts/VideosProvider";
 
 export const Layout = () => (
   <Background>
     <BGLogo />
-    <Header />
-    <MainContainer>
-      <Outlet />
-    </MainContainer>
-    <Footer />
+    <VideosProvider>
+      <Header />
+      <MainContainer>
+        <Outlet />
+      </MainContainer>
+      <Footer />
+    </VideosProvider>
   </Background>
 );
