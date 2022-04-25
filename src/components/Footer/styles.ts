@@ -13,6 +13,14 @@ export const FooterContainer = styled("footer")`
   padding: 20px;
   z-index: 10;
 
+  box-shadow: inset 1px 1px rgba(255, 255, 255, 0.3),
+    3px 3px 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+
+  background-color: ${(props) => (props.theme.palette.mode === "dark"
+    ? "rgba(87, 87, 87, 0.18)"
+    : "rgba(135, 135, 135, 0.13)")};
+
   img {
     height: 40px;
     width: 40px;
