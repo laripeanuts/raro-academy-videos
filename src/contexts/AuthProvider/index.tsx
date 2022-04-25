@@ -1,12 +1,10 @@
 /* eslint-disable camelcase */
-import { DefaultTheme } from "styled-components";
 import { createContext, useEffect, useState } from "react";
 import { AuthProviderType, AuthType } from "./types";
 import { userType } from "../../types/userType";
 import apiClient from "../../services/api-client";
 import { getLocalUserStorage } from "../../utils/getLocalUserStorage";
 import { setLocalUserStorage } from "../../utils/setLocalUserStorage";
-import { useTheme } from "../../hooks/useTheme";
 
 const userNew: userType = {
   email: "",
@@ -21,6 +19,7 @@ export const AuthContext = createContext<AuthType>({
   user: userNew,
   isAuthenticated: false,
   error: "",
+  message: "",
   authenticate: (email: string, senha: string) => Promise.resolve(),
   logout: () => {},
 });
@@ -29,7 +28,7 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
   const [user, setUser] = useState<userType>(userNew);
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState("");
-  const { theme, toggleTheme } = useTheme();
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const thereIsUser = getLocalUserStorage();
@@ -49,8 +48,7 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
         setUser(payload);
         setLocalUserStorage(payload);
         setAuthenticated(true);
-      } else {
-        setError(payload.error);
+        setMessage("Usuário logado com sucesso!");
       }
     } catch (err: any) {
       if (err.response.data.statusCode === 401) {
@@ -61,10 +59,17 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
     }
   }
 
+  const refreshPage = () => {
+    window.location.reload();
+  };
+
   const logout = () => {
+    refreshPage();
     localStorage.clear();
     setUser(userNew);
     setAuthenticated(false);
+    setError("");
+    setMessage("");
   };
 
   return (
@@ -73,6 +78,7 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
         user,
         isAuthenticated,
         error,
+        message,
         authenticate,
         logout,
       }}

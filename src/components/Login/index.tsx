@@ -29,9 +29,10 @@ const formLoginSchema = yup
   .required();
 
 export const Login = () => {
-  const { authenticate, error, isAuthenticated } = useAuth();
+  const {
+    authenticate, error, message, isAuthenticated,
+  } = useAuth();
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -44,8 +45,7 @@ export const Login = () => {
 
   const onSubmit: SubmitHandler<LoginFormType> = async (data) => {
     setLoading(true);
-    await authenticate(data.email, data.senha);
-    setMessage("Usuário loggado com sucesso!");
+    const response = await authenticate(data.email, data.senha);
     setLoading(false);
   };
 

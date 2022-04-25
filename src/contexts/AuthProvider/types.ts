@@ -5,6 +5,7 @@ export type AuthType = {
   user: userType;
   isAuthenticated: boolean;
   error: string;
+  message: string;
   authenticate: (email: string, password: string) => Promise<void>;
   logout: () => void;
 };
