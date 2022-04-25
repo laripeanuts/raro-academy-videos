@@ -2,9 +2,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import apiClient from "../../services/api-client";
 import { FormInput } from "../FormInput";
+import { FormStyle } from "../../styles/FormStyle";
+import { Featured } from "../Featured";
+import Link from "../Link";
 
 type LoginFormType = {
   codigo: string;
@@ -29,6 +32,7 @@ const formLoginSchema = yup
 export const PassRecovery = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const {
     control,
@@ -44,13 +48,15 @@ export const PassRecovery = () => {
       setLoading(true);
       const url = "/auth/recuperar-senha";
       const response = await apiClient.patch(url, data);
-      setMessage("Nova senha cadastrado com sucesso!");
+      setMessage("Nova senha cadastrado com sucesso! Faça o login!");
+      setError("");
     } catch (err: any) {
       if (err.response.data.statusCode === 404) {
-        setMessage("Código inválido");
+        setError("Código inválido");
       } else {
-        setMessage("Algo deu errado. Tente novamente mais tarde.");
+        setError("Algo deu errado. Tente novamente mais tarde.");
       }
+      setMessage("");
     }
 
     resetField("codigo");
@@ -60,9 +66,10 @@ export const PassRecovery = () => {
   };
 
   return (
-    <main style={{ display: "flex", flexDirection: "column" }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+    <FormStyle>
+      <Featured>
+        <Typography variant="h4">Altere sua senha!</Typography>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <FormInput
             type="text"
             name="codigo"
@@ -84,12 +91,26 @@ export const PassRecovery = () => {
             control={control}
             aria-invalid={errors.confirmarSenha ? "true" : "false"}
           />
-          {message && <span>{message}</span>}
-          <Button type="submit" disabled={loading}>
-            {loading ? "Carregando..." : "Definir nova senha"}
-          </Button>
-        </div>
-      </form>
-    </main>
+          <div className="messages">
+            <span className="error">{error && error}</span>
+            <div className="success">
+              {message && (
+                <Link className="link" href="/login">
+                  {message}
+                </Link>
+              )}
+            </div>
+          </div>
+          <div className="bottom">
+            <Link className="link" href="/pass-forgotten">
+              Não possui um código? Solicite um!
+            </Link>
+            <Button type="submit" disabled={loading}>
+              {loading ? "Carregando..." : "Alterar"}
+            </Button>
+          </div>
+        </form>
+      </Featured>
+    </FormStyle>
   );
 };

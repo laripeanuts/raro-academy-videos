@@ -2,10 +2,13 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../services/api-client";
 import { FormInput } from "../FormInput";
+import { FormStyle } from "../../styles/FormStyle";
+import { Featured } from "../Featured";
+import Link from "../Link";
 
 type LoginFormType = {
   nome: string;
@@ -35,6 +38,7 @@ const formRegisterSchema = yup
 export const Register = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const {
     control,
@@ -50,13 +54,15 @@ export const Register = () => {
       setLoading(true);
       const url = "/auth/cadastrar";
       const response = await apiClient.post(url, data);
-      setMessage("Usuário cadastrado com sucesso!");
+      setMessage("Usuário cadastrado com sucesso! Faça o login!");
+      setError("");
     } catch (err: any) {
       if (err.response.data.statusCode === 400) {
-        setMessage("Usuário já cadastrado");
+        setError("Usuário já cadastrado");
       } else {
-        setMessage("Usuário não cadastrado. Tente novamente mais tarde.");
+        setError("Usuário não cadastrado. Tente novamente mais tarde.");
       }
+      setMessage("");
     }
     resetField("nome");
     resetField("email");
@@ -66,9 +72,10 @@ export const Register = () => {
   };
 
   return (
-    <main style={{ display: "flex", flexDirection: "column" }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+    <FormStyle>
+      <Featured>
+        <Typography variant="h4">Bem Vindo!</Typography>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <FormInput
             type="text"
             name="nome"
@@ -97,12 +104,27 @@ export const Register = () => {
             control={control}
             aria-invalid={errors.confirmarSenha ? "true" : "false"}
           />
-          {message && <span>{message}</span>}
-          <Button type="submit" disabled={loading}>
-            {loading ? "Carregando..." : "Cadastrar"}
-          </Button>
-        </div>
-      </form>
-    </main>
+
+          <div className="messages">
+            <span className="error">{error && error}</span>
+            <div className="success">
+              {message && (
+                <Link className="link" href="/login">
+                  {message}
+                </Link>
+              )}
+            </div>
+          </div>
+          <div className="bottom">
+            <Link className="link" href="/login">
+              Não possui uma conta? Faça seu cadastro!
+            </Link>
+            <Button type="submit" disabled={loading}>
+              {loading ? "Carregando..." : "Cadastrar"}
+            </Button>
+          </div>
+        </form>
+      </Featured>
+    </FormStyle>
   );
 };

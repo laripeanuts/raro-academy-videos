@@ -3,7 +3,7 @@ import { createTheme, ThemeOptions } from "@mui/material/styles";
 
 const white: string = "#F2F2F2";
 const grey: string = "#404040";
-const black: string = "#1A1A1A";
+const black: string = "#0d0d0d";
 const pink: string = "#F5487F";
 const blue: string = "#343090";
 const red: string = "#FF1010";
@@ -11,6 +11,10 @@ const red: string = "#FF1010";
 const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
   palette: {
     mode,
+    common: {
+      black: "#0d0d0d",
+      white: "#F2F2F2",
+    },
     primary: {
       main: pink,
       contrastText: white,
@@ -116,18 +120,29 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
     MuiInput: {
       styleOverrides: {
         root: {
+          marginTop: "22px",
           borderRadius: "10px",
           borderBottom: "none",
+          background: mode === "dark" ? black : white,
           width: "100%",
           boxShadow:
             "inset 3px 3px 10px rgba(0, 0, 0, 0.2), inset -1px -1px rgba(255, 255, 255, 0.3)",
           "&::before, &::after, &:hover:not(.Mui-disabled):before": {
             border: "none",
           },
+          ":error": {
+            background: pink,
+            height: "40px",
+          },
         },
         input: {
           height: "40px",
           padding: "0 15px",
+          ":focus": {
+            borderRadius: "10px",
+            border: "2px solid",
+            borderColor: pink,
+          },
         },
       },
     },

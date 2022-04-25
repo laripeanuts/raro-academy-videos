@@ -1,13 +1,15 @@
+import { ReactNode } from "react";
 import { StyledLink } from "./styles";
 
 export type LinkProps = {
-  text: string;
+  children: ReactNode;
+  className: string;
   href: string;
 };
 
-const Link = ({ text, href }: LinkProps) => (
-  <StyledLink href={href}>
-    { text }
+const Link = ({ children, className = "link", href }: LinkProps) => (
+  <StyledLink className={className} href={href}>
+    {children}
   </StyledLink>
 );
 

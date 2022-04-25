@@ -2,9 +2,12 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import apiClient from "../../services/api-client";
 import { FormInput } from "../FormInput";
+import { FormStyle } from "../../styles/FormStyle";
+import { Featured } from "../Featured";
+import Link from "../Link";
 
 type LoginFormType = {
   email: string;
@@ -22,6 +25,7 @@ const formRecoverySchema = yup
 export const PassForgotten = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const {
     control,
@@ -38,33 +42,50 @@ export const PassForgotten = () => {
       const url = "/auth/solicitar-codigo";
       const response = await apiClient.post(url, data);
       setMessage("Código enviado para seu e-mail");
+      setError("");
     } catch (err: any) {
       if (err.statusCode === 404) {
-        setMessage("E-mail inválido");
+        setError("E-mail inválido");
       } else {
-        setMessage("Algo deu errado. Tente novamente mais tarde.");
+        setError("Algo deu errado. Tente outro e-mail.");
       }
+      setMessage("");
     }
     resetField("email");
     setLoading(false);
   };
+
   return (
-    <main style={{ display: "flex", flexDirection: "column" }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+    <FormStyle>
+      <Featured>
+        <Typography variant="h4">Solicite um código!</Typography>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <FormInput
             type="email"
-            placeholder="Email"
+            placeholder="E-mail"
             name="email"
             control={control}
             aria-invalid={errors.email ? "true" : "false"}
           />
-          {message && <span>{message}</span>}
-          <Button type="submit" disabled={loading}>
-            {loading ? "Carregando..." : "Solicitar código de recuperação"}
-          </Button>
-        </div>
-      </form>
-    </main>
+          <div className="linksContainer">
+            <Link className="link" href="/pass-forgotten">
+              Lembrou a senha?
+            </Link>
+          </div>
+          <div className="messages">
+            <span className="error">{error && error}</span>
+            <span className="success">{message && message}</span>
+          </div>
+          <div className="bottom">
+            <Link className="link" href="/pass-recovery">
+              Já possui um código? Troque seu senha!
+            </Link>
+            <Button type="submit" disabled={loading}>
+              {loading ? "Carregando..." : "Solicitar"}
+            </Button>
+          </div>
+        </form>
+      </Featured>
+    </FormStyle>
   );
 };

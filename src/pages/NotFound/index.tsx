@@ -8,7 +8,7 @@ import { Container } from "./styles";
 export const NotFoundPage = () => {
   const navigate = useNavigate();
 
-  const handleClick = () => navigate("/");
+  const handleClick = () => navigate("/videos");
 
   return (
     <Container>
@@ -16,7 +16,7 @@ export const NotFoundPage = () => {
         <Typography variant="h4">
           Ops, essa página não foi encontrada!
         </Typography>
-        <Button onClick={handleClick}>Ir para a home</Button>
+        <Button onClick={handleClick}>Perdido? Assista uma aula!</Button>
       </Featured>
     </Container>
   );
