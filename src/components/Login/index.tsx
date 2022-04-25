@@ -2,10 +2,13 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { FormInput } from "../FormInput";
+import Link from "../Link";
+import { Featured } from "../Featured";
+import { ContainerForm } from "../../styles/FormStyle";
 
 type LoginFormType = {
   email: string;
@@ -49,30 +52,43 @@ export const Login = () => {
   }, [isAuthenticated, navigate]);
 
   return (
-    <main style={{ display: "flex", flexDirection: "column" }}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <FormInput
-            type="email"
-            name="email"
-            placeholder="Email"
-            control={control}
-            aria-invalid={errors.email ? "true" : "false"}
-          />
-          <FormInput
-            type="password"
-            name="senha"
-            placeholder="Senha"
-            control={control}
-            aria-invalid={errors.senha ? "true" : "false"}
-          />
+    <ContainerForm>
+      <Featured>
+        <Typography variant="h4">Bem Vindo!</Typography>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+          >
+            <FormInput
+              type="email"
+              name="email"
+              placeholder="Email"
+              control={control}
+              aria-invalid={errors.email ? "true" : "false"}
+            />
+            <FormInput
+              type="password"
+              name="senha"
+              placeholder="Senha"
+              control={control}
+              aria-invalid={errors.senha ? "true" : "false"}
+            />
 
-          {error && <span>{error}</span>}
-          <Button type="submit" disabled={loading}>
-            {loading ? "Carregando..." : "Login"}
-          </Button>
-        </div>
-      </form>
-    </main>
+            <Link className="link" href="/pass-forgotten">
+              Esqueci minha senha
+            </Link>
+            <div className="error">{error && error}</div>
+            <div className="bottom">
+              <Link className="link" href="/register">
+                Não possui uma conta? Faça seu cadastro!
+              </Link>
+              <Button type="submit" disabled={loading}>
+                {loading ? "Carregando..." : "Entrar"}
+              </Button>
+            </div>
+          </div>
+        </form>
+      </Featured>
+    </ContainerForm>
   );
 };
