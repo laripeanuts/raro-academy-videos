@@ -16,8 +16,8 @@ const RoutesApp = () => (
       <Route index element={<Home />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/register" element={<PassForgottenPage />} />
-      <Route path="/register" element={<PassRecoveryPage />} />
+      <Route path="/pass-forgotten" element={<PassForgottenPage />} />
+      <Route path="/pass-recovery" element={<PassRecoveryPage />} />
       <Route path="*" element={<NotFoundPage />} />
 
       <Route element={<RequireAuth />}>
