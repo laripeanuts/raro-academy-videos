@@ -8,7 +8,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { FormInput } from "../FormInput";
 import Link from "../Link";
 import { Featured } from "../Featured";
-import { ContainerForm } from "../../styles/FormStyle";
+import { FormStyle } from "../../styles/FormStyle";
 
 type LoginFormType = {
   email: string;
@@ -31,6 +31,7 @@ const formLoginSchema = yup
 export const Login = () => {
   const { authenticate, error, isAuthenticated } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const {
@@ -44,6 +45,7 @@ export const Login = () => {
   const onSubmit: SubmitHandler<LoginFormType> = async (data) => {
     setLoading(true);
     await authenticate(data.email, data.senha);
+    setMessage("Usuário loggado com sucesso!");
     setLoading(false);
   };
 
@@ -52,7 +54,7 @@ export const Login = () => {
   }, [isAuthenticated, navigate]);
 
   return (
-    <ContainerForm>
+    <FormStyle>
       <Featured>
         <Typography variant="h4">Bem Vindo!</Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -62,7 +64,7 @@ export const Login = () => {
             <FormInput
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="E-mail"
               control={control}
               aria-invalid={errors.email ? "true" : "false"}
             />
@@ -73,11 +75,18 @@ export const Login = () => {
               control={control}
               aria-invalid={errors.senha ? "true" : "false"}
             />
-
-            <Link className="link" href="/pass-forgotten">
-              Esqueci minha senha
-            </Link>
-            <div className="error">{error && error}</div>
+            <div className="linksContainer">
+              <Link className="link" href="/pass-forgotten">
+                Esqueci minha senha
+              </Link>
+              <Link className="link" href="/pass-recovery">
+                Altere sua senha
+              </Link>
+            </div>
+            <div className="messages">
+              <span className="error">{error && error}</span>
+              <span className="success">{message && message}</span>
+            </div>
             <div className="bottom">
               <Link className="link" href="/register">
                 Não possui uma conta? Faça seu cadastro!
@@ -89,6 +98,6 @@ export const Login = () => {
           </div>
         </form>
       </Featured>
-    </ContainerForm>
+    </FormStyle>
   );
 };

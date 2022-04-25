@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
       }
     } catch (err: any) {
       if (err.response.data.statusCode === 401) {
-        setError("Usuário ou senha Inválidos");
+        setError("Dados de login inválidos");
       } else {
         setError("Erro ao autenticar usuário. Tente novamente mais tarde.");
       }

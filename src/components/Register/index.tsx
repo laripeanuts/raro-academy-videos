@@ -55,12 +55,14 @@ export const Register = () => {
       const url = "/auth/cadastrar";
       const response = await apiClient.post(url, data);
       setMessage("Usuário cadastrado com sucesso! Faça o login!");
+      setError("");
     } catch (err: any) {
       if (err.response.data.statusCode === 400) {
         setError("Usuário já cadastrado");
       } else {
         setError("Usuário não cadastrado. Tente novamente mais tarde.");
       }
+      setMessage("");
     }
     resetField("nome");
     resetField("email");
@@ -74,37 +76,37 @@ export const Register = () => {
       <Featured>
         <Typography variant="h4">Bem Vindo!</Typography>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div
-            style={{ display: "flex", flexDirection: "column", gap: "10px" }}
-          >
-            <FormInput
-              type="text"
-              name="nome"
-              placeholder="Nome Completo"
-              control={control}
-              aria-invalid={errors.nome ? "true" : "false"}
-            />
-            <FormInput
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              control={control}
-              aria-invalid={errors.email ? "true" : "false"}
-            />
-            <FormInput
-              type="password"
-              name="senha"
-              placeholder="Senha"
-              control={control}
-              aria-invalid={errors.senha ? "true" : "false"}
-            />
-            <FormInput
-              type="password"
-              name="confirmarSenha"
-              placeholder="Confirmar senha"
-              control={control}
-              aria-invalid={errors.confirmarSenha ? "true" : "false"}
-            />
+          <FormInput
+            type="text"
+            name="nome"
+            placeholder="Nome Completo"
+            control={control}
+            aria-invalid={errors.nome ? "true" : "false"}
+          />
+          <FormInput
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            control={control}
+            aria-invalid={errors.email ? "true" : "false"}
+          />
+          <FormInput
+            type="password"
+            name="senha"
+            placeholder="Senha"
+            control={control}
+            aria-invalid={errors.senha ? "true" : "false"}
+          />
+          <FormInput
+            type="password"
+            name="confirmarSenha"
+            placeholder="Confirmar senha"
+            control={control}
+            aria-invalid={errors.confirmarSenha ? "true" : "false"}
+          />
+
+          <div className="messages">
+            <span className="error">{error && error}</span>
             <div className="success">
               {message && (
                 <Link className="link" href="/login">
@@ -112,18 +114,14 @@ export const Register = () => {
                 </Link>
               )}
             </div>
-            <div className="messages">
-              <span className="error">{error && error}</span>
-              <span className="success">{message && message}</span>
-            </div>
-            <div className="bottom">
-              <Link className="link" href="/login">
-                Não possui uma conta? Faça seu cadastro!
-              </Link>
-              <Button type="submit" disabled={loading}>
-                {loading ? "Carregando..." : "Cadastrar"}
-              </Button>
-            </div>
+          </div>
+          <div className="bottom">
+            <Link className="link" href="/login">
+              Não possui uma conta? Faça seu cadastro!
+            </Link>
+            <Button type="submit" disabled={loading}>
+              {loading ? "Carregando..." : "Cadastrar"}
+            </Button>
           </div>
         </form>
       </Featured>

@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 
-export const ContainerForm = styled("footer")`
+export const FormStyle = styled("footer")`
   padding-top: 40px;
   top: 20px;
   display: flex;
@@ -33,14 +33,27 @@ export const ContainerForm = styled("footer")`
     place-self: start;
   }
 
+  .linksContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   .link {
     margin: 10px 0;
   }
 
-  .error {
-    place-self: center;
+  .messages {
+    margin: auto;
     height: 30px;
-    color: ${(props) => props.theme.palette.error.main};
+    place-self: center;
+
+    .error {
+      color: ${(props) => props.theme.palette.error.main};
+    }
+    .success {
+      color: ${(props) => props.theme.palette.success.main};
+    }
   }
 
   .bottom {
