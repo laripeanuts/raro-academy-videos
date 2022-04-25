@@ -18,14 +18,13 @@ const RoutesApp = () => (
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/register" element={<PassForgottenPage />} />
       <Route path="/register" element={<PassRecoveryPage />} />
+      <Route path="*" element={<NotFoundPage />} />
 
       <Route element={<RequireAuth />}>
         <Route path="/turmas/:turmaId/videos/:id" element={<VideoPage />} />
         <Route path="/videos" element={<VideosPage />} />
       </Route>
     </Route>
-
-    <Route path="*" element={<NotFoundPage />} />
   </Routes>
 );
 
