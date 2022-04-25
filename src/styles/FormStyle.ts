@@ -1,7 +1,6 @@
 import { styled } from "@mui/material";
 
 export const FormStyle = styled("footer")`
-  padding-top: 40px;
   top: 20px;
   display: flex;
   flex-direction: column;
