@@ -59,7 +59,7 @@ export const AccountMenu = () => {
           <Link to="/">
             <MenuItem onClick={handleClose}>{`Olá, ${user.nome}`}</MenuItem>
           </Link>
-          <Link to="/">
+          <Link to="/videos">
             <MenuItem onClick={handleClose}>Vídeos favoritos</MenuItem>
           </Link>
           <MenuItem onClick={logout}>Logout</MenuItem>
