@@ -140,8 +140,8 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
           padding: "0 15px",
           ":focus": {
             borderRadius: "10px",
-            border: "2px solid",
-            borderColor: pink,
+            outline: "1px solid",
+            outlineColor: pink,
           },
         },
       },
