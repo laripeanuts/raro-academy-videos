@@ -29,13 +29,17 @@ export const CommentList = () => {
     <Container>
       <div className="scroll scroll2">
         <span className="response">
-          {loading && <CircularProgress />}
+          {loading && (
+            <div className="progress">
+              <CircularProgress />
+            </div>
+          )}
           {!!errorMessage.length && errorMessage}
         </span>
         {comment && (
           <InfiniteScroll
             hasMore={false}
-            loader={<CircularProgress />}
+            loader={loading}
             next={() => {}}
             dataLength={comment.length}
           >

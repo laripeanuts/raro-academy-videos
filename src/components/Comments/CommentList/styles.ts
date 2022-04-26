@@ -9,6 +9,13 @@ export const Container = styled("section")`
   justify-content: space-around;
   scroll-padding-bottom: auto;
 
+  .progress {
+    display: flex;
+    height: calc(100vh - 50vh);
+    align-items: center;
+    justify-content: center;
+  }
+
   .scroll {
     scroll-padding-bottom: revert;
     scroll-padding-bottom: auto;

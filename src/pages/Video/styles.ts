@@ -1,6 +1,7 @@
 import { styled } from "@mui/material";
 
 export const Container = styled("section")`
+  margin-top: 20px;
   width: 100%;
   height: 100%;
   color: ${(props) => props.theme.palette.text.primary};
@@ -17,6 +18,13 @@ export const Container = styled("section")`
     flex-direction: row;
     justify-content: center;
     gap: 25px;
+  }
+
+  .progress {
+    display: flex;
+    height: calc(100vh - 50vh);
+    align-items: center;
+    justify-content: center;
   }
 
   @media only screen and (max-width: 650px) {

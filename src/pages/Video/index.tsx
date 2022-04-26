@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { CommentForm } from "../../components/Comments/CommentsForm";
@@ -35,13 +36,21 @@ export const VideoPage = () => {
       </ContainerPlaylist>
       <main className="main">
         <ContainerVideo>
-          <VideoPlayer src={video.thumbUrl} alt={video.nome} />
-          <VideoDescription
-            title={video.nome}
-            description={video.descricao}
-            date={formatDate(video.createdAt)}
-            week={video.duracao}
-          />
+          {loading ? (
+            <div className="progress">
+              <CircularProgress />
+            </div>
+          ) : (
+            <>
+              <VideoPlayer src={video.thumbUrl} alt={video.nome} />
+              <VideoDescription
+                title={video.nome}
+                description={video.descricao}
+                date={formatDate(video.createdAt)}
+                week={video.duracao}
+              />
+            </>
+          )}
         </ContainerVideo>
         <ContainerComments>
           <CommentForm />
