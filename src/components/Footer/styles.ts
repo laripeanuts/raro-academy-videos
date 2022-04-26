@@ -9,9 +9,10 @@ export const FooterContainer = styled("footer")`
   bottom: 0;
   min-width: 100%;
   min-height: 80px;
-  position: fixed;
   padding: 20px;
   z-index: 10;
+  position: absolute;
+  bottom: 0;
 
   box-shadow: inset 1px 1px rgba(255, 255, 255, 0.3),
     3px 3px 10px rgba(0, 0, 0, 0.3);
