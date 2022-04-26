@@ -1,36 +1,74 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { useFetch } from "../../hooks/useFetch";
+import Typography from "@mui/material/Typography";
+import { CircularProgress } from "@mui/material";
+import { AllVideosList, AllVideosTitle, Container } from "./styles";
 import { useAuth } from "../../hooks/useAuth";
-
+import { useFetch } from "../../hooks/useFetch";
+import { useVideos } from "../../hooks/useVideos";
+import { FavoriteIcon } from "../../components/FavoriteIcon";
+import { Thumbnail } from "../../components/Thumbnail";
+import apiClient from "../../services/api-client";
 import { VideoType } from "../../types/VideoType";
-import { Container } from "./styles";
-import Link from "../../components/Link";
 
-export const VideosPage = () => null;
+export const VideosPage = () => {
+  const { allVideos, setAllVideos, setFavorites } = useVideos();
+  const { isAuthenticated } = useAuth();
+  const { execute, errorMessage, loading } = useFetch(async () => {
+    if (isAuthenticated) {
+      const [favoritesResponse, allVideosResponse] = await Promise.all([
+        apiClient.get<VideoType[]>("/videos/favoritos"),
+        apiClient.get<VideoType[]>("/videos"),
+      ]);
+      setAllVideos(allVideosResponse.data);
+    } else {
+      const { data } = await apiClient.get<VideoType[]>("/videos");
 
-// export const VideosPage = () => {
-//   const { isAuthenticated, logout } = useAuth();
-//   const navigate = useNavigate();
-//   const { data, hasError, isLoading } = useFetch<VideoType[]>("/videos");
+      setAllVideos(data);
+    }
+  });
 
-//   useEffect(() => {}, [isAuthenticated, navigate, logout]);
+  useEffect(() => {
+    execute();
+  }, [isAuthenticated]);
 
-//   return (
-//     <Container className="notfound">
-//       <h1>Videos Page</h1>
-//       {isLoading && <p>Loading...</p>}
-//       {hasError && <p>erro...</p>}
-//       <ul>
-//         {data?.map((video: VideoType) => (
-//           <li key={video.id}>
-//             <h2>{video.nome}</h2>
-//             <Link className="linksVideos" href={`/videos/${video.id}`}>
-//               Veja video
-//             </Link>
-//           </li>
-//         ))}
-//       </ul>
-//     </Container>
-//   );
-// };
+  const renderAllVideos = () => (
+    <AllVideosList>
+      {allVideos.map((video) => (
+        <Thumbnail
+          id={video.id}
+          name={video.nome}
+          tumbnail={video.thumbUrl}
+          publishedAt={new Date(video.dataPublicacao).toLocaleDateString(
+            "pt-br",
+          )}
+          key={video.id}
+        >
+          <FavoriteIcon title="Favoritar" />
+        </Thumbnail>
+      ))}
+    </AllVideosList>
+  );
+
+  const renderPageContent = () => {
+    if (loading) {
+      return <CircularProgress aria-label="Carregando conteúdo" size={60} />;
+    }
+
+    if (errorMessage.length) {
+      <Typography variant="h5">{errorMessage}</Typography>;
+    }
+
+    return (
+      <>
+        <AllVideosTitle variant="h4">Todos os vídeos</AllVideosTitle>
+        {renderAllVideos()}
+      </>
+    );
+  };
+
+  return (
+    <Container display={loading || !!errorMessage.length ? "flex" : "grid"}>
+      {renderPageContent()}
+    </Container>
+  );
+};

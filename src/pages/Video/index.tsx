@@ -1,7 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { CommentForm } from "../../components/Comments/CommentsForm";
+import VideoDescription from "../../components/VideoDescription";
+import { VideoPlayer } from "../../components/VideoPlayer";
 import { useFetch } from "../../hooks/useFetch";
+import apiClient from "../../services/api-client";
 import { VideoType } from "../../types/VideoType";
+import { formatDate } from "../../utils/formatDate";
 import {
   Container,
   ContainerComments,
@@ -9,32 +14,39 @@ import {
   ContainerVideo,
 } from "./styles";
 
-export const VideoPage = () => null;
+export const VideoPage = () => {
+  const { id } = useParams();
+  const [video, setVideo] = useState({} as VideoType);
+  const { execute, loading, errorMessage } = useFetch(async () => {
+    const { data } = await apiClient.get<VideoType>(`/videos/${id}`);
+    const response = { ...data };
+    setVideo(response);
+    console.log("response", video);
+  });
 
-// export const VideoPage = () => {
-//   const { data, hasError, isLoading } = useFetch<VideoType>(
-//     "/videos/25526467-e9d7-40cb-bc60-76bb85419915",
-//   );
-//   const video = { ...data };
+  useEffect(() => {
+    execute();
+  }, []);
 
-//   useEffect(() => {
-//     console.log("vide", video);
-//     console.log(data);
-//   }, [isLoading, hasError, data]);
-
-//   return (
-//     <Container className="videoPage">
-//       <ContainerPlaylist>
-//         <h1>Playlist</h1>
-//       </ContainerPlaylist>
-//       <main className="main">
-//         <ContainerVideo>
-//           <h1>{video.nome}</h1>
-//         </ContainerVideo>
-//         <ContainerComments>
-//           <CommentForm />
-//         </ContainerComments>
-//       </main>
-//     </Container>
-//   );
-// };
+  return (
+    <Container className="videoPage">
+      <ContainerPlaylist>
+        <h1>Playlist</h1>
+      </ContainerPlaylist>
+      <main className="main">
+        <ContainerVideo>
+          <VideoPlayer src={video.thumbUrl} alt={video.nome} />
+          <VideoDescription
+            title={video.nome}
+            description={video.descricao}
+            date={formatDate(video.createdAt)}
+            week={video.duracao}
+          />
+        </ContainerVideo>
+        <ContainerComments>
+          <CommentForm />
+        </ContainerComments>
+      </main>
+    </Container>
+  );
+};

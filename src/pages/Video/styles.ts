@@ -51,10 +51,9 @@ export const ContainerPlaylist = styled("div")`
 `;
 
 export const ContainerVideo = styled("div")`
-  width: 65%;
+  width: 60%;
   height: 100%;
   color: ${(props) => props.theme.palette.text.primary};
-  background: blue;
 
   @media only screen and (max-width: 650px) {
     width: 100%;
@@ -63,7 +62,7 @@ export const ContainerVideo = styled("div")`
 `;
 
 export const ContainerComments = styled("div")`
-  width: 35%;
+  width: 40%;
   height: 100%;
 
   @media only screen and (max-width: 650px) {

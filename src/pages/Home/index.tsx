@@ -40,7 +40,7 @@ export const Home = () => {
   });
 
   const renderGreetings = () => (isAuthenticated ? (
-    <Greetings variant="h4">{`Olá, ${user.nome}!`}</Greetings>
+    <Greetings variant="h6">{`Olá, ${user.nome}! Banner aqui`}</Greetings>
   ) : null);
 
   const renderFavorites = () => (

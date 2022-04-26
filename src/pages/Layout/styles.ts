@@ -8,9 +8,9 @@ export const Background = styled("div")`
 export const MainContainer = styled("main")`
   min-height: 100vh;
   min-width: 100%;
-  padding: 90px 30px;
+  padding: 0 30px;
 
   @media only screen and (max-width: 650px) {
-    padding: 90px 10px;
+    padding: 10px;
   }
 `;
