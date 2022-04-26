@@ -11,7 +11,6 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { IconButton } from "@mui/material";
 import { Featured } from "../../Featured";
 
-import { CommentItem } from "../CommentItem";
 import { FormInput } from "../../FormInput";
 
 import { useAuth } from "../../../hooks/useAuth";

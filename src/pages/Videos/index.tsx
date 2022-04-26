@@ -12,8 +12,6 @@ export const VideosPage = () => {
   const navigate = useNavigate();
   const { data, hasError, isLoading } = useFetch<VideoType[]>("/videos");
 
-  useEffect(() => {}, [isAuthenticated, navigate, logout]);
-
   return (
     <Container className="notfound">
       <h1>Videos Page</h1>
