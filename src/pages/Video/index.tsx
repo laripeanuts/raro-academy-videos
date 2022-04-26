@@ -15,11 +15,6 @@ export const VideoPage = () => {
   );
   const video = { ...data };
 
-  useEffect(() => {
-    console.log("vide", video);
-    console.log(data);
-  }, [isLoading, hasError, data]);
-
   return (
     <Container className="videoPage">
       <ContainerPlaylist>
