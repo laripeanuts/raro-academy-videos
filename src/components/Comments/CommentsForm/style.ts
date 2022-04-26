@@ -11,6 +11,12 @@ export const Container = styled("aside")`
 
   color: ${(props) => props.theme.palette.text.primary};
 
+  @media only screen and (max-width: 650px) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
   .menuFilter {
     position: absolute;
     top: 0;
@@ -40,11 +46,6 @@ export const Container = styled("aside")`
       align-items: center;
       max-height: 40px;
       margin-top: 25px;
-    }
-
-    @media only screen and (max-width: 650px) {
-      display: flex;
-      flex-direction: column;
     }
   }
 `;

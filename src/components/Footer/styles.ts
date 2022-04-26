@@ -30,4 +30,9 @@ export const FooterContainer = styled("footer")`
       filter: opacity(0.5);
     }
   }
+
+  @media only screen and (max-width: 650px) {
+    position: absolute;
+    bottom: 0;
+  }
 `;
