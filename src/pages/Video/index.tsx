@@ -46,8 +46,9 @@ export const VideoPage = () => {
               <VideoDescription
                 title={video.nome}
                 description={video.descricao}
-                date={formatDate(video.createdAt)}
+                date={formatDate(video.dataPublicacao)}
                 week={video.duracao}
+                isFavorite={false}
               />
             </>
           )}

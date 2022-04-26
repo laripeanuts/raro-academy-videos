@@ -2,6 +2,7 @@ import { IconButton } from "@mui/material";
 import { ReactNode } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FeedIcon from "@mui/icons-material/Feed";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { StyledColumn, StyledRow } from "./styles";
 
 export type VideoDescriptionProps = {
@@ -10,6 +11,7 @@ export type VideoDescriptionProps = {
   description: string;
   date: string;
   week: string;
+  isFavorite: boolean;
   onClickFavorite?: () => void;
   onClickFeed?: () => void;
 };
@@ -20,6 +22,7 @@ const VideoDescription = ({
   description,
   date,
   week,
+  isFavorite,
   onClickFavorite,
   onClickFeed,
 }: VideoDescriptionProps) => (
@@ -29,15 +32,19 @@ const VideoDescription = ({
       <div>
         <IconButton
           color="primary"
-          onClick={onClickFavorite}
+          onClick={onClickFeed}
         >
           <FeedIcon />
         </IconButton>
         <IconButton
           color="primary"
-          onClick={onClickFeed}
+          onClick={((onClickFavorite))}
         >
-          <FavoriteIcon />
+          {isFavorite ? (
+            <FavoriteIcon />
+          ) : (
+            <FavoriteBorderOutlinedIcon />
+          )}
         </IconButton>
       </div>
     </StyledRow>
