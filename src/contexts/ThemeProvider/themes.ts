@@ -72,7 +72,7 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
     body2: {
       fontSize: "0.813rem",
       lineHeight: 1.5,
-      color: mode === "dark" ? white : grey,
+      color: mode === "dark" ? "#D8D8D8" : grey,
     },
   },
   components: {
