@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -10,10 +11,11 @@ import apiClient from "../../../services/api-client";
 
 export const CommentList = () => {
   const { isAuthenticated, logout } = useAuth();
+  const { id } = useParams();
   const [comment, setComment] = useState<CommentType[]>([]);
   const { execute, loading, errorMessage } = useFetch(async () => {
     const { data } = await apiClient.get<CommentType[]>(
-      "/videos/25526467-e9d7-40cb-bc60-76bb85419915/comentarios",
+      `/videos/${id}/comentarios`,
     );
 
     setComment(data);
