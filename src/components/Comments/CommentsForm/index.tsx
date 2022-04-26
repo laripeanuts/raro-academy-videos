@@ -77,26 +77,28 @@ export const CommentForm = () => {
           </IconButton>
         </div>
         <CommentList />
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="makeComment">
-            <FormInput
-              type="text"
-              name="comentarios"
-              placeholder="Deixe seu comentário"
-              control={control}
-              aria-invalid={errors.comentarios ? "true" : "false"}
-            />
-            <LoadingButton
-              className="button"
-              type="submit"
-              endIcon={<SendIcon />}
-              loading={loading}
-              loadingPosition="end"
-              variant="contained"
-              size="large"
-            />
-          </div>
-        </form>
+        {isAuthenticated && (
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="makeComment">
+              <FormInput
+                type="text"
+                name="comentarios"
+                placeholder="Deixe seu comentário"
+                control={control}
+                aria-invalid={errors.comentarios ? "true" : "false"}
+              />
+              <LoadingButton
+                className="button"
+                type="submit"
+                endIcon={<SendIcon />}
+                loading={loading}
+                loadingPosition="end"
+                variant="contained"
+                size="large"
+              />
+            </div>
+          </form>
+        )}
       </Container>
     </Featured>
   );
