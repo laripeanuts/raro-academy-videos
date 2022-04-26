@@ -16,12 +16,13 @@ export const Container = styled("section")`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 25px;
   }
 
   @media only screen and (max-width: 650px) {
     width: 100%;
     height: 100%;
-    padding: 90px 0;
+    padding: 90px 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -64,8 +65,6 @@ export const ContainerVideo = styled("div")`
 export const ContainerComments = styled("div")`
   width: 35%;
   height: 100%;
-  color: ${(props) => props.theme.palette.text.primary};
-  background: pink;
 
   @media only screen and (max-width: 650px) {
     width: 100%;

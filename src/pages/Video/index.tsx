@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { CommentForm } from "../../components/Comments/CommentsForm";
 import { useFetch } from "../../hooks/useFetch";
 import { VideoType } from "../../types/VideoType";
 import {
@@ -31,7 +32,7 @@ export const VideoPage = () => null;
 //           <h1>{video.nome}</h1>
 //         </ContainerVideo>
 //         <ContainerComments>
-//           <h1>Comentário</h1>
+//           <CommentForm />
 //         </ContainerComments>
 //       </main>
 //     </Container>

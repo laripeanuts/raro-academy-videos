@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { RequireAuth } from "../components/RequireAuth";
 import { FavoritesPage } from "../pages/Favorites";
 import { Home } from "../pages/Home";
