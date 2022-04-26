@@ -1,30 +1,105 @@
-import { Container } from "./styles";
+import { useEffect } from "react";
+import Typography from "@mui/material/Typography";
+import { CircularProgress } from "@mui/material";
+import {
+  AllFavoritesLink,
+  AllVideosList,
+  AllVideosTitle,
+  Container,
+  Greetings,
+} from "./styles";
 import { useAuth } from "../../hooks/useAuth";
-import VideoDescription from "../../components/VideoDescription";
+import { useFetch } from "../../hooks/useFetch";
+import { useVideos } from "../../hooks/useVideos";
+import { FavoriteIcon } from "../../components/FavoriteIcon";
+import { Thumbnail } from "../../components/Thumbnail";
+import apiClient from "../../services/api-client";
+import { VideoType } from "../../types/VideoType";
+import { FavoritesCarousel } from "../../components/FavoritesCarousel";
 
+/* prettier-ignore */
 export const Home = () => {
+  const {
+    favorites, allVideos, setAllVideos, setFavorites,
+  } = useVideos();
   const { isAuthenticated, user } = useAuth();
+  const { execute, errorMessage, loading } = useFetch(async () => {
+    if (isAuthenticated) {
+      const [favoritesResponse, allVideosResponse] = await Promise.all([
+        apiClient.get<VideoType[]>("/videos/favoritos"),
+        apiClient.get<VideoType[]>("/videos"),
+      ]);
 
-  const loggedHome = (
-    <h1>
-      Olá mundo,
-      {user.nome}
-    </h1>
+      setAllVideos(allVideosResponse.data);
+      setFavorites(favoritesResponse.data);
+    } else {
+      const { data } = await apiClient.get<VideoType[]>("/videos");
+
+      setAllVideos(data);
+    }
+  });
+
+  const renderGreetings = () => (isAuthenticated ? (
+    <Greetings variant="h4">{`Olá, ${user.nome}!`}</Greetings>
+  ) : null);
+
+  const renderFavorites = () => (
+    isAuthenticated && favorites.length
+      ? (
+        <>
+          <AllFavoritesLink to="/favoritos">
+            <Typography variant="body2">Todos os favoritos</Typography>
+          </AllFavoritesLink>
+          <FavoritesCarousel />
+        </>
+      )
+      : null
   );
 
+  useEffect(() => {
+    execute();
+  }, [isAuthenticated]);
+
+  const renderAllVideos = () => (
+    <AllVideosList>
+      {allVideos.map((video) => (
+        <Thumbnail
+          id={video.id}
+          name={video.nome}
+          tumbnail={video.thumbUrl}
+          publishedAt={new Date(video.dataPublicacao).toLocaleDateString(
+            "pt-br",
+          )}
+          key={video.id}
+        >
+          <FavoriteIcon title="Favoritar" />
+        </Thumbnail>
+      ))}
+    </AllVideosList>
+  );
+
+  const renderPageContent = () => {
+    if (loading) {
+      return <CircularProgress aria-label="Carregando conteúdo" size={60} />;
+    }
+
+    if (errorMessage.length) {
+      <Typography variant="h5">{errorMessage}</Typography>;
+    }
+
+    return (
+      <>
+        {renderGreetings()}
+        {renderFavorites()}
+        <AllVideosTitle variant="h4">Todos os vídeos</AllVideosTitle>
+        {renderAllVideos()}
+      </>
+    );
+  };
+
   return (
-    <Container className="Home">
-      <h2>Home</h2>
-      <VideoDescription
-        title="Growl at dogs in my sleep"
-        description={"Where is it? i saw that bird i need to bring it home to mommy squirrel! "
-        + "i love cats i am one wake up scratch humans leg for food then purr then "
-        + "i have a and relax, soft kitty warm kitty little ball of furr cough hairball, "
-        + "eat toilet paper so chew iPad power cord sit in a box for hours."}
-        week="semana01"
-        date="09/04/2022"
-      />
-      {isAuthenticated && loggedHome}
+    <Container display={loading || !!errorMessage.length ? "flex" : "grid"}>
+      {renderPageContent()}
     </Container>
   );
 };

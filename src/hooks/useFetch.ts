@@ -1,37 +1,32 @@
+import { useState } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
 
-export function useFetch<T = unknown>(url: string) {
-  const [data, setData] = useState<T | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
+export function useFetch(requestsWrapper: () => Promise<void>) {
+  const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-      try {
-        const response = await apiClient.get(url);
-        setData(response.data);
-      } catch (error: any) {
-        setHasError(true);
-        if (error.response.data.statusCode === 404) {
-          setErrorMessage("Não encontrado");
-        } else {
-          setErrorMessage("Algo deu ruim...");
-        }
-      }
-      setIsLoading(false);
-    };
+  const execute = async () => {
+    try {
+      setErrorMessage("");
+      setLoading(true);
 
-    fetchData();
-  }, [url]);
+      await requestsWrapper();
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.status === 401) {
+        setErrorMessage("Faça login para realizar esta operação");
+      } else {
+        setErrorMessage(
+          "Um erro inesperado ocorreu, entre em contato com o suporte ou tente novamente",
+        );
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return {
-    data,
-    hasError,
+    execute,
+    loading,
     errorMessage,
-    isLoading,
   };
 }
