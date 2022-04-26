@@ -1,7 +1,3 @@
-import { ReactNode } from "react";
-import { DefaultTheme } from "styled-components";
-import { VoteType } from "./Types";
-
 export type userType = {
   email: string;
   senha: string;
@@ -10,5 +6,4 @@ export type userType = {
   id: string;
   foto: string;
   admin?: boolean;
-  votes?: VoteType[];
 };

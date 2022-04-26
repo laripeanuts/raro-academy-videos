@@ -1,4 +1,4 @@
-import { CommentType, TagType } from "./Types";
+import { TagType } from "./TagType";
 
 export type VideoType = {
   id: string;
