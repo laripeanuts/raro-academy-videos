@@ -47,6 +47,16 @@ export const Container = styled("header")`
     flex-wrap: wrap;
     gap: 20px;
     place-content: center;
+
+    @media only screen and (max-width: 650px) {
+      width: 70%;
+      margin-left: 10px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      place-content: end;
+      gap: 10px;
+    }
   }
 
   .menuUser {
@@ -56,6 +66,10 @@ export const Container = styled("header")`
     place-content: center;
     flex-wrap: wrap;
     gap: 1.5em;
+
+    @media only screen and (max-width: 650px) {
+      flex-wrap: wrap;
+    }
   }
 `;
 
@@ -65,6 +79,14 @@ export const ContainerLogos = styled("div")`
   flex-wrap: wrap;
   place-content: center;
   gap: 15px;
+
+  @media only screen and (max-width: 600px) {
+    width: 30%;
+    display: flex;
+    gap: 5px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `;
 
 export const ContainerLogo = styled("div")`
@@ -73,4 +95,8 @@ export const ContainerLogo = styled("div")`
   place-content: center;
   stroke-width: 15px;
   stroke: ${(props) => props.theme.palette.primary.contrastText};
+  @media only screen and (max-width: 650px) {
+    width: 60%;
+    flex-wrap: wrap;
+  }
 `;

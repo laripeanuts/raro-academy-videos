@@ -16,7 +16,11 @@ export function useFetch<T = unknown>(url: string) {
         setData(response.data);
       } catch (error: any) {
         setHasError(true);
-        setErrorMessage(error.message);
+        if (error.response.data.statusCode === 404) {
+          setErrorMessage("Não encontrado");
+        } else {
+          setErrorMessage("Algo deu ruim...");
+        }
       }
       setIsLoading(false);
     };
