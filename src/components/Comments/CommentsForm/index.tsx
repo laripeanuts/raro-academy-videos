@@ -65,7 +65,7 @@ export const CommentForm = () => {
   };
 
   return (
-    <Featured padding={10}>
+    <Featured sx={{ padding: "10px" }}>
       <Container>
         <div className="menuFilter">
           <Link href="/" className="menuItem">

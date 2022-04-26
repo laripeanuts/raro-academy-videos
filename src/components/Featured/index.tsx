@@ -4,24 +4,20 @@ import { Container } from "./styles";
 
 type FeaturedProps = WithChildren<{
   sx?: SxProps<Theme>;
-  padding?: number;
 }>;
 
-export const Featured = ({ children, sx = [], padding }: FeaturedProps) => {
-  padding = padding || 10;
-  return (
-    <Container
-      sx={[
-        {
-          padding: `${padding}px`,
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "30px",
-        },
-        ...(Array.isArray(sx) ? sx : [sx]),
-      ]}
-    >
-      {children}
-    </Container>
-  );
-};
+export const Featured = ({ children, sx = [] }: FeaturedProps) => (
+  <Container
+    sx={[
+      {
+        padding: "30px",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "30px",
+      },
+      ...(Array.isArray(sx) ? sx : [sx]),
+    ]}
+  >
+    {children}
+  </Container>
+);
