@@ -1,22 +1,19 @@
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 
 export const TumbnailContainer = styled("div")`
-  padding: 0;
-  margin: 0;
-  margin-left: 10px;
-  width: 229.2px;
-  height: 150px;
-  border-radius: 10px;
+  width: 240px;
+  height: 135px;
   position: relative;
+  cursor: pointer;
 `;
 
 export const TumbnailImage = styled("img")`
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  cursor: pointer;
 `;
 
+/* prettier-ignore */
 export const InfoTumblr = styled("div")`
   display: flex;
   align-items: center;
@@ -27,15 +24,17 @@ export const InfoTumblr = styled("div")`
   height: fit-content;
   position: absolute;
   bottom: 0;
-  z-index: 20;
+  z-index: 1;
   backdrop-filter: blur(20px);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: ${({ theme }) => (theme.palette.mode === "dark"
+    ? "rgba(0, 0, 0, 0.55)"
+    : "rgba(255, 255, 255, 0.1)")};
   border-radius: 10px;
 `;
 
 export const TextTumblr = styled("div")`
   display: flex;
-  align-items: flex-start;
   flex-direction: column;
-  gap: 3px;
+  white-space: nowrap;
+  width: calc(100% - 46px);
 `;
