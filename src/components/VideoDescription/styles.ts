@@ -2,7 +2,7 @@ import { Button, styled } from "@mui/material";
 import { rgba } from "polished";
 
 export type StyledRowProps = {
-    alignContent: string,
+  aligncontent: string;
 };
 
 export const StyledColumn = styled("div")(({ theme }) => ({
@@ -10,8 +10,10 @@ export const StyledColumn = styled("div")(({ theme }) => ({
   flexDirection: "column",
 }));
 
-export const StyledRow = styled("div")<StyledRowProps>(({ theme, alignContent }) => ({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: alignContent,
-}));
+export const StyledRow = styled("div")<StyledRowProps>(
+  ({ theme, aligncontent }) => ({
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: aligncontent,
+  }),
+);

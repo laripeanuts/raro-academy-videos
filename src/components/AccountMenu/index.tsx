@@ -3,8 +3,8 @@ import * as React from "react";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Fade from "@mui/material/Fade";
-import { Avatar, IconButton } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Avatar, IconButton, Typography } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { ContainerMenu, ContainerUserMenu } from "./styles";
 import { ThemeSwitch } from "../ThemeSwitch";
@@ -12,7 +12,9 @@ import { ThemeSwitch } from "../ThemeSwitch";
 export const AccountMenu = () => {
   const { user, logout } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const navigate = useNavigate();
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -56,18 +58,18 @@ export const AccountMenu = () => {
         TransitionComponent={Fade}
       >
         <ContainerMenu>
-          <Link to="/">
-            <MenuItem onClick={handleClose}>{`Olá, ${user.nome}`}</MenuItem>
-          </Link>
+          <MenuItem>{`Olá, ${user.nome}`}</MenuItem>
           <Link to="/videos">
             <MenuItem onClick={handleClose}>Todos os vídeos</MenuItem>
           </Link>
           <Link to="/videos/favoritos">
-            <MenuItem onClick={handleClose}>Vídeos favoritos</MenuItem>
+            <MenuItem color="primary" onClick={handleClose}>
+              Vídeos favoritos
+            </MenuItem>
           </Link>
           <MenuItem onClick={logout}>Logout</MenuItem>
           <span className="theme">
-            Tema
+            <Typography variant="h6">Tema</Typography>
             <ThemeSwitch />
           </span>
         </ContainerMenu>

@@ -24,37 +24,23 @@ const VideoDescription = ({
   onClickFeed,
 }: VideoDescriptionProps) => (
   <StyledColumn>
-    <StyledRow alignContent="space-between">
+    <StyledRow aligncontent="space-between">
       <h3>{title}</h3>
       <div>
-        <IconButton
-          color="primary"
-          onClick={onClickFavorite}
-        >
+        <IconButton color="primary" onClick={onClickFavorite}>
           <FeedIcon />
         </IconButton>
-        <IconButton
-          color="primary"
-          onClick={onClickFeed}
-        >
+        <IconButton color="primary" onClick={onClickFeed}>
           <FavoriteIcon />
         </IconButton>
       </div>
     </StyledRow>
-    <div style={{ textAlign: "justify" }}>
-      {description}
-    </div>
-    <StyledRow alignContent="flex-start">
-      { children }
-    </StyledRow>
+    <div style={{ textAlign: "justify" }}>{description}</div>
+    <StyledRow aligncontent="flex-start">{children}</StyledRow>
 
-    <StyledRow alignContent="flex-end">
-      <div style={{ marginRight: 24 }}>
-        {week}
-      </div>
-      <div>
-        {date}
-      </div>
+    <StyledRow aligncontent="flex-end">
+      <div style={{ marginRight: 24 }}>{week}</div>
+      <div>{date}</div>
     </StyledRow>
   </StyledColumn>
 );

@@ -6,6 +6,7 @@ import GlobalStyles from "../../styles/global";
 import { ThemeProvider } from "../../contexts/ThemeProvider";
 import { useTheme } from "../../hooks/useTheme";
 import { AppBackground } from "./styles";
+import { CommentsProvider } from "../../contexts/CommentsProvider";
 
 const App = () => {
   const theme = useTheme();
