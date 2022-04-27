@@ -7,6 +7,7 @@ const black: string = "#0d0d0d";
 const pink: string = "#F5487F";
 const blue: string = "#343090";
 const red: string = "#FF1010";
+const yellow: string = "#FAC736";
 
 const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
   palette: {
@@ -27,6 +28,10 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
       main: red,
       contrastText: white,
     },
+    warning: {
+      main: yellow,
+      contrastText: white,
+    },
     background: {
       default: mode === "dark" ? black : white,
       paper: mode === "dark" ? "#1c1c1c" : "#d9d9d9",
@@ -38,7 +43,7 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
   typography: {
     allVariants: {
       fontFamily: "'Plus Jakarta Sans', 'Open Sans', 'Helvetica', sans-serif",
-      color: white,
+      color: mode === "dark" ? white : black,
     },
     h1: {
       fontSize: "3.5rem",
@@ -47,6 +52,7 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
     h2: {
       fontSize: "2.625rem",
       fontWeight: "SemiBold",
+      color: mode === "dark" ? white : black,
     },
     h3: {
       fontSize: "2.125rem",
@@ -61,18 +67,33 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
     h5: {
       fontSize: "1.313rem",
       fontWeight: "Bold",
+      color: mode === "dark" ? white : black,
     },
     h6: {
       fontSize: "1rem",
       fontWeight: "Bold",
+      color: mode === "dark" ? white : black,
+    },
+    subtitle1: {
+      fontSize: ".75rem",
+      fontWeight: 300,
+      color: mode === "dark" ? white : black,
+    },
+    subtitle2: {
+      fontSize: ".8rem",
+      fontWeight: 800,
+      color: mode === "dark" ? white : black,
     },
     body1: {
-      color: mode === "dark" ? white : black,
+      fontSize: "0.813rem",
+      color: white,
+      textShadow: "0.5px 0.5px 1px #000000a3",
     },
     body2: {
       fontSize: "0.813rem",
       lineHeight: 1.5,
-      color: mode === "dark" ? "#D8D8D8" : grey,
+      color: "#9e9e9e",
+      textShadow: "0.5px 0.5px 1px #212121",
     },
   },
   components: {

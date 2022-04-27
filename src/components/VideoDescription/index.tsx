@@ -11,7 +11,7 @@ export type VideoDescriptionProps = {
   description: string;
   date: string;
   week: string;
-  isFavorite: boolean;
+  isFavorite?: boolean;
   onClickFavorite?: () => void;
   onClickFeed?: () => void;
 };
@@ -28,41 +28,23 @@ const VideoDescription = ({
 }: VideoDescriptionProps) => (
   <Container>
     <StyledColumn>
-      <StyledRow alignContent="space-between">
+      <StyledRow aligncontent="space-between">
         <h3>{title}</h3>
         <div>
-          <IconButton
-            color="primary"
-            onClick={onClickFeed}
-          >
+          <IconButton color="primary" onClick={onClickFeed}>
             <FeedIcon />
           </IconButton>
-          <IconButton
-            color="primary"
-            onClick={((onClickFavorite))}
-          >
-            {isFavorite ? (
-              <FavoriteIcon />
-            ) : (
-              <FavoriteBorderOutlinedIcon />
-            )}
+          <IconButton color="primary" onClick={onClickFavorite}>
+            {isFavorite ? <FavoriteIcon /> : <FavoriteBorderOutlinedIcon />}
           </IconButton>
         </div>
       </StyledRow>
-      <div style={{ textAlign: "justify" }}>
-        {description}
-      </div>
-      <StyledRow alignContent="flex-start">
-        { children }
-      </StyledRow>
+      <div style={{ textAlign: "justify" }}>{description}</div>
+      <StyledRow aligncontent="flex-start">{children}</StyledRow>
 
-      <StyledRow alignContent="flex-end">
-        <div style={{ marginRight: 24 }}>
-          {week}
-        </div>
-        <div>
-          {date}
-        </div>
+      <StyledRow aligncontent="flex-end">
+        <div style={{ marginRight: 24 }}>{week}</div>
+        <div>{date}</div>
       </StyledRow>
     </StyledColumn>
   </Container>
