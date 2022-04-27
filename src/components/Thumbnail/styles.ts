@@ -2,9 +2,11 @@ import { styled } from "@mui/material/styles";
 
 export const TumbnailContainer = styled("div")`
   width: 240px;
+  min-width: 240px;
   height: 135px;
   position: relative;
   cursor: pointer;
+  display:
 `;
 
 export const TumbnailImage = styled("img")`

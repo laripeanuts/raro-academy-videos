@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useVideos } from "../../hooks/useVideos";
 import { CarrouselButton } from "../CarrouselButton";
-import { FavoriteIcon } from "../FavoriteIcon";
+import { FavoriteButton } from "../FavoriteButton";
 import { Featured } from "../Featured";
 import { Thumbnail } from "../Thumbnail";
 import { Carousel } from "./styles";
@@ -65,7 +65,7 @@ export const FavoritesCarousel = () => {
             )}
             key={video.id}
           >
-            <FavoriteIcon title="Desfavoritar" filled />
+            <FavoriteButton id={video.id} title="Desfavoritar" filled />
           </Thumbnail>
         ))}
       </Carousel>
