@@ -32,6 +32,7 @@ export const ContainerNav = styled("nav")`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 
   @media only screen and (max-width: 600px) {
     display: flex;
