@@ -1,9 +1,8 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import apiClient from "../../services/api-client";
 import { FormInput } from "../FormInput";
 import { FormStyle } from "../../styles/FormStyle";
@@ -15,6 +14,7 @@ type LoginFormType = {
   email: string;
   senha: string;
   confirmarSenha: string;
+  codigoAcesso: string;
 };
 
 const formRegisterSchema = yup
@@ -32,6 +32,7 @@ const formRegisterSchema = yup
       .string()
       .required("Confirmar senha é obrigatório")
       .oneOf([yup.ref("senha")], "As senhas não conferem"),
+    codigoAcesso: yup.string().required("Código é obrigatória"),
   })
   .required();
 
@@ -68,6 +69,7 @@ export const Register = () => {
     resetField("email");
     resetField("senha");
     resetField("confirmarSenha");
+    resetField("codigoAcesso");
     setLoading(false);
   };
 
@@ -103,6 +105,13 @@ export const Register = () => {
             placeholder="Confirmar senha"
             control={control}
             aria-invalid={errors.confirmarSenha ? "true" : "false"}
+          />
+          <FormInput
+            type="text"
+            name="codigoAcesso"
+            placeholder="Digite o código de cesso da sua turma"
+            control={control}
+            aria-invalid={errors.codigoAcesso ? "true" : "false"}
           />
 
           <div className="messages">
