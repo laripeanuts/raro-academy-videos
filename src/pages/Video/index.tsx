@@ -1,6 +1,7 @@
 import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ChipList from "../../components/ChipList";
 import { CommentForm } from "../../components/Comments/CommentsForm";
 import VideoDescription from "../../components/VideoDescription";
 import { VideoPlayer } from "../../components/VideoPlayer";
