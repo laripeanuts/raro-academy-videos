@@ -5,6 +5,10 @@ export type StyledRowProps = {
     alignContent: string,
 };
 
+export const Container = styled("div")(({ theme }) => ({
+  padding: "16px 0 16px 0",
+}));
+
 export const StyledColumn = styled("div")(({ theme }) => ({
   display: "flex",
   flexDirection: "column",

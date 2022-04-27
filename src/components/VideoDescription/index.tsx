@@ -3,7 +3,7 @@ import { ReactNode } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FeedIcon from "@mui/icons-material/Feed";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { StyledColumn, StyledRow } from "./styles";
+import { Container, StyledColumn, StyledRow } from "./styles";
 
 export type VideoDescriptionProps = {
   children?: ReactNode;
@@ -26,44 +26,46 @@ const VideoDescription = ({
   onClickFavorite,
   onClickFeed,
 }: VideoDescriptionProps) => (
-  <StyledColumn>
-    <StyledRow alignContent="space-between">
-      <h3>{title}</h3>
-      <div>
-        <IconButton
-          color="primary"
-          onClick={onClickFeed}
-        >
-          <FeedIcon />
-        </IconButton>
-        <IconButton
-          color="primary"
-          onClick={((onClickFavorite))}
-        >
-          {isFavorite ? (
-            <FavoriteIcon />
-          ) : (
-            <FavoriteBorderOutlinedIcon />
-          )}
-        </IconButton>
+  <Container>
+    <StyledColumn>
+      <StyledRow alignContent="space-between">
+        <h3>{title}</h3>
+        <div>
+          <IconButton
+            color="primary"
+            onClick={onClickFeed}
+          >
+            <FeedIcon />
+          </IconButton>
+          <IconButton
+            color="primary"
+            onClick={((onClickFavorite))}
+          >
+            {isFavorite ? (
+              <FavoriteIcon />
+            ) : (
+              <FavoriteBorderOutlinedIcon />
+            )}
+          </IconButton>
+        </div>
+      </StyledRow>
+      <div style={{ textAlign: "justify" }}>
+        {description}
       </div>
-    </StyledRow>
-    <div style={{ textAlign: "justify" }}>
-      {description}
-    </div>
-    <StyledRow alignContent="flex-start">
-      { children }
-    </StyledRow>
+      <StyledRow alignContent="flex-start">
+        { children }
+      </StyledRow>
 
-    <StyledRow alignContent="flex-end">
-      <div style={{ marginRight: 24 }}>
-        {week}
-      </div>
-      <div>
-        {date}
-      </div>
-    </StyledRow>
-  </StyledColumn>
+      <StyledRow alignContent="flex-end">
+        <div style={{ marginRight: 24 }}>
+          {week}
+        </div>
+        <div>
+          {date}
+        </div>
+      </StyledRow>
+    </StyledColumn>
+  </Container>
 );
 
 export default VideoDescription;

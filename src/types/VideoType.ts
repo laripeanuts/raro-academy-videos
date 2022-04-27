@@ -9,6 +9,6 @@ export type VideoType = {
   duracao: string;
   dataPublicacao: Date;
   topico: string;
-  tags: TagType[];
+  tags: string[];
   turma?: string;
 };
