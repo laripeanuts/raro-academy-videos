@@ -1,6 +1,7 @@
 import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ChipList from "../../components/ChipList";
 import { CommentForm } from "../../components/Comments/CommentsForm";
 import VideoDescription from "../../components/VideoDescription";
 import { VideoPlayer } from "../../components/VideoPlayer";
@@ -22,7 +23,6 @@ export const VideoPage = () => {
     const { data } = await apiClient.get<VideoType>(`/videos/${id}`);
     const response = { ...data };
     setVideo(response);
-    console.log("response", video);
   });
 
   useEffect(() => {
@@ -49,7 +49,9 @@ export const VideoPage = () => {
                 date={formatDate(video.dataPublicacao)}
                 week={video.duracao}
                 isFavorite={false}
-              />
+              >
+                <ChipList listTags={video.tags} />
+              </VideoDescription>
             </>
           )}
         </ContainerVideo>
