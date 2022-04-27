@@ -1,10 +1,11 @@
 /* eslint-disable camelcase */
 import { createContext, useEffect, useState } from "react";
-import { AuthProviderType, AuthType } from "./types";
+import { useNavigate } from "react-router-dom";
 import { userType } from "../../types/userType";
 import apiClient from "../../services/api-client";
 import { getLocalUserStorage } from "../../utils/getLocalUserStorage";
 import { setLocalUserStorage } from "../../utils/setLocalUserStorage";
+import { AuthType, ChildrenProviderType } from "./types";
 
 const userNew: userType = {
   email: "",
@@ -24,7 +25,7 @@ export const AuthContext = createContext<AuthType>({
   logout: () => {},
 });
 
-export const AuthProvider = ({ children }: AuthProviderType) => {
+export const AuthProvider = ({ children }: ChildrenProviderType) => {
   const [user, setUser] = useState<userType>(userNew);
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState("");
