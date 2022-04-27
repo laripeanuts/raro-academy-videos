@@ -11,16 +11,16 @@ export const Container = styled("aside")`
 
   color: ${(props) => props.theme.palette.text.primary};
 
-  @media only screen and (max-width: 650px) {
+  @media only screen and (max-width: 750px) {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 65vh;
   }
 
   .menuFilter {
     position: absolute;
     top: 0;
-    right: 5px;
+    right: 25px;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -45,7 +45,6 @@ export const Container = styled("aside")`
     .button {
       align-items: center;
       max-height: 40px;
-      margin-top: 25px;
-    }
+      margin-top: 23px;
   }
 `;

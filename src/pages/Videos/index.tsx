@@ -5,7 +5,7 @@ import { AllVideosList, AllVideosTitle, Container } from "./styles";
 import { useAuth } from "../../hooks/useAuth";
 import { useFetch } from "../../hooks/useFetch";
 import { useVideos } from "../../hooks/useVideos";
-import { FavoriteIcon } from "../../components/FavoriteIcon";
+import { FavoriteButton } from "../../components/FavoriteButton";
 import { Thumbnail } from "../../components/Thumbnail";
 import apiClient from "../../services/api-client";
 import { VideoType } from "../../types/VideoType";
@@ -35,7 +35,7 @@ export const VideosPage = () => {
     <AllVideosList>
       {allVideos.map((video) => (
         <Thumbnail
-          id={video.id}
+          videoId={video.id}
           name={video.nome}
           tumbnail={video.thumbUrl}
           publishedAt={new Date(video.dataPublicacao).toLocaleDateString(
@@ -43,7 +43,7 @@ export const VideosPage = () => {
           )}
           key={video.id}
         >
-          <FavoriteIcon title="Favoritar" />
+          <FavoriteButton id={video.id} title="Favoritar" />
         </Thumbnail>
       ))}
     </AllVideosList>

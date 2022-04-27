@@ -7,8 +7,8 @@ export const Container = styled("header")`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 20px 10px 20px;
-  /* max-height: 80px; */
+  padding: 10px 20px;
+  max-height: 80px;
   background: ${(props) => props.theme.palette.secondary.main};
   color: ${(props) => props.theme.palette.primary.contrastText};
   position: fixed;
@@ -23,10 +23,6 @@ export const Container = styled("header")`
     transition: filter 0.2s;
   }
 
-  .input {
-    margin-bottom: 10px;
-  }
-
   button {
     background: transparent;
     border: none;
@@ -39,23 +35,15 @@ export const Container = styled("header")`
     }
   }
 
-  .menu {
+  .navbar {
     display: flex;
     flex-direction: row;
-    place-content: center;
-    justify-content: end;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
     gap: 20px;
-    place-content: center;
 
-    @media only screen and (max-width: 650px) {
-      width: 70%;
-      margin-left: 10px;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      place-content: end;
-      gap: 10px;
+    @media only screen and (max-width: 600px) {
+      gap: 5px;
     }
   }
 
@@ -63,25 +51,25 @@ export const Container = styled("header")`
     display: flex;
     flex-direction: row;
     align-items: center;
-    place-content: center;
-    flex-wrap: wrap;
-    gap: 1.5em;
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
 
-    @media only screen and (max-width: 650px) {
-      flex-wrap: wrap;
-    }
+  @media only screen and (max-width: 600px) {
+    padding: 5px 10px;
+    gap: 10px;
+    justify-content: space-between;
   }
 `;
 
 export const ContainerLogos = styled("div")`
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   place-content: center;
   gap: 15px;
 
   @media only screen and (max-width: 600px) {
-    width: 30%;
+    width: 80px;
     display: flex;
     gap: 5px;
     flex-direction: row;
@@ -93,10 +81,10 @@ export const ContainerLogo = styled("div")`
   max-width: 85px;
   align-items: center;
   place-content: center;
-  stroke-width: 15px;
   stroke: ${(props) => props.theme.palette.primary.contrastText};
-  @media only screen and (max-width: 650px) {
-    width: 60%;
+
+  @media only screen and (max-width: 600px) {
+    width: 50%;
     flex-wrap: wrap;
   }
 `;

@@ -16,7 +16,7 @@ export function useFetch(requestsWrapper: () => Promise<void>) {
         setErrorMessage("Faça login para realizar esta operação");
       } else {
         setErrorMessage(
-          "Um erro inesperado ocorreu, entre em contato com o suporte ou tente novamente",
+          "Um erro inesperado ocorreu",
         );
       }
     } finally {

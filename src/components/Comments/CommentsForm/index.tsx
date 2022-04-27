@@ -1,40 +1,44 @@
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-
 import LoadingButton from "@mui/lab/LoadingButton/LoadingButton";
 import SendIcon from "@mui/icons-material/Send";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import { IconButton, Typography } from "@mui/material";
 
-import { IconButton } from "@mui/material";
-import { Featured } from "../../Featured";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-import { FormInput } from "../../FormInput";
-
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { useAuth } from "../../../hooks/useAuth";
+import { useComments } from "../../../hooks/useComments";
 import apiClient from "../../../services/api-client";
-import { Container } from "./style";
+
+import { Featured } from "../../Featured";
+import { FormInput } from "../../FormInput";
 import { CommentList } from "../CommentList";
-import Link from "../../Link";
+
+import { Container } from "./style";
 
 type CommentsFormType = {
-  comentarios: string;
+  texto: string;
 };
 
 const CommentsFormSchema = yup
   .object({
-    comentarios: yup.string().required("Digite um comentário"),
+    texto: yup.string().required("Digite um comentário"),
   })
   .required();
 
 export const CommentForm = () => {
-  const { user, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
+  const { updateList, comments, setComments } = useComments();
+
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [dataFilter, setDateFilter] = useState(true);
+  const [commentsOrder, setCommentsOrder] = useState(true);
+
+  const { videoId } = useParams();
 
   const {
     handleSubmit,
@@ -48,9 +52,9 @@ export const CommentForm = () => {
   const onSubmit: SubmitHandler<CommentsFormType> = async (data) => {
     try {
       setLoading(true);
-      const url = "/auth/solicitar-codigo";
-      const response = await apiClient.post(url, data);
-      setMessage("Código enviado para seu e-mail");
+      const url = `/videos/${videoId}/comentarios`;
+      await apiClient.post(url, data);
+      updateList();
       setError("");
     } catch (err: any) {
       if (err.statusCode === 404) {
@@ -58,21 +62,31 @@ export const CommentForm = () => {
       } else {
         setError("Algo deu errado. Tente novamente mais tarde");
       }
-      setMessage("");
     }
-    resetField("comentarios");
+    resetField("texto");
     setLoading(false);
+  };
+
+  const orderByDate = () => {
+    const newComments = [...comments].reverse();
+    setComments(newComments);
+    setCommentsOrder(!commentsOrder);
+    updateList();
   };
 
   return (
     <Featured sx={{ padding: "10px" }}>
       <Container>
+        {error && error}
         <div className="menuFilter">
-          <Link href="/" className="menuItem">
-            Data
-          </Link>
-          <IconButton color="primary" aria-label="add to shopping cart">
-            {dataFilter ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
+          <Typography variant="subtitle2">Data</Typography>
+
+          <IconButton
+            color="primary"
+            aria-label="order-by-date"
+            onClick={orderByDate}
+          >
+            {commentsOrder ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
           </IconButton>
         </div>
         <CommentList />
@@ -81,10 +95,10 @@ export const CommentForm = () => {
             <div className="makeComment">
               <FormInput
                 type="text"
-                name="comentarios"
+                name="texto"
                 placeholder="Deixe seu comentário"
                 control={control}
-                aria-invalid={errors.comentarios ? "true" : "false"}
+                aria-invalid={errors.texto ? "true" : "false"}
               />
               <LoadingButton
                 className="button"

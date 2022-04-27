@@ -24,10 +24,13 @@ const RoutesApp = () => (
       <Route path="/tag/:tagName" element={<Tags />} />
 
       <Route element={<RequireAuth />}>
-        <Route path="/turmas/:turmaId/videos/:id" element={<VideoPage />} />
+        <Route
+          path="/turmas/:turmaId/videos/:videoId"
+          element={<VideoPage />}
+        />
         <Route path="/videos" element={<VideosPage />} />
         <Route path="/videos/favoritos" element={<FavoritesPage />} />
-        <Route path="/videos/:id" element={<VideoPage />} />
+        <Route path="/videos/:videoId" element={<VideoPage />} />
       </Route>
     </Route>
   </Routes>

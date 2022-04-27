@@ -1,10 +1,12 @@
 /* eslint-disable camelcase */
 import { createContext, useEffect, useState } from "react";
-import { AuthProviderType, AuthType } from "./types";
 import { userType } from "../../types/userType";
 import apiClient from "../../services/api-client";
+import { clearUserDataStorage } from "../../utils/clearUserDataStorage";
 import { getLocalUserStorage } from "../../utils/getLocalUserStorage";
 import { setLocalUserStorage } from "../../utils/setLocalUserStorage";
+import { tokenExpired } from "../../utils/tokenExpired";
+import { AuthType, ChildrenProviderType } from "./types";
 
 const userNew: userType = {
   email: "",
@@ -24,7 +26,7 @@ export const AuthContext = createContext<AuthType>({
   logout: () => {},
 });
 
-export const AuthProvider = ({ children }: AuthProviderType) => {
+export const AuthProvider = ({ children }: ChildrenProviderType) => {
   const [user, setUser] = useState<userType>(userNew);
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState("");
@@ -34,8 +36,12 @@ export const AuthProvider = ({ children }: AuthProviderType) => {
     const thereIsUser = getLocalUserStorage();
     const userToken = thereIsUser?.access_token;
     if (userToken) {
-      setUser(thereIsUser);
-      setAuthenticated(true);
+      if (!tokenExpired(userToken)) {
+        setUser(thereIsUser);
+        setAuthenticated(true);
+      } else {
+        clearUserDataStorage();
+      }
     }
   }, []);
 

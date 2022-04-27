@@ -10,8 +10,6 @@ import {
 import { useAuth } from "../../hooks/useAuth";
 import { useFetch } from "../../hooks/useFetch";
 import { useVideos } from "../../hooks/useVideos";
-import { FavoriteIcon } from "../../components/FavoriteIcon";
-import { Thumbnail } from "../../components/Thumbnail";
 import apiClient from "../../services/api-client";
 import { VideoType } from "../../types/VideoType";
 import { FavoritesCarousel } from "../../components/FavoritesCarousel";
