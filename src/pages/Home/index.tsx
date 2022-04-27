@@ -65,7 +65,7 @@ export const Home = () => {
     <AllVideosList>
       {removeFavorited(allVideos, favorites).map((video) => (
         <Thumbnail
-          id={video.id}
+          videoId={video.id}
           name={video.nome}
           tumbnail={video.thumbUrl}
           publishedAt={new Date(video.dataPublicacao).toLocaleDateString(

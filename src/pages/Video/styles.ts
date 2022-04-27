@@ -13,7 +13,7 @@ export const Container = styled("section")`
 
   .main {
     width: 100%;
-    height: 100%;
+    max-height: 60%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -27,7 +27,7 @@ export const Container = styled("section")`
     justify-content: center;
   }
 
-  @media only screen and (max-width: 650px) {
+  @media only screen and (max-width: 750px) {
     width: 100%;
     height: 100%;
     padding: 90px 10px;
@@ -55,7 +55,6 @@ export const ContainerPlaylist = styled("div")`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: red;
 `;
 
 export const ContainerVideo = styled("div")`
@@ -63,7 +62,7 @@ export const ContainerVideo = styled("div")`
   height: 100%;
   color: ${(props) => props.theme.palette.text.primary};
 
-  @media only screen and (max-width: 650px) {
+  @media only screen and (max-width: 750px) {
     width: 100%;
     height: 100%;
   }
@@ -73,9 +72,9 @@ export const ContainerComments = styled("div")`
   width: 40%;
   height: 100%;
 
-  @media only screen and (max-width: 650px) {
+  @media only screen and (max-width: 750px) {
     width: 100%;
-    height: 100%;
+    height: 50%;
   }
 `;
 // color: ${(props) => (props.theme.palette.mode === "dark" ? "#fff" : "#000")};

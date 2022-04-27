@@ -6,8 +6,10 @@ export const Container = styled("section")`
   height: 88%;
   display: flex;
   flex-direction: column-reverse;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-items: flex-start;
   scroll-padding-bottom: auto;
+  transform: rotateY(180deg);
 
   .progress {
     display: flex;
@@ -25,6 +27,8 @@ export const Container = styled("section")`
     overflow: auto;
     float: left;
     margin: 0 10px;
+    /* transform: rotate(180deg); */
+    transform: rotateY(-180deg);
   }
 
   .scroll2::-webkit-scrollbar {

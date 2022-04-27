@@ -12,6 +12,6 @@ export type AuthType = {
 
 export type AuthContextType = userType & AuthType;
 
-export type AuthProviderType = {
+export type ChildrenProviderType = {
   children: ReactNode;
 };

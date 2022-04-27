@@ -10,7 +10,7 @@ import {
 import { WithChildren } from "../../common/childrenType";
 
 type ThumbnailType = {
-  id: string;
+  videoId: string;
   tumbnail: string;
   name: string;
   publishedAt: string;
@@ -18,19 +18,19 @@ type ThumbnailType = {
 
 export const Thumbnail = memo(
   ({
-    id,
+    videoId,
     tumbnail,
     name,
     publishedAt,
     children,
   }: WithChildren<ThumbnailType>) => (
     <TumbnailContainer>
-      <Link to={`/videos/${id}`}>
+      <Link to={`/videos/${videoId}`}>
         <TumbnailImage src={tumbnail} alt={name} />
       </Link>
       <InfoTumblr>
         <TextTumblr>
-          <Link to={`/videos/${id}`}>
+          <Link to={`/videos/${videoId}`}>
             <Typography variant="body1" noWrap sx={{ fontWeight: "bold" }}>
               {name}
             </Typography>
