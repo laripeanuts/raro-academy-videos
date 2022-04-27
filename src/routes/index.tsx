@@ -8,6 +8,7 @@ import { NotFoundPage } from "../pages/NotFound";
 import { PassForgottenPage } from "../pages/PassForgotten";
 import { PassRecoveryPage } from "../pages/PassRecovery";
 import { RegisterPage } from "../pages/Register";
+import Tags from "../pages/Tags";
 import { VideoPage } from "../pages/Video";
 import { VideosPage } from "../pages/Videos";
 
@@ -20,6 +21,7 @@ const RoutesApp = () => (
       <Route path="/pass-recovery" element={<PassRecoveryPage />} />
       <Route index element={<Home />} />
       <Route path="*" element={<NotFoundPage />} />
+      <Route path="/tag/:tagName" element={<Tags />} />
 
       <Route element={<RequireAuth />}>
         <Route

@@ -1,4 +1,5 @@
 import { Chip, Stack } from "@mui/material";
+import { Link } from "react-router-dom";
 import { Container } from "./styles";
 
 export type ChipListProps = {
@@ -20,15 +21,17 @@ const ChipList = ({ listTags = [] }: ChipListProps) => {
         spacing={2}
       >
         {listTags.map((tag) => (
-          <Chip
-            key={listTags.indexOf(tag)}
-            label={tag}
-            color="primary"
-            size="small"
-            style={{
-              backgroundColor: randomColor(),
-            }}
-          />
+          <Link to={`/tag/${tag}`}>
+            <Chip
+              key={listTags.indexOf(tag)}
+              label={tag}
+              color="primary"
+              size="small"
+              style={{
+                backgroundColor: randomColor(),
+              }}
+            />
+          </Link>
         ))}
       </Stack>
     </Container>
