@@ -24,19 +24,21 @@ export const Thumbnail = memo(
     publishedAt,
     children,
   }: WithChildren<ThumbnailType>) => (
-    <Link to={`/videos/${id}`}>
-      <TumbnailContainer>
+    <TumbnailContainer>
+      <Link to={`/videos/${id}`}>
         <TumbnailImage src={tumbnail} alt={name} />
-        <InfoTumblr>
-          <TextTumblr>
+      </Link>
+      <InfoTumblr>
+        <TextTumblr>
+          <Link to={`/videos/${id}`}>
             <Typography variant="body1" noWrap sx={{ fontWeight: "bold" }}>
               {name}
             </Typography>
             <Typography variant="body2">{publishedAt}</Typography>
-          </TextTumblr>
-          {children}
-        </InfoTumblr>
-      </TumbnailContainer>
-    </Link>
+          </Link>
+        </TextTumblr>
+        {children}
+      </InfoTumblr>
+    </TumbnailContainer>
   ),
 );

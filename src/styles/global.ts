@@ -9,14 +9,8 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.5;
   }
 
-  html {
-    min-height: 100%;
-    height:100%;
-  }
-
   html, body, #root {
-    min-height: 100% !important;
-    height: 100%;
+    min-height: 100vh;
     font-size: 100%;
     font-family: "Plus Jakarta Sans",  "Open Sans", "Roboto", "Helvetica", sans-serif;
     -webkit-font-smoothing: antialiased;

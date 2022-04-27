@@ -11,11 +11,12 @@ import {
 import { useAuth } from "../../hooks/useAuth";
 import { useFetch } from "../../hooks/useFetch";
 import { useVideos } from "../../hooks/useVideos";
-import { FavoriteIcon } from "../../components/FavoriteIcon";
+import { FavoriteButton } from "../../components/FavoriteButton";
 import { Thumbnail } from "../../components/Thumbnail";
 import apiClient from "../../services/api-client";
 import { VideoType } from "../../types/VideoType";
 import { FavoritesCarousel } from "../../components/FavoritesCarousel";
+import { removeFavorited } from "../../utils/removeFavorited";
 
 /* prettier-ignore */
 export const Home = () => {
@@ -30,8 +31,8 @@ export const Home = () => {
         apiClient.get<VideoType[]>("/videos"),
       ]);
 
-      setAllVideos(allVideosResponse.data);
       setFavorites(favoritesResponse.data);
+      setAllVideos(allVideosResponse.data);
     } else {
       const { data } = await apiClient.get<VideoType[]>("/videos");
 
@@ -62,7 +63,7 @@ export const Home = () => {
 
   const renderAllVideos = () => (
     <AllVideosList>
-      {allVideos.map((video) => (
+      {removeFavorited(allVideos, favorites).map((video) => (
         <Thumbnail
           id={video.id}
           name={video.nome}
@@ -72,7 +73,7 @@ export const Home = () => {
           )}
           key={video.id}
         >
-          <FavoriteIcon title="Favoritar" />
+          <FavoriteButton id={video.id} title="Favoritar" />
         </Thumbnail>
       ))}
     </AllVideosList>
