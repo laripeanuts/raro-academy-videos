@@ -12,11 +12,11 @@ import { ErrorBox } from "../ErrorBox";
 
 type FavoriteIconProps = {
   id: string;
-  filled?: true;
-  title: string;
+  filled?: boolean;
 };
 
-export const FavoriteButton = ({ id, filled, title }: FavoriteIconProps) => {
+/* prettier-ignore */
+export const FavoriteButton = ({ id, filled }: FavoriteIconProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
   const { isAuthenticated } = useAuth();
@@ -58,7 +58,7 @@ export const FavoriteButton = ({ id, filled, title }: FavoriteIconProps) => {
 
   return isAuthenticated ? (
     <div ref={containerRef}>
-      <Tooltip title={title} arrow>
+      <Tooltip title={filled ? "Desfavoritar" : "Favoritar"} arrow>
         <IconButton onClick={handleClick} disabled={loading}>
           {renderIcon()}
         </IconButton>

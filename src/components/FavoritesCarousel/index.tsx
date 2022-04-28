@@ -11,9 +11,8 @@ export const FavoritesCarousel = () => {
   return (
     <Featured
       sx={{
-        gridArea: "featured",
         flexDirection: "row",
-        gap: "10px",
+        width: "100%",
         padding: "30px 15px",
       }}
     >
@@ -28,7 +27,7 @@ export const FavoritesCarousel = () => {
             )}
             key={video.id}
           >
-            <FavoriteButton id={video.id} title="Desfavoritar" filled />
+            <FavoriteButton id={video.id} filled />
           </Thumbnail>
         ))}
       </Carousel>

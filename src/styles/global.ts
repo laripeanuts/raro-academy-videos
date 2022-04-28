@@ -10,6 +10,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html, body, #root {
+    width: 100%;
     min-height: 100vh;
     font-size: 100%;
     font-family: "Plus Jakarta Sans",  "Open Sans", "Roboto", "Helvetica", sans-serif;

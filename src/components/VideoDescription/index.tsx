@@ -1,53 +1,63 @@
-import { IconButton } from "@mui/material";
-import { ReactNode } from "react";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import IconButton from "@mui/material/IconButton";
 import FeedIcon from "@mui/icons-material/Feed";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { Container, StyledColumn, StyledRow } from "./styles";
+import Typography from "@mui/material/Typography";
+import { FavoriteButton } from "../FavoriteButton";
+import { WithChildren } from "../../common/childrenType";
+import { favorited } from "../../utils/removeFavorited";
+import { useVideos } from "../../hooks/useVideos";
+import { Container, Row, Column } from "./styles";
 
 export type VideoDescriptionProps = {
-  children?: ReactNode;
+  videoId: string;
   title: string;
   description: string;
   date: string;
-  week: string;
-  isFavorite?: boolean;
-  onClickFavorite?: () => void;
+  duration: string;
   onClickFeed?: () => void;
 };
 
 const VideoDescription = ({
-  children,
+  videoId,
   title,
   description,
   date,
-  week,
-  isFavorite,
-  onClickFavorite,
+  duration,
   onClickFeed,
-}: VideoDescriptionProps) => (
-  <Container>
-    <StyledColumn>
-      <StyledRow aligncontent="space-between">
-        <h3>{title}</h3>
-        <div>
-          <IconButton color="primary" onClick={onClickFeed}>
-            <FeedIcon />
-          </IconButton>
-          <IconButton color="primary" onClick={onClickFavorite}>
-            {isFavorite ? <FavoriteIcon /> : <FavoriteBorderOutlinedIcon />}
-          </IconButton>
-        </div>
-      </StyledRow>
-      <div style={{ textAlign: "justify" }}>{description}</div>
-      <StyledRow aligncontent="flex-start">{children}</StyledRow>
+  children,
+}: WithChildren<VideoDescriptionProps>) => {
+  const { favorites } = useVideos();
 
-      <StyledRow aligncontent="flex-end">
-        <div style={{ marginRight: 24 }}>{week}</div>
-        <div>{date}</div>
-      </StyledRow>
-    </StyledColumn>
-  </Container>
-);
+  return (
+    <Container>
+      <Column>
+        <Row justifyContent="space-between">
+          <Typography variant="h5">{title}</Typography>
+          <Row>
+            <IconButton color="primary" onClick={onClickFeed}>
+              <FeedIcon />
+            </IconButton>
+            <FavoriteButton
+              id={videoId}
+              filled={favorited(videoId, favorites)}
+            />
+          </Row>
+        </Row>
+        <Typography variant="body1" fontSize={16}>
+          {description}
+        </Typography>
+        <Row>{children}</Row>
+
+        <Row justifyContent="flex-end">
+          <Typography variant="body1" fontSize={16}>
+            {duration}
+          </Typography>
+          <Typography variant="body1" fontSize={16}>
+            {date}
+          </Typography>
+        </Row>
+      </Column>
+    </Container>
+  );
+};
 
 export default VideoDescription;

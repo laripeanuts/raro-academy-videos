@@ -34,7 +34,7 @@ export const CommentsProvider = ({ children }: ChildrenProviderType) => {
 
   useEffect(() => {
     execute();
-  }, []);
+  }, [videoId]);
 
   return (
     <CommentsContext.Provider
