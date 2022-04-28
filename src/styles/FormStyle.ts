@@ -1,22 +1,13 @@
 import { styled } from "@mui/material";
 
-export const FormStyle = styled("footer")`
+export const FormStyle = styled("section")`
   top: 20px;
   display: flex;
   flex-direction: column;
-  min-width: 600px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 600px;
 
   @media only screen and (max-width: 650px) {
-    padding-top: 60px;
     min-width: 90%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -45%);
   }
 
   button {

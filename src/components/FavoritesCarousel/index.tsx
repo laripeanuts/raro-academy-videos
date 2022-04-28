@@ -11,9 +11,8 @@ export const FavoritesCarousel = () => {
   return (
     <Featured
       sx={{
-        gridArea: "featured",
         flexDirection: "row",
-        gap: "10px",
+        width: "100%",
         padding: "30px 15px",
       }}
     >

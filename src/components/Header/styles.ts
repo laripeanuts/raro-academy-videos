@@ -1,7 +1,6 @@
 import { styled } from "@mui/material/styles";
 
 export const Container = styled("header")`
-  position: relative;
   z-index: 5;
   display: flex;
   flex-direction: row;
@@ -11,7 +10,7 @@ export const Container = styled("header")`
   max-height: 80px;
   background: ${(props) => props.theme.palette.secondary.main};
   color: ${(props) => props.theme.palette.primary.contrastText};
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
