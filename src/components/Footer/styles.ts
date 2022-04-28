@@ -7,11 +7,10 @@ export const FooterContainer = styled("footer")`
   align-items: center;
   gap: 25px;
   bottom: 0;
-  min-width: 100%;
-  min-height: 80px;
+  width: 100%;
+  height: 80px;
   padding: 20px;
   z-index: 10;
-  position: absolute;
   bottom: 0;
 
   box-shadow: inset 1px 1px rgba(255, 255, 255, 0.3),
