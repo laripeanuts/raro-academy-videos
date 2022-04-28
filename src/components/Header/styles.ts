@@ -23,10 +23,9 @@ export const Container = styled("header")`
     transition: filter 0.2s;
   }
 
-  button {
+  .linkLogo {
     background: transparent;
     border: none;
-    max-width: 150px;
     &:hover {
       svg {
         filter: drop-shadow(3px 3px 0px rgb(0 0 0 / 0.2));
@@ -42,7 +41,7 @@ export const Container = styled("header")`
     align-items: center;
     gap: 20px;
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 650px) {
       gap: 5px;
     }
   }
@@ -55,36 +54,45 @@ export const Container = styled("header")`
     gap: 20px;
   }
 
-  @media only screen and (max-width: 600px) {
+  .logoText {
+    height: 90%;
+  }
+
+  @media only screen and (max-width: 650px) {
     padding: 5px 10px;
     gap: 10px;
     justify-content: space-between;
+
+    .logoText {
+      display: none;
+    }
   }
 `;
 
 export const ContainerLogos = styled("div")`
   display: flex;
+  flex-direction: row;
+  height: 60px;
   align-items: center;
   place-content: center;
   gap: 15px;
+  min-width: 50px;
 
-  @media only screen and (max-width: 600px) {
-    width: 80px;
+  @media only screen and (max-width: 650px) {
     display: flex;
-    gap: 5px;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
 `;
 
 export const ContainerLogo = styled("div")`
-  max-width: 85px;
+  height: 100%;
   align-items: center;
   place-content: center;
   stroke: ${(props) => props.theme.palette.primary.contrastText};
 
-  @media only screen and (max-width: 600px) {
-    width: 50%;
+  @media only screen and (max-width: 650px) {
+    max-width: 100%;
     flex-wrap: wrap;
   }
 `;

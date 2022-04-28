@@ -11,16 +11,16 @@ export const Header = () => {
 
   return (
     <Container>
-      <ContainerLogos>
-        <ContainerLogo>
-          <Logo />
-        </ContainerLogo>
-        <Link to="/">
-          <button type="button">
+      <Link className="linkLogo" to="/">
+        <ContainerLogos>
+          <ContainerLogo>
+            <Logo className="logo" />
+          </ContainerLogo>
+          <div className="logoText">
             <LogoCompact />
-          </button>
-        </Link>
-      </ContainerLogos>
+          </div>
+        </ContainerLogos>
+      </Link>
       <div className="menuUser">
         <div className="navbar">
           <Navbar />

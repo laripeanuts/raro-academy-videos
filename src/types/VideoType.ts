@@ -1,5 +1,3 @@
-import { TagType } from "./TagType";
-
 export type VideoType = {
   id: string;
   nome: string;

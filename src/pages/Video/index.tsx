@@ -21,6 +21,7 @@ import {
   ContainerPlaylist,
   ContainerVideo,
 } from "./styles";
+import ChipList from "../../components/ChipList";
 
 export const VideoPage = () => {
   const { videoId } = useParams();

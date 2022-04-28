@@ -24,15 +24,11 @@ export const Navbar = () => {
     <>
       <ContainerNav>
         <Link to="/videos">
-          <Button onClick={logout} disabled={false}>
-            Vídeos
-          </Button>
+          <Button disabled={false}>Vídeos</Button>
         </Link>
 
         <Link to="/videos/favoritos">
-          <Button onClick={logout} disabled={false}>
-            Favoritos
-          </Button>
+          <Button disabled={false}>Favoritos</Button>
         </Link>
 
         <Button onClick={logout} disabled={false}>
