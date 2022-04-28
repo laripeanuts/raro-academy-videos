@@ -41,14 +41,14 @@ export const Home = () => {
   });
 
   const renderGreetings = () => (isAuthenticated ? (
-    <Greetings variant="h6">{`Olá, ${user.nome}! Banner aqui`}</Greetings>
+    <Greetings variant="h6">{`Olá, ${user.nome}! Aqui estão seus favoritos:`}</Greetings>
   ) : null);
 
   const renderFavorites = () => (
     isAuthenticated && favorites.length
       ? (
         <>
-          <AllFavoritesLink to="/favoritos">
+          <AllFavoritesLink to="videos/favoritos">
             <Typography variant="body2">Todos os favoritos</Typography>
           </AllFavoritesLink>
           <FavoritesCarousel />
