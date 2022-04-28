@@ -5,9 +5,7 @@ export const Container = styled("section")`
   width: 100%;
   flex-direction: column;
   gap: 30px;
-  min-height: calc(100vh - 160px);
   align-items: center;
-  justify-content: center;
 `;
 
 export const Row = styled("section")`
