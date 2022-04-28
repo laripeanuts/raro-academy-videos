@@ -15,9 +15,8 @@ const ChipList = ({ listTags = [] }: ChipListProps) => (
       spacing={2}
     >
       {listTags.map((tag) => (
-        <Link to={`/tag/${tag}`}>
+        <Link to={`/tag/${tag}`} key={listTags.indexOf(tag)}>
           <Chip
-            key={listTags.indexOf(tag)}
             label={tag}
             color="primary"
             size="small"
