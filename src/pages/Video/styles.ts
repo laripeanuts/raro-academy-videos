@@ -59,22 +59,18 @@ export const ContainerPlaylist = styled("div")`
 
 export const ContainerVideo = styled("div")`
   width: 60%;
-  height: 100%;
   color: ${(props) => props.theme.palette.text.primary};
 
   @media only screen and (max-width: 750px) {
     width: 100%;
-    height: 100%;
   }
 `;
 
 export const ContainerComments = styled("div")`
   width: 40%;
-  height: 100%;
 
   @media only screen and (max-width: 750px) {
     width: 100%;
-    height: 50%;
   }
 `;
 // color: ${(props) => (props.theme.palette.mode === "dark" ? "#fff" : "#000")};

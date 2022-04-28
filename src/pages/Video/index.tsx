@@ -1,15 +1,20 @@
-import { CircularProgress } from "@mui/material";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ChipList from "../../components/ChipList";
-import { CommentForm } from "../../components/Comments/CommentsForm";
-import VideoDescription from "../../components/VideoDescription";
-import { VideoPlayer } from "../../components/VideoPlayer";
+import { useEffect, useState } from "react";
+
+import { CircularProgress } from "@mui/material";
+
 import { CommentsProvider } from "../../contexts/CommentsProvider";
+
 import { useFetch } from "../../hooks/useFetch";
 import apiClient from "../../services/api-client";
-import { VideoType } from "../../types/VideoType";
+
 import { formatDate } from "../../utils/formatDate";
+import { CommentForm } from "../../components/Comments/CommentsForm";
+import { VideoPlayer } from "../../components/VideoPlayer";
+import VideoDescription from "../../components/VideoDescription";
+
+import { VideoType } from "../../types/VideoType";
+
 import {
   Container,
   ContainerComments,
@@ -25,6 +30,24 @@ export const VideoPage = () => {
     setVideo(data);
   });
 
+  const loadingProgress = () => (
+    <div className="progress">
+      <CircularProgress />
+    </div>
+  );
+
+  const loadVideoSection = () => (
+    <div className="videplayer">
+      <VideoPlayer src={video.url} id={video.id} />
+      <VideoDescription
+        title={video.nome}
+        description={video.descricao}
+        date={formatDate(video.createdAt)}
+        week={video.duracao}
+      />
+    </div>
+  );
+
   useEffect(() => {
     execute();
   }, []);
@@ -32,31 +55,17 @@ export const VideoPage = () => {
   return (
     <CommentsProvider>
       <Container className="videoPage">
-        <ContainerPlaylist>
-          <h1>Playlist</h1>
-        </ContainerPlaylist>
         <main className="main">
           <ContainerVideo>
-            {loading ? (
-              <div className="progress">
-                <CircularProgress />
-              </div>
-            ) : (
-              <>
-                <VideoPlayer src={video.thumbUrl} alt={video.nome} />
-                <VideoDescription
-                  title={video.nome}
-                  description={video.descricao}
-                  date={formatDate(video.createdAt)}
-                  week={video.duracao}
-                />
-              </>
-            )}
+            {loading ? loadingProgress() : loadVideoSection()}
           </ContainerVideo>
           <ContainerComments>
             <CommentForm />
           </ContainerComments>
         </main>
+        <ContainerPlaylist>
+          <h1>Playlist</h1>
+        </ContainerPlaylist>
       </Container>
     </CommentsProvider>
   );
