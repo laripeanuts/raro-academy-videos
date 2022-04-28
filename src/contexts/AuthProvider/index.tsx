@@ -70,7 +70,6 @@ export const AuthProvider = ({ children }: ChildrenProviderType) => {
   };
 
   const logout = () => {
-    refreshPage();
     localStorage.clear();
     setUser(userNew);
     setAuthenticated(false);

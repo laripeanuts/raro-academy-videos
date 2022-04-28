@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Avatar, Typography } from "@mui/material";
 import { useAuth } from "../../hooks/useAuth";
@@ -7,6 +7,12 @@ import { Container, ContainerNav } from "./styles";
 
 export const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   const renderNavBar = () => (
     <ContainerNav>
@@ -31,7 +37,7 @@ export const Navbar = () => {
           <Button disabled={false}>Favoritos</Button>
         </Link>
 
-        <Button onClick={logout} disabled={false}>
+        <Button onClick={() => onLogout()} disabled={false}>
           Logout
         </Button>
 

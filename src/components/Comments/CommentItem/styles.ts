@@ -16,6 +16,13 @@ export const Container = styled("div")`
     border-radius: 50%;
   }
 
+  .commentListContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 10px;
+  }
+
   .commentListHeader {
     margin-left: 78px;
     display: flex;
@@ -33,7 +40,6 @@ export const Container = styled("div")`
 
   .commentListBody {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
     min-width: 100%;
@@ -43,10 +49,9 @@ export const Container = styled("div")`
 
     .containerText {
       width: 100%;
-      min-height: 60px;
       padding: 10px;
       border-radius: 10px;
-      background: #8080808c;
+      background: ${(props) => props.theme.palette.mode === "dark" ? "#404040" : "#c2c2c2"};
       align-items: center;
       flex-grow: 1;
 
@@ -63,38 +68,73 @@ export const Container = styled("div")`
     padding: 5px 0;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
   }
 
-  .commentListActions {
+  .commentListVotes {
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: space-between;
 
-    .edit {
-      fill: ${(props) => props.theme.palette.text.primary};
+    svg {
+      cursor: pointer;
+      color: ${(props) => props.theme.palette.text.primary};
+      transition: all 0.3s ease-in-out;
 
       :hover {
-        cursor: pointer;
-        fill: ${(props) => props.theme.palette.warning.main};
+        color: ${(props) => props.theme.palette.primary.main};
       }
     }
 
-    .delete {
+    .commentListActions {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
       fill: ${(props) => props.theme.palette.text.primary};
+      gap: 10px;
+    }
 
-      :hover {
-        fill: ${(props) => props.theme.palette.error.main};
-        cursor: pointer;
-      }
+    .vote {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
     }
   }
 
-  .vote {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
+  .edit {
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-right: 10px;
+
+    &:hover {
+      fill: ${(props) => props.theme.palette.warning.main};
+      opacity: 1;
+    }
+  }
+
+  .delete {
+    fill: ${(props) => props.theme.palette.text.primary};
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      fill: ${(props) => props.theme.palette.error.main};
+      opacity: 1;
+    }
+  }
+
+  .cancel {
+    margin-right: 15px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 1;
   }
 `;

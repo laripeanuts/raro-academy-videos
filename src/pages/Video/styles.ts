@@ -73,4 +73,3 @@ export const ContainerComments = styled("div")`
     width: 100%;
   }
 `;
-// color: ${(props) => (props.theme.palette.mode === "dark" ? "#fff" : "#000")};
