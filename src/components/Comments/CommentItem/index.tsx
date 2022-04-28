@@ -3,10 +3,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { IconButton, Typography } from "@mui/material";
+import { IconButton, InputAdornment, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -18,7 +19,6 @@ import { useComments } from "../../../hooks/useComments";
 import { useAuth } from "../../../hooks/useAuth";
 
 import { CommentType } from "../../../types/CommentType";
-import { formatDate } from "../../../utils/formatDate";
 import { FormInput } from "../../FormInput";
 import { Container } from "./styles";
 
@@ -58,6 +58,7 @@ export const CommentItem = ({
   const {
     handleSubmit,
     control,
+    setValue,
     resetField,
     formState: { errors },
   } = useForm<CommentsFormType>({
@@ -107,7 +108,6 @@ export const CommentItem = ({
       setLoading(true);
       const url = `/videos/${videoId}/comentarios/${id}`;
       await apiClient.patch(url, data);
-      console.log(data);
       setError("");
       updateList();
     } catch (err: any) {
@@ -123,26 +123,36 @@ export const CommentItem = ({
   };
 
   const renderMyEdit = () => {
+    setValue("texto", texto);
     if (isAuthenticated && isMyComment && editavel) {
       return (
         <form onSubmit={handleSubmit(handleEdit)}>
           <div className="makeComment">
+            <Typography variant="body2">Altere seu comentário:</Typography>
             <FormInput
               type="text"
               name="texto"
-              placeholder="Altere seu comentário"
+              placeholder={texto}
               control={control}
               size="small"
               aria-invalid={errors.texto ? "true" : "false"}
+              endAdornment={(
+                <InputAdornment position="end">
+                  <CancelIcon
+                    onClick={() => setEditavel(false)}
+                    className="cancel"
+                  />
+                </InputAdornment>
+              )}
             />
             <LoadingButton
               className="button"
               type="submit"
               endIcon={<SendIcon />}
               loading={loading}
-              loadingPosition="end"
+              loadingPosition="center"
               variant="contained"
-              size="small"
+              size="medium"
               sx={{
                 width: "30px",
                 height: "40px",
@@ -163,10 +173,12 @@ export const CommentItem = ({
     <Container className="commentList">
       <div className="commentListAside" />
       {message && message}
-      <div>
+      <div className="commentListContainer">
         <div className="commentListHeader">
           <Typography variant="subtitle2">{aluno.nome}</Typography>
-          <Typography variant="subtitle1">{formatDate(createdAt)}</Typography>
+          <Typography variant="subtitle1">
+            {new Date(createdAt).toLocaleDateString("pt-br")}
+          </Typography>
         </div>
         <div className="commentListBody">
           <img src={aluno.foto} alt={aluno.nome} />
@@ -182,21 +194,23 @@ export const CommentItem = ({
               </Typography>
             )}
           </div>
-          {renderMyActions()}
         </div>
         <div className="commentListFooter">
-          <div className="vote">
-            <IconButton color="secondary" aria-label="downVote">
-              <KeyboardArrowDownIcon />
-            </IconButton>
-            <Typography variant="subtitle1">{upVotes}</Typography>
+          <div className="commentListVotes">
+            <div className="vote">
+              <IconButton color="secondary" aria-label="downVote">
+                <KeyboardArrowDownIcon />
+              </IconButton>
+              <Typography variant="subtitle1">{upVotes}</Typography>
+            </div>
+            <div className="vote">
+              <IconButton color="secondary" aria-label="downVote">
+                <KeyboardArrowUpIcon />
+              </IconButton>
+              <Typography variant="subtitle1">{downVotes}</Typography>
+            </div>
           </div>
-          <div className="vote">
-            <IconButton color="secondary" aria-label="downVote">
-              <KeyboardArrowUpIcon />
-            </IconButton>
-            <Typography variant="subtitle1">{downVotes}</Typography>
-          </div>
+          {renderMyActions()}
         </div>
       </div>
     </Container>

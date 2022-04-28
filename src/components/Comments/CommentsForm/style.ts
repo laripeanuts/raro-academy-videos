@@ -43,8 +43,8 @@ export const Container = styled("aside")`
     }
 
     .button {
-      align-items: center;
       max-height: 40px;
       margin-top: 23px;
+    }
   }
 `;
