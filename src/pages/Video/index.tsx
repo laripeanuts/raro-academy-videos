@@ -44,7 +44,9 @@ export const VideoPage = () => {
         description={video.descricao}
         date={formatDate(video.createdAt)}
         week={video.duracao}
-      />
+      >
+        <ChipList listTags={video.tags} />
+      </VideoDescription>
     </div>
   );
 
