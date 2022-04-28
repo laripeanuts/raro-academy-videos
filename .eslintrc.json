@@ -80,6 +80,12 @@
       {
         "forbidDefaultForRequired": true
       }
+    ],
+    "no-confusing-arrow": [
+      "off",
+      {
+        "allowParens": true
+      }
     ]
   },
   "settings": {
