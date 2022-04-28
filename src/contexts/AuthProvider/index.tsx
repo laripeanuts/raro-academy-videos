@@ -55,6 +55,7 @@ export const AuthProvider = ({ children }: ChildrenProviderType) => {
         setLocalUserStorage(payload);
         setAuthenticated(true);
         setMessage("Usuário logado com sucesso!");
+        setError("");
       }
     } catch (err: any) {
       if (err.response.data.statusCode === 401) {
