@@ -22,13 +22,29 @@ import {
   ContainerVideo,
 } from "./styles";
 import ChipList from "../../components/ChipList";
+import { Carousel } from "../../components/Carousel";
+import { Thumbnail } from "../../components/Thumbnail";
+import { FavoriteButton } from "../../components/FavoriteButton";
+import { favorited } from "../../utils/removeFavorited";
+import { useVideos } from "../../hooks/useVideos";
 
 export const VideoPage = () => {
   const { videoId } = useParams();
+  const { favorites } = useVideos();
   const [video, setVideo] = useState({} as VideoType);
+  const [playlist, setPlaylist] = useState<VideoType[]>([]);
   const { execute, loading, errorMessage } = useFetch(async () => {
-    const { data } = await apiClient.get<VideoType>(`/videos/${videoId}`);
-    setVideo(data);
+    const getPlaylist = apiClient.get<VideoType[]>(
+      `/videos/${videoId}/recomendacoes`,
+    );
+    const getVideo = apiClient.get<VideoType>(`/videos/${videoId}`);
+    const [playlistResponse, videoResponse] = await Promise.all([
+      getPlaylist,
+      getVideo,
+    ]);
+
+    setPlaylist(playlistResponse.data);
+    setVideo(videoResponse.data);
   });
 
   const loadingProgress = () => (
@@ -41,19 +57,41 @@ export const VideoPage = () => {
     <div className="videplayer">
       <VideoPlayer src={video.url} id={video.id} />
       <VideoDescription
+        videoId={video.id}
         title={video.nome}
         description={video.descricao}
-        date={formatDate(video.createdAt)}
-        week={video.duracao}
+        date={new Date(video.createdAt).toLocaleDateString()}
+        duration={video.duracao}
       >
         <ChipList listTags={video.tags} />
       </VideoDescription>
     </div>
   );
 
+  /* prettier-ignore */
+  const renderPlaylist = () => (
+    playlist.length ? (
+      <Carousel itemsWidth={260}>
+        {playlist.map((item) => (
+          <Thumbnail
+            videoId={item.id}
+            name={item.nome}
+            tumbnail={item.thumbUrl}
+            publishedAt={new Date(item.dataPublicacao).toLocaleDateString(
+              "pt-br",
+            )}
+            key={item.id}
+          >
+            <FavoriteButton id={item.id} filled={favorited(item.id, favorites)} />
+          </Thumbnail>
+        ))}
+      </Carousel>
+    ) : null
+  );
+
   useEffect(() => {
     execute();
-  }, []);
+  }, [videoId]);
 
   return (
     <CommentsProvider>
@@ -66,9 +104,7 @@ export const VideoPage = () => {
             <CommentForm />
           </ContainerComments>
         </main>
-        <ContainerPlaylist>
-          <h1>Playlist</h1>
-        </ContainerPlaylist>
+        <ContainerPlaylist>{renderPlaylist()}</ContainerPlaylist>
       </Container>
     </CommentsProvider>
   );

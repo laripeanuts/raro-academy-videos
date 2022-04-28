@@ -27,7 +27,7 @@ export const FavoritesCarousel = () => {
             )}
             key={video.id}
           >
-            <FavoriteButton id={video.id} title="Desfavoritar" filled />
+            <FavoriteButton id={video.id} filled />
           </Thumbnail>
         ))}
       </Carousel>

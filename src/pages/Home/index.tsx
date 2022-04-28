@@ -75,7 +75,7 @@ export const Home = () => {
               )}
               key={video.id}
             >
-              <FavoriteButton id={video.id} title="Favoritar" />
+              <FavoriteButton id={video.id} />
             </Thumbnail>
           ))}
         </Carousel>
