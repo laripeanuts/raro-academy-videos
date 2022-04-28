@@ -45,7 +45,7 @@
 - [🌟 **Sobre o projeto**](#-sobre-o-projeto)
 - [🎯 **Objetivos principais**](#-objetivos-principais)
 - [💡 **Proposta**](#-proposta)
-- [𝌾 Design System](#-design-system)
+- [🙾 Design System](#-design-system)
 - [💻 **Tecnologias Principais**](#-tecnologias-principais)
 - [💁🏽‍♀️ **Tecnologias de Suporte**](#️-tecnologias-de-suporte)
 - [🛠️ **Ferramentas**](#️-ferramentas)
@@ -96,7 +96,7 @@ Desenvolver com React uma plataforma web funcional conforme descrito detalhadame
 
 <!-- TODO -->
 
-## 𝌾 Design System
+## 🙾 Design System
 
 Utilizamos alguns conceitos e ferramentas para padronizar várias etapas do nosso projeto.
 
