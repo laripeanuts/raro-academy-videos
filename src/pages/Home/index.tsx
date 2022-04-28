@@ -36,6 +36,7 @@ export const Home = () => {
       const { data } = await apiClient.get<VideoType[]>("/videos");
 
       setAllVideos(data);
+      setFavorites([]);
     }
   });
 

@@ -9,7 +9,6 @@ export const MainContainer = styled("main")`
   width: 100%;
   padding: 30px;
   display: flex;
-  align-items: center;
   justify-content: center;
 
   @media only screen and (max-width: 650px) {
