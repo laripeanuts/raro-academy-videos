@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
 
-export const Container = styled("div")`
+export const Container = styled("article")`
   width: 100%;
   margin-bottom: 10px;
   height: 100%;
@@ -12,5 +12,9 @@ export const Container = styled("div")`
   img {
     width: 100%;
     border-radius: 10px;
+  }
+
+  .video-player {
+    border-radius: 20px;
   }
 `;
