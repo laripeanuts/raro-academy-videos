@@ -1,23 +1,24 @@
-import { Button, styled } from "@mui/material";
-import { rgba } from "polished";
+import { styled } from "@mui/material/styles";
 
-export type StyledRowProps = {
-  aligncontent: string;
+export const Container = styled("div")`
+  padding: 16px 0 16px 0;
+`;
+
+export const Column = styled("div")`
+  display: flex;
+  flex-direction: column;
+`;
+
+export type RowProps = {
+  justifyContent?: string;
+  gap?: string;
 };
 
-export const Container = styled("div")(({ theme }) => ({
-  padding: "16px 0 16px 0",
-}));
-
-export const StyledColumn = styled("div")(({ theme }) => ({
+export const Row = styled("div", {
+  shouldForwardProp: (prop) => prop !== "justifyContent" && prop !== "gap",
+})<RowProps>(({ justifyContent = "flex-start", gap = "20px" }) => ({
   display: "flex",
-  flexDirection: "column",
+  alignItems: "center",
+  justifyContent,
+  gap,
 }));
-
-export const StyledRow = styled("div")<StyledRowProps>(
-  ({ theme, aligncontent }) => ({
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: aligncontent,
-  }),
-);

@@ -14,7 +14,9 @@ const Tags = () => {
   const { tagName } = useParams();
   const { allVideos, setAllVideos, setFavorites } = useVideos();
   const { execute, loading, errorMessage } = useFetch(async () => {
-    const allVideosResponse = await apiClient.get<VideoType[]>(`/videos?tags=${tagName}`);
+    const allVideosResponse = await apiClient.get<VideoType[]>(
+      `/videos?tags=${tagName}`,
+    );
     setAllVideos(allVideosResponse.data);
   });
 
@@ -34,7 +36,7 @@ const Tags = () => {
           )}
           key={video.id}
         >
-          <FavoriteButton id={video.id} title="Favoritar" />
+          <FavoriteButton id={video.id} />
         </Thumbnail>
       ))}
     </AllVideosList>
@@ -47,13 +49,15 @@ const Tags = () => {
           <CircularProgress aria-label="Carregando conteúdo" size={60} />
         </Container>
       );
-    } if (errorMessage.length) {
+    }
+    if (errorMessage.length) {
       return (
         <Container display="flex">
           <Typography variant="h5">{errorMessage}</Typography>
         </Container>
       );
-    } if (allVideos.length === 0) {
+    }
+    if (allVideos.length === 0) {
       return (
         <Container display="flex">
           <Typography variant="h5">Vídeos não encontrados!</Typography>
@@ -63,19 +67,13 @@ const Tags = () => {
 
     return (
       <Container display="grid">
-        <AllVideosTitle variant="h4">
-          { `Vídeos ${tagName}` }
-        </AllVideosTitle>
+        <AllVideosTitle variant="h4">{`Vídeos ${tagName}`}</AllVideosTitle>
         {renderAllVideos()}
       </Container>
     );
   };
 
-  return (
-    <div>
-      {renderPageContent()}
-    </div>
-  );
+  return <div>{renderPageContent()}</div>;
 };
 
 export default Tags;
