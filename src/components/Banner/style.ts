@@ -3,8 +3,7 @@ import { Typography } from "@mui/material/";
 import { Link } from "react-router-dom";
 
 export const BannerConatiner = styled("div")`
-  width: 800px;
-  height: 300px;
+
   display: flex;
 `;
 
@@ -31,6 +30,10 @@ export const BannerInfoComtainer = styled("div")`
 `;
 
 export const BannerTitle = styled(Typography)`
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  margin-left: 20px;
   padding-top: 20px;
   background-image: linear-gradient(
       40deg,
@@ -40,6 +43,8 @@ export const BannerTitle = styled(Typography)`
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
+  text-transform: uppercase;
 `;
 
 export const BannerImg = styled("img")`
@@ -53,8 +58,6 @@ export const BannerImg = styled("img")`
 `;
 
 export const BannerImgLink = styled(Link)`
-  width: 55%;
-  height: 100%;
   cursor: pointer;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -62,7 +65,12 @@ export const BannerImgLink = styled(Link)`
     3px 3px 10px rgba(0, 0, 0, 0.3);
 `;
 
-export const BannerInfoText = styled("div")`
+export const BannerComentsCircle = styled("div")`
   display: flex;
+  justify-content: center;
   align-items: center;
+  background: ${(props) => props.theme.palette.secondary.main};
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
 `;
