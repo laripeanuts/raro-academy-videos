@@ -10,7 +10,7 @@ import { Container } from "./styles";
 export const CommentList = () => {
   const { comments, loading, errorMessage } = useComments();
 
-  const loadCommentsList = () => (loading ? (
+  const loadCommentsList = () => loading ? (
     <div>
       {loading && (
       <div className="progress">
@@ -42,7 +42,7 @@ export const CommentList = () => {
         ))}
       </ul>
     </InfiniteScroll>
-  ));
+  );
 
   return (
     <Container>

@@ -3,9 +3,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { IconButton, InputAdornment, Typography } from "@mui/material";
+import {
+  IconButton,
+  InputAdornment,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
@@ -15,12 +20,13 @@ import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 
 import apiClient from "../../../services/api-client";
-import { useComments } from "../../../hooks/useComments";
 import { useAuth } from "../../../hooks/useAuth";
+import { useComments } from "../../../hooks/useComments";
 
 import { CommentType } from "../../../types/CommentType";
 import { FormInput } from "../../FormInput";
-import { Container } from "./styles";
+import { Container, MessageResponse } from "./styles";
+import { UpVoteButton } from "../CommentsVote";
 
 type CommentsFormType = {
   texto: string;
@@ -40,6 +46,7 @@ export const CommentItem = ({
   aluno,
   upVotes,
   downVotes,
+  meuVote,
 }: CommentType) => {
   const { videoId } = useParams();
 
@@ -47,12 +54,16 @@ export const CommentItem = ({
   const { updateList } = useComments();
 
   const [editavel, setEditavel] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
+  const [voteLoading, setVoteLoading] = useState(false);
+  const [activeUp, setActiveUp] = useState(false);
+
   const isMyComment = user.id === aluno.id;
+  const isMyVote = user.id === meuVote?.aluno.id;
 
   // Formulário Edição
   const {
@@ -67,6 +78,7 @@ export const CommentItem = ({
 
   const handleDelete = async (commentId: string) => {
     const url = `/videos/${videoId}/comentarios/${commentId}`;
+    console.log(aluno);
     try {
       await apiClient?.delete(url);
       setMessage("");
@@ -80,22 +92,60 @@ export const CommentItem = ({
     }
   };
 
+  const handleUpVote = async (commentId: string) => {
+    const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
+    try {
+      const response = await apiClient.put(url, { vote: "up" });
+      setMessage("");
+      setVoteLoading(true);
+      setActiveUp(true);
+      // updateList();
+      console.log(response);
+    } catch (err: any) {
+      if (err.statusCode === 404) {
+        setMessage("Curtida não adicionada.");
+      } else {
+        setMessage("Algo deu errado. Tente novamente mais tarde!");
+      }
+    }
+    setVoteLoading(false);
+  };
+
+  const handleDownVote = async (commentId: string) => {
+    const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
+    try {
+      const response = await apiClient?.put(url, { vote: "down" });
+      setMessage("");
+      updateList();
+    } catch (err: any) {
+      if (err.statusCode === 404) {
+        setMessage("Descurtida não adicionada.");
+      } else {
+        setMessage("Algo deu errado. Tente novamente mais tarde!");
+      }
+    }
+  };
+
   const renderMyActions = () => {
     if (isMyComment) {
       return (
         <div className="commentListActions">
-          <EditIcon
-            fontSize="small"
-            className="edit"
-            onClick={() => setEditavel(true)}
-          />
-          <ClearIcon
-            fontSize="small"
-            className="delete"
-            onClick={() => {
-              handleDelete(id);
-            }}
-          />
+          <Tooltip title="Editar" arrow>
+            <EditIcon
+              fontSize="small"
+              className="edit"
+              onClick={() => setEditavel(true)}
+            />
+          </Tooltip>
+          <Tooltip title="Deletar" arrow>
+            <ClearIcon
+              fontSize="small"
+              className="delete"
+              onClick={() => {
+                handleDelete(id);
+              }}
+            />
+          </Tooltip>
         </div>
       );
     }
@@ -105,7 +155,7 @@ export const CommentItem = ({
 
   const handleEdit: SubmitHandler<CommentsFormType> = async (data) => {
     try {
-      setLoading(true);
+      setIsLoading(true);
       const url = `/videos/${videoId}/comentarios/${id}`;
       await apiClient.patch(url, data);
       setError("");
@@ -118,7 +168,7 @@ export const CommentItem = ({
       }
     }
     resetField("texto");
-    setLoading(false);
+    setIsLoading(false);
     setEditavel(false);
   };
 
@@ -136,20 +186,20 @@ export const CommentItem = ({
               control={control}
               size="small"
               aria-invalid={errors.texto ? "true" : "false"}
-              endAdornment={(
+              endAdornment={
                 <InputAdornment position="end">
                   <CancelIcon
                     onClick={() => setEditavel(false)}
                     className="cancel"
                   />
                 </InputAdornment>
-              )}
+              }
             />
             <LoadingButton
               className="button"
               type="submit"
               endIcon={<SendIcon />}
-              loading={loading}
+              loading={isLoading}
               loadingPosition="center"
               variant="contained"
               size="medium"
@@ -172,7 +222,6 @@ export const CommentItem = ({
   return (
     <Container className="commentList">
       <div className="commentListAside" />
-      {message && message}
       <div className="commentListContainer">
         <div className="commentListHeader">
           <Typography variant="subtitle2">{aluno.nome}</Typography>
@@ -198,18 +247,32 @@ export const CommentItem = ({
         <div className="commentListFooter">
           <div className="commentListVotes">
             <div className="vote">
-              <IconButton color="secondary" aria-label="downVote">
+              <IconButton
+                color="secondary"
+                aria-label="downVote"
+                onClick={() => handleUpVote(id)}
+              >
                 <KeyboardArrowDownIcon />
               </IconButton>
               <Typography variant="subtitle1">{upVotes}</Typography>
             </div>
             <div className="vote">
-              <IconButton color="secondary" aria-label="downVote">
+              <UpVoteButton
+                active={activeUp}
+                onClick={() => handleUpVote(id)}
+                loading={isLoading}
+              >
                 <KeyboardArrowUpIcon />
-              </IconButton>
+              </UpVoteButton>
               <Typography variant="subtitle1">{downVotes}</Typography>
             </div>
           </div>
+          <MessageResponse>
+            <Typography variant="subtitle1" sx={{ color: "primary" }}>
+              {error && error}
+              {message && message}
+            </Typography>
+          </MessageResponse>
           {renderMyActions()}
         </div>
       </div>

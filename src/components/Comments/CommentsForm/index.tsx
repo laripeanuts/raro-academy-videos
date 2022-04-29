@@ -105,7 +105,7 @@ export const CommentForm = () => {
                 type="submit"
                 endIcon={<SendIcon />}
                 loading={loading}
-                loadingPosition="end"
+                loadingPosition="center"
                 variant="contained"
                 size="large"
               />
