@@ -6,7 +6,11 @@ export const TumbnailContainer = styled("div")`
   height: 135px;
   position: relative;
   cursor: pointer;
-  display:
+  
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const TumbnailImage = styled("img")`

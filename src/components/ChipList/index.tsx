@@ -1,7 +1,7 @@
 import { Chip, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import { randomBlueColor } from "../../utils/randomColors";
-import { Container } from "./styles";
+import { ChipListContainer, Container } from "./styles";
 
 export type ChipListProps = {
   listTags: string[];
@@ -9,11 +9,7 @@ export type ChipListProps = {
 
 const ChipList = ({ listTags = [] }: ChipListProps) => (
   <Container>
-    <Stack
-      alignItems="center"
-      direction={{ xs: "column", sm: "row" }}
-      spacing={2}
-    >
+    <ChipListContainer>
       {listTags.map((tag) => (
         <Link to={`/tag/${tag}`} key={listTags.indexOf(tag)}>
           <Chip
@@ -27,7 +23,7 @@ const ChipList = ({ listTags = [] }: ChipListProps) => (
           />
         </Link>
       ))}
-    </Stack>
+    </ChipListContainer>
   </Container>
 );
 

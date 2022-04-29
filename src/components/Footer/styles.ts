@@ -23,9 +23,11 @@ export const FooterContainer = styled("footer")`
     height: 40px;
     width: 40px;
     transition: filter 0.2s;
+    scale: 0.3s ease-in-out;
 
     &:hover {
       filter: opacity(0.5);
+      transform: scale(1.1);
     }
   }
 `;
