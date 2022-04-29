@@ -10,9 +10,9 @@ import {
   BannerConatiner,
   BannerImg,
   BannerInfoComtainer,
-  BannerInfoText,
   BannerTitle,
   BannerImgLink,
+  BannerComentsCircle,
 } from "./style";
 
 export const Banner = ({ children }: WithChildren) => {
@@ -39,13 +39,13 @@ export const Banner = ({ children }: WithChildren) => {
         <BannerImg src={video.thumbUrl} />
       </BannerImgLink>
       <BannerInfoComtainer>
-        <BannerTitle variant="h2">{video.nome}</BannerTitle>
-        <BannerInfoText>
-          <Typography variant="body2" sx={{}}>
-            {video.descricao}
+        <BannerTitle variant="h3">{video.descricao}</BannerTitle>
+        <Typography variant="body2">Quantidade de interações</Typography>
+        <BannerComentsCircle>
+          <Typography variant="body2">
+            {comments}
           </Typography>
-        </BannerInfoText>
-        <Typography variant="body2">{`Quantidade de comentarios: ${comments}`}</Typography>
+        </BannerComentsCircle>
         <ChipList listTags={video.tags} />
       </BannerInfoComtainer>
     </BannerConatiner>
