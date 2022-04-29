@@ -1,6 +1,5 @@
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { WithChildren } from "../../common/childrenType";
 import { useFetch } from "../../hooks/useFetch";
 import apiClient from "../../services/api-client";
@@ -13,6 +12,7 @@ import {
   BannerInfoComtainer,
   BannerInfoText,
   BannerTitle,
+  BannerImgLink,
 } from "./style";
 
 export const Banner = ({ children }: WithChildren) => {
@@ -34,20 +34,20 @@ export const Banner = ({ children }: WithChildren) => {
   }, []);
 
   return (
-    <Link to={`/videos/${video.id}`}>
-      <BannerConatiner>
+    <BannerConatiner>
+      <BannerImgLink to={`/videos/${video.id}`}>
         <BannerImg src={video.thumbUrl} />
-        <BannerInfoComtainer>
-          <BannerTitle variant="h2">{video.nome}</BannerTitle>
-          <BannerInfoText>
-            <Typography variant="body2" sx={{}}>
-              {video.descricao}
-            </Typography>
-          </BannerInfoText>
-          <Typography variant="body2">{`Quantidade de comentarios: ${comments}`}</Typography>
-          <ChipList listTags={video.tags} />
-        </BannerInfoComtainer>
-      </BannerConatiner>
-    </Link>
+      </BannerImgLink>
+      <BannerInfoComtainer>
+        <BannerTitle variant="h2">{video.nome}</BannerTitle>
+        <BannerInfoText>
+          <Typography variant="body2" sx={{}}>
+            {video.descricao}
+          </Typography>
+        </BannerInfoText>
+        <Typography variant="body2">{`Quantidade de comentarios: ${comments}`}</Typography>
+        <ChipList listTags={video.tags} />
+      </BannerInfoComtainer>
+    </BannerConatiner>
   );
 };

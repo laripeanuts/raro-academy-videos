@@ -1,8 +1,9 @@
 import { styled } from "@mui/material/styles";
 import { Typography } from "@mui/material/";
+import { Link } from "react-router-dom";
 
 export const BannerConatiner = styled("div")`
-  width: 100%;
+  width: 800px;
   height: 300px;
   display: flex;
 `;
@@ -42,6 +43,16 @@ export const BannerTitle = styled(Typography)`
 `;
 
 export const BannerImg = styled("img")`
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: inset 1px 1px rgba(255, 255, 255, 0.3),
+    3px 3px 10px rgba(0, 0, 0, 0.3);
+`;
+
+export const BannerImgLink = styled(Link)`
   width: 55%;
   height: 100%;
   cursor: pointer;
