@@ -3,14 +3,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import {
-  IconButton,
-  InputAdornment,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { InputAdornment, Tooltip, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
@@ -27,6 +22,7 @@ import { CommentType } from "../../../types/CommentType";
 import { FormInput } from "../../FormInput";
 import { Container, MessageResponse } from "./styles";
 import { CommentVoteButton } from "../CommentVoteButton";
+import { useFetch } from "../../../hooks/useFetch";
 
 type CommentsFormType = {
   texto: string;
@@ -53,6 +49,8 @@ export const CommentItem = ({
   const { user, isAuthenticated } = useAuth();
   const { updateList } = useComments();
 
+  const [comment, setComment] = useState<CommentType>({} as CommentType);
+
   const [editavel, setEditavel] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -63,8 +61,19 @@ export const CommentItem = ({
   const [activeUp, setActiveUp] = useState(false);
   const [activeDown, setActiveDown] = useState(false);
 
+  const { execute, loading, errorMessage } = useFetch(async () => {
+    const url = `/videos/${videoId}/comentarios/${id}`;
+    const response = await apiClient.get<CommentType>(url);
+    setComment(response.data);
+    console.log(response.data);
+  });
+
   const isMyComment = user.id === aluno.id;
   const isMyVote = user.id === meuVote?.aluno.id;
+
+  useEffect(() => {
+    execute();
+  }, []);
 
   // Formulário Edição
   const {
@@ -260,7 +269,7 @@ export const CommentItem = ({
           <img src={aluno.foto} alt={aluno.nome} />
           <div className="containerText">
             {renderMyEdit()}
-            {editado && (
+            {editado ? (
               <Typography
                 variant="subtitle1"
                 fontWeight="500"
@@ -268,7 +277,7 @@ export const CommentItem = ({
               >
                 Editado
               </Typography>
-            )}
+            ) : null}
           </div>
         </div>
         <div className="commentListFooter">
