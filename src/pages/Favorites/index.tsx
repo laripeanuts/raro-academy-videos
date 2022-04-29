@@ -1,11 +1,12 @@
 import Typography from "@mui/material/Typography";
+import CircularProgress from "@mui/material/CircularProgress";
 import { useVideos } from "../../hooks/useVideos";
 import { Thumbnail } from "../../components/Thumbnail";
 import { FavoriteButton } from "../../components/FavoriteButton";
 import { Container, FavoritesList } from "./styles";
 
 export const FavoritesPage = () => {
-  const { favorites } = useVideos();
+  const { favorites, loading, errorMessage } = useVideos();
 
   const renderFavorites = () => (
     <FavoritesList>
@@ -26,7 +27,7 @@ export const FavoritesPage = () => {
   );
 
   /* prettier-ignore */
-  const renderPageContent = () => (
+  const renderVideos = () => (
     favorites.length ? (
       <>
         <Typography variant="h4">Favoritos</Typography>
@@ -36,6 +37,24 @@ export const FavoritesPage = () => {
       <Typography alignSelf="center" variant="h6">Sua lista de favoritos está vazia!</Typography>
     )
   );
+
+  const renderPageContent = () => {
+    if (loading) {
+      return (
+        <CircularProgress
+          sx={{ alignSelf: "center" }}
+          aria-label="Carregando conteúdo"
+          size={60}
+        />
+      );
+    }
+
+    if (errorMessage.length) {
+      <Typography variant="h5">{errorMessage}</Typography>;
+    }
+
+    return <>{renderVideos()}</>;
+  };
 
   return <Container>{renderPageContent()}</Container>;
 };
