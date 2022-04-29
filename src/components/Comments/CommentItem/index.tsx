@@ -26,7 +26,7 @@ import { useComments } from "../../../hooks/useComments";
 import { CommentType } from "../../../types/CommentType";
 import { FormInput } from "../../FormInput";
 import { Container, MessageResponse } from "./styles";
-import { UpVoteButton } from "../CommentsVote";
+import { CommentVoteButton } from "../CommentVoteButton";
 
 type CommentsFormType = {
   texto: string;
@@ -61,6 +61,7 @@ export const CommentItem = ({
 
   const [voteLoading, setVoteLoading] = useState(false);
   const [activeUp, setActiveUp] = useState(false);
+  const [activeDown, setActiveDown] = useState(false);
 
   const isMyComment = user.id === aluno.id;
   const isMyVote = user.id === meuVote?.aluno.id;
@@ -99,7 +100,7 @@ export const CommentItem = ({
       setMessage("");
       setVoteLoading(true);
       setActiveUp(true);
-      // updateList();
+      updateList();
       console.log(response);
     } catch (err: any) {
       if (err.statusCode === 404) {
@@ -116,6 +117,7 @@ export const CommentItem = ({
     try {
       const response = await apiClient?.put(url, { vote: "down" });
       setMessage("");
+      setActiveDown(true);
       updateList();
     } catch (err: any) {
       if (err.statusCode === 404) {
@@ -247,23 +249,23 @@ export const CommentItem = ({
         <div className="commentListFooter">
           <div className="commentListVotes">
             <div className="vote">
-              <IconButton
-                color="secondary"
-                aria-label="downVote"
+              <CommentVoteButton
+                active={activeUp}
                 onClick={() => handleUpVote(id)}
+                loading={voteLoading}
               >
-                <KeyboardArrowDownIcon />
-              </IconButton>
+                <KeyboardArrowUpIcon />
+              </CommentVoteButton>
               <Typography variant="subtitle1">{upVotes}</Typography>
             </div>
             <div className="vote">
-              <UpVoteButton
-                active={activeUp}
-                onClick={() => handleUpVote(id)}
-                loading={isLoading}
+              <CommentVoteButton
+                active={activeDown}
+                onClick={() => handleDownVote(id)}
+                loading={voteLoading}
               >
-                <KeyboardArrowUpIcon />
-              </UpVoteButton>
+                <KeyboardArrowDownIcon />
+              </CommentVoteButton>
               <Typography variant="subtitle1">{downVotes}</Typography>
             </div>
           </div>

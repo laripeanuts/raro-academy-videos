@@ -1,47 +1,45 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import CircularProgress from "@mui/material/CircularProgress";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-
-import apiClient from "../../../services/api-client";
 
 import { useAuth } from "../../../hooks/useAuth";
 import { useTheme } from "../../../hooks/useTheme";
 import { WithChildren } from "../../../common/childrenType";
 
-type UpVoteButtonProps = {
+type CommentVoteButtonType = {
   active?: boolean;
   onClick?: () => void;
   loading?: boolean;
 };
 
 /* prettier-ignore */
-export const UpVoteButton = ({
+export const CommentVoteButton = ({
   active,
   onClick,
   loading,
   children,
-}: WithChildren<UpVoteButtonProps>) => {
+}: WithChildren<CommentVoteButtonType>) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
   const { isAuthenticated } = useAuth();
 
-  const renderVotes = () => !loading ? (
-    <IconButton
-      sx={{
-        color: active
-          ? theme.theme.palette.primary.main
-          : theme.theme.palette.text.primary,
-      }}
-      aria-label="downVote"
-    >
-      {children}
-    </IconButton>
-  ) : (
-    <CircularProgress size={20} />
-  );
+  const renderVotes = () =>
+    !loading ? (
+      <IconButton
+        sx={{
+          color: active
+            ? theme.theme.palette.primary.main
+            : theme.theme.palette.text.primary,
+        }}
+        aria-label="downVote"
+      >
+        {children}
+      </IconButton>
+    ) : (
+      <CircularProgress size={20} />
+    );
 
   return isAuthenticated ? (
     <div ref={containerRef}>

@@ -42,7 +42,7 @@ const VideoDescription = ({
             />
           </Row>
         </Row>
-        <Typography variant="body1" fontSize={16}>
+        <Typography variant="h5" fontSize={16}>
           {description}
         </Typography>
         <Row>{children}</Row>
