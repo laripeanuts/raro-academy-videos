@@ -10,8 +10,9 @@ import { WithChildren } from "../../../common/childrenType";
 
 type CommentVoteButtonType = {
   active?: boolean;
-  onClick?: () => void;
   loading?: boolean;
+  title: string;
+  onClick?: () => void;
 };
 
 /* prettier-ignore */
@@ -19,31 +20,31 @@ export const CommentVoteButton = ({
   active,
   onClick,
   loading,
+  title,
   children,
 }: WithChildren<CommentVoteButtonType>) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
   const { isAuthenticated } = useAuth();
 
-  const renderVotes = () =>
-    !loading ? (
-      <IconButton
-        sx={{
-          color: active
-            ? theme.theme.palette.primary.main
-            : theme.theme.palette.text.primary,
-        }}
-        aria-label="downVote"
-      >
-        {children}
-      </IconButton>
-    ) : (
-      <CircularProgress size={20} />
-    );
+  const renderVotes = () => !loading ? (
+    <IconButton
+      sx={{
+        color: active
+          ? theme.theme.palette.primary.main
+          : theme.theme.palette.text.primary,
+      }}
+      aria-label="downVote"
+    >
+      {children}
+    </IconButton>
+  ) : (
+    <CircularProgress size={20} />
+  );
 
   return isAuthenticated ? (
     <div ref={containerRef}>
-      <Tooltip title="Gostei" arrow>
+      <Tooltip title={title} arrow>
         <IconButton onClick={onClick} disabled={loading}>
           {renderVotes()}
         </IconButton>

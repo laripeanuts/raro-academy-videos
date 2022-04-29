@@ -94,14 +94,15 @@ export const CommentItem = ({
   };
 
   const handleUpVote = async (commentId: string) => {
+    setVoteLoading(true);
     const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
     try {
       const response = await apiClient.put(url, { vote: "up" });
-      setMessage("");
-      setVoteLoading(true);
       setActiveUp(true);
+      setActiveDown(false);
+      setMessage("");
       updateList();
-      console.log(response);
+      console.log(response, "up");
     } catch (err: any) {
       if (err.statusCode === 404) {
         setMessage("Curtida não adicionada.");
@@ -113,12 +114,15 @@ export const CommentItem = ({
   };
 
   const handleDownVote = async (commentId: string) => {
+    setVoteLoading(true);
     const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
     try {
       const response = await apiClient?.put(url, { vote: "down" });
-      setMessage("");
       setActiveDown(true);
+      setActiveUp(false);
+      setMessage("");
       updateList();
+      console.log(response, "down");
     } catch (err: any) {
       if (err.statusCode === 404) {
         setMessage("Descurtida não adicionada.");
@@ -126,6 +130,27 @@ export const CommentItem = ({
         setMessage("Algo deu errado. Tente novamente mais tarde!");
       }
     }
+    setVoteLoading(false);
+  };
+
+  const handledeleteVote = async (commentId: string) => {
+    setVoteLoading(true);
+    const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
+    try {
+      const response = await apiClient.delete(url);
+      setMessage("");
+      setActiveUp(false);
+      setActiveDown(false);
+      updateList();
+      console.log(response, "delete");
+    } catch (err: any) {
+      if (err.statusCode === 404) {
+        setMessage("Descurtida não adicionada.");
+      } else {
+        setMessage("Algo deu errado. Tente novamente mais tarde!");
+      }
+    }
+    setVoteLoading(false);
   };
 
   const renderMyActions = () => {
@@ -251,8 +276,13 @@ export const CommentItem = ({
             <div className="vote">
               <CommentVoteButton
                 active={activeUp}
-                onClick={() => handleUpVote(id)}
+                title="Curtir"
                 loading={voteLoading}
+                onClick={
+                  activeUp
+                    ? () => handledeleteVote(id)
+                    : () => handleUpVote(id)
+                }
               >
                 <KeyboardArrowUpIcon />
               </CommentVoteButton>
@@ -261,8 +291,13 @@ export const CommentItem = ({
             <div className="vote">
               <CommentVoteButton
                 active={activeDown}
-                onClick={() => handleDownVote(id)}
                 loading={voteLoading}
+                title="Descurtir"
+                onClick={
+                  activeDown
+                    ? () => handledeleteVote(id)
+                    : () => handleDownVote(id)
+                }
               >
                 <KeyboardArrowDownIcon />
               </CommentVoteButton>
