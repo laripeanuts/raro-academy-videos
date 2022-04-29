@@ -1,15 +1,11 @@
-import { useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Row, Container } from "./styles";
 import { useAuth } from "../../hooks/useAuth";
-import { useFetch } from "../../hooks/useFetch";
 import { useVideos } from "../../hooks/useVideos";
 import { FavoriteButton } from "../../components/FavoriteButton";
 import { Thumbnail } from "../../components/Thumbnail";
-import apiClient from "../../services/api-client";
-import { VideoType } from "../../types/VideoType";
 import { Carousel } from "../../components/Carousel";
 import { FavoritesCarousel } from "../../components/FavoritesCarousel";
 import { removeFavorited } from "../../utils/removeFavorited";
@@ -19,26 +15,9 @@ export const Home = () => {
   const {
     favorites,
     allVideos,
-    setAllVideos,
-    setFavorites,
+    loading,
+    errorMessage,
   } = useVideos();
-  const { isAuthenticated } = useAuth();
-  const { execute, errorMessage, loading } = useFetch(async () => {
-    if (isAuthenticated) {
-      const [favoritesResponse, allVideosResponse] = await Promise.all([
-        apiClient.get<VideoType[]>("/videos/favoritos"),
-        apiClient.get<VideoType[]>("/videos"),
-      ]);
-
-      setFavorites(favoritesResponse.data);
-      setAllVideos(allVideosResponse.data);
-    } else {
-      const { data } = await apiClient.get<VideoType[]>("/videos");
-
-      setAllVideos(data);
-      setFavorites([]);
-    }
-  });
 
   const renderFavorites = () => (
     favorites.length ? (
@@ -83,10 +62,6 @@ export const Home = () => {
       </>
     ) : null;
   };
-
-  useEffect(() => {
-    execute();
-  }, [isAuthenticated]);
 
   const renderPageContent = () => {
     if (loading) {
