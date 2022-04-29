@@ -13,6 +13,7 @@ import { VideoType } from "../../types/VideoType";
 import { Carousel } from "../../components/Carousel";
 import { FavoritesCarousel } from "../../components/FavoritesCarousel";
 import { removeFavorited } from "../../utils/removeFavorited";
+import { Banner } from "../../components/Banner";
 
 /* prettier-ignore */
 export const Home = () => {
@@ -53,6 +54,8 @@ export const Home = () => {
       </>
     ) : null
   );
+
+  const renderBanner = () => <Banner />;
 
   const renderVideos = () => {
     const list = removeFavorited(allVideos, favorites);
@@ -99,6 +102,7 @@ export const Home = () => {
 
     return (
       <>
+        {renderBanner()}
         {renderFavorites()}
         {renderVideos()}
       </>
