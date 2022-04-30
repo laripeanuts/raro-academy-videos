@@ -9,8 +9,6 @@ import { InputAdornment, Tooltip, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 
@@ -20,9 +18,11 @@ import { useComments } from "../../../hooks/useComments";
 
 import { CommentType } from "../../../types/CommentType";
 import { FormInput } from "../../FormInput";
+import { useTheme } from "../../../hooks/useTheme";
+import { UpVoteIcon } from "../../SVG/UpVoteIcon";
+import { DownVoteIcon } from "../../SVG/DownVoteIcon";
 import { Container, MessageResponse } from "./styles";
 import { CommentVoteButton } from "../CommentVoteButton";
-import { useFetch } from "../../../hooks/useFetch";
 
 type CommentsFormType = {
   texto: string;
@@ -48,7 +48,7 @@ export const CommentItem = ({
 
   const { user, isAuthenticated } = useAuth();
   const { updateList } = useComments();
-
+  const { theme } = useTheme();
   const [editavel, setEditavel] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -201,6 +201,7 @@ export const CommentItem = ({
     setEditavel(false);
   };
 
+  /* prettier-ignore */
   const renderMyEdit = () => {
     setValue("texto", texto);
     if (isAuthenticated && isMyComment && editavel) {
@@ -216,12 +217,14 @@ export const CommentItem = ({
               size="small"
               aria-invalid={errors.texto ? "true" : "false"}
               endAdornment={
+              (
                 <InputAdornment position="end">
                   <CancelIcon
                     onClick={() => setEditavel(false)}
                     className="cancel"
                   />
                 </InputAdornment>
+              )
               }
             />
             <LoadingButton
@@ -286,7 +289,13 @@ export const CommentItem = ({
                     : () => handleUpVote(id)
                 }
               >
-                <KeyboardArrowUpIcon />
+                <UpVoteIcon
+                  fill={
+                    activeUp
+                      ? theme.palette.primary.main
+                      : theme.palette.text.primary
+                  }
+                />
               </CommentVoteButton>
               <Typography variant="subtitle1">{upVotes}</Typography>
             </div>
@@ -301,7 +310,13 @@ export const CommentItem = ({
                     : () => handleDownVote(id)
                 }
               >
-                <KeyboardArrowDownIcon />
+                <DownVoteIcon
+                  fill={
+                    activeDown
+                      ? theme.palette.primary.main
+                      : theme.palette.text.primary
+                  }
+                />
               </CommentVoteButton>
               <Typography variant="subtitle1">{downVotes}</Typography>
             </div>

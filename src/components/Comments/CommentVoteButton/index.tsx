@@ -1,5 +1,3 @@
-import React, { useRef } from "react";
-
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -15,7 +13,6 @@ type CommentVoteButtonType = {
   onClick?: () => void;
 };
 
-/* prettier-ignore */
 export const CommentVoteButton = ({
   active,
   onClick,
@@ -23,32 +20,18 @@ export const CommentVoteButton = ({
   title,
   children,
 }: WithChildren<CommentVoteButtonType>) => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
   const { isAuthenticated } = useAuth();
 
-  const renderVotes = () => !loading ? (
-    <IconButton
-      sx={{
-        color: active
-          ? theme.theme.palette.primary.main
-          : theme.theme.palette.text.primary,
-      }}
-      aria-label="downVote"
-    >
-      {children}
+  const renderVotes = () => (
+    <IconButton size="small" onClick={onClick} disabled={loading}>
+      {loading ? <CircularProgress size={24} /> : children}
     </IconButton>
-  ) : (
-    <CircularProgress size={20} />
   );
 
   return isAuthenticated ? (
-    <div ref={containerRef}>
-      <Tooltip title={title} arrow>
-        <IconButton onClick={onClick} disabled={loading}>
-          {renderVotes()}
-        </IconButton>
-      </Tooltip>
-    </div>
+    <Tooltip title={title} arrow>
+      {renderVotes()}
+    </Tooltip>
   ) : null;
 };
