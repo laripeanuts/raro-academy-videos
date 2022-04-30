@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { CircularProgress } from "@mui/material";
@@ -8,7 +8,6 @@ import { CommentsProvider } from "../../contexts/CommentsProvider";
 import { useFetch } from "../../hooks/useFetch";
 import apiClient from "../../services/api-client";
 
-import { formatDate } from "../../utils/formatDate";
 import { CommentForm } from "../../components/Comments/CommentsForm";
 import { VideoPlayer } from "../../components/VideoPlayer";
 import VideoDescription from "../../components/VideoDescription";
@@ -30,21 +29,30 @@ import { useVideos } from "../../hooks/useVideos";
 
 export const VideoPage = () => {
   const { videoId } = useParams();
+  const navigate = useNavigate();
   const { favorites } = useVideos();
   const [video, setVideo] = useState({} as VideoType);
   const [playlist, setPlaylist] = useState<VideoType[]>([]);
-  const { execute, loading, errorMessage } = useFetch(async () => {
-    const getPlaylist = apiClient.get<VideoType[]>(
-      `/videos/${videoId}/recomendacoes`,
-    );
-    const getVideo = apiClient.get<VideoType>(`/videos/${videoId}`);
-    const [playlistResponse, videoResponse] = await Promise.all([
-      getPlaylist,
-      getVideo,
-    ]);
+  const { execute, loading } = useFetch(async () => {
+    try {
+      const getPlaylist = apiClient.get<VideoType[]>(
+        `/videos/${videoId}/recomendacoes`,
+      );
+      const getVideo = apiClient.get<VideoType>(`/videos/${videoId}`);
+      const [playlistResponse, videoResponse] = await Promise.all([
+        getPlaylist,
+        getVideo,
+      ]);
 
-    setPlaylist(playlistResponse.data);
-    setVideo(videoResponse.data);
+      if (!videoResponse.data) {
+        navigate("/videos/not-found", { replace: true });
+      } else {
+        setPlaylist(playlistResponse.data);
+        setVideo(videoResponse.data);
+      }
+    } catch (error) {
+      navigate("/videos/not-found", { replace: true });
+    }
   });
 
   const loadingProgress = () => (

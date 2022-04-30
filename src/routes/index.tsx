@@ -12,6 +12,7 @@ import Tags from "../pages/Tags";
 import { VideoPage } from "../pages/Video";
 import { VideosPage } from "../pages/Videos";
 
+/* prettier-ignore */
 const RoutesApp = () => (
   <Routes>
     <Route path="/" element={<Layout />}>
@@ -20,7 +21,6 @@ const RoutesApp = () => (
       <Route path="/pass-forgotten" element={<PassForgottenPage />} />
       <Route path="/pass-recovery" element={<PassRecoveryPage />} />
       <Route index element={<Home />} />
-      <Route path="*" element={<NotFoundPage />} />
       <Route path="/tag/:tagName" element={<Tags />} />
 
       <Route element={<RequireAuth />}>
@@ -31,6 +31,18 @@ const RoutesApp = () => (
         <Route path="/videos" element={<VideosPage />} />
         <Route path="/videos/favoritos" element={<FavoritesPage />} />
         <Route path="/videos/:videoId" element={<VideoPage />} />
+        <Route
+          path="/videos/not-found"
+          element={
+            (
+              <NotFoundPage
+                message="Ops, vídeo não encontrado!"
+                buttonText="Perdido? Selecione uma aula na home!"
+              />
+            )
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Route>
   </Routes>
