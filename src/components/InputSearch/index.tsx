@@ -17,9 +17,7 @@ export const InputSearch = ({ onKeyPress }: InputSearchProps) => {
   const debounceId = useRef(0);
 
   const search = useCallback(() => {
-    if (query !== null && query !== "") {
-      onKeyPress(query);
-    }
+    onKeyPress(query);
   }, [query]);
 
   useEffect(() => {
@@ -29,7 +27,6 @@ export const InputSearch = ({ onKeyPress }: InputSearchProps) => {
 
   return (
     <ContainerSearch>
-      <SearchIcon />
       <Input
         type="search"
         placeholder="Buscar Vídeos"

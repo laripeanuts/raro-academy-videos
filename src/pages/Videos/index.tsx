@@ -14,6 +14,7 @@ import { useFetch } from "../../hooks/useFetch";
 
 /* prettier-ignore */
 export const VideosPage = () => {
+  const [querySearch, setQuerySearch] = useState<String>("");
   const {
     allVideos,
     favorites,
@@ -22,7 +23,6 @@ export const VideosPage = () => {
     setAllVideos,
   } = useVideos();
   const [topics, setTopics] = useState<string[]>([]);
-  const [querySearch, setQuerySearch] = useState<String>("");
 
   const { execute } = useFetch(async () => {
     const videosResponse = await apiClient.get<VideoType[]>(
@@ -31,9 +31,9 @@ export const VideosPage = () => {
     setAllVideos(videosResponse.data);
   });
 
-  // useEffect(() => {
-  //   execute();
-  // }, [querySearch]);
+  useEffect(() => {
+    execute();
+  }, [querySearch]);
 
   const renderListByTopic = (topic: string) => (
     <VideosList>

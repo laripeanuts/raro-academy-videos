@@ -5,14 +5,18 @@ import apiClient from "../services/api-client";
 import { useFetch } from "./useFetch";
 import { useAuth } from "./useAuth";
 
-export const useVideos = () => {
+export const useVideos = (name: String = "") => {
   const context = useContext(VideosContext);
   const { isAuthenticated } = useAuth();
   const { execute, errorMessage, loading } = useFetch(async () => {
     if (isAuthenticated) {
       const [favoritesResponse, allVideosResponse] = await Promise.all([
         apiClient.get<VideoType[]>("/videos/favoritos"),
-        apiClient.get<VideoType[]>("/videos"),
+        apiClient.get<VideoType[]>(
+          name !== ""
+            ? `/videos?nome=${name}`
+            : "/videos",
+        ),
       ]);
 
       context.setFavorites(favoritesResponse.data);

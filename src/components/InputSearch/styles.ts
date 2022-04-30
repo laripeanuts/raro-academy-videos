@@ -4,7 +4,10 @@ export const ContainerSearch = styled("div")`
   display: flex;
   flex-direction: row;
   align-items: end;
-  width: 20%;
+  width: 30%;
+  @media only screen and (max-width: 960px) {
+    width: 50%;
+  }
 
   svg {
       font-size: 36px;
