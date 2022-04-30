@@ -2,7 +2,6 @@ import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Row, Container } from "./styles";
-import { useAuth } from "../../hooks/useAuth";
 import { useVideos } from "../../hooks/useVideos";
 import { FavoriteButton } from "../../components/FavoriteButton";
 import { Thumbnail } from "../../components/Thumbnail";
