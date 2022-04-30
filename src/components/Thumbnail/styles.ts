@@ -1,6 +1,6 @@
 import { styled } from "@mui/material/styles";
 
-export const TumbnailContainer = styled("div")`
+export const ThumbnailContainer = styled("div")`
   width: 240px;
   min-width: 240px;
   height: 135px;
@@ -8,20 +8,19 @@ export const TumbnailContainer = styled("div")`
   cursor: pointer;
   transition: transform 200ms ease-out;
 
-
   &:hover {
     transform: scale(0.9);
   }
 `;
 
-export const TumbnailImage = styled("img")`
+export const ThumbnailImage = styled("img")`
   width: 100%;
   height: 100%;
   border-radius: 10px;
 `;
 
 /* prettier-ignore */
-export const InfoTumblr = styled("div")`
+export const InfoThumblr = styled("div")`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,7 +38,7 @@ export const InfoTumblr = styled("div")`
   border-radius: 10px;
 `;
 
-export const TextTumblr = styled("div")`
+export const TextThumblr = styled("div")`
   display: flex;
   flex-direction: column;
   white-space: nowrap;

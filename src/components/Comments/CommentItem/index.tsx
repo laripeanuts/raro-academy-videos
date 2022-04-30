@@ -49,6 +49,7 @@ export const CommentItem = ({
   const { user, isAuthenticated } = useAuth();
   const { updateList } = useComments();
   const { theme } = useTheme();
+
   const [editavel, setEditavel] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -82,21 +83,6 @@ export const CommentItem = ({
   } = useForm<CommentsFormType>({
     resolver: yupResolver(CommentsFormSchema),
   });
-
-  const handleDelete = async (commentId: string) => {
-    const url = `/videos/${videoId}/comentarios/${commentId}`;
-    try {
-      await apiClient?.delete(url);
-      setMessage("");
-      updateList();
-    } catch (err: any) {
-      if (err.statusCode === 404) {
-        setMessage("Comentário não enviado");
-      } else {
-        setMessage("Algo deu errado. Tente novamente mais tarde");
-      }
-    }
-  };
 
   const handleUpVote = async (commentId: string) => {
     setVoteLoading(true);
@@ -155,6 +141,40 @@ export const CommentItem = ({
     setVoteLoading(false);
   };
 
+  const handleDelete = async (commentId: string) => {
+    const url = `/videos/${videoId}/comentarios/${commentId}`;
+    try {
+      await apiClient?.delete(url);
+      setMessage("");
+      updateList();
+    } catch (err: any) {
+      if (err.statusCode === 404) {
+        setMessage("Comentário não enviado");
+      } else {
+        setMessage("Algo deu errado. Tente novamente mais tarde");
+      }
+    }
+  };
+
+  const handleEdit: SubmitHandler<CommentsFormType> = async (data) => {
+    try {
+      setIsLoading(true);
+      const url = `/videos/${videoId}/comentarios/${id}`;
+      await apiClient.patch(url, data);
+      setError("");
+      updateList();
+    } catch (err: any) {
+      if (err.statusCode === 404) {
+        setError("Comentário não enviado");
+      } else {
+        setError("Algo deu errado. Tente novamente mais tarde");
+      }
+    }
+    resetField("texto");
+    setIsLoading(false);
+    setEditavel(false);
+  };
+
   const renderMyActions = () => {
     if (isMyComment) {
       return (
@@ -182,27 +202,9 @@ export const CommentItem = ({
     return null;
   };
 
-  const handleEdit: SubmitHandler<CommentsFormType> = async (data) => {
-    try {
-      setIsLoading(true);
-      const url = `/videos/${videoId}/comentarios/${id}`;
-      await apiClient.patch(url, data);
-      setError("");
-      updateList();
-    } catch (err: any) {
-      if (err.statusCode === 404) {
-        setError("Comentário não enviado");
-      } else {
-        setError("Algo deu errado. Tente novamente mais tarde");
-      }
-    }
-    resetField("texto");
-    setIsLoading(false);
-    setEditavel(false);
-  };
-
   /* prettier-ignore */
-  const renderMyEdit = () => {
+
+  const loadMyEdit = () => {
     setValue("texto", texto);
     if (isAuthenticated && isMyComment && editavel) {
       return (
@@ -216,16 +218,14 @@ export const CommentItem = ({
               control={control}
               size="small"
               aria-invalid={errors.texto ? "true" : "false"}
-              endAdornment={
-              (
+              endAdornment={(
                 <InputAdornment position="end">
                   <CancelIcon
                     onClick={() => setEditavel(false)}
                     className="cancel"
                   />
                 </InputAdornment>
-              )
-              }
+              )}
             />
             <LoadingButton
               className="button"
@@ -264,7 +264,7 @@ export const CommentItem = ({
         <div className="commentListBody">
           <img src={aluno.foto} alt={aluno.nome} />
           <div className="containerText">
-            {renderMyEdit()}
+            {loadMyEdit()}
             {editado ? (
               <Typography
                 variant="subtitle1"

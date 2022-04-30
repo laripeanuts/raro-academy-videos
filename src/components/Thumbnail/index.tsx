@@ -2,10 +2,10 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import {
-  InfoTumblr,
-  TextTumblr,
-  TumbnailContainer,
-  TumbnailImage,
+  InfoThumblr,
+  TextThumblr,
+  ThumbnailContainer,
+  ThumbnailImage,
 } from "./styles";
 import { WithChildren } from "../../common/childrenType";
 
@@ -24,21 +24,21 @@ export const Thumbnail = memo(
     publishedAt,
     children,
   }: WithChildren<ThumbnailType>) => (
-    <TumbnailContainer>
+    <ThumbnailContainer>
       <Link to={`/videos/${videoId}`}>
-        <TumbnailImage src={tumbnail} alt={name} />
+        <ThumbnailImage src={tumbnail} alt={name} />
       </Link>
-      <InfoTumblr>
-        <TextTumblr>
+      <InfoThumblr>
+        <TextThumblr>
           <Link to={`/videos/${videoId}`}>
             <Typography variant="body1" noWrap sx={{ fontWeight: "bold" }}>
               {name}
             </Typography>
             <Typography variant="body2">{publishedAt}</Typography>
           </Link>
-        </TextTumblr>
+        </TextThumblr>
         {children}
-      </InfoTumblr>
-    </TumbnailContainer>
+      </InfoThumblr>
+    </ThumbnailContainer>
   ),
 );
