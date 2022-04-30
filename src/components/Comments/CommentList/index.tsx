@@ -10,41 +10,40 @@ import { Container } from "./styles";
 export const CommentList = () => {
   const { comments, loading, errorMessage } = useComments();
 
-  const loadCommentsList = () =>
-    loading ? (
-      <div>
-        {loading && (
-          <div className="progress">
-            <CircularProgress />
-            {!!errorMessage.length && errorMessage}
-          </div>
-        )}
+  const loadCommentsList = () => loading ? (
+    <div>
+      {loading && (
+      <div className="progress">
+        <CircularProgress />
+        {!!errorMessage.length && errorMessage}
       </div>
-    ) : (
-      <InfiniteScroll
-        hasMore={false}
-        loader={loading}
-        next={() => {}}
-        dataLength={comments.length}
-      >
-        <ul>
-          {comments?.map((item: CommentType) => (
-            <li key={item.id}>
-              <CommentItem
-                id={item.id}
-                texto={item.texto}
-                editado={item.editado}
-                createdAt={item.createdAt}
-                aluno={item.aluno}
-                upVotes={item.upVotes}
-                downVotes={item.downVotes}
-                meuVote={item.meuVote}
-              />
-            </li>
-          ))}
-        </ul>
-      </InfiniteScroll>
-    );
+      )}
+    </div>
+  ) : (
+    <InfiniteScroll
+      hasMore={false}
+      loader={loading}
+      next={() => {}}
+      dataLength={comments.length}
+    >
+      <ul>
+        {comments?.map((item: CommentType) => (
+          <li key={item.id}>
+            <CommentItem
+              id={item.id}
+              texto={item.texto}
+              editado={item.editado}
+              createdAt={item.createdAt}
+              aluno={item.aluno}
+              upVotes={item.upVotes}
+              downVotes={item.downVotes}
+              meuVote={item.meuVote}
+            />
+          </li>
+        ))}
+      </ul>
+    </InfiniteScroll>
+  );
 
   return (
     <Container>

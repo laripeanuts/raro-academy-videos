@@ -4,6 +4,7 @@ import { Avatar, Typography } from "@mui/material";
 import { useAuth } from "../../hooks/useAuth";
 import Button from "../Button";
 import { Container, ContainerNav } from "./styles";
+import { ThemeSwitch } from "../ThemeSwitch";
 
 export const Navbar = () => {
   const { user, isAuthenticated, logout } = useAuth();
@@ -43,6 +44,7 @@ export const Navbar = () => {
 
         {/* <Typography variant="subtitle1">{user.nome}</Typography> */}
       </ContainerNav>
+      <ThemeSwitch />
       <Avatar alt={user.nome} src={user.foto} sx={{ width: 56, height: 56 }} />
     </>
   );

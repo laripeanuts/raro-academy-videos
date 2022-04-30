@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { WithChildren } from "../../common/childrenType";
 import { useFetch } from "../../hooks/useFetch";
@@ -7,12 +7,12 @@ import { CommentType } from "../../types/CommentType";
 import { VideoType } from "../../types/VideoType";
 import ChipList from "../ChipList";
 import {
-  BannerConatiner,
+  BannerContainer,
   BannerImg,
-  BannerInfoComtainer,
+  BannerInfoContainer,
   BannerTitle,
   BannerImgLink,
-  BannerComentsCircle,
+  BannerCommentsCircle,
 } from "./style";
 
 export const Banner = ({ children }: WithChildren) => {
@@ -33,21 +33,21 @@ export const Banner = ({ children }: WithChildren) => {
     execute();
   }, []);
 
-  return (
-    <BannerConatiner>
+  return loading ? (
+    <CircularProgress className="progress" />
+  ) : (
+    <BannerContainer>
       <BannerImgLink to={`/videos/${video.id}`}>
         <BannerImg src={video.thumbUrl} />
       </BannerImgLink>
-      <BannerInfoComtainer>
+      <BannerInfoContainer>
         <BannerTitle variant="h3">{video.descricao}</BannerTitle>
         <Typography variant="body2">Quantidade de interações</Typography>
-        <BannerComentsCircle>
-          <Typography variant="body2">
-            {comments}
-          </Typography>
-        </BannerComentsCircle>
+        <BannerCommentsCircle>
+          <Typography variant="body2">{comments}</Typography>
+        </BannerCommentsCircle>
         <ChipList listTags={video.tags} />
-      </BannerInfoComtainer>
-    </BannerConatiner>
+      </BannerInfoContainer>
+    </BannerContainer>
   );
 };
