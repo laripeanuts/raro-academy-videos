@@ -126,7 +126,7 @@ export const Register = () => {
           </div>
           <div className="bottom">
             <Link className="link" href="/login">
-              Não possui uma conta? Faça seu cadastro!
+              Já possui uma conta? Faça seu login!
             </Link>
             <Button type="submit" disabled={loading}>
               {loading ? "Carregando..." : "Cadastrar"}

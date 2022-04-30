@@ -3,12 +3,26 @@ import { styled } from "@mui/material/styles";
 export const Container = styled("section")`
   padding-top: 15px;
   width: 100%;
-  height: 88%;
+  height: 90%;
   display: flex;
   flex-direction: column-reverse;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  place-content: center;
   transform: rotateY(180deg);
+
+  .load-more-button {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    place-content: center;
+    align-items: center;
+    opacity: 0.5;
+
+    :hover {
+      opacity: 1;
+    }
+  }
 
   .progress {
     display: flex;
