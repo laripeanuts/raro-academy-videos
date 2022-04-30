@@ -1,16 +1,37 @@
+import { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useVideos } from "../../hooks/useVideos";
 import { Thumbnail } from "../../components/Thumbnail";
 import { FavoriteButton } from "../../components/FavoriteButton";
 import { Container, FavoritesList } from "./styles";
+import { InputSearch } from "../../components/InputSearch";
+import { useFetch } from "../../hooks/useFetch";
+import apiClient from "../../services/api-client";
+import { VideoType } from "../../types/VideoType";
 
 export const FavoritesPage = () => {
-  const { favorites, loading, errorMessage } = useVideos();
+  const {
+    favorites,
+    loading,
+    errorMessage,
+  } = useVideos();
+  const [querySearch, setQuerySearch] = useState<String>("");
+  const [videos, setVideos] = useState<VideoType[]>(favorites ?? []);
+  const { execute } = useFetch(async () => {
+    const videosResponse = await apiClient.get<VideoType[]>(
+      `/videos/favoritos?nome=${querySearch}`,
+    );
+    setVideos(videosResponse.data);
+  });
+
+  useEffect(() => {
+    execute();
+  }, [querySearch]);
 
   const renderFavorites = () => (
     <FavoritesList>
-      {favorites.map((video) => (
+      {videos.map((video) => (
         <Thumbnail
           videoId={video.id}
           name={video.nome}
@@ -53,7 +74,12 @@ export const FavoritesPage = () => {
       <Typography variant="h5">{errorMessage}</Typography>;
     }
 
-    return <>{renderVideos()}</>;
+    return (
+      <>
+        <InputSearch onKeyPress={(value: String) => setQuerySearch(value)} />
+        {renderVideos()}
+      </>
+    );
   };
 
   return <Container>{renderPageContent()}</Container>;

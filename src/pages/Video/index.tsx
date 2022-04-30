@@ -30,7 +30,7 @@ import { useVideos } from "../../hooks/useVideos";
 export const VideoPage = () => {
   const { videoId } = useParams();
   const navigate = useNavigate();
-  const { favorites } = useVideos();
+  const { favorites } = useVideos("");
   const [video, setVideo] = useState({} as VideoType);
   const [playlist, setPlaylist] = useState<VideoType[]>([]);
   const { execute, loading } = useFetch(async () => {

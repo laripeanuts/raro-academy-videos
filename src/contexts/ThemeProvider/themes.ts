@@ -1,4 +1,5 @@
 import { PaletteMode } from "@mui/material";
+import { purple } from "@mui/material/colors";
 import { createTheme, ThemeOptions } from "@mui/material/styles";
 
 const white: string = "#F2F2F2";
@@ -157,6 +158,7 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
           },
         },
         input: {
+
           height: "40px",
           padding: "0 15px",
           ":focus": {

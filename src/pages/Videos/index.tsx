@@ -7,9 +7,14 @@ import { FavoriteButton } from "../../components/FavoriteButton";
 import { Thumbnail } from "../../components/Thumbnail";
 import { removeRepeated } from "../../utils/removeRepeated";
 import { favorited } from "../../utils/removeFavorited";
+import { InputSearch } from "../../components/InputSearch";
+import apiClient from "../../services/api-client";
+import { VideoType } from "../../types/VideoType";
+import { useFetch } from "../../hooks/useFetch";
 
 /* prettier-ignore */
 export const VideosPage = () => {
+  const [querySearch, setQuerySearch] = useState<String>("");
   const {
     allVideos,
     favorites,
@@ -17,10 +22,18 @@ export const VideosPage = () => {
     errorMessage,
   } = useVideos();
   const [topics, setTopics] = useState<string[]>([]);
+  const [videos, setVideos] = useState<VideoType[]>(allVideos ?? []);
+
+  const { execute } = useFetch(async () => {
+    const videosResponse = await apiClient.get<VideoType[]>(
+      `/videos?nome=${querySearch}`,
+    );
+    setVideos(videosResponse.data);
+  });
 
   const renderListByTopic = (topic: string) => (
     <VideosList>
-      {allVideos
+      {videos
         .filter((video) => video.topico === topic)
         .map((video) => (
           <Thumbnail
@@ -61,14 +74,19 @@ export const VideosPage = () => {
 
     return (
       <>
+        <InputSearch onKeyPress={(value: String) => setQuerySearch(value)} />
         {renderVideos()}
       </>
     );
   };
 
   useEffect(() => {
-    setTopics(removeRepeated(allVideos.map((video) => video.topico)).sort());
-  }, [allVideos]);
+    execute();
+  }, [querySearch]);
+
+  useEffect(() => {
+    setTopics(removeRepeated(videos.map((video) => video.topico)).sort());
+  }, [allVideos, videos]);
 
   return <Container>{renderPageContent()}</Container>;
 };

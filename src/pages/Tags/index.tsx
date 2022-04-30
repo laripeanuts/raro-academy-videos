@@ -1,32 +1,36 @@
 import { CircularProgress, Typography } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import apiClient from "../../services/api-client";
 import { VideoType } from "../../types/VideoType";
 import { AllVideosList, AllVideosTitle, Container } from "./styles";
-import { useAuth } from "../../hooks/useAuth";
 import { useVideos } from "../../hooks/useVideos";
 import { FavoriteButton } from "../../components/FavoriteButton";
 import { Thumbnail } from "../../components/Thumbnail";
+import { InputSearch } from "../../components/InputSearch";
 
 const Tags = () => {
   const { tagName } = useParams();
-  const { allVideos, setAllVideos, setFavorites } = useVideos();
-  const { execute, loading, errorMessage } = useFetch(async () => {
+  const [querySearch, setQuerySearch] = useState<String>("");
+  const { allVideos, loading } = useVideos();
+  const [videos, setVideos] = useState<VideoType[]>(allVideos ?? []);
+  const { execute, errorMessage } = useFetch(async () => {
     const allVideosResponse = await apiClient.get<VideoType[]>(
-      `/videos?tags=${tagName}`,
+      querySearch !== ""
+        ? `/videos?nome=${querySearch}&tags=${tagName}`
+        : `/videos?tags=${tagName}`,
     );
-    setAllVideos(allVideosResponse.data);
+    setVideos(allVideosResponse.data);
   });
 
   useEffect(() => {
     execute();
-  }, []);
+  }, [querySearch]);
 
   const renderAllVideos = () => (
     <AllVideosList>
-      {allVideos.map((video) => (
+      {videos.map((video) => (
         <Thumbnail
           videoId={video.id}
           name={video.nome}
@@ -42,38 +46,44 @@ const Tags = () => {
     </AllVideosList>
   );
 
+  /* prettier-ignore */
+  const validaVideos = () => (
+    videos.length ? (
+      <>
+        <Typography variant="h4">{`Vídeos ${tagName}`}</Typography>
+        {renderAllVideos()}
+      </>
+    ) : (
+      <Typography alignSelf="center" variant="h6">
+        Vídeos não encontrados!
+      </Typography>
+    )
+  );
+
   const renderPageContent = () => {
     if (loading) {
       return (
-        <Container display="flex">
+        <Container>
           <CircularProgress aria-label="Carregando conteúdo" size={60} />
         </Container>
       );
     }
     if (errorMessage.length) {
       return (
-        <Container display="flex">
+        <Container>
           <Typography variant="h5">{errorMessage}</Typography>
         </Container>
       );
     }
-    if (allVideos.length === 0) {
-      return (
-        <Container display="flex">
-          <Typography variant="h5">Vídeos não encontrados!</Typography>
-        </Container>
-      );
-    }
-
     return (
-      <Container display="grid">
-        <AllVideosTitle variant="h4">{`Vídeos ${tagName}`}</AllVideosTitle>
-        {renderAllVideos()}
-      </Container>
+      <>
+        <InputSearch onKeyPress={(value: String) => setQuerySearch(value)} />
+        {validaVideos()}
+      </>
     );
   };
 
-  return <div>{renderPageContent()}</div>;
+  return <Container>{renderPageContent()}</Container>;
 };
 
 export default Tags;
