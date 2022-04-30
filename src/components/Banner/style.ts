@@ -92,13 +92,3 @@ export const BannerImgLink = styled(Link)`
   box-shadow: inset 1px 1px rgba(255, 255, 255, 0.3),
     3px 3px 10px rgba(0, 0, 0, 0.3);
 `;
-
-export const BannerCommentsCircle = styled("div")`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${(props) => props.theme.palette.secondary.main};
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-`;

@@ -14,10 +14,15 @@ export const ThemeProvider = ({ children }: WithChildren) => {
 
   useEffect(() => {
     const thereIsTheme = localStorage.getItem("theme");
+
     if (thereIsTheme) {
-      if (theme.palette.mode === thereIsTheme) toggleTheme();
+      toggleTheme();
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme.palette.mode);
+  }, [theme]);
 
   return (
     <Provider theme={theme}>
