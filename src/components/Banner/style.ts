@@ -44,8 +44,12 @@ export const BannerInfoContainer = styled("div")`
   @media only screen and (max-width: 900px) {
     width: 100%;
     height: 100%;
+    border-radius: 15px;
     display: flex;
     background: #fff;
+    background-color: ${(props) => props.theme.palette.mode === "dark"
+    ? "rgba(87, 87, 87, 0.18)"
+    : "rgba(135, 135, 135, 0.13)"};
   }
 `;
 
