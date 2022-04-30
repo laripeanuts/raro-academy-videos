@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { CircularProgress } from "@mui/material";
 import { useComments } from "../../../hooks/useComments";
@@ -9,6 +10,15 @@ import { Container } from "./styles";
 
 export const CommentList = () => {
   const { comments, loading, errorMessage } = useComments();
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [comments]);
 
   const loadCommentsList = () => loading ? (
     <div>
@@ -42,6 +52,7 @@ export const CommentList = () => {
           </li>
         ))}
       </ul>
+      <div ref={messagesEndRef} />
     </InfiniteScroll>
   );
 

@@ -8,7 +8,6 @@ export const Container = styled("section")`
   flex-direction: column-reverse;
   justify-content: flex-start;
   align-items: flex-start;
-  scroll-padding-bottom: auto;
   transform: rotateY(180deg);
 
   .progress {
@@ -19,15 +18,12 @@ export const Container = styled("section")`
   }
 
   .scroll {
-    scroll-padding-bottom: revert;
-    scroll-padding-bottom: auto;
     margin-top: 50px;
     width: 100%;
     height: 100%;
     overflow: auto;
     float: left;
     margin: 0 10px;
-    /* transform: rotate(180deg); */
     transform: rotateY(-180deg);
   }
 
