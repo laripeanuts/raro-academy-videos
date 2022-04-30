@@ -13,3 +13,10 @@ export const VideosList = styled("section")`
   gap: 20px;
   flex-wrap: wrap;
 `;
+
+export const ContainerSearch = styled("div")`
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  width: 20%;
+`;

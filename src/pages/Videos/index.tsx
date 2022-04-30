@@ -1,7 +1,14 @@
 import { useEffect, useState, Fragment } from "react";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
-import { VideosList, Container } from "./styles";
+import {
+  Button,
+  Input,
+  InputAdornment,
+  TextField,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { VideosList, Container, ContainerSearch } from "./styles";
 import { useVideos } from "../../hooks/useVideos";
 import { FavoriteButton } from "../../components/FavoriteButton";
 import { Thumbnail } from "../../components/Thumbnail";
@@ -61,6 +68,19 @@ export const VideosPage = () => {
 
     return (
       <>
+        <ContainerSearch>
+          <Input
+            type="search"
+            placeholder="Buscar Vídeos"
+            prefix="teste"
+          />
+          <Button
+            disabled={loading}
+            style={{ marginLeft: 16 }}
+          >
+            Buscar
+          </Button>
+        </ContainerSearch>
         {renderVideos()}
       </>
     );
