@@ -13,6 +13,7 @@ export const VideosContext = createContext<VideosState>({
   setAllVideos: () => null,
   setFavorites: () => null,
   setWatching: () => null,
+  setLoading: () => null,
   loading: true,
   errorMessage: "",
   getDataFromApi: () => Promise.resolve(),
@@ -23,7 +24,12 @@ export const VideosProvider = ({ children }: WithChildren) => {
   const [favorites, setFavorites] = useState<VideoType[]>([]);
   const [watching, setWatching] = useState<VideoType | null>(null);
   const { isAuthenticated } = useAuth();
-  const { execute, errorMessage, loading } = useFetch(async () => {
+  const {
+    execute,
+    errorMessage,
+    loading,
+    setLoading,
+  } = useFetch(async () => {
     if (isAuthenticated) {
       const [favoritesResponse, allVideosResponse] = await Promise.all([
         apiClient.get<VideoType[]>("/videos/favoritos"),
@@ -52,6 +58,7 @@ export const VideosProvider = ({ children }: WithChildren) => {
         setAllVideos,
         setFavorites,
         setWatching,
+        setLoading,
         loading,
         errorMessage,
         getDataFromApi: execute,

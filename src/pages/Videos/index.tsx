@@ -20,24 +20,20 @@ export const VideosPage = () => {
     favorites,
     loading,
     errorMessage,
-    setAllVideos,
   } = useVideos();
   const [topics, setTopics] = useState<string[]>([]);
+  const [videos, setVideos] = useState<VideoType[]>(allVideos ?? []);
 
   const { execute } = useFetch(async () => {
     const videosResponse = await apiClient.get<VideoType[]>(
       `/videos?nome=${querySearch}`,
     );
-    setAllVideos(videosResponse.data);
+    setVideos(videosResponse.data);
   });
-
-  useEffect(() => {
-    execute();
-  }, [querySearch]);
 
   const renderListByTopic = (topic: string) => (
     <VideosList>
-      {allVideos
+      {videos
         .filter((video) => video.topico === topic)
         .map((video) => (
           <Thumbnail
@@ -85,8 +81,12 @@ export const VideosPage = () => {
   };
 
   useEffect(() => {
-    setTopics(removeRepeated(allVideos.map((video) => video.topico)).sort());
-  }, [allVideos]);
+    execute();
+  }, [querySearch]);
+
+  useEffect(() => {
+    setTopics(removeRepeated(videos.map((video) => video.topico)).sort());
+  }, [allVideos, videos]);
 
   return <Container>{renderPageContent()}</Container>;
 };

@@ -28,5 +28,6 @@ export function useFetch(requestsWrapper: () => Promise<void>) {
     execute,
     loading,
     errorMessage,
+    setLoading,
   };
 }

@@ -17,6 +17,7 @@ export const InputSearch = ({ onKeyPress }: InputSearchProps) => {
   const debounceId = useRef(0);
 
   const search = useCallback(() => {
+    console.log(query);
     onKeyPress(query);
   }, [query]);
 
