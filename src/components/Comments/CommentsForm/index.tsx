@@ -1,7 +1,5 @@
 import LoadingButton from "@mui/lab/LoadingButton/LoadingButton";
 import SendIcon from "@mui/icons-material/Send";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import { IconButton, Typography } from "@mui/material";
 
 import * as yup from "yup";
@@ -19,6 +17,7 @@ import { FormInput } from "../../FormInput";
 import { CommentList } from "../CommentList";
 
 import { Container } from "./style";
+import { CommentFilter } from "../CommentFilter";
 
 type CommentsFormType = {
   texto: string;
@@ -36,7 +35,7 @@ export const CommentForm = () => {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [commentsOrder, setCommentsOrder] = useState(true);
+  const [order, setOrder] = useState(false);
 
   const { videoId } = useParams();
 
@@ -67,12 +66,7 @@ export const CommentForm = () => {
     setLoading(false);
   };
 
-  const orderByDate = () => {
-    const newComments = [...comments].reverse();
-    setComments(newComments);
-    setCommentsOrder(!commentsOrder);
-    updateList();
-  };
+  const orderByDate = () => setOrder(!order);
 
   return (
     <Featured sx={{ padding: "10px" }}>
@@ -80,14 +74,7 @@ export const CommentForm = () => {
         {error && error}
         <div className="menuFilter">
           <Typography variant="subtitle2">Data</Typography>
-
-          <IconButton
-            color="primary"
-            aria-label="order-by-date"
-            onClick={orderByDate}
-          >
-            {commentsOrder ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
-          </IconButton>
+          <CommentFilter order={order} onClick={orderByDate} />
         </div>
         <CommentList />
         {isAuthenticated && (
