@@ -24,10 +24,12 @@ export const FooterContainer = styled("footer")`
     width: 40px;
     transition: filter 0.2s;
     scale: 0.3s ease-in-out;
+    transition: 0.3s;
 
     &:hover {
       filter: opacity(0.5);
       transform: scale(1.1);
+      transform: translateY(-5px)
     }
   }
 `;

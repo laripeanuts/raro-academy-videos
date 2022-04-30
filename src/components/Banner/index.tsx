@@ -1,6 +1,5 @@
-import { Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { WithChildren } from "../../common/childrenType";
 import { useFetch } from "../../hooks/useFetch";
 import apiClient from "../../services/api-client";
@@ -8,11 +7,12 @@ import { CommentType } from "../../types/CommentType";
 import { VideoType } from "../../types/VideoType";
 import ChipList from "../ChipList";
 import {
-  BannerConatiner,
+  BannerContainer,
   BannerImg,
-  BannerInfoComtainer,
-  BannerInfoText,
+  BannerInfoContainer,
   BannerTitle,
+  BannerImgLink,
+  BannerCommentsCircle,
 } from "./style";
 
 export const Banner = ({ children }: WithChildren) => {
@@ -33,21 +33,21 @@ export const Banner = ({ children }: WithChildren) => {
     execute();
   }, []);
 
-  return (
-    <Link to={`/videos/${video.id}`}>
-      <BannerConatiner>
+  return loading ? (
+    <CircularProgress className="progress" />
+  ) : (
+    <BannerContainer>
+      <BannerImgLink to={`/videos/${video.id}`}>
         <BannerImg src={video.thumbUrl} />
-        <BannerInfoComtainer>
-          <BannerTitle variant="h2">{video.nome}</BannerTitle>
-          <BannerInfoText>
-            <Typography variant="body2" sx={{}}>
-              {video.descricao}
-            </Typography>
-          </BannerInfoText>
-          <Typography variant="body2">{`Quantidade de comentarios: ${comments}`}</Typography>
-          <ChipList listTags={video.tags} />
-        </BannerInfoComtainer>
-      </BannerConatiner>
-    </Link>
+      </BannerImgLink>
+      <BannerInfoContainer>
+        <BannerTitle variant="h3">{video.descricao}</BannerTitle>
+        <Typography variant="body2">Quantidade de interações</Typography>
+        <BannerCommentsCircle>
+          <Typography variant="body2">{comments}</Typography>
+        </BannerCommentsCircle>
+        <ChipList listTags={video.tags} />
+      </BannerInfoContainer>
+    </BannerContainer>
   );
 };

@@ -41,7 +41,9 @@ export const Container = styled("header")`
     gap: 20px;
 
     @media only screen and (max-width: 650px) {
+      width: 100%;
       gap: 5px;
+      justify-content: space-around;
     }
   }
 
@@ -60,7 +62,7 @@ export const Container = styled("header")`
   @media only screen and (max-width: 650px) {
     padding: 5px 10px;
     gap: 10px;
-    justify-content: space-between;
+    justify-content: space-around;
 
     .logoText {
       display: none;

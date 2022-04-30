@@ -50,7 +50,7 @@ export const VideosPage = () => {
 
   const renderVideos = () => topics.map((topic) => (
     <Fragment key={topic}>
-      <Typography variant="h2" sx={{ textTransform: "capitalize" }}>
+      <Typography variant="h4" sx={{ textTransform: "capitalize" }}>
         {topic}
       </Typography>
       {renderListByTopic(topic)}

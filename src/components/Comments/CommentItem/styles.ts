@@ -136,5 +136,10 @@ export const Container = styled("div")`
 
     &:hover {
       opacity: 1;
+    }
   }
+`;
+
+export const MessageResponse = styled("div")`
+  opacity: 0.5;
 `;
