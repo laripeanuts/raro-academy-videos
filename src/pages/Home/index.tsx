@@ -2,7 +2,6 @@ import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Row, Container } from "./styles";
-import { useAuth } from "../../hooks/useAuth";
 import { useVideos } from "../../hooks/useVideos";
 import { FavoriteButton } from "../../components/FavoriteButton";
 import { Thumbnail } from "../../components/Thumbnail";
@@ -26,7 +25,7 @@ export const Home = () => {
         <Row>
           <Typography variant="h4">Favoritos</Typography>
           <Link to="/videos/favoritos">
-            <Typography variant="body2">Todos os favoritos</Typography>
+            <Typography variant="body2" className="link-carousel">Todos os favoritos</Typography>
           </Link>
         </Row>
         <FavoritesCarousel />
@@ -44,7 +43,7 @@ export const Home = () => {
         <Row>
           <Typography variant="h4">Vídeos</Typography>
           <Link to="/videos">
-            <Typography variant="body2">Todos os vídeos</Typography>
+            <Typography variant="body2" className="link-carousel">Todos os vídeos</Typography>
           </Link>
         </Row>
         <Carousel itemsWidth={260}>

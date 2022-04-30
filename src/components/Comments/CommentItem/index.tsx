@@ -60,6 +60,9 @@ export const CommentItem = ({
   const [activeUp, setActiveUp] = useState(false);
   const [activeDown, setActiveDown] = useState(false);
 
+  const [upVote, setUpVote] = useState(upVotes);
+  const [downVote, setDownVote] = useState(downVotes);
+
   const isMyComment = user.id === aluno.id;
   const isMyVote = user.id === meuVote?.aluno.id;
 
@@ -71,9 +74,8 @@ export const CommentItem = ({
         setActiveDown(true);
       }
     }
-  }, []);
+  }, [isMyVote]);
 
-  // Formulário Edição
   const {
     handleSubmit,
     control,
@@ -89,10 +91,13 @@ export const CommentItem = ({
     const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
     try {
       const response = await apiClient.put(url, { vote: "up" });
+      if (activeDown) {
+        setActiveDown(false);
+        setDownVote(downVote - 1);
+      }
       setActiveUp(true);
-      setActiveDown(false);
+      setUpVote(upVote + 1);
       setMessage("");
-      updateList();
     } catch (err: any) {
       if (err.statusCode === 404) {
         setMessage("Curtida não adicionada.");
@@ -108,10 +113,13 @@ export const CommentItem = ({
     const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
     try {
       const response = await apiClient?.put(url, { vote: "down" });
+      if (activeUp) {
+        setActiveUp(false);
+        setUpVote(upVote - 1);
+      }
       setActiveDown(true);
-      setActiveUp(false);
+      setDownVote(downVote + 1);
       setMessage("");
-      updateList();
     } catch (err: any) {
       if (err.statusCode === 404) {
         setMessage("Descurtida não adicionada.");
@@ -128,9 +136,14 @@ export const CommentItem = ({
     try {
       const response = await apiClient.delete(url);
       setMessage("");
-      setActiveUp(false);
-      setActiveDown(false);
-      updateList();
+
+      if (activeUp) {
+        setActiveUp(false);
+        setUpVote(upVote - 1);
+      } else if (activeDown) {
+        setActiveDown(false);
+        setDownVote(downVote - 1);
+      }
     } catch (err: any) {
       if (err.statusCode === 404) {
         setMessage("Descurtida não adicionada.");
@@ -283,6 +296,7 @@ export const CommentItem = ({
                 active={activeUp}
                 title="Curtir"
                 loading={voteLoading}
+                countVote={upVote}
                 onClick={
                   activeUp
                     ? () => handledeleteVote(id)
@@ -297,13 +311,14 @@ export const CommentItem = ({
                   }
                 />
               </CommentVoteButton>
-              <Typography variant="subtitle1">{upVotes}</Typography>
+              {/* <Typography variant="subtitle1">{upVotes}</Typography> */}
             </div>
             <div className="vote">
               <CommentVoteButton
                 active={activeDown}
                 loading={voteLoading}
                 title="Descutir"
+                countVote={downVote}
                 onClick={
                   activeDown
                     ? () => handledeleteVote(id)
@@ -318,7 +333,6 @@ export const CommentItem = ({
                   }
                 />
               </CommentVoteButton>
-              <Typography variant="subtitle1">{downVotes}</Typography>
             </div>
           </div>
           <MessageResponse>

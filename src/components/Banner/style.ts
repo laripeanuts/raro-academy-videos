@@ -44,8 +44,12 @@ export const BannerInfoContainer = styled("div")`
   @media only screen and (max-width: 900px) {
     width: 100%;
     height: 100%;
+    border-radius: 15px;
     display: flex;
     background: #fff;
+    background-color: ${(props) => props.theme.palette.mode === "dark"
+    ? "rgba(87, 87, 87, 0.18)"
+    : "rgba(135, 135, 135, 0.13)"};
   }
 `;
 
@@ -87,14 +91,4 @@ export const BannerImgLink = styled(Link)`
   border-bottom-left-radius: 10px;
   box-shadow: inset 1px 1px rgba(255, 255, 255, 0.3),
     3px 3px 10px rgba(0, 0, 0, 0.3);
-`;
-
-export const BannerCommentsCircle = styled("div")`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${(props) => props.theme.palette.secondary.main};
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
 `;

@@ -6,7 +6,6 @@ export const ThemeSwitch = () => {
 
   const handleChange = () => {
     toggleTheme();
-    localStorage.setItem("theme", theme.palette.mode);
   };
 
   return (

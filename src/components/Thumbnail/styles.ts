@@ -32,10 +32,11 @@ export const InfoThumblr = styled("div")`
   bottom: 0;
   z-index: 1;
   backdrop-filter: blur(20px);
-  background-color: ${({ theme }) => (theme.palette.mode === "dark"
+  background-color: ${({ theme }) => theme.palette.mode === "dark"
     ? "rgba(0, 0, 0, 0.55)"
-    : "rgba(255, 255, 255, 0.1)")};
+    : "rgba(255, 255, 255, 0.1)"};
   border-radius: 10px;
+  margin-bottom: -1px;
 `;
 
 export const TextThumblr = styled("div")`

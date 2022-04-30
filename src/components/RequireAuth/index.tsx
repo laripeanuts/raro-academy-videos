@@ -1,11 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 export const RequireAuth: FC = () => {
-  const auth = useAuth();
+  const { isAuthenticated } = useAuth();
 
-  if (!auth.isAuthenticated) <Navigate to="/" />;
-
-  return <Outlet />;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
 };
