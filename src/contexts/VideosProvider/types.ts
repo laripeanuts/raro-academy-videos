@@ -8,4 +8,7 @@ export type VideosState = {
   setAllVideos: Dispatch<SetStateAction<VideoType[]>>;
   setFavorites: Dispatch<SetStateAction<VideoType[]>>;
   setWatching: Dispatch<SetStateAction<VideoType | null>>;
+  loading: boolean;
+  errorMessage: string;
+  getDataFromApi: () => Promise<void>;
 };
