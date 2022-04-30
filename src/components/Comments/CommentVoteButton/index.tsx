@@ -2,10 +2,9 @@ import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import CircularProgress from "@mui/material/CircularProgress";
 
-import { useAuth } from "../../../hooks/useAuth";
-import { useTheme } from "../../../hooks/useTheme";
-import { WithChildren } from "../../../common/childrenType";
 import { Typography } from "@mui/material";
+import { useAuth } from "../../../hooks/useAuth";
+import { WithChildren } from "../../../common/childrenType";
 
 type CommentVoteButtonType = {
   active?: boolean;
