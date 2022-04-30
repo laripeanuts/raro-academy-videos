@@ -1,3 +1,4 @@
+import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import FeedIcon from "@mui/icons-material/Feed";
 import Typography from "@mui/material/Typography";
@@ -34,7 +35,9 @@ const VideoDescription = ({
           <Typography variant="h5">{title}</Typography>
           <Row>
             <IconButton color="primary" onClick={onClickFeed}>
-              <FeedIcon />
+              <Tooltip title="Baixe os arquivos da aula" arrow>
+                <FeedIcon />
+              </Tooltip>
             </IconButton>
             <FavoriteButton
               id={videoId}
