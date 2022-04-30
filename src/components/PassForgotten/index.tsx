@@ -41,7 +41,7 @@ export const PassForgotten = () => {
     try {
       setLoading(true);
       const url = "/auth/solicitar-codigo";
-      const response = await apiClient.post(url, data);
+      await apiClient.post(url, data);
       setMessage("Código enviado para seu e-mail");
       setError("");
     } catch (err: any) {
@@ -69,7 +69,7 @@ export const PassForgotten = () => {
             aria-invalid={errors.email ? "true" : "false"}
           />
           <div className="linksContainer">
-            <Link className="link" href="/pass-forgotten">
+            <Link className="link" href="/login">
               Lembrou a senha?
             </Link>
           </div>
