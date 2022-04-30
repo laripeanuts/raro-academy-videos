@@ -1,19 +1,16 @@
 import { useEffect, useState, Fragment } from "react";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
-import {
-  Button,
-  Input,
-  InputAdornment,
-  TextField,
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import { VideosList, Container, ContainerSearch } from "./styles";
+import { VideosList, Container } from "./styles";
 import { useVideos } from "../../hooks/useVideos";
 import { FavoriteButton } from "../../components/FavoriteButton";
 import { Thumbnail } from "../../components/Thumbnail";
 import { removeRepeated } from "../../utils/removeRepeated";
 import { favorited } from "../../utils/removeFavorited";
+import { InputSearch } from "../../components/InputSearch";
+import apiClient from "../../services/api-client";
+import { VideoType } from "../../types/VideoType";
+import { useFetch } from "../../hooks/useFetch";
 
 /* prettier-ignore */
 export const VideosPage = () => {
@@ -22,8 +19,21 @@ export const VideosPage = () => {
     favorites,
     loading,
     errorMessage,
+    setAllVideos,
   } = useVideos();
   const [topics, setTopics] = useState<string[]>([]);
+  const [querySearch, setQuerySearch] = useState<String>("");
+
+  const { execute } = useFetch(async () => {
+    const videosResponse = await apiClient.get<VideoType[]>(
+      `/videos?nome=${querySearch}`,
+    );
+    setAllVideos(videosResponse.data);
+  });
+
+  // useEffect(() => {
+  //   execute();
+  // }, [querySearch]);
 
   const renderListByTopic = (topic: string) => (
     <VideosList>
@@ -68,19 +78,7 @@ export const VideosPage = () => {
 
     return (
       <>
-        <ContainerSearch>
-          <Input
-            type="search"
-            placeholder="Buscar Vídeos"
-            prefix="teste"
-          />
-          <Button
-            disabled={loading}
-            style={{ marginLeft: 16 }}
-          >
-            Buscar
-          </Button>
-        </ContainerSearch>
+        <InputSearch onKeyPress={(value: String) => setQuerySearch(value)} />
         {renderVideos()}
       </>
     );
