@@ -91,8 +91,11 @@ export const CommentItem = ({
     const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
     try {
       const response = await apiClient.put(url, { vote: "up" });
+      if (activeDown) {
+        setActiveDown(false);
+        setDownVote(downVote - 1);
+      }
       setActiveUp(true);
-      setActiveDown(false);
       setUpVote(upVote + 1);
       setMessage("");
     } catch (err: any) {
@@ -110,8 +113,11 @@ export const CommentItem = ({
     const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
     try {
       const response = await apiClient?.put(url, { vote: "down" });
+      if (activeUp) {
+        setActiveUp(false);
+        setUpVote(upVote - 1);
+      }
       setActiveDown(true);
-      setActiveUp(false);
       setDownVote(downVote + 1);
       setMessage("");
     } catch (err: any) {
@@ -130,14 +136,13 @@ export const CommentItem = ({
     try {
       const response = await apiClient.delete(url);
       setMessage("");
-      if (isMyVote) {
-        if (activeUp) {
-          setActiveUp(false);
-          setUpVote(upVote - 1);
-        } else if (activeDown) {
-          setActiveDown(false);
-          setDownVote(downVote - 1);
-        }
+
+      if (activeUp) {
+        setActiveUp(false);
+        setUpVote(upVote - 1);
+      } else if (activeDown) {
+        setActiveDown(false);
+        setDownVote(downVote - 1);
       }
     } catch (err: any) {
       if (err.statusCode === 404) {
