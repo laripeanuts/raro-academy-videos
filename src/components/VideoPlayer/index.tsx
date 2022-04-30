@@ -6,11 +6,12 @@ import ReactPlayer from "react-player/lazy";
 import { Container } from "./style";
 
 type VideoPlayerType = {
+  thumbnail?: string;
   src: string;
   id: string;
 };
 
-export const VideoPlayer = ({ src, id }: VideoPlayerType) => {
+export const VideoPlayer = ({ thumbnail, src, id }: VideoPlayerType) => {
   const [error, setError] = useState("");
 
   const loadingVideo = () => (
@@ -32,11 +33,10 @@ export const VideoPlayer = ({ src, id }: VideoPlayerType) => {
         height="100%"
         controls
         url={src}
-        className="video-player"
+        className="react-player"
         onError={loadError}
         key={id}
       />
-      {/* <img src={src} alt={alt} /> */}
     </Container>
   );
 };

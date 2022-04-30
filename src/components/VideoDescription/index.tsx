@@ -42,16 +42,16 @@ const VideoDescription = ({
             />
           </Row>
         </Row>
-        <Typography variant="body1" fontSize={16}>
+        <Typography variant="subtitle1" fontSize={16}>
           {description}
         </Typography>
         <Row>{children}</Row>
 
         <Row justifyContent="flex-end">
-          <Typography variant="body1" fontSize={16}>
+          <Typography variant="subtitle1" fontSize={16}>
             {duration}
           </Typography>
-          <Typography variant="body1" fontSize={16}>
+          <Typography variant="subtitle1" fontSize={16}>
             {date}
           </Typography>
         </Row>
