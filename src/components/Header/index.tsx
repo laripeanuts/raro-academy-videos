@@ -5,6 +5,7 @@ import { LogoCompact } from "../SVG/LogoCompact";
 import { ThemeSwitch } from "../ThemeSwitch";
 import { useAuth } from "../../hooks/useAuth";
 import { Navbar } from "../Navbar";
+import { AccountMenu } from "../AccountMenu";
 
 export const Header = () => {
   const { isAuthenticated } = useAuth();

@@ -64,7 +64,7 @@ Projeto final do curso de React da Raro Academy que visa Melhorar o modelo de di
 
 Desenvolver com React uma plataforma web funcional conforme descrito detalhadamente no [enunciado oficial](./.github/raro_enunciado.md), utilizando API disponibilizada pela Raro Academy para acesso. As regras e critérios de avaliação se encontram [aqui](./.github/raro_regras.md).
 
-- [ ] HOME (pública)
+- [x] HOME (pública)
   - [x] Conteúdo público
   - [x] Botão de login
 - [x] LOGIN
@@ -74,14 +74,14 @@ Desenvolver com React uma plataforma web funcional conforme descrito detalhadame
 - [x] CADASTRO NOVO USUÁRIO
 - [x] HOME (com autenticação do usuário)
   - [x] Conteúdo público e relativo a turma do usuário
-  - [ ] Conteúdo categorizado por playlist
-  - [ ] Conteúdo favoritado / caso vazio mostrar como favoritar
+  - [x] Conteúdo categorizado por playlist
+  - [x] Conteúdo favoritado / caso vazio mostrar como favoritar
 - [x] VISUALIZAÇÃO DE CONTEÚDO
   - [x] Visualização do vídeo
-  - [ ] Lista com os próximos itens da playlist correspondente
-  - [ ] Área de comentários com botão de _like_ e _dislike_
+  - [x] Playlist com vídeos recomendados
+  - [x] Área de comentários com botão de _like_ e _dislike_
   - [x] Ação de comentar somente para usuários cadastrados
-  - [ ] Botão de favoritar
+  - [x] Botão de favoritar
 
 <!--
 ## 🥳 App
