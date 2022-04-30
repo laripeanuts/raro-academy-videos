@@ -6,12 +6,10 @@ export const FooterContainer = styled("footer")`
   justify-content: center;
   align-items: center;
   gap: 25px;
-  bottom: 0;
   width: 100%;
   height: 80px;
   padding: 20px;
   z-index: 10;
-  bottom: 0;
 
   box-shadow: inset 1px 1px rgba(255, 255, 255, 0.3),
     3px 3px 10px rgba(0, 0, 0, 0.3);
@@ -25,14 +23,13 @@ export const FooterContainer = styled("footer")`
     height: 40px;
     width: 40px;
     transition: filter 0.2s;
+    scale: 0.3s ease-in-out;
+    transition: 0.3s;
 
     &:hover {
       filter: opacity(0.5);
+      transform: scale(1.1);
+      transform: translateY(-5px)
     }
-  }
-
-  @media only screen and (max-width: 650px) {
-    position: absolute;
-    bottom: 0;
   }
 `;

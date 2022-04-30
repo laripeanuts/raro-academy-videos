@@ -27,7 +27,7 @@ export const Container = styled("section")`
     justify-content: center;
   }
 
-  @media only screen and (max-width: 750px) {
+  @media only screen and (max-width: 900px) {
     width: 100%;
     height: 100%;
     padding: 90px 10px;
@@ -61,7 +61,7 @@ export const ContainerVideo = styled("div")`
   width: 60%;
   color: ${(props) => props.theme.palette.text.primary};
 
-  @media only screen and (max-width: 750px) {
+  @media only screen and (max-width: 900px) {
     width: 100%;
   }
 `;
@@ -69,7 +69,7 @@ export const ContainerVideo = styled("div")`
 export const ContainerComments = styled("div")`
   width: 40%;
 
-  @media only screen and (max-width: 750px) {
+  @media only screen and (max-width: 900px) {
     width: 100%;
   }
 `;

@@ -55,7 +55,7 @@ export const VideoPage = () => {
 
   const loadVideoSection = () => (
     <div className="videplayer">
-      <VideoPlayer src={video.url} id={video.id} />
+      <VideoPlayer src={video.url} id={video.id} thumbnail={video.thumbUrl} />
       <VideoDescription
         videoId={video.id}
         title={video.nome}
