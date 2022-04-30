@@ -49,8 +49,6 @@ export const CommentItem = ({
   const { user, isAuthenticated } = useAuth();
   const { updateList } = useComments();
 
-  const [comment, setComment] = useState<CommentType>({} as CommentType);
-
   const [editavel, setEditavel] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -61,18 +59,17 @@ export const CommentItem = ({
   const [activeUp, setActiveUp] = useState(false);
   const [activeDown, setActiveDown] = useState(false);
 
-  const { execute, loading, errorMessage } = useFetch(async () => {
-    const url = `/videos/${videoId}/comentarios/${id}`;
-    const response = await apiClient.get<CommentType>(url);
-    setComment(response.data);
-    console.log(response.data);
-  });
-
   const isMyComment = user.id === aluno.id;
   const isMyVote = user.id === meuVote?.aluno.id;
 
   useEffect(() => {
-    execute();
+    if (isMyVote) {
+      if (meuVote?.vote === "up") {
+        setActiveUp(true);
+      } else if (meuVote?.vote === "down") {
+        setActiveDown(true);
+      }
+    }
   }, []);
 
   // Formulário Edição
@@ -88,7 +85,6 @@ export const CommentItem = ({
 
   const handleDelete = async (commentId: string) => {
     const url = `/videos/${videoId}/comentarios/${commentId}`;
-    console.log(aluno);
     try {
       await apiClient?.delete(url);
       setMessage("");
@@ -111,7 +107,6 @@ export const CommentItem = ({
       setActiveDown(false);
       setMessage("");
       updateList();
-      console.log(response, "up");
     } catch (err: any) {
       if (err.statusCode === 404) {
         setMessage("Curtida não adicionada.");
@@ -131,7 +126,6 @@ export const CommentItem = ({
       setActiveUp(false);
       setMessage("");
       updateList();
-      console.log(response, "down");
     } catch (err: any) {
       if (err.statusCode === 404) {
         setMessage("Descurtida não adicionada.");
@@ -151,7 +145,6 @@ export const CommentItem = ({
       setActiveUp(false);
       setActiveDown(false);
       updateList();
-      console.log(response, "delete");
     } catch (err: any) {
       if (err.statusCode === 404) {
         setMessage("Descurtida não adicionada.");
@@ -301,7 +294,7 @@ export const CommentItem = ({
               <CommentVoteButton
                 active={activeDown}
                 loading={voteLoading}
-                title="Descurtir"
+                title="Descutir"
                 onClick={
                   activeDown
                     ? () => handledeleteVote(id)
