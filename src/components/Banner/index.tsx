@@ -50,7 +50,11 @@ export const Banner = ({ children }: WithChildren) => {
   const renderContent = () => {
     if (loading && !loadingVideos) {
       return (
-        <CircularProgress sx={{ alignSelf: "center" }} className="progress" />
+        <CircularProgress
+          sx={{ alignSelf: "center" }}
+          className="progress"
+          aria-label="Carregando conteúdo"
+        />
       );
     }
 

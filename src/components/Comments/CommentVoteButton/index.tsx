@@ -27,7 +27,11 @@ export const CommentVoteButton = ({
   const renderVotes = () => (
     <>
       <IconButton size="small" onClick={onClick} disabled={loading}>
-        {loading ? <CircularProgress size={24} /> : children}
+        {loading ? (
+          <CircularProgress size={24} aria-label="Carregando conteúdo" />
+        ) : (
+          children
+        )}
       </IconButton>
       {loading ? null : (
         <Typography variant="subtitle1">{countVote}</Typography>

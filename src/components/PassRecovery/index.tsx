@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
-import { Button, Typography } from "@mui/material";
+import { Button, CircularProgress, Typography } from "@mui/material";
 import apiClient from "../../services/api-client";
 import { FormInput } from "../FormInput";
 import { FormStyle } from "../../styles/FormStyle";
@@ -80,14 +80,14 @@ export const PassRecovery = () => {
           <FormInput
             type="password"
             name="novaSenha"
-            placeholder="Senha"
+            placeholder="Nova senha"
             control={control}
             aria-invalid={errors.novaSenha ? "true" : "false"}
           />
           <FormInput
             type="password"
             name="confirmarSenha"
-            placeholder="Confirmar senha"
+            placeholder="Confirmar nova senha"
             control={control}
             aria-invalid={errors.confirmarSenha ? "true" : "false"}
           />
@@ -106,7 +106,14 @@ export const PassRecovery = () => {
               Não possui um código? Solicite um!
             </Link>
             <Button type="submit" disabled={loading}>
-              {loading ? "Carregando..." : "Alterar"}
+              {loading ? (
+                <CircularProgress
+                  sx={{ color: "white", padding: "8px" }}
+                  aria-label="Carregando conteúdo"
+                />
+              ) : (
+                "Alterar"
+              )}
             </Button>
           </div>
         </form>

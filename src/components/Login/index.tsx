@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { Button, Typography } from "@mui/material";
+import { Button, CircularProgress, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { FormInput } from "../FormInput";
@@ -92,7 +92,14 @@ export const Login = () => {
                 Não possui uma conta? Faça seu cadastro!
               </Link>
               <Button type="submit" disabled={loading}>
-                {loading ? "Carregando..." : "Entrar"}
+                {loading ? (
+                  <CircularProgress
+                    sx={{ color: "white", padding: "8px" }}
+                    aria-label="Carregando conteúdo"
+                  />
+                ) : (
+                  "Entrar"
+                )}
               </Button>
             </div>
           </div>
