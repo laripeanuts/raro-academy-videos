@@ -1,23 +1,20 @@
 import { useEffect, useState, Fragment } from "react";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
-import { VideosList, Container } from "./styles";
+import { VideoListContainer, Container } from "./styles";
 import { useVideos } from "../../hooks/useVideos";
-import { FavoriteButton } from "../../components/FavoriteButton";
-import { Thumbnail } from "../../components/Thumbnail";
 import { removeRepeated } from "../../utils/removeRepeated";
-import { favorited } from "../../utils/removeFavorited";
 import { InputSearch } from "../../components/InputSearch";
 import apiClient from "../../services/api-client";
 import { VideoType } from "../../types/VideoType";
 import { useFetch } from "../../hooks/useFetch";
+import { VideoList } from "../../components/VideoList";
 
 /* prettier-ignore */
 export const VideosPage = () => {
   const [querySearch, setQuerySearch] = useState<String>("");
   const {
     allVideos,
-    favorites,
     loading,
     errorMessage,
   } = useVideos();
@@ -32,26 +29,9 @@ export const VideosPage = () => {
   });
 
   const renderListByTopic = (topic: string) => (
-    <VideosList>
-      {videos
-        .filter((video) => video.topico === topic)
-        .map((video) => (
-          <Thumbnail
-            videoId={video.id}
-            name={video.nome}
-            tumbnail={video.thumbUrl}
-            publishedAt={new Date(video.dataPublicacao).toLocaleDateString(
-              "pt-br",
-            )}
-            key={video.id}
-          >
-            <FavoriteButton
-              id={video.id}
-              filled={favorited(video.id, favorites)}
-            />
-          </Thumbnail>
-        ))}
-    </VideosList>
+    <VideoListContainer>
+      <VideoList list={videos.filter((video) => video.topico === topic)} />
+    </VideoListContainer>
   );
 
   const renderVideos = () => topics.map((topic) => (

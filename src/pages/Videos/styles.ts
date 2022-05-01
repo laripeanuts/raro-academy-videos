@@ -8,7 +8,7 @@ export const Container = styled("section")`
   width: 100%;
 `;
 
-export const VideosList = styled("section")`
+export const VideoListContainer = styled("section")`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
