@@ -17,7 +17,7 @@ import { FormInput } from "../../FormInput";
 import { CommentList } from "../CommentList";
 
 import { Container } from "./style";
-import { CommentFilter } from "../CommentFilter";
+import { CommentOrder } from "../CommentOrder";
 
 type CommentsFormType = {
   texto: string;
@@ -74,7 +74,7 @@ export const CommentForm = () => {
         {error && error}
         <div className="menuFilter">
           <Typography variant="subtitle2">Data</Typography>
-          <CommentFilter order={order} onClick={orderByDate} />
+          <CommentOrder order={order} onClick={orderByDate} />
         </div>
         <CommentList />
         {isAuthenticated && (
