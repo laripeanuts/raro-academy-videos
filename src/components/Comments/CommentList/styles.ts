@@ -11,6 +11,12 @@ export const Container = styled("section")`
   place-content: center;
   transform: rotateY(180deg);
 
+  .go-down-button {
+    display: flex;
+    justify-content: center;
+    margin-left: 8%;
+  }
+
   .load-more-button {
     width: 100%;
     flex-direction: column;

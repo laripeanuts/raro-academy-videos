@@ -129,7 +129,8 @@ export const Container = styled("div")`
   }
 
   .cancel {
-    margin-right: 15px;
+    margin-top: 20px;
+    place-self: center;
     opacity: 0.5;
     cursor: pointer;
     transition: all 0.3s ease-in-out;

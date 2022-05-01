@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import { Events, Link, scroller } from "react-scroll";
 import { useParams } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import { useFetch } from "../../hooks/useFetch";
@@ -28,13 +29,31 @@ export const CommentsProvider = ({ children }: ChildrenProviderType) => {
     setComments(data);
   });
 
+  const goDown = () => {
+    scroller.scrollTo("listBegin", {
+      duration: 1500,
+      delay: 0,
+      smooth: "easeInOutQuart",
+      containerId: "comments-list",
+    });
+  };
+
   const updateList = () => {
     execute();
+    goDown();
   };
 
   useEffect(() => {
     execute();
   }, [videoId]);
+
+  useEffect(() => {
+    if (!loading) {
+      setTimeout(() => {
+        goDown();
+      }, 1000);
+    }
+  }, []);
 
   return (
     <CommentsContext.Provider

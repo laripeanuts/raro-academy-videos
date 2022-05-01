@@ -16,7 +16,7 @@ export const VideoPlayer = ({ thumbnail, src, id }: VideoPlayerType) => {
 
   const loadingVideo = () => (
     <div className="playerLoading">
-      <CircularProgress />
+      <CircularProgress aria-label="Carregando conteúdo" />
     </div>
   );
 

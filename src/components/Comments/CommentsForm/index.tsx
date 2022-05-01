@@ -17,7 +17,7 @@ import { FormInput } from "../../FormInput";
 import { CommentList } from "../CommentList";
 
 import { Container } from "./style";
-import { CommentFilter } from "../CommentFilter";
+import { CommentOrder } from "../CommentOrder";
 
 type CommentsFormType = {
   texto: string;
@@ -25,7 +25,10 @@ type CommentsFormType = {
 
 const CommentsFormSchema = yup
   .object({
-    texto: yup.string().required("Digite um comentário"),
+    texto: yup
+      .string()
+      .required("Digite um comentário")
+      .max(80, "Mensagem muito grande, digite no máximo 80 caracteres"),
   })
   .required();
 
@@ -74,7 +77,7 @@ export const CommentForm = () => {
         {error && error}
         <div className="menuFilter">
           <Typography variant="subtitle2">Data</Typography>
-          <CommentFilter order={order} onClick={orderByDate} />
+          <CommentOrder order={order} onClick={orderByDate} />
         </div>
         <CommentList />
         {isAuthenticated && (

@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { InputAdornment, Tooltip, Typography } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";
@@ -30,7 +30,10 @@ type CommentsFormType = {
 
 const CommentsFormSchema = yup
   .object({
-    texto: yup.string().required("Digite um comentário"),
+    texto: yup
+      .string()
+      .required("Digite um comentário")
+      .max(80, "Mensagem muito grande, digite no máximo 80 caracteres"),
   })
   .required();
 
@@ -188,7 +191,7 @@ export const CommentItem = ({
     setEditavel(false);
   };
 
-  const renderMyActions = () => {
+  const loadMyActions = () => {
     if (isMyComment) {
       return (
         <div className="commentListActions">
@@ -231,14 +234,10 @@ export const CommentItem = ({
               control={control}
               size="small"
               aria-invalid={errors.texto ? "true" : "false"}
-              endAdornment={(
-                <InputAdornment position="end">
-                  <CancelIcon
-                    onClick={() => setEditavel(false)}
-                    className="cancel"
-                  />
-                </InputAdornment>
-              )}
+            />
+            <CancelIcon
+              onClick={() => setEditavel(false)}
+              className="cancel"
             />
             <LoadingButton
               className="button"
@@ -341,7 +340,7 @@ export const CommentItem = ({
               {message && message}
             </Typography>
           </MessageResponse>
-          {renderMyActions()}
+          {loadMyActions()}
         </div>
       </div>
     </Container>

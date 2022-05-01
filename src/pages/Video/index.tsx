@@ -78,7 +78,7 @@ export const VideoPage = () => {
     if (loading) {
       return (
         <section className="progress">
-          <CircularProgress />
+          <CircularProgress aria-label="Carregando conteúdo" />
         </section>
       );
     }

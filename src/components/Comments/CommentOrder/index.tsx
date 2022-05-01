@@ -7,7 +7,7 @@ type CommentFilterProps = {
   onClick: () => void;
 };
 
-export const CommentFilter = ({ order, onClick }: CommentFilterProps) => (
+export const CommentOrder = ({ order, onClick }: CommentFilterProps) => (
   <IconButton color="primary" aria-label="order-by-date" onClick={onClick}>
     {order ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
   </IconButton>

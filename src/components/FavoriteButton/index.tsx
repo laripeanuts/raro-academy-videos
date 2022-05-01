@@ -53,7 +53,7 @@ export const FavoriteButton = memo(
             />
           </svg>
         ) : (
-          <CircularProgress size={20} />
+          <CircularProgress size={20} aria-label="Carregando conteúdo" />
         )
     );
 

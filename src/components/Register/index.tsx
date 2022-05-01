@@ -2,7 +2,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { Button, Typography } from "@mui/material";
+import { Button, CircularProgress, Typography } from "@mui/material";
 import apiClient from "../../services/api-client";
 import { FormInput } from "../FormInput";
 import { FormStyle } from "../../styles/FormStyle";
@@ -129,7 +129,14 @@ export const Register = () => {
               Já possui uma conta? Faça seu login!
             </Link>
             <Button type="submit" disabled={loading}>
-              {loading ? "Carregando..." : "Cadastrar"}
+              {loading ? (
+                <CircularProgress
+                  sx={{ color: "white", padding: "8px" }}
+                  aria-label="Carregando conteúdo"
+                />
+              ) : (
+                "Cadastrar"
+              )}
             </Button>
           </div>
         </form>
