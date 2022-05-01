@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 export const BannerContainer = styled("div")`
   display: flex;
+  max-height: 300px;
+  place-content: center;
 
   .progress {
     display: flex;
@@ -15,11 +17,20 @@ export const BannerContainer = styled("div")`
   @media only screen and (max-width: 900px) {
     width: 100%;
     padding: 20px;
-    height: 30%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+`;
+
+export const ContainerComentarios = styled("div")`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  flex-wrap: nowrap;
 `;
 
 export const BannerInfoContainer = styled("div")`
@@ -57,8 +68,6 @@ export const BannerTitle = styled(Typography)`
   display: flex;
   flex-wrap: wrap;
   text-align: left;
-  margin-left: 20px;
-  padding-top: 20px;
   background-image: linear-gradient(
     40deg,
     ${(props) => props.theme.palette.primary.main},
