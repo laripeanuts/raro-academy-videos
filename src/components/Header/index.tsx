@@ -6,7 +6,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { Navbar } from "../Navbar";
 
 export const Header = () => {
-  const { isAuthenticated } = useAuth();
+  const { user, isAuthenticated, logout } = useAuth();
 
   return (
     <Container>
@@ -22,7 +22,11 @@ export const Header = () => {
       </Link>
       <div className="menuUser">
         <div className="navbar">
-          <Navbar />
+          <Navbar
+            user={user}
+            isAuthenticated={isAuthenticated}
+            logout={logout}
+          />
         </div>
       </div>
     </Container>

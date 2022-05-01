@@ -12,7 +12,6 @@ import { ThemeSwitch } from "../ThemeSwitch";
 export const AccountMenu = () => {
   const { user, logout } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const navigate = useNavigate();
   const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -70,7 +69,7 @@ export const AccountMenu = () => {
           <MenuItem onClick={logout}>Logout</MenuItem>
           <span className="theme">
             <Typography variant="h6">Tema</Typography>
-            <ThemeSwitch />
+            {/* <ThemeSwitch /> */}
           </span>
         </ContainerMenu>
       </Menu>

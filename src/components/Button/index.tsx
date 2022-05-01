@@ -3,7 +3,7 @@ import { StyledButton } from "./styles";
 
 export type ButtonProps = {
   children: ReactNode;
-  disabled: boolean;
+  disabled?: boolean;
   onClick?: () => void;
 };
 
