@@ -2,20 +2,15 @@ import { Outlet } from "react-router-dom";
 
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-
-import { MainContainer, Background } from "./styles";
-import { BGLogo } from "../../components/BGLogo";
+import { MainContainer } from "./styles";
 import { VideosProvider } from "../../contexts/VideosProvider";
 
 export const Layout = () => (
-  <Background>
-    <BGLogo />
-    <VideosProvider>
-      <Header />
-      <MainContainer>
-        <Outlet />
-      </MainContainer>
-      <Footer />
-    </VideosProvider>
-  </Background>
+  <VideosProvider>
+    <Header />
+    <MainContainer>
+      <Outlet />
+    </MainContainer>
+    <Footer />
+  </VideosProvider>
 );
