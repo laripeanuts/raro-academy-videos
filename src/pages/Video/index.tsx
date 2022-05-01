@@ -1,25 +1,15 @@
-import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
+import Typography from "@mui/material/Typography";
 
-import { CircularProgress } from "@mui/material";
-
+import { VideoType } from "../../types/VideoType";
 import { CommentsProvider } from "../../contexts/CommentsProvider";
-
 import { useFetch } from "../../hooks/useFetch";
 import apiClient from "../../services/api-client";
-
 import { CommentForm } from "../../components/Comments/CommentsForm";
 import { VideoPlayer } from "../../components/VideoPlayer";
 import VideoDescription from "../../components/VideoDescription";
-
-import { VideoType } from "../../types/VideoType";
-
-import {
-  Container,
-  ContainerComments,
-  ContainerPlaylist,
-  ContainerVideo,
-} from "./styles";
 import ChipList from "../../components/ChipList";
 import { Carousel } from "../../components/Carousel";
 import { Thumbnail } from "../../components/Thumbnail";
@@ -27,13 +17,20 @@ import { FavoriteButton } from "../../components/FavoriteButton";
 import { favorited } from "../../utils/removeFavorited";
 import { useVideos } from "../../hooks/useVideos";
 
+import {
+  Container,
+  ContainerComments,
+  ContainerPlaylist,
+  ContainerVideo,
+} from "./styles";
+
 export const VideoPage = () => {
   const { videoId } = useParams();
   const navigate = useNavigate();
   const { favorites } = useVideos("");
-  const [video, setVideo] = useState({} as VideoType);
+  const [video, setVideo] = useState<VideoType | null>(null);
   const [playlist, setPlaylist] = useState<VideoType[]>([]);
-  const { execute, loading } = useFetch(async () => {
+  const { execute, loading, errorMessage } = useFetch(async () => {
     try {
       const getPlaylist = apiClient.get<VideoType[]>(
         `/videos/${videoId}/recomendacoes`,
@@ -54,27 +51,6 @@ export const VideoPage = () => {
       navigate("/videos/not-found", { replace: true });
     }
   });
-
-  const loadingProgress = () => (
-    <div className="progress">
-      <CircularProgress />
-    </div>
-  );
-
-  const loadVideoSection = () => (
-    <div className="videplayer">
-      <VideoPlayer src={video.url} id={video.id} thumbnail={video.thumbUrl} />
-      <VideoDescription
-        videoId={video.id}
-        title={video.nome}
-        description={video.descricao}
-        date={new Date(video.createdAt).toLocaleDateString()}
-        duration={video.duracao}
-      >
-        <ChipList listTags={video.tags} />
-      </VideoDescription>
-    </div>
-  );
 
   /* prettier-ignore */
   const renderPlaylist = () => (
@@ -97,6 +73,44 @@ export const VideoPage = () => {
     ) : null
   );
 
+  /* prettier-ignore */
+  const renderVideoData = () => {
+    if (loading) {
+      return (
+        <section className="progress">
+          <CircularProgress />
+        </section>
+      );
+    }
+
+    if (video) {
+      return (
+        <div className="videplayer">
+          <VideoPlayer
+            src={video.url}
+            id={video.id}
+            thumbnail={video.thumbUrl}
+          />
+          <VideoDescription
+            videoId={video.id}
+            title={video.nome}
+            description={video.descricao}
+            date={new Date(video.createdAt).toLocaleDateString()}
+            duration={video.duracao}
+          >
+            <ChipList listTags={video.tags} />
+          </VideoDescription>
+        </div>
+      );
+    }
+
+    if (errorMessage.length) {
+      return <Typography variant="h5">{errorMessage}</Typography>;
+    }
+
+    return null;
+  };
+
   useEffect(() => {
     execute();
   }, [videoId]);
@@ -105,9 +119,7 @@ export const VideoPage = () => {
     <CommentsProvider>
       <Container className="videoPage">
         <main className="main">
-          <ContainerVideo>
-            {loading ? loadingProgress() : loadVideoSection()}
-          </ContainerVideo>
+          <ContainerVideo>{renderVideoData()}</ContainerVideo>
           <ContainerComments>
             <CommentForm />
           </ContainerComments>
