@@ -30,7 +30,10 @@ type CommentsFormType = {
 
 const CommentsFormSchema = yup
   .object({
-    texto: yup.string().required("Digite um comentário"),
+    texto: yup
+      .string()
+      .required("Digite um comentário")
+      .max(80, "Mensagem muito grande, digite no máximo 80 caracteres"),
   })
   .required();
 
@@ -231,14 +234,10 @@ export const CommentItem = ({
               control={control}
               size="small"
               aria-invalid={errors.texto ? "true" : "false"}
-              endAdornment={(
-                <InputAdornment position="end">
-                  <CancelIcon
-                    onClick={() => setEditavel(false)}
-                    className="cancel"
-                  />
-                </InputAdornment>
-              )}
+            />
+            <CancelIcon
+              onClick={() => setEditavel(false)}
+              className="cancel"
             />
             <LoadingButton
               className="button"

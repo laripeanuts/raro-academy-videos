@@ -51,7 +51,8 @@ export const Container = styled("div")`
       width: 100%;
       padding: 10px;
       border-radius: 10px;
-      background: ${(props) => props.theme.palette.mode === "dark" ? "#404040" : "#c2c2c2"};
+      background: ${(props) =>
+        props.theme.palette.mode === "dark" ? "#404040" : "#c2c2c2"};
       align-items: center;
       flex-grow: 1;
 
@@ -129,7 +130,8 @@ export const Container = styled("div")`
   }
 
   .cancel {
-    margin-right: 15px;
+    margin-top: 20px;
+    place-self: center;
     opacity: 0.5;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
