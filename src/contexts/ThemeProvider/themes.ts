@@ -93,8 +93,8 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
     body2: {
       fontSize: "0.813rem",
       lineHeight: 1.5,
-      color: "#9e9e9e",
-      textShadow: "0.5px 0.5px 1px #212121",
+      color: white,
+      opacity: 0.8,
     },
   },
   components: {
@@ -158,7 +158,6 @@ const getThemeOptions = (mode: PaletteMode): ThemeOptions => ({
           },
         },
         input: {
-
           height: "40px",
           padding: "0 15px",
           ":focus": {
