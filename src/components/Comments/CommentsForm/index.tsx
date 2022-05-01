@@ -25,7 +25,10 @@ type CommentsFormType = {
 
 const CommentsFormSchema = yup
   .object({
-    texto: yup.string().required("Digite um comentário"),
+    texto: yup
+      .string()
+      .required("Digite um comentário")
+      .max(80, "Mensagem muito grande, digite no máximo 80 caracteres"),
   })
   .required();
 
