@@ -13,7 +13,11 @@ import { WithChildren } from "../../common/childrenType";
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 export const ThemeProvider = ({ children }: WithChildren) => {
-  const [mode, setMode] = useState<PaletteMode>("light");
+  const [mode, setMode] = useState<PaletteMode>(() => {
+    const storedMode = localStorage.getItem("theme");
+
+    return storedMode ? (storedMode as PaletteMode) : "light";
+  });
   const theme = useMemo(() => (mode === "dark" ? dark : light), [mode]);
 
   /* prettier-ignore */
@@ -27,14 +31,6 @@ export const ThemeProvider = ({ children }: WithChildren) => {
     }),
     [],
   );
-
-  useEffect(() => {
-    const storedMode = localStorage.getItem("theme");
-
-    if (storedMode) {
-      setMode(() => storedMode as PaletteMode);
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem("theme", theme.palette.mode);
