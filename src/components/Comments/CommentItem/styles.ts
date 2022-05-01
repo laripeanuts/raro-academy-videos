@@ -51,8 +51,7 @@ export const Container = styled("div")`
       width: 100%;
       padding: 10px;
       border-radius: 10px;
-      background: ${(props) =>
-        props.theme.palette.mode === "dark" ? "#404040" : "#c2c2c2"};
+      background: ${(props) => props.theme.palette.mode === "dark" ? "#404040" : "#c2c2c2"};
       align-items: center;
       flex-grow: 1;
 

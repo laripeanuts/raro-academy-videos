@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { InputAdornment, Tooltip, Typography } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import CancelIcon from "@mui/icons-material/Cancel";
 import SendIcon from "@mui/icons-material/Send";

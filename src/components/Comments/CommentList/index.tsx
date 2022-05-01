@@ -1,8 +1,10 @@
+import { Link } from "react-scroll";
 import { useEffect, useState, useRef } from "react";
 
-import { CircularProgress } from "@mui/material";
-import { useComments } from "../../../hooks/useComments";
+import { CircularProgress, IconButton, Tooltip } from "@mui/material";
+import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
 
+import { useComments } from "../../../hooks/useComments";
 import { CommentType } from "../../../types/CommentType";
 import { CommentItem } from "../CommentItem";
 
@@ -15,14 +17,6 @@ export const CommentList = () => {
   const [quantityMessage, setQuantityMessage] = useState(5);
   const [hasMore, setHasMore] = useState<boolean>();
 
-  const [isReverse, setIsReverse] = useState<boolean>(true);
-
-  const listEndRef = useRef<null | HTMLDivElement>(null);
-
-  const scrollToBottom = () => {
-    listEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const loadMore = () => {
     if (comments.length > quantityMessage) {
       setHasMore(true);
@@ -34,50 +28,52 @@ export const CommentList = () => {
     }
   };
 
-  const loadLoading = () => {
-    if (loading) {
-      return <CircularProgress aria-label="Carregando conteúdo" />;
-    }
-
-    return null;
-  };
-
   /* prettier-ignore */
-  const loadCommentsList = () => loading ? (
-    <div>
-      {loading && (
-      <div className="progress">
-        <CircularProgress />
-        {!!errorMessage.length && errorMessage}
+  const loadCommentsList = () => (
+    loading ? (
+      <div>
+        {loading && (
+          <div className="progress">
+            <CircularProgress />
+            {!!errorMessage.length && errorMessage}
+          </div>
+        )}
       </div>
-      )}
-    </div>
-  ) : (
-    <>
-      <ul>
-        <li id="listEnd" />
-        {loadMessage?.map((item: CommentType) => (
-          <li key={item.id}>
-            <CommentItem
-              id={item.id}
-              texto={item.texto}
-              editado={item.editado}
-              createdAt={item.createdAt}
-              aluno={item.aluno}
-              upVotes={item.upVotes}
-              downVotes={item.downVotes}
-              meuVote={item.meuVote}
-            />
-          </li>
-        ))}
-      </ul>
-      <div ref={listEndRef} />
-    </>
-  );
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [comments]);
+    ) : (
+      <>
+        <ul>
+          <Link
+            to="listBegin"
+            smooth
+            duration={1500}
+            containerId="comments-list"
+            className="go-down-button"
+          >
+            <IconButton disabled={comments.length < 4}>
+              <Tooltip title="Vá para o começo" arrow>
+                <ExpandCircleDownIcon />
+              </Tooltip>
+            </IconButton>
+          </Link>
+          <li id="listEnd" />
+          {loadMessage?.map((item: CommentType) => (
+            <li key={item.id}>
+              <CommentItem
+                id={item.id}
+                texto={item.texto}
+                editado={item.editado}
+                createdAt={item.createdAt}
+                aluno={item.aluno}
+                upVotes={item.upVotes}
+                downVotes={item.downVotes}
+                meuVote={item.meuVote}
+              />
+            </li>
+          ))}
+        </ul>
+        <div id="listBegin" />
+      </>
+    ));
 
   useEffect(() => {
     setLoadMessage([...comments].splice(-quantityMessage, quantityMessage));
@@ -98,7 +94,7 @@ export const CommentList = () => {
           if (entries.some((entry) => entry.isIntersecting)) {
             loadMore();
           }
-        }, 1000);
+        }, 2000);
       });
       intersectionObserver.observe(listEndReference);
 
@@ -110,7 +106,9 @@ export const CommentList = () => {
 
   return (
     <Container>
-      <div className="scroll scroll2">{loadCommentsList()}</div>
+      <div className="scroll scroll2" id="comments-list">
+        {loadCommentsList()}
+      </div>
     </Container>
   );
 };
