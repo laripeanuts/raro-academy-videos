@@ -188,7 +188,7 @@ export const CommentItem = ({
     setEditavel(false);
   };
 
-  const renderMyActions = () => {
+  const loadMyActions = () => {
     if (isMyComment) {
       return (
         <div className="commentListActions">
@@ -341,7 +341,7 @@ export const CommentItem = ({
               {message && message}
             </Typography>
           </MessageResponse>
-          {renderMyActions()}
+          {loadMyActions()}
         </div>
       </div>
     </Container>

@@ -21,7 +21,7 @@ export const CommentList = () => {
 
   const [loadMessage, setLoadMessage] = useState<CommentType[]>([]);
   const [quantityMessage, setQuantityMessage] = useState(5);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState<boolean>();
 
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
@@ -30,16 +30,13 @@ export const CommentList = () => {
   };
 
   const loadMore = () => {
-    setQuantityMessage(quantityMessage + 5);
-    setLoadMessage(comments.slice(quantityMessage, quantityMessage));
-    if (comments.length <= loadMessage.length) {
+    if (comments.length > quantityMessage) {
+      setHasMore(true);
+      setQuantityMessage(quantityMessage + 5);
+    } else {
       setHasMore(false);
     }
   };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [comments]);
 
   /* prettier-ignore */
   const loadCommentsList = () => (
@@ -65,14 +62,6 @@ export const CommentList = () => {
             </IconButton>
           </Tooltip>
         ) : null}
-        {/* <InfiniteScroll
-          hasMore={hasMore}
-          next={loadMore}
-          loader={loading}
-          dataLength={comments.length}
-          useWindow={false}
-          getScrollParent={() => this.scrollToBottom}
-        > */}
         <ul>
           {loadMessage?.map((item: CommentType) => (
             <li key={item.id}>
@@ -90,13 +79,23 @@ export const CommentList = () => {
           ))}
         </ul>
         <div ref={messagesEndRef} />
-        {/* </InfiniteScroll> */}
       </>
     ));
 
   useEffect(() => {
+    console.log("quantidade de mensagens", comments.length);
+    console.log("quantidade de quant mensagens", quantityMessage);
+    console.log(hasMore, "hasMore");
     setLoadMessage([...comments].splice(-quantityMessage, quantityMessage));
   }, [comments, quantityMessage]);
+
+  useEffect(() => {
+    if (comments.length > quantityMessage) setHasMore(true);
+  }, [comments]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [comments]);
 
   return (
     <Container>
