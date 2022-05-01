@@ -59,7 +59,7 @@
 
 ## 🌟 **Sobre o projeto**
 
-Projeto final do curso de React da Raro Academy que visa melhorar o modelo de distribuição do conteúdo dos cursos, criando um portal de acesso aos materiais de vídeo, onde os usuários poderão ter acesso ao conteúdo direcionados a eles.
+Projeto final do curso de React da Raro Academy que visa melhorar o modelo de distribuição do conteúdo dos cursos, criando um portal de acesso aos materiais de vídeo, onde os usuários poderão visualizar o conteúdo disponibilizados na plataforma.
 
 ## 🎯 **Objetivos principais**
 

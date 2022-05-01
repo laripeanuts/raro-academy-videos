@@ -1,9 +1,13 @@
+import { memo } from "react";
+import { Theme } from "@mui/material/styles";
 import { StyledStwitch } from "./styles";
-import { useTheme } from "../../hooks/useTheme";
 
-export const ThemeSwitch = () => {
-  const { theme, toggleTheme } = useTheme();
+type ThemeSwitchProps = {
+  theme: Theme;
+  toggleTheme: () => void;
+};
 
+export const ThemeSwitch = memo(({ theme, toggleTheme }: ThemeSwitchProps) => {
   const handleChange = () => {
     toggleTheme();
   };
@@ -16,4 +20,4 @@ export const ThemeSwitch = () => {
       onChange={handleChange}
     />
   );
-};
+});
