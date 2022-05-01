@@ -3,12 +3,11 @@ import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Row, Container } from "./styles";
 import { useVideos } from "../../hooks/useVideos";
-import { FavoriteButton } from "../../components/FavoriteButton";
-import { Thumbnail } from "../../components/Thumbnail";
 import { Carousel } from "../../components/Carousel";
-import { FavoritesCarousel } from "../../components/FavoritesCarousel";
 import { removeFavorited } from "../../utils/removeFavorited";
 import { Banner } from "../../components/Banner";
+import { VideoList } from "../../components/VideoList";
+import { Featured } from "../../components/Featured";
 
 /* prettier-ignore */
 export const Home = () => {
@@ -28,7 +27,17 @@ export const Home = () => {
             <Typography variant="body2" className="link-carousel">Todos os favoritos</Typography>
           </Link>
         </Row>
-        <FavoritesCarousel />
+        <Featured
+          sx={{
+            flexDirection: "row",
+            width: "100%",
+            padding: "30px 15px",
+          }}
+        >
+          <Carousel itemsWidth={260}>
+            <VideoList list={favorites} />
+          </Carousel>
+        </Featured>
       </>
     ) : null
   );
@@ -47,19 +56,7 @@ export const Home = () => {
           </Link>
         </Row>
         <Carousel itemsWidth={260}>
-          {list.map((video) => (
-            <Thumbnail
-              videoId={video.id}
-              name={video.nome}
-              tumbnail={video.thumbUrl}
-              publishedAt={new Date(video.dataPublicacao).toLocaleDateString(
-                "pt-br",
-              )}
-              key={video.id}
-            >
-              <FavoriteButton id={video.id} />
-            </Thumbnail>
-          ))}
+          <VideoList list={list} />
         </Carousel>
       </>
     ) : null;

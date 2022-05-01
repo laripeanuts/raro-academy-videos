@@ -1,22 +1,38 @@
-import { createContext, useEffect, useState } from "react";
+import { PaletteMode } from "@mui/material";
+/* prettier-ignore */
+import {
+  createContext,
+  useEffect,
+  useState,
+  useMemo,
+} from "react";
 import { ThemeProvider as Provider } from "@mui/material/styles";
 import { dark, light } from "./themes";
 import { WithChildren } from "../../common/childrenType";
 
-export const ToggleThemeContext = createContext(() => {});
+export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 export const ThemeProvider = ({ children }: WithChildren) => {
-  const [theme, setTheme] = useState(dark);
+  const [mode, setMode] = useState<PaletteMode>("light");
+  const theme = useMemo(() => (mode === "dark" ? dark : light), [mode]);
 
-  const toggleTheme = () => {
-    setTheme(theme.palette.mode === "dark" ? light : dark);
-  };
+  /* prettier-ignore */
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode: PaletteMode) => (
+          prevMode === "light" ? "dark" : "light"
+        ));
+      },
+    }),
+    [],
+  );
 
   useEffect(() => {
-    const storageTheme = localStorage.getItem("theme");
+    const storedMode = localStorage.getItem("theme");
 
-    if (storageTheme) {
-      setTheme(storageTheme === "dark" ? dark : light);
+    if (storedMode) {
+      setMode(() => storedMode as PaletteMode);
     }
   }, []);
 
@@ -25,10 +41,8 @@ export const ThemeProvider = ({ children }: WithChildren) => {
   }, [theme]);
 
   return (
-    <Provider theme={theme}>
-      <ToggleThemeContext.Provider value={toggleTheme}>
-        {children}
-      </ToggleThemeContext.Provider>
-    </Provider>
+    <ColorModeContext.Provider value={colorMode}>
+      <Provider theme={theme}>{children}</Provider>
+    </ColorModeContext.Provider>
   );
 };

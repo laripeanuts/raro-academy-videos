@@ -11,11 +11,7 @@ import apiClient from "../../services/api-client";
 import { VideoType } from "../../types/VideoType";
 
 export const FavoritesPage = () => {
-  const {
-    favorites,
-    loading,
-    errorMessage,
-  } = useVideos();
+  const { favorites, loading, errorMessage } = useVideos();
   const [querySearch, setQuerySearch] = useState<String>("");
   const [videos, setVideos] = useState<VideoType[]>(favorites ?? []);
   const { execute } = useFetch(async () => {
@@ -28,6 +24,10 @@ export const FavoritesPage = () => {
   useEffect(() => {
     execute();
   }, [querySearch]);
+
+  useEffect(() => {
+    setVideos(favorites);
+  }, [favorites]);
 
   const renderFavorites = () => (
     <FavoritesList>
