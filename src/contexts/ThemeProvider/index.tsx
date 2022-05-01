@@ -6,17 +6,17 @@ import { WithChildren } from "../../common/childrenType";
 export const ToggleThemeContext = createContext(() => {});
 
 export const ThemeProvider = ({ children }: WithChildren) => {
-  const [theme, setTheme] = useState(light);
+  const [theme, setTheme] = useState(dark);
 
   const toggleTheme = () => {
     setTheme(theme.palette.mode === "dark" ? light : dark);
   };
 
   useEffect(() => {
-    const thereIsTheme = localStorage.getItem("theme");
+    const storageTheme = localStorage.getItem("theme");
 
-    if (thereIsTheme) {
-      toggleTheme();
+    if (storageTheme) {
+      setTheme(storageTheme === "dark" ? dark : light);
     }
   }, []);
 
