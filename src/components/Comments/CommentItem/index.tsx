@@ -336,8 +336,8 @@ export const CommentItem = ({
           </div>
           <MessageResponse>
             <Typography variant="subtitle1" sx={{ color: "primary" }}>
-              {error && error}
-              {message && message}
+              {error || null}
+              {message || null}
             </Typography>
           </MessageResponse>
           {loadMyActions()}

@@ -13,7 +13,7 @@ export const MainContainer = styled("main")`
   background-position: left 125% top 20px;
   min-height: calc(100vh - 160px);
   width: 100%;
-  padding: 30px;
+  padding: 10px 30px 30px 30px;
   display: flex;
   justify-content: center;
 

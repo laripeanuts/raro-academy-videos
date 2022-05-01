@@ -3,6 +3,7 @@ import { Typography } from "@mui/material/";
 import { Link } from "react-router-dom";
 
 export const BannerContainer = styled("div")`
+  padding-top: 20px;
   display: flex;
   max-height: 300px;
   place-content: center;

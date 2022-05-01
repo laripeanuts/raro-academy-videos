@@ -16,10 +16,9 @@ export const Container = styled("section")`
     :hover {
       color: ${({ theme }) => theme.palette.primary.main};
       backdrop-filter: blur(8px);
-      background-color: ${(props) =>
-      props.theme.palette.mode === "dark"
-        ? "rgba(87, 87, 87, 0.18)"
-        : "rgba(135, 135, 135, 0.13)"};
+      background-color: ${(props) => props.theme.palette.mode === "dark"
+    ? "rgba(87, 87, 87, 0.18)"
+    : "rgba(135, 135, 135, 0.13)"};
     }
   }
 `;

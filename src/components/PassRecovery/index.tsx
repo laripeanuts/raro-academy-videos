@@ -94,11 +94,11 @@ export const PassRecovery = () => {
           <div className="messages">
             <span className="error">{error && error}</span>
             <div className="success">
-              {message && (
+              {message ? (
                 <Link className="link" href="/login">
                   {message}
                 </Link>
-              )}
+              ) : null}
             </div>
           </div>
           <div className="bottom">

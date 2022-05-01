@@ -74,8 +74,8 @@ export const PassForgotten = () => {
             </Link>
           </div>
           <div className="messages">
-            <span className="error">{error && error}</span>
-            <span className="success">{message && message}</span>
+            <span className="error">{error || null}</span>
+            <span className="success">{message || null}</span>
           </div>
           <div className="bottom">
             <Link className="link" href="/pass-recovery">
