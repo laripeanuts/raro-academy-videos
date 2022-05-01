@@ -32,12 +32,12 @@ export const CommentList = () => {
   const loadCommentsList = () => (
     loading ? (
       <div>
-        {loading && (
+        {loading ? (
           <div className="progress">
             <CircularProgress />
             {!!errorMessage.length && errorMessage}
           </div>
-        )}
+        ) : null}
       </div>
     ) : (
       <>

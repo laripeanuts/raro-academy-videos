@@ -74,13 +74,13 @@ export const CommentForm = () => {
   return (
     <Featured sx={{ padding: "10px" }}>
       <Container>
-        {error && error}
+        {error || null}
         <div className="menuFilter">
           <Typography variant="subtitle2">Data</Typography>
           <CommentOrder order={order} onClick={orderByDate} />
         </div>
         <CommentList />
-        {isAuthenticated && (
+        {isAuthenticated ? (
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="makeComment">
               <FormInput
@@ -101,7 +101,7 @@ export const CommentForm = () => {
               />
             </div>
           </form>
-        )}
+        ) : null}
       </Container>
     </Featured>
   );
