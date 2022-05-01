@@ -50,7 +50,7 @@ export const Navbar = ({ user, logout, isAuthenticated }: NavbarProps) => {
         >
           Favoritos
         </Button>
-        <Button onClick={() => onLogout()}>Logout</Button>
+        <Button disabled={false} onClick={logout}>Logout</Button>
       </>
     )
   );
