@@ -1,4 +1,3 @@
-import { CircularProgress } from "@mui/material";
 import { useState } from "react";
 
 import ReactPlayer from "react-player/lazy";
@@ -14,29 +13,24 @@ type VideoPlayerType = {
 export const VideoPlayer = ({ thumbnail, src, id }: VideoPlayerType) => {
   const [error, setError] = useState("");
 
-  const loadingVideo = () => (
-    <div className="playerLoading">
-      <CircularProgress aria-label="Carregando conteúdo" />
-    </div>
-  );
-
   const loadError = () => (
-    <div className="playerLoading">
-      Algo deu errado ao carregar o vídeo. Tente novamente mais tarde.
-    </div>
+    <div className="playerLoading">{`Algo deu errado! ${error}`}</div>
   );
 
   return (
     <Container>
       <ReactPlayer
         width="100%"
-        height="100%"
+        height="45vh"
+        light={thumbnail}
         controls
+        muted
         url={src}
         className="react-player"
-        onError={loadError}
+        onError={(err) => setError(err)}
         key={id}
       />
+      {error ? loadError() : null}
     </Container>
   );
 };
