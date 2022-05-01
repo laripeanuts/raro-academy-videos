@@ -1,46 +1,63 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { Avatar, Tooltip, Typography } from "@mui/material";
-import { useAuth } from "../../hooks/useAuth";
+import { Avatar, Tooltip } from "@mui/material";
 import Button from "../Button";
 import { Container, ContainerNav } from "./styles";
 import { ThemeSwitch } from "../ThemeSwitch";
+import { useTheme } from "../../hooks/useTheme";
+import { userType } from "../../types/userType";
 
-export const Navbar = () => {
-  const { user, isAuthenticated, logout } = useAuth();
+type NavbarProps = {
+  user: userType;
+  isAuthenticated: boolean;
+  logout: () => void;
+};
+
+export const Navbar = ({ user, logout, isAuthenticated }: NavbarProps) => {
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const onLogout = () => {
     logout();
     navigate("/");
   };
 
-  const renderNavBar = () => (
-    <ContainerNav>
-      <Link to="/login">
-        <Button disabled={false}>Login</Button>
-      </Link>
-      <Link to="/register">
-        <Button disabled={false}>Cadastro</Button>
-      </Link>
-      <ThemeSwitch />
-    </ContainerNav>
+  const getHandleClick = (path: string) => () => navigate(path);
+
+  /* prettier-ignore */
+  const renderLinks = () => (
+    !isAuthenticated ? (
+      <>
+        <Button
+          onClick={getHandleClick("/login")}
+          disabled={location.pathname === "/login"}
+        >
+          Login
+        </Button>
+        <Button
+          onClick={getHandleClick("/register")}
+          disabled={location.pathname === "/register"}
+        >
+          Catastro
+        </Button>
+      </>
+    ) : (
+      <>
+        <Button
+          onClick={getHandleClick("/videos/favoritos")}
+          disabled={location.pathname === "/videos/favoritos"}
+        >
+          Favoritos
+        </Button>
+        <Button onClick={() => onLogout()}>Logout</Button>
+      </>
+    )
   );
 
-  const renderNavBarAuth = () => (
-    <>
-      <ContainerNav>
-        <Link to="/videos">
-          <Button disabled={false}>Vídeos</Button>
-        </Link>
-        <Link to="/videos/favoritos">
-          <Button disabled={false}>Favoritos</Button>
-        </Link>
-        <Button onClick={() => onLogout()} disabled={false}>
-          Logout
-        </Button>
-      </ContainerNav>
-      <ThemeSwitch />
+  /* prettier-ignore */
+  const renderAvatar = () => (
+    isAuthenticated ? (
       <Tooltip title={user.nome} arrow>
         <Avatar
           alt={user.nome}
@@ -48,12 +65,24 @@ export const Navbar = () => {
           sx={{ width: 56, height: 56 }}
         />
       </Tooltip>
+    ) : null
+  );
+
+  const renderContent = () => (
+    <>
+      <ContainerNav>
+        <Button
+          onClick={getHandleClick("/videos")}
+          disabled={location.pathname === "/videos"}
+        >
+          Vídeos
+        </Button>
+        {renderLinks()}
+      </ContainerNav>
+      <ThemeSwitch theme={theme} toggleTheme={toggleTheme} />
+      {renderAvatar()}
     </>
   );
 
-  return (
-    <Container className="menu">
-      {isAuthenticated ? renderNavBarAuth() : renderNavBar()}
-    </Container>
-  );
+  return <Container className="menu">{renderContent()}</Container>;
 };
