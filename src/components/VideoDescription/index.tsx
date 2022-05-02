@@ -55,7 +55,7 @@ const VideoDescription = ({
             {duration}
           </Typography>
           <Typography variant="subtitle1" fontSize={16}>
-            {date}
+            {new Date(date).toLocaleDateString("pt-br")}
           </Typography>
         </Row>
       </Column>
