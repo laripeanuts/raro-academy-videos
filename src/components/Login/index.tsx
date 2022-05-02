@@ -49,7 +49,7 @@ export const Login = () => {
 
   const onSubmit: SubmitHandler<LoginFormType> = async (data) => {
     setLoading(true);
-    const response = await authenticate(data.email, data.senha);
+    await authenticate(data.email, data.senha);
     setLoading(false);
   };
 

@@ -1,5 +1,4 @@
 import { Button, styled } from "@mui/material";
-import { rgba } from "polished";
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
@@ -11,7 +10,8 @@ export const StyledButton = styled(Button)(({ theme }) => ({
     backgroundColor: theme.palette.primary.contrastText,
   },
   ":disabled": {
-    backgroundColor: rgba(theme.palette.primary.main, 0.5),
+    backgroundColor: theme.palette.primary.main,
+    backgroundOpacity: 0.5,
     color: theme.palette.primary.contrastText,
   },
 }));
