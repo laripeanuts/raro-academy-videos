@@ -1,7 +1,6 @@
 import { styled } from "@mui/material";
 
-export const Container = styled("main")`
-  padding: 15px 0;
+export const Container = styled("section")`
   width: 100%;
   height: 100%;
   display: grid;
@@ -14,7 +13,6 @@ export const Container = styled("main")`
     "loading loading";
 
   @media only screen and (max-width: 950px) {
-    padding: 15px;
     width: 100%;
     height: 100%;
     display: flex;

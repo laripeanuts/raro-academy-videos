@@ -4,12 +4,13 @@ import { styled } from "@mui/material";
 export const MainContainer = styled("main")`
 
   min-height: calc(100vh - 160px);
-  padding: 0 30px;
+  padding: 30px;
   display: flex;
   width: 100%;
   justify-content: center;
 
   @media only screen and (max-width: 500px) {
     min-height: calc(100vh - 120px);
+    padding: 15px 10px;
   }
 `;

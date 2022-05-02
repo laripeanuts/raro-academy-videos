@@ -1,7 +1,11 @@
 import { Input } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+/* prettier-ignore */
 import {
-  useCallback, useEffect, useRef, useState,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
 } from "react";
 import { ContainerSearch } from "./styles";
 
@@ -24,11 +28,12 @@ export const InputSearch = ({ onKeyPress }: InputSearchProps) => {
 
   return (
     <ContainerSearch>
-      <SearchIcon sx={{ paddingLeft: "7px" }} />
+      <SearchIcon />
       <Input
         type="search"
         placeholder="Buscar Vídeos"
         onChange={(event) => setQuery(event.target.value)}
+        sx={{ margin: "0px" }}
       />
     </ContainerSearch>
   );

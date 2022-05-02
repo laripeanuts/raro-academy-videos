@@ -1,11 +1,9 @@
 import { styled } from "@mui/material";
 
-export const ContainerSearch = styled("div")`
+export const ContainerSearch = styled("section")`
   display: flex;
-  padding-bottom: 10px;
-  flex-direction: row;
-  align-items: end;
   width: 500px;
+  align-items: center;
 
   @media only screen and (max-width: 600px) {
     width: 100%;

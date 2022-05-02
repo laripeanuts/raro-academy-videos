@@ -6,6 +6,7 @@ export type ContainerProps = {
   carouselWidth?: string;
 };
 
+/* prettier-ignore */
 export const Container = styled("section", {
   shouldForwardProp: (prop) => (prop !== "buttonsGap" && prop !== "carouselPadding" && prop !== "carouselWidth"),
 })<ContainerProps>(({ carouselWidth, carouselPadding, buttonsGap }) => ({
@@ -15,6 +16,9 @@ export const Container = styled("section", {
   display: "flex",
   height: "fit-content",
   alignItems: "center",
+  "@media only screen and (max-width: 390px)": {
+    gap: "10px",
+  },
 }));
 
 export type ContentProps = {
@@ -22,7 +26,7 @@ export type ContentProps = {
 };
 
 export const Content = styled("div", {
-  shouldForwardProp: (prop) => (prop !== "itemsGap"),
+  shouldForwardProp: (prop) => prop !== "itemsGap",
 })<ContentProps>`
   display: flex;
   gap: ${({ itemsGap }) => itemsGap || "20px"};

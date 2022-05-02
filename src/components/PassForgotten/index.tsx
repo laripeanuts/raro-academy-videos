@@ -78,7 +78,7 @@ export const PassForgotten = () => {
           </div>
           <div className="bottom">
             <Link className="link" href="/pass-recovery">
-              Já possui um código? Troque seu senha!
+              Já possui um código? Troque sua senha!
             </Link>
             <Button type="submit" disabled={loading}>
               {loading ? (

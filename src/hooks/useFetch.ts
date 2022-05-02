@@ -15,9 +15,7 @@ export function useFetch(requestsWrapper: () => Promise<void>) {
       if (axios.isAxiosError(error) && error.response?.status === 401) {
         setErrorMessage("Faça login para realizar esta operação");
       } else {
-        setErrorMessage(
-          "Um erro inesperado ocorreu",
-        );
+        setErrorMessage("Um erro inesperado ocorreu");
       }
     } finally {
       setLoading(false);

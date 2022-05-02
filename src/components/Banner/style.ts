@@ -26,7 +26,6 @@ export const BannerContainer = styled("div")`
 `;
 
 export const ContainerComentarios = styled("div")`
-  padding: 20px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -34,34 +33,38 @@ export const ContainerComentarios = styled("div")`
   flex-wrap: nowrap;
 `;
 
+/* prettier-ignore */
 export const BannerInfoContainer = styled("div")`
+  padding: 20px;
   width: 45%;
   max-width: 400px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+
   box-shadow: inset 1px 1px rgba(255, 255, 255, 0.3),
     3px 3px 10px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(8px);
-  display: flex;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 
-  background-color: ${(props) => props.theme.palette.mode === "dark"
-    ? "rgba(87, 87, 87, 0.18)"
-    : "rgba(135, 135, 135, 0.13)"};
+  background-color: ${(props) => (
+    props.theme.palette.mode === "dark"
+      ? "rgba(87, 87, 87, 0.18)"
+      : "rgba(135, 135, 135, 0.13)"
+  )};
 
   @media only screen and (max-width: 900px) {
+    border-radius: 10px;
+    gap: 10px;
     width: 100%;
     height: 100%;
-    border-radius: 15px;
-    display: flex;
-    background: #fff;
-    background-color: ${(props) => props.theme.palette.mode === "dark"
-    ? "rgba(87, 87, 87, 0.18)"
-    : "rgba(135, 135, 135, 0.13)"};
+    background-color: ${(props) => (
+    props.theme.palette.mode === "dark"
+      ? "rgba(87, 87, 87, 0.18)"
+      : "rgba(135, 135, 135, 0.13)"
+  )};
   }
 `;
 
