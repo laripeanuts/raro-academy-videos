@@ -12,4 +12,5 @@ export type VideosState = {
   loading: boolean;
   errorMessage: string;
   getDataFromApi: () => Promise<void>;
+  topics: string[];
 };

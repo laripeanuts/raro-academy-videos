@@ -2,6 +2,7 @@ import { styled } from "@mui/material";
 
 export const ContainerSearch = styled("div")`
   display: flex;
+  padding-bottom: 10px;
   flex-direction: row;
   align-items: end;
   width: 500px;
