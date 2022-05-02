@@ -51,4 +51,5 @@ export const FilterContainer = styled("section")`
   flex-wrap: wrap;
   place-content: flex-start;
   padding-left: 20px;
+  gap: 20px;
 `;

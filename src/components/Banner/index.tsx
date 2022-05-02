@@ -14,7 +14,6 @@ import {
   BannerInfoContainer,
   BannerTitle,
   BannerImgLink,
-  ContainerComentarios,
 } from "./style";
 
 export const Banner = ({ children }: WithChildren) => {
@@ -69,12 +68,10 @@ export const Banner = ({ children }: WithChildren) => {
           <BannerImg src={video.thumbUrl} />
         </BannerImgLink>
         <BannerInfoContainer>
-          <ContainerComentarios>
-            <BannerTitle variant="h4">{video.descricao}</BannerTitle>
-            <Typography variant="subtitle2">
-              {` Interações: ${comments}`}
-            </Typography>
-          </ContainerComentarios>
+          <BannerTitle variant="h4">{video.descricao}</BannerTitle>
+          <Typography variant="subtitle2">
+            {` Interações: ${comments}`}
+          </Typography>
           <ChipList listTags={video.tags} />
         </BannerInfoContainer>
       </BannerContainer>

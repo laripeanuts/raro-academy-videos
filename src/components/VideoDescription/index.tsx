@@ -6,7 +6,7 @@ import { FavoriteButton } from "../FavoriteButton";
 import { WithChildren } from "../../common/childrenType";
 import { favorited } from "../../utils/removeFavorited";
 import { useVideos } from "../../hooks/useVideos";
-import { Container, Row, Column } from "./styles";
+import { Container, Row } from "./styles";
 
 export type VideoDescriptionProps = {
   videoId: string;
@@ -30,35 +30,33 @@ const VideoDescription = ({
 
   return (
     <Container>
-      <Column>
-        <Row justifyContent="space-between">
-          <Typography variant="h5">{title}</Typography>
-          <Row>
-            <IconButton color="primary" onClick={onClickFeed}>
-              <Tooltip title="Baixe os arquivos da aula" arrow>
-                <FeedIcon />
-              </Tooltip>
-            </IconButton>
-            <FavoriteButton
-              id={videoId}
-              filled={favorited(videoId, favorites)}
-            />
-          </Row>
+      <Row justifyContent="space-between">
+        <Typography variant="h5">{title}</Typography>
+        <Row>
+          <IconButton color="primary" onClick={onClickFeed}>
+            <Tooltip title="Baixe os arquivos da aula" arrow>
+              <FeedIcon />
+            </Tooltip>
+          </IconButton>
+          <FavoriteButton
+            id={videoId}
+            filled={favorited(videoId, favorites)}
+          />
         </Row>
-        <Typography variant="subtitle1" fontSize={16}>
-          {description}
-        </Typography>
-        <Row>{children}</Row>
+      </Row>
+      <Typography variant="subtitle1" fontSize={16}>
+        {description}
+      </Typography>
+      <Row>{children}</Row>
 
-        <Row justifyContent="flex-end">
-          <Typography variant="subtitle1" fontSize={16}>
-            {duration}
-          </Typography>
-          <Typography variant="subtitle1" fontSize={16}>
-            {new Date(date).toLocaleDateString("pt-br")}
-          </Typography>
-        </Row>
-      </Column>
+      <Row justifyContent="flex-end">
+        <Typography variant="subtitle1" fontSize={16}>
+          {duration}
+        </Typography>
+        <Typography variant="subtitle1" fontSize={16}>
+          {date}
+        </Typography>
+      </Row>
     </Container>
   );
 };
