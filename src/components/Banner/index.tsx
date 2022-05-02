@@ -70,7 +70,7 @@ export const Banner = ({ children }: WithChildren) => {
         </BannerImgLink>
         <BannerInfoContainer>
           <ContainerComentarios>
-            <BannerTitle variant="h3">{video.descricao}</BannerTitle>
+            <BannerTitle variant="h4">{video.descricao}</BannerTitle>
             <Typography variant="subtitle2">
               {` Interações: ${comments}`}
             </Typography>
