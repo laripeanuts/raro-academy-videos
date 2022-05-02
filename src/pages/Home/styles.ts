@@ -8,6 +8,8 @@ export const Container = styled("section")`
   align-items: center;
 
   .link-carousel {
+    color: ${({ theme }) => theme.palette.text.primary};
+    opacity: 0.8;
     padding: 10px;
     border-radius: 10px;
     font-weight: bold;

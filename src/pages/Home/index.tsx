@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -8,15 +9,21 @@ import { removeFavorited } from "../../utils/removeFavorited";
 import { Banner } from "../../components/Banner";
 import { VideoList } from "../../components/VideoList";
 import { Featured } from "../../components/Featured";
+import { VideoType } from "../../types/VideoType";
+import { useFetch } from "../../hooks/useFetch";
+import apiClient from "../../services/api-client";
 
 /* prettier-ignore */
 export const Home = () => {
-  const {
-    favorites,
-    allVideos,
-    loading,
-    errorMessage,
-  } = useVideos();
+  const { favorites, loading, errorMessage } = useVideos();
+  const [lastVideos, setLastVideos] = useState<VideoType[]>([]);
+  const [page, setPage] = useState(1);
+  const { execute } = useFetch(async () => {
+    const responseLastVideos = await apiClient.get<VideoType[]>(
+      `/videos?pagina=${page}&itensPorPagina=10&orderBy=dataPublicacao&orderDirection=DES`,
+    );
+    setLastVideos(responseLastVideos.data);
+  });
 
   const renderFavorites = () => (
     favorites.length ? (
@@ -45,12 +52,12 @@ export const Home = () => {
   const renderBanner = () => <Banner />;
 
   const renderVideos = () => {
-    const list = removeFavorited(allVideos, favorites);
+    const list = lastVideos;
 
     return list.length ? (
       <>
         <Row>
-          <Typography variant="h4">Vídeos</Typography>
+          <Typography variant="h4">Últimos vídeos</Typography>
           <Link to="/videos">
             <Typography variant="body2" className="link-carousel">Todos os vídeos</Typography>
           </Link>
@@ -79,6 +86,10 @@ export const Home = () => {
       </>
     );
   };
+
+  useEffect(() => {
+    execute();
+  }, []);
 
   return <Container>{renderPageContent()}</Container>;
 };
