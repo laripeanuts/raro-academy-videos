@@ -10,24 +10,24 @@
 <!-- Badges -->
 <p>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/contributors">
-    <img src="https://img.shields.io/github/contributors/Louis3797/awesome-readme-template" alt="contributors" />
+    <img src="https://img.shields.io/github/contributors/rarolabs/raro-academy-react-grupo-6/" alt="contributors" />
   </a>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/commits">
-    <img src="https://img.shields.io/github/last-commit/Louis3797/awesome-readme-template" alt="last update" />
+    <img src="https://img.shields.io/github/last-commit/rarolabs/raro-academy-react-grupo-6/" alt="last update" />
   </a>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/network/members">
-    <img src="https://img.shields.io/github/forks/Louis3797/awesome-readme-template" alt="forks" />
+    <img src="https://img.shields.io/github/forks/rarolabs/raro-academy-react-grupo-6/" alt="forks" />
   </a>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/stargazers">
-    <img src="https://img.shields.io/github/stars/Louis3797/awesome-readme-template" alt="stars" />
+    <img src="https://img.shields.io/github/stars/rarolabs/raro-academy-react-grupo-6/" alt="stars" />
   </a>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/">
-    <img src="https://img.shields.io/github/issues/Louis3797/awesome-readme-template" alt="open issues" />
+    <img src="https://img.shields.io/github/issues/rarolabs/raro-academy-react-grupo-6/" alt="open issues" />
   </a>
 </p>
 
 <h4>
-    <a href="#">Demo</a>
+    <a href="https://raro-academy-videos.vercel.app/">Demo</a>
   <span> · </span>
     <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/new">Reporte Bug</a>
   <span> · </span>
@@ -44,6 +44,7 @@
 - [📔 **Documentação**](#-documentação)
 - [🌟 **Sobre o projeto**](#-sobre-o-projeto)
 - [🎯 **Objetivos principais**](#-objetivos-principais)
+- [🥳 App](#-app)
 - [💡 **Proposta**](#-proposta)
 - [🙾 **Design System**](#-design-system)
 - [💻 **Tecnologias Principais**](#-tecnologias-principais)
@@ -85,14 +86,12 @@ Desenvolver com React uma plataforma web funcional conforme descrito detalhadame
   - [x] Ação de comentar somente para usuários cadastrados
   - [x] Botão de favoritar
 
-<!--
 ## 🥳 App
-<p align="left">
-  <img src="" alt="start" width="250">
 
+<p align="center">
+  <img src=".github/temalight.jpg" alt="start" width="300">
+  <img src=".github/temadark.jpg" alt="start" width="300">
 </p>
-
-> the app states -->
 
 ## 💡 **Proposta**
 
