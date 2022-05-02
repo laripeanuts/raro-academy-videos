@@ -3,7 +3,7 @@ import { styled } from "@mui/material/styles";
 export const Container = styled("section")`
   padding-top: 15px;
   width: 100%;
-  height: 90%;
+  height: 88%;
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
