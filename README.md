@@ -9,29 +9,29 @@
 
 <!-- Badges -->
 <p>
-  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/laripeanuts/raro-academy-videos" alt="contributors" />
+  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/contributors">
+    <img src="https://img.shields.io/github/contributors/Louis3797/awesome-readme-template" alt="contributors" />
   </a>
-  <a href="">
-    <img src="https://img.shields.io/github/last-commit/laripeanuts/raro-academy-videos" alt="last update" />
+  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/commits">
+    <img src="https://img.shields.io/github/last-commit/Louis3797/awesome-readme-template" alt="last update" />
   </a>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/network/members">
-    <img src="https://img.shields.io/github/forks/laripeanuts/raro-academy-videos" alt="forks" />
+    <img src="https://img.shields.io/github/forks/Louis3797/awesome-readme-template" alt="forks" />
   </a>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/stargazers">
-    <img src="https://img.shields.io/github/stars/laripeanuts/raro-academy-videos" alt="stars" />
+    <img src="https://img.shields.io/github/stars/Louis3797/awesome-readme-template" alt="stars" />
   </a>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/">
-    <img src="https://img.shields.io/github/issues/laripeanuts/raro-academy-videos" alt="open issues" />
+    <img src="https://img.shields.io/github/issues/Louis3797/awesome-readme-template" alt="open issues" />
   </a>
 </p>
 
 <h4>
     <a href="#">Demo</a>
   <span> · </span>
-    <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/">Reporte Bug</a>
+    <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/new">Reporte Bug</a>
   <span> · </span>
-    <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/">Request Feature</a>
+    <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/pulls/">Request Feature</a>
   </h4>
 </div>
 
@@ -159,6 +159,7 @@ Algumas tecnologias auxiliaram no desenvolvimento do projeto, dentre elas:
 - Manipulação do scroll
 - Material UI na integração com outros componentes
 - Implementação do nosso próprio player de vídeo
+- CSS
 
 ## 🪁 **Futuras implementações**
 
