@@ -19,6 +19,7 @@ import { useVideos } from "../../hooks/useVideos";
 
 import {
   Container,
+  ContainerLoading,
   ContainerComments,
   ContainerPlaylist,
   ContainerVideo,
@@ -30,6 +31,7 @@ export const VideoPage = () => {
   const { favorites } = useVideos("");
   const [video, setVideo] = useState<VideoType | null>(null);
   const [playlist, setPlaylist] = useState<VideoType[]>([]);
+
   const { execute, loading, errorMessage } = useFetch(async () => {
     try {
       const getPlaylist = apiClient.get<VideoType[]>(
@@ -73,14 +75,6 @@ export const VideoPage = () => {
 
   /* prettier-ignore */
   const renderVideoData = () => {
-    if (loading) {
-      return (
-        <section className="progress">
-          <CircularProgress aria-label="Carregando conteúdo" />
-        </section>
-      );
-    }
-
     if (video) {
       return (
         <div className="videplayer">
@@ -109,20 +103,32 @@ export const VideoPage = () => {
     return null;
   };
 
+  const renderComments = () => <CommentForm />;
+
   useEffect(() => {
     execute();
   }, [videoId]);
 
   return (
     <CommentsProvider>
-      <Container className="videoPage">
-        <main className="main">
-          <ContainerVideo>{renderVideoData()}</ContainerVideo>
-          <ContainerComments>
-            <CommentForm />
-          </ContainerComments>
-        </main>
-        <ContainerPlaylist>{renderPlaylist()}</ContainerPlaylist>
+      <Container>
+        {loading ? (
+          <ContainerLoading>
+            <CircularProgress
+              aria-label="Carregando conteúdo"
+              sx={{
+                alignSelf: "center",
+                justifySelf: "center",
+              }}
+            />
+          </ContainerLoading>
+        ) : (
+          <>
+            <ContainerVideo>{renderVideoData()}</ContainerVideo>
+            <ContainerComments>{renderComments()}</ContainerComments>
+            <ContainerPlaylist>{renderPlaylist()}</ContainerPlaylist>
+          </>
+        )}
       </Container>
     </CommentsProvider>
   );
