@@ -1,9 +1,5 @@
 import { Link, styled, Typography } from "@mui/material";
 
-type ContainerProps = {
-    display: "flex" | "grid";
-  };
-
 export const Container = styled("section")`
   display: flex;
   flex-direction: column;
