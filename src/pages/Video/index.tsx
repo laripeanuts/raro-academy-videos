@@ -87,6 +87,7 @@ export const VideoPage = () => {
             videoId={video.id}
             title={video.nome}
             description={video.descricao}
+            topic={video.topico}
             date={new Date(video.createdAt).toLocaleDateString()}
             duration={video.duracao}
           >

@@ -59,7 +59,8 @@ export const CommentItem = ({
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  const [voteLoading, setVoteLoading] = useState(false);
+  const [voteUpLoading, setVoteUpLoading] = useState(false);
+  const [voteDownLoading, setVoteDownLoading] = useState(false);
   const [activeUp, setActiveUp] = useState(false);
   const [activeDown, setActiveDown] = useState(false);
 
@@ -90,7 +91,7 @@ export const CommentItem = ({
   });
 
   const handleUpVote = async (commentId: string) => {
-    setVoteLoading(true);
+    setVoteUpLoading(true);
     const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
     try {
       const response = await apiClient.put(url, { vote: "up" });
@@ -108,11 +109,11 @@ export const CommentItem = ({
         setMessage("Algo deu errado. Tente novamente mais tarde!");
       }
     }
-    setVoteLoading(false);
+    setVoteUpLoading(false);
   };
 
   const handleDownVote = async (commentId: string) => {
-    setVoteLoading(true);
+    setVoteDownLoading(true);
     const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
     try {
       const response = await apiClient?.put(url, { vote: "down" });
@@ -130,20 +131,21 @@ export const CommentItem = ({
         setMessage("Algo deu errado. Tente novamente mais tarde!");
       }
     }
-    setVoteLoading(false);
+    setVoteDownLoading(false);
   };
 
   const handledeleteVote = async (commentId: string) => {
-    setVoteLoading(true);
     const url = `/videos/${videoId}/comentarios/${commentId}/votes`;
     try {
       const response = await apiClient.delete(url);
       setMessage("");
 
       if (activeUp) {
+        setVoteUpLoading(true);
         setActiveUp(false);
         setUpVote(upVote - 1);
       } else if (activeDown) {
+        setVoteDownLoading(true);
         setActiveDown(false);
         setDownVote(downVote - 1);
       }
@@ -154,7 +156,8 @@ export const CommentItem = ({
         setMessage("Algo deu errado. Tente novamente mais tarde!");
       }
     }
-    setVoteLoading(false);
+    setVoteUpLoading(false);
+    setVoteDownLoading(false);
   };
 
   const handleDelete = async (commentId: string) => {
@@ -294,7 +297,7 @@ export const CommentItem = ({
               <CommentVoteButton
                 active={activeUp}
                 title="Curtir"
-                loading={voteLoading}
+                loading={voteUpLoading}
                 countVote={upVote}
                 onClick={
                   activeUp
@@ -315,7 +318,7 @@ export const CommentItem = ({
             <div className="vote">
               <CommentVoteButton
                 active={activeDown}
-                loading={voteLoading}
+                loading={voteDownLoading}
                 title="Descutir"
                 countVote={downVote}
                 onClick={

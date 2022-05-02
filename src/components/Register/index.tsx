@@ -1,7 +1,8 @@
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { Button, CircularProgress, Typography } from "@mui/material";
 import apiClient from "../../services/api-client";
 import { FormInput } from "../FormInput";
@@ -40,7 +41,7 @@ export const Register = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   const {
     control,
     handleSubmit,
@@ -55,8 +56,11 @@ export const Register = () => {
       setLoading(true);
       const url = "/auth/cadastrar";
       const response = await apiClient.post(url, data);
-      setMessage("Usuário cadastrado com sucesso! Faça o login!");
+      setMessage("Usuário cadastrado com sucesso! Vamos para o login!");
       setError("");
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     } catch (err: any) {
       if (err.response.data.statusCode === 400) {
         setError("Usuário já cadastrado");

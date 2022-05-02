@@ -11,13 +11,17 @@ export const Container = styled("aside")`
   color: ${(props) => props.theme.palette.text.primary};
 
   @media only screen and (min-width: 1300px) {
-    height: 85vh;
+    height: 70vh;
+  }
+
+  @media only screen and (min-width: 1300px) {
+    height: 80vh;
   }
 
   @media only screen and (max-width: 750px) {
     display: flex;
     flex-direction: column;
-    height: 65vh;
+    height: 50vh;
   }
 
   .menuFilter {
