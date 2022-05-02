@@ -1,13 +1,23 @@
 import { styled } from "@mui/material";
 
 export const FormStyle = styled("section")`
-  top: 20px;
-  display: flex;
-  flex-direction: column;
-  width: 600px;
+  align-self: center;
+  width: 40%;
 
-  @media only screen and (max-width: 650px) {
-    min-width: 90%;
+  @media only screen and (max-width: 1250px) {
+    width: 50%;
+  }
+
+  @media only screen and (max-width: 950px) {
+    width: 65%;
+  }
+
+  @media only screen and (max-width: 780px) {
+    width: 75%;
+  }
+
+  @media only screen and (max-width: 680px) {
+    width: 100%;
   }
 
   button {
