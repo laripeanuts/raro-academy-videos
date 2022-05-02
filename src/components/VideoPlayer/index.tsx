@@ -21,8 +21,7 @@ export const VideoPlayer = ({ thumbnail, src, id }: VideoPlayerType) => {
     <Container>
       <ReactPlayer
         width="100%"
-        height="45vh"
-        light={thumbnail}
+        height="100%"
         controls
         muted
         url={src}

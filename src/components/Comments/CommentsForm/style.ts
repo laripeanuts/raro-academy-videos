@@ -3,13 +3,16 @@ import { styled } from "@mui/material/styles";
 export const Container = styled("aside")`
   padding: 10px;
   width: 100%;
-  height: 65vh;
+  height: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 300px;
-
   color: ${(props) => props.theme.palette.text.primary};
+
+  @media only screen and (min-width: 1300px) {
+    height: 85vh;
+  }
 
   @media only screen and (max-width: 750px) {
     display: flex;
