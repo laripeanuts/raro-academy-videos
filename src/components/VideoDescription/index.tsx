@@ -6,8 +6,7 @@ import { FavoriteButton } from "../FavoriteButton";
 import { WithChildren } from "../../common/childrenType";
 import { favorited } from "../../utils/removeFavorited";
 import { useVideos } from "../../hooks/useVideos";
-import { Container, Row, Column } from "./styles";
-import Link from "../Link";
+import { Container, Row } from "./styles";
 
 export type VideoDescriptionProps = {
   videoId: string;
@@ -50,12 +49,7 @@ const VideoDescription = ({
       <Typography variant="subtitle1" fontSize={16}>
         {description}
       </Typography>
-      <Row>{children}</Row>
-
-      <Row justifyContent="flex-end">
-        <Typography variant="subtitle1" fontSize={16}>
-          {duration}
-        </Typography>
+      <Row justifyContent="space-between">
         <Row>{children}</Row>
 
         <Row justifyContent="flex-end">
@@ -72,10 +66,10 @@ const VideoDescription = ({
             {duration}
           </Typography>
           <Typography variant="subtitle1" fontSize={16}>
-            {new Date(date).toLocaleDateString("pt-br")}
+            {date}
           </Typography>
         </Row>
-      </Column>
+      </Row>
     </Container>
   );
 };
