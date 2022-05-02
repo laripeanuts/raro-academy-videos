@@ -1,8 +1,8 @@
 <div align="center">
 
-  <img src="public/assets/favicon.png" alt="logo" width="70" height="auto" />
+  <img src=".github/logo.png" alt="logo" width="70" height="auto" />
   <h1>Raro Academy Videos</h1>
-  
+
   <p>
     Plataforma com seus conteúdos Raro Academy
   </p>
@@ -44,41 +44,45 @@
 - [📔 **Documentação**](#-documentação)
 - [🌟 **Sobre o projeto**](#-sobre-o-projeto)
 - [🎯 **Objetivos principais**](#-objetivos-principais)
-- [💻 **Tecnologias**](#-tecnologias)
+- [💡 **Proposta**](#-proposta)
+- [🙾 **Design System**](#-design-system)
+- [💻 **Tecnologias Principais**](#-tecnologias-principais)
+- [💁🏽‍♀️ **Tecnologias de Suporte**](#️-tecnologias-de-suporte)
 - [🛠️ **Ferramentas**](#️-ferramentas)
+- [😰 **Desafios**](#-desafios)
+- [🪁 **Futuras implementações**](#-futuras-implementações)
+- [📚 **Referências**](#-referências)
 - [🤼‍♂️ **Desenvolvedores**](#️-desenvolvedores)
 - [🤖 **Executando o projeto localmente**](#-executando-o-projeto-localmente)
-
 
 <!-- About the Project -->
 
 ## 🌟 **Sobre o projeto**
 
-Projeto final do curso de React da Raro Academy. Melhorar o modelo de distribuição do conteúdo dos cursos, criando um portal de acesso aos materiais de vídeo, onde os alunos poderão ter acesso ao conteúdo direcionados a eles.
+Projeto final do curso de React da Raro Academy que visa melhorar o modelo de distribuição do conteúdo dos cursos, criando um portal de acesso aos materiais de vídeo, onde os usuários poderão visualizar o conteúdo disponibilizados na plataforma.
 
 ## 🎯 **Objetivos principais**
 
-Desenvolver com React uma plataforma web conforme descrito detalhadamente no [enunciado oficial](enunciado.md). Usar API disponibilizada pela Raro Academy para acesso.
+Desenvolver com React uma plataforma web funcional conforme descrito detalhadamente no [enunciado oficial](./.github/raro_enunciado.md), utilizando API disponibilizada pela Raro Academy para acesso. As regras e critérios de avaliação se encontram [aqui](./.github/raro_regras.md).
 
-- [ ] HOME (pública)
-  - [ ] Conteúdo público
-  - [ ] Botão de login
-- [ ] LOGIN
-  - [ ] Autenticação
-  - [ ] Link para cadastro novo usuário
-  - [ ] Esqueci minha senha
-- [ ] CADASTRO NOVO USUÁRIO
-- [ ] HOME (com autenticação do usuário)
-  - [ ] Conteúdo público e relativo a turma do usuário
-  - [ ] Conteúdo categorizado por playlist
-  - [ ] Conteúdo favoritado / caso vazio mostrar como favoritar
-- [ ] VISUALIZAÇÃO DE CONTEÚDO
-  - [ ] Visualização do vídeo
-  - [ ] Lista com os próximos itens da playlist correspondente
-  - [ ] Área de comentários com botão de *like* e *dislike*
-  - [ ] Comentários disponíveis somente para usuário cadastrados
-  - [ ] Botão de favoritar
-
+- [x] HOME (pública)
+  - [x] Conteúdo público
+  - [x] Botão de login
+- [x] LOGIN
+  - [x] Autenticação
+  - [x] Link para cadastro novo usuário
+  - [x] Esqueci minha senha
+- [x] CADASTRO NOVO USUÁRIO
+- [x] HOME (com autenticação do usuário)
+  - [x] Conteúdo público e relativo a turma do usuário
+  - [x] Conteúdo categorizado por playlist
+  - [x] Conteúdo favoritado / caso vazio mostrar como favoritar
+- [x] VISUALIZAÇÃO DE CONTEÚDO
+  - [x] Visualização do vídeo
+  - [x] Playlist com vídeos recomendados
+  - [x] Área de comentários com botão de _like_ e _dislike_
+  - [x] Ação de comentar somente para usuários cadastrados
+  - [x] Botão de favoritar
 
 <!--
 ## 🥳 App
@@ -89,18 +93,82 @@ Desenvolver com React uma plataforma web conforme descrito detalhadamente no [en
 
 > the app states -->
 
-## 💻 **Tecnologias**
+## 💡 **Proposta**
 
-[![JAVASCRIPT](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+Entregar um produto moderno, funcional e intuitivo no qual os alunos possam acessar as aulas gravadas, compartilhar conhecimento e estender a rede de apoio entre os membros da Raro Academy e comunidade.
+
+## 🙾 **Design System**
+
+Utilizamos alguns conceitos e ferramentas para padronizar várias etapas do nosso projeto.
+
+- #### **Design Patterns**
+
+  - Styled guide: padrão e regras [Airbnb](https://github.com/airbnb/javascript/tree/master/react) React.
+  - Aplicação das regras e padrões: [ESLint](https://eslint.org)
+  - Formatação automática com base nas regras: [Prettier](https://prettier.io/)
+
+- #### **Gitflow**
+
+  - Padrão de _commits_: [Convencional Commits](https://conventionalcommits.org/)
+  - Formataçao de commits: [Commitizen](https://commitizen-tools.github.io/commitizen/)
+
+- #### **Visual Design**
+
+  Juntamos o [pacote de identidade visual](https://drive.google.com/drive/folders/1rDGwAET7yZ1oBXrYe5Ru-p0h_tU6w5Ds) disponibilizado e um estudo feito sobre a forma que a empresa se apresenta na internet e formamos nosso _style guide_ seguindo um estilo mais moderno. As telas do projeto na plataforma do [Figma](https://www.figma.com/). 🔗 [Projeto](https://www.figma.com/file/rPQ9yleOpcl9V2SIyUlSQ3/Telas?node-id=3%3A2).
+
+## 💻 **Tecnologias Principais**
+
+[![JAVASCRIPT](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 [![TYPESCRIPT](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![REACT](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://https://reactjs.org/)
+[![REACT](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://https://reactjs.org/)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+[![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=white)](https://swagger.io/)
+
+## 💁🏽‍♀️ **Tecnologias de Suporte**
+
+Algumas tecnologias auxiliaram no desenvolvimento do projeto, dentre elas:
+
+- [Material UI](https://material-ui.com/)
+  - Padrão de estilo do Material UI foi a base para inicio do projeto. Usamos da sua estrutura de temas e também de alguns componentes.
+- [Styled Components](https://www.styled-components.com/)
+  - Usamos para aplicar estilos aos componentes de forma invidual e restrita, com mais controle sobre as propriedade _CSS_ de cada elemento.
+- [React Hook Form](https://react-hook-form.com/)
+  - É uma biblioteca que nos ajuda a criar formulários com bom gerenciamento de estado e juntamente com um esquema criado com [Yup](https://www.npmjs.com/package/yup) fazemos a validação de cada campo antes mesmo da requisão com _API_.
+- [React Router Dom](https://reacttraining.com/react-router/)
+  - Utilizamos para criar rotas e navegação entre telas. Além de criar rotas protegidas e não protegidas, podemos utilizar dos seus parâmetros dinâmicos.
+- [Axios](https://axios-http.com/)
+  - Podemos utilizar o Axios para requisições HTTP e também para requisições com _API_. Além de nos ajudar a criar um serviço personalizado de consultas.
+- [React Player](https://www.npmjs.com/package/react-player)
+  - Usamos na reprodução dos vídeos, pois além de funcional, possuir boa ferramentas de controle, é também não opinativa.
 
 ## 🛠️ **Ferramentas**
 
 [![IDE](https://img.shields.io/badge/Visual_studio_code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)](https://code.visualstudio.com/)
+[![FIGMA](https://img.shields.io/badge/Figma-F76E5F?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/)
 [![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://www.microsoft.com/pt-br/windows/get-windows-10)
+[![Linux](https://img.shields.io/badge/Linux-F7C101?style=for-the-badge&logo=linux&logoColor=white)](https://www.microsoft.com/pt-br/windows/get-windows-10)
+[![NPM](https://img.shields.io/badge/NPM-6EBCF7?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/)
+[![Git](https://img.shields.io/badge/Git-E34F26?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
+[![Github](https://img.shields.io/badge/Github-121212?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
+
+## 😰 **Desafios**
+
+- Paginação da API
+- Carousel
+- Manipulação do scroll
+- Material UI na integração com outros componentes
+- Implementação do nosso próprio player de vídeo
+
+## 🪁 **Futuras implementações**
+
+- Espaço para download de arquivos
+- Ordenação de comentários
+- Lista últimos visualizados
+
+## 📚 **Referências**
+
+Nos inspiramos em sites como [Udemy](https://www.udemy.com), [Netflix](https://www.netflix.com), [YouTube](https://www.youtube.com), [Twitch](https://www.twitch.tv/) e no da própria [Raro Academy](https://www.raroacademy.com.br/) para elaboração de como deveríamos exibir o conteúdo dos cursos e a seção de comentários, atendendo a todos os requisitos propostos.
 
 ## 🤼‍♂️ **Desenvolvedores**
 
@@ -146,6 +214,20 @@ Inicie o servidor local
 
 ```bash
   npm start
+```
+
+Analisar erros padrões com ESLint
+
+```bash
+npm run lint
+
+```
+
+Corrigir padrões com ESLint
+
+```bash
+npm run lint:fix
+
 ```
 
 <p align="center">Copyright ☕ 2022
