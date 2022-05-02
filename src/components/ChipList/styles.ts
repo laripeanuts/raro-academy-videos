@@ -1,8 +1,10 @@
 import { styled } from "@mui/material/styles";
 
-export const Container = styled("div")`
-  margin: 16px;
+export const Container = styled("section")`
   display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
 
   a {
     text-shadow: 1px 1px 0.5px #000;
@@ -13,12 +15,4 @@ export const Container = styled("div")`
       filter: opacity(0.5);
     }
   }
-`;
-
-export const ChipListContainer = styled("div")`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  width: 100%;
 `;

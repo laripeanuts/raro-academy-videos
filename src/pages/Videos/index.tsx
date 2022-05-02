@@ -35,7 +35,7 @@ export const VideosPage = () => {
   const [topic, setTopic] = useState("");
   const [itemsPerPage, setItemsPerPage] = useState(12);
   const [page, setPage] = useState(1);
-  const [title, setTitle] = useState("TODOS");
+  const [title, setTitle] = useState("Todos");
 
   const url = `/videos?nome=${querySearch}&topico=${topic}&pagina=${page}&itensPorPagina=${itemsPerPage}&orderBy=dataPublicacao&orderDirection=ASC`;
 
@@ -77,14 +77,15 @@ export const VideosPage = () => {
           value={topic}
           label="Tópicos"
           onChange={handleTopicChange}
+          sx={{ width: "200px" }}
         >
           {topics.map((item: string) => (
-            <MenuItem key={item} value={item}>
-              {item.toLocaleUpperCase()}
+            <MenuItem key={item} value={item} sx={{ textTransform: "capitalize", color: "text.primary" }}>
+              {item}
             </MenuItem>
           ))}
-          <MenuItem key="todos" value="">
-            TODOS
+          <MenuItem key="todos" value="" sx={{ textTransform: "capitalize", color: "text.primary" }}>
+            Todos
           </MenuItem>
         </Select>
       </FormControl>
@@ -128,8 +129,8 @@ export const VideosPage = () => {
     <Container>
       <>
         {renderFilters()}
-        <Typography variant="h4">
-          {topic ? topic.toUpperCase() : title.toUpperCase()}
+        <Typography variant="h4" sx={{ textTransform: "capitalize" }}>
+          {topic || title}
         </Typography>
         <VideoButtonsContainer>
           <IconButton disabled={page <= 1} onClick={previusPage}>

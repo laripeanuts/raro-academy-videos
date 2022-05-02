@@ -1,12 +1,11 @@
 import { styled } from "@mui/material/styles";
 
-export const Container = styled("div")`
-  padding: 16px 0 16px 0;
-`;
-
-export const Column = styled("div")`
+export const Container = styled("section")`
+  padding: 15px 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 `;
 
 export type RowProps = {

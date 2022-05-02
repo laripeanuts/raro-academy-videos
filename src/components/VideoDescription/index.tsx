@@ -33,23 +33,28 @@ const VideoDescription = ({
 
   return (
     <Container>
-      <Column>
-        <Row justifyContent="space-between">
-          <Typography variant="h5">{title}</Typography>
-          <Row>
-            <IconButton color="primary" onClick={onClickFeed}>
-              <Tooltip title="Baixe os arquivos da aula" arrow>
-                <FeedIcon />
-              </Tooltip>
-            </IconButton>
-            <FavoriteButton
-              id={videoId}
-              filled={favorited(videoId, favorites)}
-            />
-          </Row>
+      <Row justifyContent="space-between">
+        <Typography variant="h5">{title}</Typography>
+        <Row>
+          <IconButton color="primary" onClick={onClickFeed}>
+            <Tooltip title="Baixe os arquivos da aula" arrow>
+              <FeedIcon />
+            </Tooltip>
+          </IconButton>
+          <FavoriteButton
+            id={videoId}
+            filled={favorited(videoId, favorites)}
+          />
         </Row>
+      </Row>
+      <Typography variant="subtitle1" fontSize={16}>
+        {description}
+      </Typography>
+      <Row>{children}</Row>
+
+      <Row justifyContent="flex-end">
         <Typography variant="subtitle1" fontSize={16}>
-          {description}
+          {duration}
         </Typography>
         <Row>{children}</Row>
 
