@@ -43,19 +43,31 @@ export const VideosPage = () => {
     </Fragment>
   ));
 
+  const validaVideos = () => (
+    videos.length ? (
+      <>
+        {renderVideos()}
+      </>
+    ) : (
+      <Typography alignSelf="center" variant="h6">
+        Vídeos não encontrados!
+      </Typography>
+    )
+  );
+
   const renderPageContent = () => {
     if (loading) {
       return <CircularProgress sx={{ alignSelf: "center" }} aria-label="Carregando conteúdo" size={60} />;
     }
 
     if (errorMessage.length) {
-      <Typography variant="h5">{errorMessage}</Typography>;
+      return <Typography variant="h5">{errorMessage}</Typography>;
     }
 
     return (
       <>
         <InputSearch onKeyPress={(value: String) => setQuerySearch(value)} />
-        {renderVideos()}
+        {validaVideos()}
       </>
     );
   };

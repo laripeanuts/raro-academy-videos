@@ -48,14 +48,18 @@ export const FavoritesPage = () => {
   );
 
   /* prettier-ignore */
-  const renderVideos = () => (
-    favorites.length ? (
+  const validaVideos = () => (
+    videos.length ? (
       <>
         <Typography variant="h4">Favoritos</Typography>
         {renderFavorites()}
       </>
     ) : (
-      <Typography alignSelf="center" variant="h6">Sua lista de favoritos está vazia!</Typography>
+      <Typography alignSelf="center" variant="h6">
+        {querySearch !== ""
+          ? "Vídeos não encontrados!"
+          : "Sua lista de favoritos está vazia!"}
+      </Typography>
     )
   );
 
@@ -77,7 +81,7 @@ export const FavoritesPage = () => {
     return (
       <>
         <InputSearch onKeyPress={(value: String) => setQuerySearch(value)} />
-        {renderVideos()}
+        {validaVideos()}
       </>
     );
   };
