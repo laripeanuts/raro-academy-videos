@@ -10,6 +10,7 @@ import {
 import { ThemeSwitch } from "../ThemeSwitch";
 import { useTheme } from "../../hooks/useTheme";
 import { userType } from "../../types/userType";
+import { DialogPopper } from "../Popper";
 
 type NavbarProps = {
   user: userType;
@@ -25,33 +26,31 @@ export const Navbar = ({ user, logout, isAuthenticated }: NavbarProps) => {
   const getHandleClick = (path: string) => () => navigate(path);
 
   /* prettier-ignore */
-  const renderLinks = () => (
-    !isAuthenticated ? (
-      <>
-        <Button
-          onClick={getHandleClick("/login")}
-          disabled={location.pathname === "/login"}
-        >
-          Login
-        </Button>
-        <Button
-          onClick={getHandleClick("/register")}
-          disabled={location.pathname === "/register"}
-        >
-          Cadastro
-        </Button>
-      </>
-    ) : (
-      <>
-        <Button
-          onClick={getHandleClick("/videos/favoritos")}
-          disabled={location.pathname === "/videos/favoritos"}
-        >
-          Favoritos
-        </Button>
-        <Button disabled={false} onClick={logout}>Logout</Button>
-      </>
-    )
+  const renderLinks = () => !isAuthenticated ? (
+    <>
+      <Button
+        onClick={getHandleClick("/login")}
+        disabled={location.pathname === "/login"}
+      >
+        Login
+      </Button>
+      <Button
+        onClick={getHandleClick("/register")}
+        disabled={location.pathname === "/register"}
+      >
+        Cadastro
+      </Button>
+    </>
+  ) : (
+    <>
+      <Button
+        onClick={getHandleClick("/videos/favoritos")}
+        disabled={location.pathname === "/videos/favoritos"}
+      >
+        Favoritos
+      </Button>
+      <DialogPopper title="Logout" message="Você realmente quer sair?" click={logout} />
+    </>
   );
 
   /* prettier-ignore */
