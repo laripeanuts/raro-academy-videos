@@ -54,6 +54,7 @@
 - [📚 **Referências**](#-referências)
 - [🤼‍♂️ **Desenvolvedores**](#️-desenvolvedores)
 - [🤖 **Executando o projeto localmente**](#-executando-o-projeto-localmente)
+- [👍🏽 **Agradecimentos**](#-agradecimentos)
 
 <!-- About the Project -->
 
@@ -230,5 +231,16 @@ Corrigir padrões com ESLint
 npm run lint:fix
 
 ```
+
+## 👍🏽 **Agradecimentos**
+
+- [Raro Academy](https://www.raroacademy.com.br/)
+- [Paulo Fernandes](https://github.com/pauloFernandes)
+- [Breno Peruchi](https://github.com/bperuchi)
+- [Rodrigo Sol](https://github.com/rodrigosol)
+- [Mateus Mendes](https://github.com/m7he4rt)
+- [Júlia Febraro](https://www.linkedin.com/in/j%C3%BAlia-febraro-68a50989/)
+- [Júlia Febraro](https://www.linkedin.com/in/ramon-setragni-63842832/)
+- E todos os outros professores que nos ajudaram.
 
 <p align="center">Copyright ☕ 2022
