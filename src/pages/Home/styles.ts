@@ -9,14 +9,14 @@ export const Container = styled("section")`
   align-items: center;
 `;
 
-/* prettier-ignore */
 export const LinkText = styled(Typography)`
   padding: 10px;
   border-radius: 10px;
   font-weight: bold;
+  color: ${({ theme }) => theme.palette.primary.main};
 
   & :hover {
-    color: ${({ theme }) => theme.palette.primary.main};
+    
     backdrop-filter: blur(8px);
     background-color: ${(props) => (
     props.theme.palette.mode === "dark"

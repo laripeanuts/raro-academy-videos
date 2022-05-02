@@ -11,16 +11,16 @@ import { CommentsProvider } from "../../contexts/CommentsProvider";
 const App = () => {
   const theme = useTheme();
   return (
-    <AuthProvider>
-      <ThemeProvider>
-        <AppBackground>
-          <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
+        <ThemeProvider>
+          <AppBackground>
             <RoutesApp />
-          </BrowserRouter>
-          <GlobalStyles />
-        </AppBackground>
-      </ThemeProvider>
-    </AuthProvider>
+            <GlobalStyles />
+          </AppBackground>
+        </ThemeProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 };
 

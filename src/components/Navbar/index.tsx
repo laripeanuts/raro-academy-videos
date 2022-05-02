@@ -49,7 +49,7 @@ export const Navbar = ({ user, logout, isAuthenticated }: NavbarProps) => {
         >
           Favoritos
         </Button>
-        <Button onClick={logout}>Logout</Button>
+        <Button disabled={false} onClick={logout}>Logout</Button>
       </>
     )
   );

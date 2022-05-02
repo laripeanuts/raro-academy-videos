@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import { useNavigate } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import { userType } from "../../types/userType";
 import apiClient from "../../services/api-client";
@@ -31,6 +32,7 @@ export const AuthProvider = ({ children }: ChildrenProviderType) => {
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const thereIsUser = getLocalUserStorage();
@@ -66,16 +68,15 @@ export const AuthProvider = ({ children }: ChildrenProviderType) => {
     }
   }
 
-  const refreshPage = () => {
-    window.location.reload();
-  };
-
   const logout = () => {
     localStorage.clear();
     setUser(userNew);
     setAuthenticated(false);
     setError("");
     setMessage("");
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
 
   return (

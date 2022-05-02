@@ -19,9 +19,7 @@ export const VideoList = memo(({ list }: VideoListProps) => {
           videoId={video.id}
           name={video.nome}
           tumbnail={video.thumbUrl}
-          publishedAt={new Date(video.dataPublicacao).toLocaleDateString(
-            "pt-br",
-          )}
+          publishedAt={new Date(video.createdAt).toLocaleDateString("pt-br")}
           key={video.id}
         >
           <FavoriteButton
