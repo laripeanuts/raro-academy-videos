@@ -5,7 +5,7 @@ export const Container = styled("section")`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 `;
 
 export type RowProps = {
