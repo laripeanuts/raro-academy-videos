@@ -191,7 +191,7 @@ export const CommentItem = ({
     setEditavel(false);
   };
 
-  const loadMyActions = () => {
+  const renderMyActions = () => {
     if (isMyComment) {
       return (
         <div className="commentListActions">
@@ -220,7 +220,7 @@ export const CommentItem = ({
 
   /* prettier-ignore */
 
-  const loadMyEdit = () => {
+  const renderMyEdit = () => {
     setValue("texto", texto);
     if (isAuthenticated && isMyComment && editavel) {
       return (
@@ -276,7 +276,7 @@ export const CommentItem = ({
         <div className="commentListBody">
           <img src={aluno.foto} alt={aluno.nome} />
           <div className="containerText">
-            {loadMyEdit()}
+            {renderMyEdit()}
             {editado ? (
               <Typography
                 variant="subtitle1"
@@ -340,7 +340,7 @@ export const CommentItem = ({
               {message || null}
             </Typography>
           </MessageResponse>
-          {loadMyActions()}
+          {renderMyActions()}
         </div>
       </div>
     </Container>

@@ -2,9 +2,9 @@ import { styled } from "@mui/material";
 
 /* prettier-ignore */
 export const MainContainer = styled("main")`
-  
+
   min-height: calc(100vh - 160px);
-  padding: 30px;
+  padding: 0 30px;
   display: flex;
   width: 100%;
   justify-content: center;

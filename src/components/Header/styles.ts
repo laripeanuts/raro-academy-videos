@@ -25,6 +25,11 @@ export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   gap: 15px;
+  transition: all 0.3s ease-in-out;
+
+  :hover {
+    opacity: 0.5;
+  }
 
   @media only screen and (max-width: 790px) {
     .logoText {
