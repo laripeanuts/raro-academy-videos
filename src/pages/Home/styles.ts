@@ -1,4 +1,5 @@
 import { styled } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
 
 export const Container = styled("section")`
   display: flex;
@@ -6,22 +7,22 @@ export const Container = styled("section")`
   flex-direction: column;
   gap: 30px;
   align-items: center;
+`;
 
-  .link-carousel {
-    color: ${({ theme }) => theme.palette.text.primary};
-    opacity: 0.8;
-    padding: 10px;
-    border-radius: 10px;
-    font-weight: bold;
+export const LinkText = styled(Typography)`
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.palette.primary.main};
 
-    /* prettier-ignore */
-    :hover {
-      color: ${({ theme }) => theme.palette.primary.main};
-      backdrop-filter: blur(8px);
-      background-color: ${(props) => props.theme.palette.mode === "dark"
-    ? "rgba(87, 87, 87, 0.18)"
-    : "rgba(135, 135, 135, 0.13)"};
-    }
+  & :hover {
+    
+    backdrop-filter: blur(8px);
+    background-color: ${(props) => (
+    props.theme.palette.mode === "dark"
+      ? "rgba(87, 87, 87, 0.18)"
+      : "rgba(135, 135, 135, 0.13)"
+  )};
   }
 `;
 

@@ -1,11 +1,13 @@
 import { styled } from "@mui/material/styles";
+import Tooltip from "@mui/material/Tooltip";
+import Avatar from "@mui/material/Avatar";
 
 export const Container = styled("div")`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   flex-wrap: nowrap;
+  width: fit-content;
   max-height: 80px;
   gap: 20px;
 
@@ -13,17 +15,12 @@ export const Container = styled("div")`
     background: transparent;
     border: none;
     max-width: 150px;
-    &:hover {
-      svg {
-        filter: drop-shadow(3px 3px 0px rgb(0 0 0 / 0.2));
-        filter: opacity(50%);
-      }
-    }
   }
 
   @media only screen and (max-width: 600px) {
-    width: 100%;
-    gap: 10px;
+    button {
+      padding: 16px 6px;
+    }
   }
 `;
 
@@ -35,17 +32,22 @@ export const ContainerNav = styled("nav")`
   gap: 10px;
 
   @media only screen and (max-width: 600px) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: space-around;
-    place-content: center;
+  }
+`;
 
-    button {
-      max-height: 20px;
-      max-width: 20px;
+export const AvatarContainer = styled(Tooltip)`
+  @media only screen and (max-width: 425px) {
+    display: none;
+  }
+`;
 
-      text-size: 13px;
-    }
+export const StyledAvatar = styled(Avatar)`
+  width: 56px;
+  height: 56px;
+
+  @media only screen and (max-width: 500px) {
+    width: 50px;
+    height: 50px;
   }
 `;

@@ -1,9 +1,9 @@
 import { styled } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 export const Container = styled("header")`
-  z-index: 5;
+  z-index: 10;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
@@ -15,85 +15,31 @@ export const Container = styled("header")`
   left: 0;
   width: 100%;
 
-  svg {
-    fill: ${(props) => props.theme.palette.primary.contrastText};
-    width: 100%;
-    height: 100%;
-    transition: filter 0.2s;
-  }
-
-  .linkLogo {
-    background: transparent;
-    border: none;
-    &:hover {
-      svg {
-        filter: drop-shadow(3px 3px 0px rgb(0 0 0 / 0.2));
-        filter: opacity(50%);
-      }
-    }
-  }
-
-  .navbar {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 20px;
-
-    @media only screen and (max-width: 650px) {
-      width: 100%;
-      gap: 5px;
-      justify-content: space-around;
-    }
-  }
-
-  .menuUser {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 20px;
-  }
-
-  .logoText {
-    height: 90%;
-  }
-
-  @media only screen and (max-width: 650px) {
+  @media only screen and (max-width: 500px) {
     padding: 5px 10px;
     gap: 10px;
-    justify-content: space-around;
+  }
+`;
 
+export const StyledLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  @media only screen and (max-width: 790px) {
     .logoText {
       display: none;
     }
   }
-`;
 
-export const ContainerLogos = styled("div")`
-  display: flex;
-  flex-direction: row;
-  height: 60px;
-  align-items: center;
-  place-content: center;
-  gap: 15px;
-  min-width: 50px;
+  @media only screen and (max-width: 500px) {
+    .logo {
+      width: 50px;
+      height: 50px;
+    }
 
-  @media only screen and (max-width: 650px) {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-  }
-`;
-
-export const ContainerLogo = styled("div")`
-  height: 100%;
-  align-items: center;
-  place-content: center;
-  stroke: ${(props) => props.theme.palette.primary.contrastText};
-
-  @media only screen and (max-width: 650px) {
-    max-width: 100%;
-    flex-wrap: wrap;
+    .logoText {
+      display: none;
+    }
   }
 `;

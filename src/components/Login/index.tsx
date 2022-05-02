@@ -28,9 +28,13 @@ const formLoginSchema = yup
   })
   .required();
 
+/* prettier-ignore */
 export const Login = () => {
   const {
-    authenticate, error, message, isAuthenticated,
+    authenticate,
+    error,
+    message,
+    isAuthenticated,
   } = useAuth();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();

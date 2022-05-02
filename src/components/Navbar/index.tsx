@@ -1,8 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { Avatar, Tooltip } from "@mui/material";
 import Button from "../Button";
-import { Container, ContainerNav } from "./styles";
+import {
+  Container,
+  ContainerNav,
+  AvatarContainer,
+  StyledAvatar,
+} from "./styles";
 import { ThemeSwitch } from "../ThemeSwitch";
 import { useTheme } from "../../hooks/useTheme";
 import { userType } from "../../types/userType";
@@ -17,11 +21,6 @@ export const Navbar = ({ user, logout, isAuthenticated }: NavbarProps) => {
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
-
-  const onLogout = () => {
-    logout();
-    navigate("/");
-  };
 
   const getHandleClick = (path: string) => () => navigate(path);
 
@@ -39,7 +38,7 @@ export const Navbar = ({ user, logout, isAuthenticated }: NavbarProps) => {
           onClick={getHandleClick("/register")}
           disabled={location.pathname === "/register"}
         >
-          Catastro
+          Cadastro
         </Button>
       </>
     ) : (
@@ -58,13 +57,12 @@ export const Navbar = ({ user, logout, isAuthenticated }: NavbarProps) => {
   /* prettier-ignore */
   const renderAvatar = () => (
     isAuthenticated ? (
-      <Tooltip title={user.nome} arrow>
-        <Avatar
+      <AvatarContainer title={user.nome} arrow>
+        <StyledAvatar
           alt={user.nome}
           src={user.foto}
-          sx={{ width: 56, height: 56 }}
         />
-      </Tooltip>
+      </AvatarContainer>
     ) : null
   );
 

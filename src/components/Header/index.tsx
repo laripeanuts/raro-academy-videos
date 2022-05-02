@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
-import { Container, ContainerLogo, ContainerLogos } from "./styles";
+import { Container, StyledLink } from "./styles";
 import { Logo } from "../SVG/Logo";
-import { LogoCompact } from "../SVG/LogoCompact";
+import { LogoText } from "../SVG/LogoText";
 import { useAuth } from "../../hooks/useAuth";
 import { Navbar } from "../Navbar";
 
@@ -10,25 +9,11 @@ export const Header = () => {
 
   return (
     <Container>
-      <Link className="linkLogo" to="/">
-        <ContainerLogos>
-          <ContainerLogo>
-            <Logo className="logo" />
-          </ContainerLogo>
-          <div className="logoText">
-            <LogoCompact />
-          </div>
-        </ContainerLogos>
-      </Link>
-      <div className="menuUser">
-        <div className="navbar">
-          <Navbar
-            user={user}
-            isAuthenticated={isAuthenticated}
-            logout={logout}
-          />
-        </div>
-      </div>
+      <StyledLink to="/">
+        <Logo className="logo" fill="#FFF" />
+        <LogoText className="logoText" fill="#FFF" />
+      </StyledLink>
+      <Navbar user={user} isAuthenticated={isAuthenticated} logout={logout} />
     </Container>
   );
 };

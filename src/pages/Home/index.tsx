@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Typography from "@mui/material/Typography";
 import { CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
-import { Row, Container } from "./styles";
+import { Row, Container, LinkText } from "./styles";
 import { useVideos } from "../../hooks/useVideos";
 import { Carousel } from "../../components/Carousel";
 import { removeFavorited } from "../../utils/removeFavorited";
@@ -31,7 +31,7 @@ export const Home = () => {
         <Row>
           <Typography variant="h4">Favoritos</Typography>
           <Link to="/videos/favoritos">
-            <Typography variant="body2" className="link-carousel">Todos os favoritos</Typography>
+            <LinkText variant="body2">Todos os favoritos</LinkText>
           </Link>
         </Row>
         <Featured
@@ -59,7 +59,7 @@ export const Home = () => {
         <Row>
           <Typography variant="h4">Últimos vídeos</Typography>
           <Link to="/videos">
-            <Typography variant="body2" className="link-carousel">Todos os vídeos</Typography>
+            <LinkText variant="body2">Todos os vídeos</LinkText>
           </Link>
         </Row>
         <Carousel itemsWidth={260}>

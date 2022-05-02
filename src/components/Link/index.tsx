@@ -8,7 +8,7 @@ export type LinkProps = {
 };
 
 const Link = ({ children, className = "link", href }: LinkProps) => (
-  <StyledLink className={className} href={href}>
+  <StyledLink className={className} to={href}>
     {children}
   </StyledLink>
 );
