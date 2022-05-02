@@ -61,9 +61,7 @@ export const VideoPage = () => {
             videoId={item.id}
             name={item.nome}
             tumbnail={item.thumbUrl}
-            publishedAt={new Date(item.dataPublicacao).toLocaleDateString(
-              "pt-br",
-            )}
+            publishedAt={new Date(item.dataPublicacao).toLocaleDateString("pt-br")}
             key={item.id}
           >
             <FavoriteButton id={item.id} filled={favorited(item.id, favorites)} />
