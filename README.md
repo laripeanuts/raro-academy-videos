@@ -29,12 +29,14 @@
 - [📔 **Documentação**](#-documentação)
 - [🌟 **Sobre o projeto**](#-sobre-o-projeto)
 - [🎯 **Objetivos principais**](#-objetivos-principais)
-- [🥳 App](#-app)
 - [💡 **Proposta**](#-proposta)
 - [🙾 **Design System**](#-design-system)
 - [💻 **Tecnologias Principais**](#-tecnologias-principais)
 - [💁🏽‍♀️ **Tecnologias de Suporte**](#️-tecnologias-de-suporte)
 - [🛠️ **Ferramentas**](#️-ferramentas)
+- [🥳 Aplicação](#-aplicação)
+    - [Tela de home com variação de temas](#tela-de-home-com-variação-de-temas)
+    - [Telas de vídeos e cadastro](#telas-de-vídeos-e-cadastro)
 - [😰 **Desafios**](#-desafios)
 - [🪁 **Futuras implementações**](#-futuras-implementações)
 - [📚 **Referências**](#-referências)
@@ -46,7 +48,7 @@
 
 ## 🌟 **Sobre o projeto**
 
-Projeto final do curso de React da Raro Academy que visa melhorar o modelo de distribuição do conteúdo dos cursos, criando um portal de acesso aos materiais de vídeo, onde os usuários poderão visualizar o conteúdo disponibilizados na plataforma.
+Projeto final do curso de React da Raro Academy que visa melhorar o modelo de distribuição do conteúdo dos cursos, criando um portal de acesso aos materiais de vídeo, onde os usuários poderão visualizar o conteúdo disponibilizados na plataforma. Veja [aqui](https://view.genial.ly/626ec81a07b48400111679eb/presentation-apresentacao-projeto-final-raro-academy) nossa apresentação.
 
 ## 🎯 **Objetivos principais**
 
@@ -70,13 +72,6 @@ Desenvolver com React uma plataforma web funcional conforme descrito detalhadame
   - [x] Área de comentários com botão de _like_ e _dislike_
   - [x] Ação de comentar somente para usuários cadastrados
   - [x] Botão de favoritar
-
-## 🥳 App
-
-<p align="center">
-  <img src=".github/temalight.jpg" alt="start" width="300">
-  <img src=".github/temadark.jpg" alt="start" width="300">
-</p>
 
 ## 💡 **Proposta**
 
@@ -136,6 +131,22 @@ Algumas tecnologias auxiliaram no desenvolvimento do projeto, dentre elas:
 [![NPM](https://img.shields.io/badge/NPM-6EBCF7?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/)
 [![Git](https://img.shields.io/badge/Git-E34F26?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
 [![Github](https://img.shields.io/badge/Github-121212?style=for-the-badge&logo=github&logoColor=white)](https://github.com/)
+
+## 🥳 [Aplicação](https://raro-academy-videos.vercel.app/)
+
+#### Tela de home com variação de temas
+
+<p align="center">
+  <img src=".github/temalight.jpg" alt="start" width="350">
+  <img src=".github/temadark.jpg" alt="start" width="350">
+</p>
+
+#### Telas de vídeos e cadastro
+
+<p align="center">
+  <img src=".github/telavideos.jpg" alt="start" width="350">
+  <img src=".github/telacadastro.jpg" alt="start" width="350">
+</p>
 
 ## 😰 **Desafios**
 
