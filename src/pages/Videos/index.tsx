@@ -58,7 +58,7 @@ export const VideosPage = () => {
   const handleLoadMore = () => {
     setTopic("");
     execute();
-  }
+  };
 
   const renderTopicChange = (event: SelectChangeEvent<string>) => setTopic(event.target.value);
 
