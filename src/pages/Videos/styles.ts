@@ -8,11 +8,6 @@ export const Container = styled("section")`
   gap: 20px;
   width: 100%;
 
-
-  h4 {
-    margin-left: 60px;
-  }
-
   .select-wrapper{
     display: flex;
     flex-direction: row;
@@ -29,27 +24,39 @@ export const Container = styled("section")`
   }
 `;
 
+export const SearchContainer = styled("section")`
+  display: flex;
+  width: 400px;
+  align-items: center;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+  svg {
+    font-size: 36px;
+    margin-right: 8px;
+    color: ${(props) => props.theme.palette.text.primary};
+    opacity: 0.8;
+  }
+`;
+
 export const VideoListContainer = styled("section")`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+
+  @media only screen and (max-width: 560px) {
+    justify-content: center;
+  }
 `;
 
-export const VideoButtonsContainer = styled("div")`
+export const Row = styled("section")`
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-`;
-
-export const FilterContainer = styled("section")`
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
-  place-content: flex-start;
-  padding-left: 20px;
-  gap: 20px;
+
+  @media only screen and (max-width: 730px) {
+    gap: 20px;
+  }
 `;

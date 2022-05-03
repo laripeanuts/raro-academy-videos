@@ -9,29 +9,29 @@
 
 <!-- Badges -->
 <p>
-  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/laripeanuts/raro-academy-videos" alt="contributors" />
+  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/contributors">
+    <img src="https://img.shields.io/github/contributors/rarolabs/raro-academy-react-grupo-6/" alt="contributors" />
   </a>
-  <a href="">
-    <img src="https://img.shields.io/github/last-commit/laripeanuts/raro-academy-videos" alt="last update" />
+  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/commits">
+    <img src="https://img.shields.io/github/last-commit/rarolabs/raro-academy-react-grupo-6/" alt="last update" />
   </a>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/network/members">
-    <img src="https://img.shields.io/github/forks/laripeanuts/raro-academy-videos" alt="forks" />
+    <img src="https://img.shields.io/github/forks/rarolabs/raro-academy-react-grupo-6/" alt="forks" />
   </a>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/stargazers">
-    <img src="https://img.shields.io/github/stars/laripeanuts/raro-academy-videos" alt="stars" />
+    <img src="https://img.shields.io/github/stars/rarolabs/raro-academy-react-grupo-6/" alt="stars" />
   </a>
   <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/">
-    <img src="https://img.shields.io/github/issues/laripeanuts/raro-academy-videos" alt="open issues" />
+    <img src="https://img.shields.io/github/issues/rarolabs/raro-academy-react-grupo-6/" alt="open issues" />
   </a>
 </p>
 
 <h4>
-    <a href="#">Demo</a>
+    <a href="https://raro-academy-videos.vercel.app/">Demo</a>
   <span> · </span>
-    <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/">Reporte Bug</a>
+    <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/new">Reporte Bug</a>
   <span> · </span>
-    <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/">Request Feature</a>
+    <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/pulls/">Request Feature</a>
   </h4>
 </div>
 
@@ -44,6 +44,7 @@
 - [📔 **Documentação**](#-documentação)
 - [🌟 **Sobre o projeto**](#-sobre-o-projeto)
 - [🎯 **Objetivos principais**](#-objetivos-principais)
+- [🥳 App](#-app)
 - [💡 **Proposta**](#-proposta)
 - [🙾 **Design System**](#-design-system)
 - [💻 **Tecnologias Principais**](#-tecnologias-principais)
@@ -54,6 +55,7 @@
 - [📚 **Referências**](#-referências)
 - [🤼‍♂️ **Desenvolvedores**](#️-desenvolvedores)
 - [🤖 **Executando o projeto localmente**](#-executando-o-projeto-localmente)
+- [👍🏽 **Agradecimentos**](#-agradecimentos)
 
 <!-- About the Project -->
 
@@ -84,14 +86,12 @@ Desenvolver com React uma plataforma web funcional conforme descrito detalhadame
   - [x] Ação de comentar somente para usuários cadastrados
   - [x] Botão de favoritar
 
-<!--
 ## 🥳 App
-<p align="left">
-  <img src="" alt="start" width="250">
 
+<p align="center">
+  <img src=".github/temalight.jpg" alt="start" width="300">
+  <img src=".github/temadark.jpg" alt="start" width="300">
 </p>
-
-> the app states -->
 
 ## 💡 **Proposta**
 
@@ -159,6 +159,7 @@ Algumas tecnologias auxiliaram no desenvolvimento do projeto, dentre elas:
 - Manipulação do scroll
 - Material UI na integração com outros componentes
 - Implementação do nosso próprio player de vídeo
+- CSS
 
 ## 🪁 **Futuras implementações**
 
@@ -229,5 +230,16 @@ Corrigir padrões com ESLint
 npm run lint:fix
 
 ```
+
+## 👍🏽 **Agradecimentos**
+
+- [Raro Academy](https://www.raroacademy.com.br/)
+- [Paulo Fernandes](https://github.com/pauloFernandes)
+- [Breno Peruchi](https://github.com/bperuchi)
+- [Rodrigo Sol](https://github.com/rodrigosol)
+- [Mateus Mendes](https://github.com/m7he4rt)
+- [Júlia Febraro](https://www.linkedin.com/in/j%C3%BAlia-febraro-68a50989/)
+- [Júlia Febraro](https://www.linkedin.com/in/ramon-setragni-63842832/)
+- E todos os outros professores que nos ajudaram.
 
 <p align="center">Copyright ☕ 2022
