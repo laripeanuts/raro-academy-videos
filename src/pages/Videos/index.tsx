@@ -55,7 +55,10 @@ export const VideosPage = () => {
     setPage(parseInt(videosResponse.headers["x-pagina"], 10) + 1);
   });
 
-  const handleLoadMore = () => execute();
+  const handleLoadMore = () => {
+    setTopic("");
+    execute();
+  }
 
   const renderTopicChange = (event: SelectChangeEvent<string>) => setTopic(event.target.value);
 
