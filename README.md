@@ -2,28 +2,13 @@
 
   <img src=".github/logo.png" alt="logo" width="70" height="auto" />
   <h1>Raro Academy Videos</h1>
-
   <p>
     Plataforma com seus conteúdos Raro Academy
   </p>
 
 <!-- Badges -->
 <p>
-  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/contributors">
-    <img src="https://img.shields.io/github/contributors/rarolabs/raro-academy-react-grupo-6/" alt="contributors" />
-  </a>
-  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/commits">
-    <img src="https://img.shields.io/github/last-commit/rarolabs/raro-academy-react-grupo-6/" alt="last update" />
-  </a>
-  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/network/members">
-    <img src="https://img.shields.io/github/forks/rarolabs/raro-academy-react-grupo-6/" alt="forks" />
-  </a>
-  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/stargazers">
-    <img src="https://img.shields.io/github/stars/rarolabs/raro-academy-react-grupo-6/" alt="stars" />
-  </a>
-  <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/">
-    <img src="https://img.shields.io/github/issues/rarolabs/raro-academy-react-grupo-6/" alt="open issues" />
-  </a>
+
 </p>
 
 <h4>
@@ -166,6 +151,8 @@ Algumas tecnologias auxiliaram no desenvolvimento do projeto, dentre elas:
 - Espaço para download de arquivos
 - Ordenação de comentários
 - Lista últimos visualizados
+- Implementação de cookies
+- Possibilidade de inserir emojis nos comentários
 
 ## 📚 **Referências**
 
@@ -234,12 +221,13 @@ npm run lint:fix
 ## 👍🏽 **Agradecimentos**
 
 - [Raro Academy](https://www.raroacademy.com.br/)
+- [Júlia Febraro](https://www.linkedin.com/in/j%C3%BAlia-febraro-68a50989/)
 - [Paulo Fernandes](https://github.com/pauloFernandes)
 - [Breno Peruchi](https://github.com/bperuchi)
 - [Rodrigo Sol](https://github.com/rodrigosol)
 - [Mateus Mendes](https://github.com/m7he4rt)
-- [Júlia Febraro](https://www.linkedin.com/in/j%C3%BAlia-febraro-68a50989/)
-- [Júlia Febraro](https://www.linkedin.com/in/ramon-setragni-63842832/)
+- [Tamir Faria](https://github.com/tamirfaria)
+- [Ramon Setragni](https://www.linkedin.com/in/ramon-setragni-63842832/)
 - E todos os outros professores que nos ajudaram.
 
 <p align="center">Copyright ☕ 2022
