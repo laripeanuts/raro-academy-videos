@@ -1,6 +1,6 @@
 import LoadingButton from "@mui/lab/LoadingButton/LoadingButton";
 import SendIcon from "@mui/icons-material/Send";
-import { IconButton, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";

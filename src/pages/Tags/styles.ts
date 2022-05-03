@@ -17,10 +17,12 @@ export const AllVideosTitle = styled(Typography)`
   grid-area: videos-title;
 `;
 
-export const AllVideosList = styled("section")`
-  grid-area: all-videos;
+export const VideoListContainer = styled("section")`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  justify-content: space-between;
+
+  @media only screen and (max-width: 560px) {
+    justify-content: center;
+  }
 `;
