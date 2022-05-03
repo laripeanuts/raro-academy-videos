@@ -1,31 +1,35 @@
-import { useEffect, useState } from "react";
+/* prettier-ignore */
+import {
+  ChangeEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import FilterListIcon from "@mui/icons-material/FilterList";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-
+import AddCircleSharpIcon from "@mui/icons-material/AddCircleSharp";
+import SearchIcon from "@mui/icons-material/Search";
 import Typography from "@mui/material/Typography";
 import CircularProgress from "@mui/material/CircularProgress";
-import {
-  FormControl,
-  IconButton,
-  InputLabel,
-  MenuItem,
-  Select,
-  Tooltip,
-} from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import Button from "@mui/material/Button";
+import Input from "@mui/material/Input";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import Tooltip from "@mui/material/Tooltip";
+import { SelectChangeEvent } from "@mui/material";
+/* prettier-ignore */
 import {
   VideoListContainer,
   Container,
-  FilterContainer,
-  VideoButtonsContainer,
+  Row,
+  SearchContainer,
 } from "./styles";
 import { useVideos } from "../../hooks/useVideos";
 import apiClient from "../../services/api-client";
 import { VideoType } from "../../types/VideoType";
 import { useFetch } from "../../hooks/useFetch";
 import { VideoList } from "../../components/VideoList";
-import { InputSearch } from "../../components/InputSearch";
-import Button from "../../components/Button";
 
 /* prettier-ignore */
 export const VideosPage = () => {
@@ -33,31 +37,47 @@ export const VideosPage = () => {
   const { topics } = useVideos();
   const [videos, setVideos] = useState<VideoType[]>([]);
   const [topic, setTopic] = useState("");
-  const [itemsPerPage, setItemsPerPage] = useState(12);
+  const [totalVideos, setTotalVideos] = useState(0);
   const [page, setPage] = useState(1);
-  const [title, setTitle] = useState("Todos");
-
-  const url = `/videos?nome=${querySearch}&topico=${topic}&pagina=${page}&itensPorPagina=${itemsPerPage}&orderBy=dataPublicacao&orderDirection=ASC`;
+  const debounceId = useRef(0);
 
   const { execute, loading, errorMessage } = useFetch(async () => {
-    const videosResponse = await apiClient.get<VideoType[]>(url);
-    setVideos(videosResponse.data);
+    const videosResponse = await apiClient.get<VideoType[]>("/videos", {
+      params: {
+        nome: querySearch,
+        pagina: page,
+        itensPorPagina: 10,
+      },
+    });
+
+    setTotalVideos(parseInt(videosResponse.headers["x-total-itens"], 10));
+    setVideos([...videos, ...videosResponse.data]);
+    setPage(parseInt(videosResponse.headers["x-pagina"], 10) + 1);
   });
 
-  const handleTopicChange = (event: any) => {
-    setTopic(event.target.value as string);
-  };
+  const handleLoadMore = () => execute();
 
-  const renderVideos = () => (
-    <VideoListContainer>
-      <VideoList list={videos} />
-    </VideoListContainer>
+  const renderTopicChange = (event: SelectChangeEvent<string>) => setTopic(event.target.value);
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => (
+    setQuerySearch(event.target.value)
   );
 
-  const validaVideos = () => (
-    videos.length ? (
+  const renderVideos = () => (videos.length
+    ? (
       <>
-        {renderVideos()}
+        <VideoListContainer>
+          <VideoList list={videos.filter((video) => (topic === "" || video.topico === topic))} />
+        </VideoListContainer>
+        <Button
+          disabled={videos.length === totalVideos || loading}
+          onClick={handleLoadMore}
+          sx={{ width: "fit-content", alignSelf: "center" }}
+        >
+          <Tooltip title="Carregar mais vídeos" arrow>
+            {!loading ? <AddCircleSharpIcon /> : <CircularProgress sx={{ color: "common.white" }} aria-label="Carregando conteúdo" size={23} />}
+          </Tooltip>
+        </Button>
       </>
     ) : (
       <Typography alignSelf="center" variant="h6">
@@ -76,8 +96,8 @@ export const VideosPage = () => {
           id="topic-selector-id"
           value={topic}
           label="Tópicos"
-          onChange={handleTopicChange}
           sx={{ width: "200px" }}
+          onChange={renderTopicChange}
         >
           {topics.map((item: string) => (
             <MenuItem key={item} value={item} sx={{ textTransform: "capitalize", color: "text.primary" }}>
@@ -92,8 +112,8 @@ export const VideosPage = () => {
     </div>
   );
 
-  const renderListVideos = () => {
-    if (loading) {
+  const renderResult = () => {
+    if (loading && !videos.length) {
       return <CircularProgress sx={{ alignSelf: "center" }} aria-label="Carregando conteúdo" size={60} />;
     }
 
@@ -101,53 +121,43 @@ export const VideosPage = () => {
       return <Typography variant="h5">{errorMessage}</Typography>;
     }
 
-    return validaVideos();
+    return renderVideos();
   };
 
   const renderFilters = () => (
-    <FilterContainer>
-      <InputSearch
-        onKeyPress={(value: String) => setQuerySearch(value)}
-      />
+    <Row>
+      <SearchContainer>
+        <SearchIcon />
+        <Input
+          type="search"
+          placeholder="Buscar Vídeos"
+          onChange={handleInputChange}
+          sx={{ margin: "0px" }}
+        />
+      </SearchContainer>
       {topics ? renderMenuFilter() : null}
-    </FilterContainer>
+    </Row>
   );
 
-  const nextPage = () => {
-    setPage((pageCurrent) => pageCurrent + 1);
-  };
-
-  const previusPage = () => {
-    setPage((pageCurrent) => pageCurrent - 1);
-  };
-
   useEffect(() => {
-    execute();
-  }, [itemsPerPage, page, topic, querySearch]);
+    clearTimeout(debounceId.current);
+
+    setVideos([]);
+    setPage(1);
+
+    debounceId.current = window.setTimeout(() => {
+      execute();
+    }, 700);
+  }, [querySearch]);
 
   return (
     <Container>
       <>
         {renderFilters()}
         <Typography variant="h4" sx={{ textTransform: "capitalize" }}>
-          {topic || title}
+          {topic || "Todos"}
         </Typography>
-        <VideoButtonsContainer>
-          <IconButton disabled={page <= 1} onClick={previusPage}>
-            <Tooltip title="Página Anterior" arrow>
-              <ArrowBackIosNewIcon />
-            </Tooltip>
-          </IconButton>
-          {renderListVideos()}
-          <IconButton
-            disabled={videos.length < itemsPerPage}
-            onClick={nextPage}
-          >
-            <Tooltip title="Próxima Página" arrow>
-              <ArrowForwardIosIcon />
-            </Tooltip>
-          </IconButton>
-        </VideoButtonsContainer>
+        {renderResult()}
       </>
     </Container>
   );
