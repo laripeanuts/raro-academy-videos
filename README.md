@@ -12,11 +12,11 @@
 </p>
 
 <h4>
-    <a href="https://raro-academy-videos.vercel.app/">Demo</a>
+    <a href="https://raro-academy-videos.vercel.app/" target="_blank" >Demo</a>
   <span> · </span>
-    <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/issues/new">Reporte Bug</a>
+    <a href="https://github.com/laripeanuts/raro-academy-videos/issues/new">Reporte Bug</a>
   <span> · </span>
-    <a href="https://github.com/rarolabs/raro-academy-react-grupo-6/pulls/">Request Feature</a>
+    <a href="https://github.com/laripeanuts/raro-academy-videos/pulls/">Request Feature</a>
   </h4>
 </div>
 
@@ -182,7 +182,7 @@ Nos inspiramos em sites como [Udemy](https://www.udemy.com), [Netflix](https://w
   <img src="https://avatars.githubusercontent.com/u/43701289?v=4" width=50 style="border-radius:20px" alt="Rogério Vieira"/>
 </a>
 <a href="https://github.com/Thaynnah">
-  <img src="https://avatars.githubusercontent.com/u/95942656?v=4" width=50 style="border-radius:20px" alt="	Thaynnáh Cibelly"/>
+  <img src="https://avatars.githubusercontent.com/u/95942656?v=4" width=50 style="border-radius:20px" alt=" Thaynnáh Cibelly"/>
 </a>
 
 </p>
@@ -194,7 +194,7 @@ Nos inspiramos em sites como [Udemy](https://www.udemy.com), [Netflix](https://w
 Clone o projeto
 
 ```bash
-  git clone https://github.com/rarolabs/raro-academy-react-grupo-6.git
+  git clone https://github.com/laripeanuts/raro-academy-videos.git
 ```
 
 Vá para a raiz do diretório
